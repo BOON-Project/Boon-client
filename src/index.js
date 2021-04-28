@@ -38,7 +38,6 @@ ReactDOM.render(
     </React.Fragment>
     </ThemeProvider>
     </Router>
-  </Provider>
-    ,
+  </Provider>,
   document.getElementById('root')
 );
