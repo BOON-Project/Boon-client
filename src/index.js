@@ -6,7 +6,7 @@ import { store } from "./store/index";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core";
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 export const theme = createMuiTheme({
   palette: {
@@ -22,6 +22,12 @@ export const theme = createMuiTheme({
     success: {
       main: "#E8E9EB",
     },
+    error: {
+      main: "#ef5350",
+    },
+    background: {
+      default: "#E8E9EB",
+    },
   },
   typography: {
     fontFamily: "Montserrat",
@@ -31,12 +37,12 @@ export const theme = createMuiTheme({
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-    <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <CssBaseline/>
-      <App />
-    </React.Fragment>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <React.Fragment>
+          <CssBaseline />
+          <App />
+        </React.Fragment>
+      </ThemeProvider>
     </Router>
   </Provider>,
   document.getElementById('root')
