@@ -17,7 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: "rebeccapurple"
+    backgroundColor: "primary"
   },
   grow: {
     flexGrow: 1,
