@@ -1,76 +1,17 @@
 import React, { useState } from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import Link from "@material-ui/core/Link";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-
-const useStyles = makeStyles((theme) => ({
-  logo: {
-    maxWidth: 40,
-    marginRight: "10px",
-  },
-  link: {
-    textDecoration: "none",
-    padding: "1rem",
-    margin: "0 2rem",
-  },
-  appBar: {
-    backgroundColor: "#ffff",
-    color: "#313638",
-    padding: "2rem",
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
-  },
-}));
+import useStyles from "./styles";
 
 export default function PrimarySearchAppBar() {
+  const [isAuth, setIsAuth] = useState();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -105,8 +46,16 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Signup</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link underline='none' href='/Login' color='primary'>
+          Login
+        </Link>{" "}
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link underline='none' href='/Signup' color='primary'>
+          Signup
+        </Link>{" "}
+      </MenuItem>
     </Menu>
   );
 
@@ -121,31 +70,16 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}>
       <MenuItem>
-        {/* <IconButton aria-label='show 4 new mails' color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
-            <MailIcon />
-          </Badge>
-        </IconButton> */}
         <Link underline='none' href='#' color='primary'>
           Request a Boon
         </Link>
       </MenuItem>
       <MenuItem>
-        {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton> */}
         <Link underline='none' href='#' color='primary'>
           My Boons
         </Link>
       </MenuItem>
       <MenuItem>
-        {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton> */}
         <Link underline='none' href='#' color='primary'>
           Explore
         </Link>
@@ -182,16 +116,6 @@ export default function PrimarySearchAppBar() {
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label='show 4 new mails' color='inherit'>
-              <Badge badgeContent={1} color='secondary'>
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label='show 17 new notifications' color='inherit'>
-              <Badge badgeContent={7} color='secondary'>
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <Link
               underline='none'
               href='#'
