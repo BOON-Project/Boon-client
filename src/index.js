@@ -6,6 +6,7 @@ import { store } from "./store/index";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 export const theme = createMuiTheme({
   palette: {
@@ -30,9 +31,12 @@ export const theme = createMuiTheme({
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+    <React.Fragment>
+      <CssBaseline/>
+      <App />
+    </React.Fragment>
+    </ThemeProvider>
     </Router>
   </Provider>,
   document.getElementById("root")
