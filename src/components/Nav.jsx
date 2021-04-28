@@ -16,6 +16,10 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 const useStyles = makeStyles((theme) => ({
+  logo: {
+    maxWidth: 40,
+    marginRight: "10px",
+  },
   link: {
     textDecoration: "none",
     padding: "1rem",
@@ -122,7 +126,7 @@ export default function PrimarySearchAppBar() {
             <MailIcon />
           </Badge>
         </IconButton> */}
-        <Link href='#' color='primary'>
+        <Link underline='none' href='#' color='primary'>
           Request a Boon
         </Link>
       </MenuItem>
@@ -132,7 +136,7 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-        <Link href='#' color='primary'>
+        <Link underline='none' href='#' color='primary'>
           My Boons
         </Link>
       </MenuItem>
@@ -142,7 +146,7 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-        <Link href='#' color='primary'>
+        <Link underline='none' href='#' color='primary'>
           Explore
         </Link>
       </MenuItem>
@@ -163,6 +167,11 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar className={classes.appBar} position='static'>
         <Toolbar>
+          <img
+            src='./images/Boon-logo.svg'
+            alt='Boon-logo'
+            className={classes.logo}
+          />
           <Typography
             className={classes.title}
             color='primary'
@@ -183,13 +192,25 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-            <Link href='#' className={classes.link} color='info'>
+            <Link
+              underline='none'
+              href='#'
+              className={classes.link}
+              color='inherit'>
               Request a Boon
             </Link>
-            <Link href='#' className={classes.link} color='info'>
+            <Link
+              underline='none'
+              href='#'
+              className={classes.link}
+              color='inherit'>
               My Boons
             </Link>
-            <Link href='#' className={classes.link} color='info'>
+            <Link
+              underline='none'
+              href='#'
+              className={classes.link}
+              color='inherit'>
               Explore
             </Link>
             <IconButton
