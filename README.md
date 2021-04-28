@@ -19,7 +19,7 @@ BOON is our final project for the one-year web development course at DCI.
 
 
 # Contributing
-1. Fork it (https://github.com/BOON-Project/frontend)
+1. Fork it (https://github.com/BOON-Project/Boon-client)
 2. Create your feature branch (git checkout -b feature/myContribution)
 3. Commit your changes (git commit -am 'Add some contribution')
 4. Push to the branch (git push origin feature/myContribution)
