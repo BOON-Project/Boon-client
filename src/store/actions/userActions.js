@@ -1,18 +1,16 @@
-// import {
-//     helpAddUser,
-//     helpEditUser,
-//     helpCheckUSer,
-//     helpCheckoutUser,
-//   } from "../helpers";
-//   import { ADD_USER, EDIT_USER, USER_LOGIN, USER_LOGOUT } from "./types";
+import {
+    helpAddUser,
+
+  } from "../helpers";
+  import { ADD_USER} from "./types";
   
-//   export const addUserAction = (formData) => async (dispatch) => {
-//     const response = await helpAddUser(formData);
-//     dispatch({
-//       type: ADD_USER,
-//       payload: response.data,
-//     });
-//   };
+  export const addUserAction = (formData) => async (dispatch) => {
+    const response = await helpAddUser(formData);
+    dispatch({
+      type: ADD_USER,
+      payload: response.data,
+    });
+  };
   
 //   export const editUserAction = (formData) => async (dispatch, getState) => {
 //     const userId = getState().user.user._id;

@@ -2,7 +2,7 @@ import React,{useState, useEffect, useRef} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 //import {userLoginAction} from '../../store/actions/authAction';
-//import {addUserAction} from '../../store/actions/usersAction'
+import {addUserAction} from '../../store/actions/userActions'
 
 //styling components
 import Avatar from '@material-ui/core/Avatar';
@@ -64,9 +64,9 @@ export default function SignUp() {
 
   const submitHandler = (e)=>{
     e.preventDefault();
-    //dispatch(addUserAction(formData));
+    dispatch(addUserAction(formData));
     //dispatch(userLoginAction(formData));
-    history.push("/User")
+    history.push("/")
   }
 
 
