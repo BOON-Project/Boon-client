@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,16 +9,22 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
 const useStyles = makeStyles((theme) => ({
+  link: {
+    textDecoration: "none",
+    padding: "1rem",
+    margin: "0 2rem",
+  },
   appBar: {
     backgroundColor: "#ffff",
     color: "#313638",
+    padding: "2rem",
   },
   grow: {
     flexGrow: 1,
@@ -32,30 +38,7 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   inputRoot: {
     color: "inherit",
   },
@@ -85,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -123,7 +106,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  const mobileMenuId = "primary-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -139,7 +122,9 @@ export default function PrimarySearchAppBar() {
             <MailIcon />
           </Badge>
         </IconButton> */}
-        <Button color='primary'>Request a Boon</Button>
+        <Link href='#' color='primary'>
+          Request a Boon
+        </Link>
       </MenuItem>
       <MenuItem>
         {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
@@ -147,7 +132,9 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-        <Button color='primary'>My Boons</Button>
+        <Link href='#' color='primary'>
+          My Boons
+        </Link>
       </MenuItem>
       <MenuItem>
         {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
@@ -155,7 +142,9 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-        <Button color='primary'>Explore</Button>
+        <Link href='#' color='primary'>
+          Explore
+        </Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -194,9 +183,15 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-            <Button color='info'>Request a Boon</Button>
-            <Button color='info'>My Boons</Button>
-            <Button color='info'>Explore</Button>
+            <Link href='#' className={classes.link} color='info'>
+              Request a Boon
+            </Link>
+            <Link href='#' className={classes.link} color='info'>
+              My Boons
+            </Link>
+            <Link href='#' className={classes.link} color='info'>
+              Explore
+            </Link>
             <IconButton
               edge='end'
               aria-label='account of current user'
