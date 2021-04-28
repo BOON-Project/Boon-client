@@ -9,7 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    color: "#32908f",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -119,8 +118,8 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Signup</MenuItem>
     </Menu>
   );
 
@@ -140,7 +139,7 @@ export default function PrimarySearchAppBar() {
             <MailIcon />
           </Badge>
         </IconButton> */}
-        <p>Messages</p>
+        <Button color='primary'>Request a Boon</Button>
       </MenuItem>
       <MenuItem>
         {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
@@ -148,7 +147,15 @@ export default function PrimarySearchAppBar() {
             <NotificationsIcon />
           </Badge>
         </IconButton> */}
-        <p>Notifications</p>
+        <Button color='primary'>My Boons</Button>
+      </MenuItem>
+      <MenuItem>
+        {/* <IconButton aria-label='show 11 new notifications' color='inherit'>
+          <Badge badgeContent={11} color='secondary'>
+            <NotificationsIcon />
+          </Badge>
+        </IconButton> */}
+        <Button color='primary'>Explore</Button>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -167,32 +174,17 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar className={classes.appBar} position='static'>
         <Toolbar>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='open drawer'>
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant='h5' noWrap>
+          <Typography
+            className={classes.title}
+            color='primary'
+            variant='h3'
+            noWrap>
             Boon
           </Typography>
-          <div className={classes.search}>
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div> */}
-            {/* <InputBase
-              placeholder='Search…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            /> */}
-          </div>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label='show 4 new mails' color='inherit'>
+            {/* <IconButton aria-label='show 4 new mails' color='inherit'>
               <Badge badgeContent={1} color='secondary'>
                 <MailIcon />
               </Badge>
@@ -201,7 +193,10 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={7} color='secondary'>
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
+            <Button color='info'>Request a Boon</Button>
+            <Button color='info'>My Boons</Button>
+            <Button color='info'>Explore</Button>
             <IconButton
               edge='end'
               aria-label='account of current user'
