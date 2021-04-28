@@ -101,11 +101,13 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar className={classes.appBar} position='static'>
         <Toolbar>
-          <img
-            src='./images/Boon-logo.svg'
-            alt='Boon-logo'
-            className={classes.logo}
-          />
+          <Link underline='none' href='/' color='primary'>
+            <img
+              src='./images/Boon-logo.svg'
+              alt='Boon-logo'
+              className={classes.logo}
+            />
+          </Link>
           <Typography
             className={classes.title}
             color='primary'
