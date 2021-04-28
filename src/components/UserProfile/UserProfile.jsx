@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import avatar from "../img/avatar.jpg";
+import avatar from "./img/avatar.jpg";
 import {
   Box,
   Typography,
@@ -23,37 +22,13 @@ import AddIcon from "@material-ui/icons/Add";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 
-const useStyles = makeStyles((theme) => ({
-  hero: {
-    margin: 30,
-  },
-  skills: {
-    width: "100%",
-    maxWidth: 450,
-    backgroundColor: theme.palette.background.paper,
-  },
-  container: {
-    margin: 30,
-  },
-  image: {
-    width: 500,
-    height: 300,
-  },
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
+import useStyles from "./styles";
 
 const UserProfile = () => {
   const classes = useStyles();
   return (
     <CssBaseline>
-      <Typography variant="h3" color="primary" className={classes.hero}>
+      <Typography variant="h3" color="secondary" className={classes.hero}>
         Eniko
       </Typography>
       <Divider variant="middle" />
@@ -66,33 +41,38 @@ const UserProfile = () => {
         </Box>
         <List className={classes.skills}>
           <ListItem alignItems="flex-start">
-            <Typography variant="h4">Current rating: </Typography>
+            <Typography variant="h4" color="secondary">
+              Current rating:{" "}
+            </Typography>
             <ListItemSecondaryAction>
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
-              <StarIcon />
+              <StarIcon color="secondary" />
+              <StarIcon color="secondary" />
+              <StarIcon color="secondary" />
+              <StarIcon color="secondary" />
+              <StarIcon color="secondary" />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem alignItems="flex-start">
-            <Typography variant="h5">Skills offered: </Typography>
+            <Typography variant="h5" color="primary">
+              Skills offered:{" "}
+            </Typography>
             <ListItemSecondaryAction>
-              <AddIcon />
-              <MoreHorizIcon />
+              <AddIcon color="primary" />
+              <MoreHorizIcon color="primary" />
             </ListItemSecondaryAction>
           </ListItem>
           <ListItem alignItems="flex-start">
-            <Typography variant="h6">Add up to 5 skills</Typography>
+            <Typography variant="h6" color="primary">
+              Add up to 5 skills
+            </Typography>
           </ListItem>
           <ListItem alignItems="flex-start">
-            <Box>
-              <Button size="large" color="primary" variant="outlined">
-                Photography <LinkedCameraIcon />
-              </Button>
-            </Box>
+            <Button size="large" color="primary" variant="outlined">
+              Photography <LinkedCameraIcon className={classes.icon} />
+            </Button>
+
             <ListItemSecondaryAction>
-              <ListItemText primary={`50 boons`} />
+              <ListItemText primary={`50 boons per hour`} />
             </ListItemSecondaryAction>
           </ListItem>
         </List>
@@ -100,8 +80,8 @@ const UserProfile = () => {
 
       <div className={classes.root}>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>Bio</Paper>
+          <Grid item xs={2}>
+            <Typography variant="p">Bio</Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>
@@ -115,21 +95,20 @@ const UserProfile = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>Name</Paper>
+          <Grid item xs={2}>
+            <Typography variant="p">Name</Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>Eniko V</Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>Location</Paper>
+          <Grid item xs={2}>
+            <Typography variant="p">Location</Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>
-              {" "}
-              <PersonPinIcon /> | Berlin | 10629
+              <PersonPinIcon className={classes.icon} /> Berlin | 10629
             </Paper>
           </Grid>
         </Grid>
