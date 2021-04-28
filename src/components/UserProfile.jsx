@@ -15,6 +15,7 @@ import {
   Container,
   CssBaseline,
   Grid,
+  Button,
 } from "@material-ui/core";
 import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
 import StarIcon from "@material-ui/icons/Star";
@@ -37,12 +38,6 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: 500,
     height: 300,
-  },
-  skill: {
-    borderColor: "black",
-    border: 1,
-    m: 1,
-    border: 1,
   },
   root: {
     flexGrow: 1,
@@ -91,11 +86,10 @@ const UserProfile = () => {
             <Typography variant="h6">Add up to 5 skills</Typography>
           </ListItem>
           <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <LinkedCameraIcon />
-            </ListItemAvatar>
-            <Box borderRadius={16} className={classes.skill}>
-              <ListItemText primary={`Photography`} />
+            <Box>
+              <Button size="large" color="primary" variant="outlined">
+                Photography <LinkedCameraIcon />
+              </Button>
             </Box>
             <ListItemSecondaryAction>
               <ListItemText primary={`50 boons`} />
