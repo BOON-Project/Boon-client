@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import useSelector from "react-redux";
 //Components
-import Home from "./Home";
+import Home from "./Home/Home";
 import UserProfile from "./UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
