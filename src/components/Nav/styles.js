@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
   logo: {
-    maxWidth: 40,
+    maxWidth: 100,
     marginRight: "10px",
   },
   link: {
