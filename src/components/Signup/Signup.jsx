@@ -1,40 +1,37 @@
-import React,{useState, useEffect, useRef} from 'react';
-import {useHistory} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 //import {userLoginAction} from '../../store/actions/authAction';
-import {addUserAction} from '../../store/actions/userActions'
+import { addUserAction } from "../../store/actions/userActions";
 
 //styling components
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import useStyles from './styles'
-import Container from '@material-ui/core/Container';
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import useStyles from "./styles";
+import Container from "@material-ui/core/Container";
 //end fo styling components
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Boon
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
-
-
-
 
 export default function SignUp() {
   const classes = useStyles();
@@ -45,30 +42,30 @@ export default function SignUp() {
 
   //getting user's data and setting our state =>
   const [formData, setFormData] = useState({
-    firstName : "",
+    firstName: "",
     lastName: "",
     userName: "",
     email: "",
     password: "",
-  })
+    birthday: "",
+  });
 
   //fetching our db
-  useEffect(()=>{
+  useEffect(() => {
     //inputRef.current.focus();
-  },[]);
+  }, []);
 
   //setting our FormData with user's info =>
-  const changeHandler = (e)=>{
-    setFormData({...formData, [e.target.name]: e.target.value});
-  }
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const submitHandler = (e)=>{
+  const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserAction(formData));
     //dispatch(userLoginAction(formData));
-    history.push("/")
-  }
-
+    history.push("/");
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -129,7 +126,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="Birthday"
+                name="birthday"
                 type="date"
                 variant="outlined"
                 required
@@ -143,7 +140,6 @@ export default function SignUp() {
                 InputLabelProps={{
                   shrink: true,
                 }}
-
               />
             </Grid>
 
