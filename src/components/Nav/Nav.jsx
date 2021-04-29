@@ -103,18 +103,18 @@ export default function PrimarySearchAppBar() {
         <Toolbar>
           <Link underline='none' href='/' color='primary'>
             <img
-              src='./images/Boon-logo.svg'
+              src='./images/Boon-big.svg'
               alt='Boon-logo'
               className={classes.logo}
             />
           </Link>
-          <Typography
+          {/* <Typography
             className={classes.title}
             color='primary'
             variant='h3'
             noWrap>
             Boon
-          </Typography>
+          </Typography> */}
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
