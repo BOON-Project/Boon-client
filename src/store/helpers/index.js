@@ -16,7 +16,7 @@ export const helpAddUser = (formData) =>
 
 // login user authentication
 
-export const helpCheckUSer = (formData) =>
+export const helpCheckUser = (formData) =>
   axios.post("http://localhost:5000/user/login", formData);
 
 // logout user

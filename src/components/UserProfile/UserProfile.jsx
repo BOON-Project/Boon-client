@@ -21,15 +21,21 @@ import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
+import { userLoginAction } from "../../store/actions/authActions";
 
 import useStyles from "./styles";
 
 const UserProfile = () => {
   const classes = useStyles();
+
+  // const dispatch = useDispatch();
+  // const user = useSelector((state) => state.authUser.user);
+
   return (
     <CssBaseline>
       <Typography variant="h3" color="secondary" className={classes.hero}>
         Eniko
+        {/* {formData.firstName} */}
       </Typography>
       <Divider variant="middle" />
 
