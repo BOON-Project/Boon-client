@@ -14,6 +14,7 @@ export default  makeStyles({
         margin: 0,
         marginRight: "20px",
     },
+
     circle:{
         marginLeft: "40px"
     },
@@ -22,9 +23,18 @@ export default  makeStyles({
         margin: 0,
     },
     tag:{
-        margin: "5px",
+       margin:"5px 5px 5px 0"
     },
     media: {
         height: 100,
       },
+    avatar:{
+        width:"100px",
+        height:"100px",
+        },
+    avatarBooners:{
+        width:"150px",
+        height:"150px",
+    },
+
 });
