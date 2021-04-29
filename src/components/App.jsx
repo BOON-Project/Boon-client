@@ -1,11 +1,11 @@
 import React from "react";
 import useStyles from "../styles";
-import Nav from "./Nav";
+import Nav from "./Nav/Nav";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import useSelector from "react-redux";
 //Components
-import Home from "./Home";
+import Home from "./Home/Home";
 import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
@@ -22,6 +22,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/UserProfile" component={UserProfile} />
         <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Login" component={Login} />
         <Route path="/*" component={Error404} />
 
         {/* Private Routes =>  */}
