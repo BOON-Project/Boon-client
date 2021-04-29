@@ -6,7 +6,7 @@ import PrivateRoute from "./PrivateRoute";
 import useSelector from "react-redux";
 //Components
 import Home from "./Home/Home";
-import UserProfile from "./UserProfile";
+import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
@@ -19,15 +19,15 @@ const App = () => {
     <>
       <Nav />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/UserProfile' component={UserProfile} />
-        <Route exact path='/Signup' component={Signup} />
-        <Route exact path='/Login' component={Login} />
-        <Route path='/*' component={Error404} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/UserProfile" component={UserProfile} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Login" component={Login} />
+        <Route path="/*" component={Error404} />
 
         {/* Private Routes =>  */}
-        <PrivateRoute path='User' component={User} />
-        <PrivateRoute path='EditUser' component={EditUser} />
+        <PrivateRoute path="User" component={User} />
+        <PrivateRoute path="EditUser" component={EditUser} />
       </Switch>
     </>
   );
