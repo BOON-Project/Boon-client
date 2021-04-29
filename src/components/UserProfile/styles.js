@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
         },
         paper: {
           padding: theme.spacing(2),
-          textAlign: "center",
+          textAlign: "left",
           color: theme.palette.text.secondary,
           marginBottom: 10,
         },

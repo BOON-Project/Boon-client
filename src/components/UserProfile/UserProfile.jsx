@@ -81,7 +81,9 @@ const UserProfile = () => {
       <div className={classes.root}>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p">Bio</Typography>
+            <Typography variant="p" color="primary">
+              Bio
+            </Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>
@@ -96,7 +98,9 @@ const UserProfile = () => {
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p">Name</Typography>
+            <Typography variant="p" color="primary">
+              Name
+            </Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>Eniko V</Paper>
@@ -104,7 +108,9 @@ const UserProfile = () => {
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p">Location</Typography>
+            <Typography variant="p" color="primary">
+              Location
+            </Typography>
           </Grid>
           <Grid item xs>
             <Paper className={classes.paper}>
