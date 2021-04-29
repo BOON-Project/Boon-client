@@ -22,9 +22,14 @@ export default  makeStyles({
         margin: 0,
     },
     tag:{
-        margin: "5px",
+       margin:"5px 5px 5px 0"
     },
     media: {
         height: 100,
       },
+    avatar:{
+        width:"100px",
+        height:"100px",
+        },
+
 });
