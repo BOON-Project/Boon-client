@@ -1,33 +1,63 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import useStyles from './styles'
+import React, { useState, useEffect, useRef } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import useStyles from "./styles";
+
+import { userLoginAction } from "../../store/actions/authActions";
+import { Redirect, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Boon
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 export default function SignInSide() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  // to go back
+  const history = useHistory();
+  // Redux
+  const user = useSelector((state) => state.authReducer.user);
+  const [formData, setFormData] = useState({ userName: "", password: "" });
+  const inputRef = useRef();
+
+  useEffect(() => {
+    console.log("WTF?");
+    user.avatar && history.push("/");
+  }, [user]);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    dispatch(userLoginAction(formData));
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -36,22 +66,24 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon className={classes.icon}/>
+            <LockOutlinedIcon className={classes.icon} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={submitHandler} className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="userName"
+              label="Your username"
+              name="userName"
+              ref={inputRef}
+              autoComplete="username"
               autoFocus
+              onChange={changeHandler}
             />
             <TextField
               variant="outlined"
@@ -63,6 +95,7 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={changeHandler}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
