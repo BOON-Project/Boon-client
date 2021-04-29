@@ -41,14 +41,14 @@ export default function SignInSide() {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const inputRef = useRef();
 
-  useEffect(() => {
-    console.log("WTF?");
-    user.avatar && history.push("/");
-  }, [user]);
+  // useEffect(() => {
+  //   console.log("WTF?");
+  //   user.avatar && history.push("/");
+  // }, [user]);
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+   useEffect(() => {
+     inputRef.current.focus();
+   }, []);
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -117,7 +117,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
