@@ -2,7 +2,7 @@ import {
     helpCheckUser,
     helpCheckoutUser
 
-  } from "../helpers";
+  } from "../../helpers/apiCalls";
   import {  USER_LOGIN, USER_LOGOUT } from "./types";
   
 

@@ -19,9 +19,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Boon
       </Link>{" "}
       {new Date().getFullYear()}
@@ -41,14 +41,14 @@ export default function SignInSide() {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const inputRef = useRef();
 
-  // useEffect(() => {
-  //   console.log("WTF?");
-  //   user.avatar && history.push("/");
-  // }, [user]);
+  useEffect(() => {
+    console.log("WTF?");
+    Object.keys(user).length && history.push("/");
+  }, [user]);
 
-   useEffect(() => {
-     inputRef.current.focus();
-   }, []);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -60,7 +60,7 @@ export default function SignInSide() {
   };
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component='main' className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -68,56 +68,55 @@ export default function SignInSide() {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon className={classes.icon} />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component='h1' variant='h5'>
             Log in
           </Typography>
           <form onSubmit={submitHandler} className={classes.form} noValidate>
             <TextField
-              variant="outlined"
-              margin="normal"
+              variant='outlined'
+              margin='normal'
               required
               fullWidth
-              id="userName"
-              label="Your username"
-              name="userName"
+              id='userName'
+              label='Your username'
+              name='userName'
               ref={inputRef}
-              autoComplete="username"
+              autoComplete='username'
               autoFocus
               onChange={changeHandler}
             />
             <TextField
-              variant="outlined"
-              margin="normal"
+              variant='outlined'
+              margin='normal'
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
               onChange={changeHandler}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              control={<Checkbox value='remember' color='primary' />}
+              label='Remember me'
             />
             <Button
-              type="submit"
+              type='submit'
               fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+              variant='contained'
+              color='primary'
+              className={classes.submit}>
               Log In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href='#' variant='body2'>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/Signup" variant="body2">
+                <Link href='/Signup' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
