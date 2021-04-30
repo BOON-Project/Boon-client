@@ -19,6 +19,19 @@ export const getUsers = async () => {
   }
 };
 
+
+// GET SKILLS
+export const getSkills= async () => {
+  console.log(`im fetching the skills`);
+  try {
+    const response = await axios.get(`/skill`);
+    return response;
+  }
+  catch(err) {
+    console.log(err)
+  }
+};
+
   
 
 // signup user
@@ -28,7 +41,7 @@ export const helpAddUser = (formData) =>
 
 // login user authentication
 
-export const helpCheckUSer = (formData) =>
+export const helpCheckUser = (formData) =>
   axios.post("http://localhost:5000/user/login", formData);
 
 // logout user

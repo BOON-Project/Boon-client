@@ -36,6 +36,8 @@ const Home = () => {
                         <Typography variant="h5" color="info">2. A favour or request.</Typography>
                     </CardContent>
                 </Card>
+                <Typography variant="h5" color="info"> We make exchange based economy a reality with our money free exchange platform  </Typography>
+
 
                 {/* SEARCH */}
                 <Search/>

@@ -3,7 +3,6 @@ import useStyles from "../styles";
 import Nav from "./Nav/Nav";
 import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
-import useSelector from "react-redux";
 //Components
 import Home from "./Home/Home";
 import UserProfile from "./UserProfile/UserProfile";
@@ -14,7 +13,6 @@ import EditUser from "./EditUser";
 import User from "./User";
 
 const App = () => {
-  const classes = useStyles();
   return (
     <>
       <Nav />
