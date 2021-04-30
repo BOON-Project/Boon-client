@@ -37,7 +37,7 @@ const Search = () =>{
         <Autocomplete
             id="free-solo-demo"
             freeSolo
-            options={skills.map((skill) => skill.name)}
+            // options={skills.map((skill) => skill.name)}
             renderInput={(params) => (
             <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
             )}
