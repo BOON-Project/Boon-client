@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -15,24 +15,59 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
-import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
-import StarIcon from "@material-ui/icons/Star";
-import AddIcon from "@material-ui/icons/Add";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import { EditUserAction } from "../../store/actions/authActions";
+
+import { userLoginAction } from "../../store/actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 
 import useStyles from "./styles";
 
 const EditUser = () => {
   const classes = useStyles();
-
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.authReducer.user);
+  console.log(user);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+  });
+
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let filteredFields = {};
+    console.log(filteredFields);
+    Object.keys(formData).forEach((key) => {
+      if (formData[key].length > 0) {
+        filteredFields[key] = formData[key];
+      }
+    });
+  };
 
   return (
     <CssBaseline>
-      <h1>Hello</h1>
+      <input
+        className="input"
+        type="text"
+        name="firstName"
+        value={formData.firstName}
+        placeholder={user.firstName}
+        required
+        onChange={changeHandler}
+        ref={inputRef}
+      />
+      <button onClick={submitHandler}>Save</button>
     </CssBaseline>
   );
 };

@@ -9,7 +9,7 @@ import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
-import EditUser from "../components/EditUser/EditUser";
+import EditUser from "./EditUser/EditUser";
 import User from "./User";
 
 const App = () => {
@@ -19,12 +19,12 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/editUser" component={EditUser} />
         <Route exact path="/Login" component={Login} />
 
         {/* Private Routes =>  */}
-        <PrivateRoute exact path="/UserProfile" component={UserProfile} />
+        <PrivateRoute exact path="/userProfile" component={UserProfile} />
         <PrivateRoute path="User" component={User} />
-        <PrivateRoute path="EditUser" component={EditUser} />
         {/* Error 404 Route =>  */}
         <Route path="/*" component={Error404} />
       </Switch>
