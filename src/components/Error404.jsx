@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@material-ui/core";
 import React from "react";
-import History, { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Error404 = () => {
   const history = useHistory();

@@ -1,8 +1,8 @@
 import {
     helpAddUser
 
-  } from "../helpers";
-  import { ADD_USER } from "./types";
+  } from "../../helpers/apiCalls";
+  import { ADD_USER} from "./types";
   
   export const addUserAction = (formData) => async (dispatch) => {
     const response = await helpAddUser(formData);

@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography, Box, Card, CardActions, Button, CardMedia, Grid, Avatar, makeStyles} from "@material-ui/core";
+import {Typography, Box, Card,Button, Grid, Avatar} from "@material-ui/core";
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 import useStyles from "./styles"
