@@ -28,14 +28,14 @@ import useStyles from "./styles";
 const UserProfile = () => {
   const classes = useStyles();
 
-  // const dispatch = useDispatch();
-  // const user = useSelector((state) => state.authUser.user);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.authUser.user);
 
   return (
     <CssBaseline>
       <Typography variant="h3" color="secondary" className={classes.hero}>
         Eniko
-        {/* {formData.firstName} */}
+        {user.firstName}
       </Typography>
       <Divider variant="middle" />
 
