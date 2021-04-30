@@ -13,7 +13,6 @@ import EditUser from "./EditUser";
 import User from "./User";
 
 const App = () => {
-  const classes = useStyles();
   return (
     <>
       <Nav />
