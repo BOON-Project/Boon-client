@@ -22,10 +22,7 @@ export default function PrimarySearchAppBar() {
 
   useEffect(() => {
     if (Object.keys(user).length) setIsAuth(true);
-    console.log("====================================");
-    console.log(isAuth);
-    console.log("====================================");
-  }, []);
+  }, [user]);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -104,7 +101,9 @@ export default function PrimarySearchAppBar() {
           color='inherit'>
           <AccountCircle />
         </IconButton>
-        <Link href='/UserProfile'>Profile</Link>
+        <Link underline='none' href='/UserProfile'>
+          Profile
+        </Link>
       </MenuItem>
     </Menu>
   ) : (
@@ -131,7 +130,6 @@ export default function PrimarySearchAppBar() {
           Explore
         </Link>
       </MenuItem>
-
       <IconButton
         aria-label='account of current user'
         aria-controls='primary-search-account-menu'
@@ -139,7 +137,9 @@ export default function PrimarySearchAppBar() {
         color='inherit'>
         <AccountCircle />
       </IconButton>
-      <Link href='/UserProfile'>Profile</Link>
+      <Link underline='none' href='/UserProfile'>
+        Profile
+      </Link>
     </Menu>
   );
   if (!isAuth) {
@@ -156,27 +156,6 @@ export default function PrimarySearchAppBar() {
             </Link>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              {/* {user._id && (<Link
-            underline='none'
-            href='#'
-            className={classes.link}
-            color='inherit'>
-            Request a Boon
-          </Link>
-          <Link
-            underline='none'
-            href='#'
-            className={classes.link}
-            color='inherit'>
-            My Boons
-          </Link>
-          <Link
-            underline='none'
-            href='#'
-            className={classes.link}
-            color='inherit'>
-            Explore
-          </Link>)} */}
               <IconButton
                 edge='end'
                 aria-label='account of current user'
