@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#ffff",
     color: "#313638",
-    padding: "2rem",
+    padding: "1rem",
   },
   grow: {
     flexGrow: 1,
