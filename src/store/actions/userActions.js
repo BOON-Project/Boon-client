@@ -1,8 +1,8 @@
 import {
-    helpAddUser
+    helpAddUser, helpEditUser
 
   } from "../../helpers/apiCalls";
-  import { ADD_USER} from "./types";
+  import { ADD_USER, EDIT_USER} from "./types";
   
   export const addUserAction = (formData) => async (dispatch) => {
     const response = await helpAddUser(formData);
@@ -12,16 +12,16 @@ import {
     });
   };
   
-//   export const editUserAction = (formData) => async (dispatch, getState) => {
-//     const userId = getState().user.user._id;
+   export const editUserAction = (formData) => async (dispatch, getState) => {
+     const userId = getState().user.user._id;
   
-//     const response = await helpEditUser(userId, formData);
-//     console.log("formData from Action");
-//     dispatch({
-//       type: EDIT_USER,
-//       payload: response.data,
-//     });
-//   };
+     const response = await helpEditUser(userId, formData);
+     console.log("formData from Action");
+     dispatch({
+       type: EDIT_USER,
+       payload: response.data,
+     });
+   };
   
 
   

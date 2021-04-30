@@ -9,7 +9,7 @@ import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
-import EditUser from "./EditUser";
+import EditUser from "../components/EditUser/EditUser";
 import User from "./User";
 
 const App = () => {
@@ -17,16 +17,16 @@ const App = () => {
     <>
       <Nav />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/Signup' component={Signup} />
-        <Route exact path='/Login' component={Login} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Login" component={Login} />
 
         {/* Private Routes =>  */}
-        <PrivateRoute exact path='/UserProfile' component={UserProfile} />
-        <PrivateRoute path='User' component={User} />
-        <PrivateRoute path='EditUser' component={EditUser} />
+        <PrivateRoute exact path="/UserProfile" component={UserProfile} />
+        <PrivateRoute path="User" component={User} />
+        <PrivateRoute path="EditUser" component={EditUser} />
         {/* Error 404 Route =>  */}
-        <Route path='/*' component={Error404} />
+        <Route path="/*" component={Error404} />
       </Switch>
     </>
   );

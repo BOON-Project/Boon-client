@@ -30,12 +30,12 @@ const UserProfile = () => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authUser.user);
+  const user = useSelector((state) => state.authReducer.user);
+  console.log("user", user);
 
   return (
     <CssBaseline>
       <Typography variant="h3" color="secondary" className={classes.hero}>
-        Eniko
         {user.firstName}
       </Typography>
       <Divider variant="middle" />
@@ -92,7 +92,7 @@ const UserProfile = () => {
               Bio
             </Typography>
           </Grid>
-          <Grid item xs>
+          <Grid item xs={6}>
             <Paper className={classes.paper}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
               tenetur ullam dignissimos animi veritatis exercitationem ex
@@ -109,7 +109,7 @@ const UserProfile = () => {
               Name
             </Typography>
           </Grid>
-          <Grid item xs>
+          <Grid item xs={6}>
             <Paper className={classes.paper}>Eniko V</Paper>
           </Grid>
         </Grid>
@@ -119,7 +119,7 @@ const UserProfile = () => {
               Location
             </Typography>
           </Grid>
-          <Grid item xs>
+          <Grid item xs={6}>
             <Paper className={classes.paper}>
               <PersonPinIcon className={classes.icon} /> Berlin | 10629
             </Paper>

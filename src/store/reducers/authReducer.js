@@ -1,14 +1,14 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions/types";
+import { USER_LOGIN, USER_LOGOUT, EDIT_USER } from "../actions/types";
 const initialState = {
   user: {
-    // avatar: "/statics/avatar.png",
-    // _id: "608a7b96df0b0817bc45336d",
-    // firstName: "trehdfgdgft",
-    // lastName: "hfgffdsf",
-    // userName: "newusernam123",
-    // email: "email2222@gmail.com",
-    // birthday: "2020-10-23T00:00:00.000Z",
-    // password: "Josiecat1234!",
+     avatar: "/statics/avatar.png",
+     _id: "608a7b96df0b0817bc45336d",
+     firstName: "trehdfgdgft",
+     lastName: "hfgffdsf",
+     userName: "newusernam123",
+     email: "email2222@gmail.com",
+     birthday: "2020-10-23T00:00:00.000Z",
+     password: "Josiecat1234!",
   },
 };
 
@@ -24,6 +24,12 @@ const authenticationReducer = (state = initialState, action) => {
       };
 
       return loggedUser;
+
+      case EDIT_USER:
+        return {
+          ...state,
+          user: { ...state.user, ...action.payload },
+        };
 
     case USER_LOGOUT:
       localStorage.clear();
