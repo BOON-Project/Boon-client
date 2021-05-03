@@ -24,8 +24,6 @@ const TopRatedUsers = () => {
         };
         getData();
       }, []);
-
-    // console.log(users);
     
     return(
         <>
@@ -57,7 +55,7 @@ const TopRatedUsers = () => {
                                 {user.skills.map((skill) => {
                                     return ( 
                                     <Box display="flex" justifyContent="center" flexDirection="column" pt={1} key={skill._id}>
-                                        <Button size="medium" color="info" variant="outlined" className={classes.tag}>{skill.name}</Button>
+                                        <Button size="medium" color="info" variant="outlined" className={classes.tag}>{skill.skillID.name}</Button>
                                     </Box>
                                     );
                                 })} 
