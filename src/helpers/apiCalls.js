@@ -13,7 +13,6 @@ export const getUsers = async () => {
   console.log(`im fetching the users`);
   try {
     const response = await axios.get(`/user`);
-    console.log(response.data);
     return response;
   } catch (err) {
     console.log(err);
