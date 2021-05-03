@@ -1,9 +1,10 @@
 import {
     helpCheckUser,
-    helpCheckoutUser
+    helpCheckoutUser,
+    helpEditUser
 
   } from "../../helpers/apiCalls";
-  import {  USER_LOGIN, USER_LOGOUT } from "./types";
+  import {  USER_LOGIN, USER_LOGOUT, EDIT_USER } from "./types";
   
 
 
@@ -24,3 +25,14 @@ export const userLoginAction = (formData) => async (dispatch) => {
       payload: response.data,
     });
    };
+
+   export const editUserAction = (formData) => async (dispatch, getState) => {
+    const userId = getState().authReducer.user._id;
+  
+    const response = await helpEditUser(userId, formData);
+    console.log("formData from Action");
+    dispatch({
+      type: EDIT_USER,
+      payload: response.data,
+    });
+  };

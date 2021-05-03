@@ -47,9 +47,9 @@ export const helpCheckUser = (formData) =>
 // logout user
 
 export const helpCheckoutUser = () =>
-  axios.get("http://localhost:5000/users/logout");
+  axios.get("http://localhost:5000/user/logout");
 
 // edit user data
 
 export const helpEditUser = (userId, updatedUser) =>
-  axios.patch(`http://localhost:5000/users/${userId}`, updatedUser);
+  axios.put(`http://localhost:5000/user/${userId}`, updatedUser);

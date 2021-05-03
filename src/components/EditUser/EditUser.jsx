@@ -16,7 +16,7 @@ import {
   Button,
 } from "@material-ui/core";
 
-import { userLoginAction } from "../../store/actions/authActions";
+import { editUserAction } from "../../store/actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 
 import useStyles from "./styles";
@@ -53,6 +53,7 @@ const EditUser = () => {
         filteredFields[key] = formData[key];
       }
     });
+    dispatch(editUserAction(filteredFields));
   };
 
   return (

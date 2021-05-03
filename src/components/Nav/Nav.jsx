@@ -49,14 +49,15 @@ export default function PrimarySearchAppBar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
-      onClose={handleMenuClose}>
+      onClose={handleMenuClose}
+    >
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/Login' color='primary'>
+        <Link underline="none" href="/Login" color="primary">
           Login
         </Link>{" "}
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/Signup' color='primary'>
+        <Link underline="none" href="/Signup" color="primary">
           Signup
         </Link>{" "}
       </MenuItem>
@@ -69,14 +70,15 @@ export default function PrimarySearchAppBar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
-      onClose={handleMenuClose}>
+      onClose={handleMenuClose}
+    >
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/UserProfile' color='primary'>
+        <Link underline="none" href="/UserProfile" color="primary">
           Profile
         </Link>{" "}
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/Logout' color='primary'>
+        <Link underline="none" href="/Logout" color="primary">
           Logout
         </Link>{" "}
       </MenuItem>
@@ -92,16 +94,18 @@ export default function PrimarySearchAppBar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}>
+      onClose={handleMobileMenuClose}
+    >
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          aria-label='account of current user'
-          aria-controls='primary-search-account-menu'
-          aria-haspopup='true'
-          color='inherit'>
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
           <AccountCircle />
         </IconButton>
-        <Link underline='none' href='/UserProfile'>
+        <Link underline="none" href="/UserProfile">
           Profile
         </Link>
       </MenuItem>
@@ -114,30 +118,32 @@ export default function PrimarySearchAppBar() {
       keepMounted
       transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}>
+      onClose={handleMobileMenuClose}
+    >
       <MenuItem>
-        <Link underline='none' href='#' color='primary'>
+        <Link underline="none" href="#" color="primary">
           Request a Boon
         </Link>
       </MenuItem>
       <MenuItem>
-        <Link underline='none' href='#' color='primary'>
+        <Link underline="none" href="#" color="primary">
           My Boons
         </Link>
       </MenuItem>
       <MenuItem>
-        <Link underline='none' href='#' color='primary'>
+        <Link underline="none" href="#" color="primary">
           Explore
         </Link>
       </MenuItem>
       <IconButton
-        aria-label='account of current user'
-        aria-controls='primary-search-account-menu'
-        aria-haspopup='true'
-        color='inherit'>
+        aria-label="account of current user"
+        aria-controls="primary-search-account-menu"
+        aria-haspopup="true"
+        color="inherit"
+      >
         <AccountCircle />
       </IconButton>
-      <Link underline='none' href='/UserProfile'>
+      <Link underline="none" href="/UserProfile">
         Profile
       </Link>
     </Menu>
@@ -145,34 +151,36 @@ export default function PrimarySearchAppBar() {
   if (!isAuth) {
     return (
       <div className={classes.grow}>
-        <AppBar className={classes.appBar} position='static'>
+        <AppBar className={classes.appBar} position="static">
           <Toolbar>
-            <Link underline='none' href='/' color='primary'>
+            <Link underline="none" href="/" color="primary">
               <img
-                src='./images/Boon-big.svg'
-                alt='Boon-logo'
+                src="./images/Boon-big.svg"
+                alt="Boon-logo"
                 className={classes.logo}
               />
             </Link>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton
-                edge='end'
-                aria-label='account of current user'
+                edge="end"
+                aria-label="account of current user"
                 aria-controls={menuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
-                aria-label='show more'
+                aria-label="show more"
                 aria-controls={mobileMenuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <MoreIcon />
               </IconButton>
             </div>
@@ -185,55 +193,60 @@ export default function PrimarySearchAppBar() {
   } else {
     return (
       <div className={classes.grow}>
-        <AppBar className={classes.appBar} position='static'>
+        <AppBar className={classes.appBar} position="static">
           <Toolbar>
-            <Link underline='none' href='/' color='primary'>
+            <Link underline="none" href="/" color="primary">
               <img
-                src='./images/Boon-big.svg'
-                alt='Boon-logo'
+                src="./images/Boon-big.svg"
+                alt="Boon-logo"
                 className={classes.logo}
               />
             </Link>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <Link
-                underline='none'
-                href='#'
+                underline="none"
+                href="#"
                 className={classes.link}
-                color='inherit'>
+                color="inherit"
+              >
                 Request a Boon
               </Link>
               <Link
-                underline='none'
-                href='#'
+                underline="none"
+                href="#"
                 className={classes.link}
-                color='inherit'>
+                color="inherit"
+              >
                 My Boons
               </Link>
               <Link
-                underline='none'
-                href='#'
+                underline="none"
+                href="#"
                 className={classes.link}
-                color='inherit'>
+                color="inherit"
+              >
                 Explore
               </Link>
               <IconButton
-                edge='end'
-                aria-label='account of current user'
+                edge="end"
+                aria-label="account of current user"
                 aria-controls={menuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
-                aria-label='show more'
+                aria-label="show more"
                 aria-controls={mobileMenuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <MoreIcon />
               </IconButton>
             </div>

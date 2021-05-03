@@ -1,5 +1,5 @@
-import {helpAddUser} from "../../helpers/apiCalls";
-import { ADD_USER} from "./types";
+import {helpAddUser, helpEditUser} from "../../helpers/apiCalls";
+import { ADD_USER, EDIT_USER} from "./types";
   
   export const addUserAction = (formData) => async (dispatch) => {
     const response = await helpAddUser(formData);
@@ -9,7 +9,8 @@ import { ADD_USER} from "./types";
     });
   };
   
-   
+
+
   
 
   
