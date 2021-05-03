@@ -9,8 +9,7 @@ import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
-import EditUser from "./EditUser/EditUser";
-import User from "./User";
+import User from "./User/User";
 
 const App = () => {
   return (
@@ -19,7 +18,6 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/editUser" component={EditUser} />
         <Route exact path="/Login" component={Login} />
 
         {/* Private Routes =>  */}

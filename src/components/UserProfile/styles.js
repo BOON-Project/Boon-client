@@ -16,18 +16,17 @@ export default makeStyles((theme) => ({
           marginTop: 20,
         },
         image: {
-          width: 500,
-          height: 300,
+          width: 400,
+          height: 250,
           marginRight: 50,
+          marginTop: 25,
         },
         root: {
           margin: 50,
           flexGrow: 1,
         },
-        paper: {
-          padding: theme.spacing(2),
-          textAlign: "left",
-          color: theme.palette.text.secondary,
+        '& input:valid + fieldset': {
+          width: 500,
           marginBottom: 10,
         },
         icon: {

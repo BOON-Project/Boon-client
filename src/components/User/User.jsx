@@ -14,7 +14,6 @@ import {
   Divider,
   Container,
   CssBaseline,
-  InputAdornment,
   Grid,
   Button,
   TextField,
@@ -27,6 +26,7 @@ import PersonPinIcon from "@material-ui/icons/PersonPin";
 import { userLoginAction } from "../../store/actions/authActions";
 import { useSelector, useDispatch } from "react-redux";
 import Fab from "@material-ui/core/Fab";
+
 import useStyles from "./styles";
 
 const UserProfile = () => {
@@ -46,9 +46,6 @@ const UserProfile = () => {
         <Box component="div">
           <Grid item xs={6}>
             <img src={avatar} alt="lady" className={classes.image} />
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
           </Grid>
         </Box>
         <List className={classes.skills}>
@@ -87,6 +84,13 @@ const UserProfile = () => {
               <ListItemText primary={`50 boons per hour`} />
             </ListItemSecondaryAction>
           </ListItem>
+          <ListItem alignItems="flex-start">
+            <Link underline="none" href="/editUser">
+              <Button size="large" color="primary" variant="outlined">
+                Edit profile
+              </Button>
+            </Link>
+          </ListItem>
         </List>
       </Grid>
       <div className={classes.root}>
@@ -97,20 +101,14 @@ const UserProfile = () => {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <TextField
-              id="outlined-read-only-input"
-              label="Outlined"
-              variant="outlined"
-              fullWidth
-              label="Bio"
-              multiline
-              defaultValue="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
+            <Paper className={classes.paper}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
               tenetur ullam dignissimos animi veritatis exercitationem ex
               maiores voluptas sit dolore? Repellendus, ipsam harum, perferendis
               eos repellat voluptate voluptas quod mollitia soluta, voluptatum
               expedita temporibus recusandae. Unde architecto blanditiis et sed
-              dolorum iure porro earum quis. Modi nisi repellendus labore quo?"
-            ></TextField>
+              dolorum iure porro earum quis. Modi nisi repellendus labore quo?
+            </Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -119,23 +117,8 @@ const UserProfile = () => {
               Name
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <TextField
-              id="outlined-read-only-input"
-              defaultValue="Eniko"
-              label="Outlined"
-              fullWidth
-              variant="outlined"
-              label="First Name"
-              multiline
-            ></TextField>
-          </Grid>
-          <Grid item xs={4}>
-            <Link underline="none" href="/editUser">
-              <Button size="large" color="primary" variant="outlined">
-                Save
-              </Button>
-            </Link>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>Eniko V</Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -144,23 +127,10 @@ const UserProfile = () => {
               Location
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <TextField
-              fullWidth
-              id="outlined-read-only-input"
-              defaultValue=" Berlin | 10629"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PersonPinIcon className={classes.icon} />
-                  </InputAdornment>
-                ),
-              }}
-              label="Outlined"
-              variant="outlined"
-              label="First Name"
-              multiline
-            ></TextField>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <PersonPinIcon className={classes.icon} /> Berlin | 10629
+            </Paper>
           </Grid>
         </Grid>
       </div>
