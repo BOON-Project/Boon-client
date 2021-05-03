@@ -34,27 +34,21 @@ export const getSkills = async () => {
 
 export const helpAddUser = async (formData) =>{
 console.log("Signing up user: ", formData);
-try {
+
   const response = axios.post("http://localhost:5000/user", formData);
-  return response.formData
-} catch (err) {
-  return extractApiError(err)
-}
+  return response
+
 };
 
 // login user authentication
 
 export const helpCheckUser = async (formData) => {
-  try {
     const response = await axios.post(
       "http://localhost:5000/user/login",
       formData
     );
+    return response
 
-    return response.data;
-  } catch (err) {
-    return err.response.data.error;
-  }
 };
 
 // logout user

@@ -39,10 +39,10 @@ function Copyright() {
 export default function SignUp() {
 //form!
   const {register, errors, watch,handleSubmit, control} = useForm();
-  const onSubmit = async (data) =>{
 
-    console.log(data)
-  }
+//password check
+let password = useRef({})
+password = watch('password', "");
 
 //general calling functions !
   const classes = useStyles();
@@ -76,8 +76,8 @@ export default function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserAction(formData));
-    dispatch(userLoginAction(formData));
-    history.push("/EditUser");
+    //dispatch(userLoginAction(formData));
+    history.push("/");
   };
 
   return (
@@ -91,7 +91,7 @@ export default function SignUp() {
           Sign up
         </Typography>
         <form className={classes.form} noValidate
-          onSubmit={handleSubmit(onSubmit)}>
+          onSubmit={handleSubmit(submitHandler)}>
 
           {/* first name input! */}
           <Grid container spacing={2}>

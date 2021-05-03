@@ -3,12 +3,12 @@ import {
     helpCheckUser,
 
   } from "../../helpers/apiCalls";
-  import { ADD_USER, USER_LOGIN} from "./types";
+  import { USER_SIGNUP, USER_LOGIN} from "./types";
   
   export const addUserAction = (formData) => async (dispatch) => {
     const response = await helpAddUser(formData);
     dispatch({
-      type: ADD_USER,
+      type: USER_SIGNUP,
       payload: response.data,
     });
   };
