@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Typography, Container, Box, Card, CardContent} from "@material-ui/core"
 import CurentlyOffering from "./CurrentlyOffering"
 import useStyles from "./styles"
 import TopRatedUsers from './TopRatedUsers';
 import Search from './Search';
 import TopRatedBoons from './TopRatedBoons';
+import { useDispatch } from "react-redux";
+import { getSkillsAction } from '../../store/actions/skillsActions';
 
 
 const Home = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getSkillsAction())
+    },[])
 
     return (
         <Container maxWidth="lg" className={classes.root}>
