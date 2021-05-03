@@ -1,5 +1,10 @@
-import { USER_LOGIN, USER_LOGOUT } from "../actions/types";
+import {
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
+  USER_LOGOUT,
+} from "../actions/types";
 const initialState = {
+  error: {},
   user: {
     // avatar: "/statics/avatar.png",
     // _id: "608a7b96df0b0817bc45336d",
@@ -14,8 +19,8 @@ const initialState = {
 
 const authenticationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_LOGIN:
-      const loggedUser = {
+    case USER_LOGIN_SUCCESS:
+      return {
         ...state,
         user: {
           ...state.user,
@@ -23,7 +28,11 @@ const authenticationReducer = (state = initialState, action) => {
         },
       };
 
-      return loggedUser;
+    case USER_LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
 
     case USER_LOGOUT:
       localStorage.clear();
