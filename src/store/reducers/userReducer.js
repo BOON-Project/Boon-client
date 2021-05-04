@@ -1,4 +1,4 @@
-import { ADD_USER} from "../actions/types";
+import { SIGNUP_USER, LOGIN_USER} from "../actions/types";
 
 // a reducer is a function that takes 2 parameters (initialState, action) and returns a copy of the state to the store
 // every reducer needs:
@@ -11,12 +11,12 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_USER:
+    case SIGNUP_USER:
+    case LOGIN_USER:
       return {
         ...state,
         user: action.payload,
       };
-      
     default:
       return state;
   }

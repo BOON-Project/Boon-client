@@ -2,23 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {userLoginAction} from '../../store/actions/authActions'
-import { addUserAction } from "../../store/actions/userActions";
+import { signupAction } from "../../store/actions/userActions";
+import { signupUser } from "../../helpers/apiCalls";
 
 //styling components
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from "@material-ui/core"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import useStyles from "./styles";
-import Container from "@material-ui/core/Container";
+import { setErrorAction } from "../../store/actions/errorActions";
 
 //end fo styling components
 
@@ -37,48 +28,30 @@ function Copyright() {
 //hook-form
 
 export default function SignUp() {
-//form!
-  const {register, errors, watch,handleSubmit, control} = useForm();
-  const onSubmit = async (data) =>{
+  //general calling functions !
+    const classes = useStyles();
+    const dispatch = useDispatch();
+  
+    //let user to go back
+    const history = useHistory();
+    
+  //form!
+  const {handleSubmit, control} = useForm();
 
-    console.log(data)
+  const onSubmit = async (data) =>{
+    let result = await signupUser(data)
+    console.log(result);
+
+    // handle error case
+    if(result.error){
+      dispatch(setErrorAction(result.data))
+      return
+    }
+    // handle success case
+    dispatch(setErrorAction({}))
+    dispatch(signupAction(data))
   }
 
-//general calling functions !
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const inputRef = useRef();
-  //let user to go back
-  const history = useHistory();
-
-
-  //getting user's data and setting our state =>
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    email: "",
-    password: "",
-    birthday: "",
-  });
-
-
-  //fetching our db
-  useEffect(() => {
-    //inputRef.current.focus();
-  }, []);
-
-  //setting our FormData with user's info =>
-  const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(addUserAction(formData));
-    dispatch(userLoginAction(formData));
-    history.push("/EditUser");
-  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -90,6 +63,8 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+
+        {/* form */}
         <form className={classes.form} noValidate
           onSubmit={handleSubmit(onSubmit)}>
 
@@ -105,21 +80,21 @@ export default function SignUp() {
                   autoComplete="firstName"
                   name="firstName"
                   variant="outlined"
-                  required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  onChange={changeHandler}
-                  ref={inputRef}
-                  value={formData.firstName}
+                  onChange={onChange}
                   error={!!error}
+                  value={value}
                   helperText={error ? error.message: null}
                 />
               )}
               rules={{required: 'First Name required'}}
               />
             </Grid>
+
+
             {/* last name input!  */}
             <Grid item xs={12} sm={6}>
             <Controller
@@ -128,15 +103,14 @@ export default function SignUp() {
               defaultValue=""
               render={({field: {onChange,value},fieldState:{error}})=>(
                 <TextField
+                  label="Last Name"
+                  variant="outlined"
                   autoComplete="lastName"
                   name="lastName"
-                  variant="outlined"
-                  required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
-                  onChange={changeHandler}
-                  value={formData.lastName}
+                  onChange={onChange}
+                  value={value}
                   error={!!error}
                   helperText={error ? error.message: null}
                 />
@@ -156,12 +130,11 @@ export default function SignUp() {
                   autoComplete="userName"
                   name="userName"
                   variant="outlined"
-                  required
                   fullWidth
                   id="userName"
                   label="Username"
-                  onChange={changeHandler}
-                  value={formData.userName}
+                  onChange={onChange}
+                  value={value}
                   error={!!error}
                   helperText={error ? error.message: null}
                 />
@@ -179,14 +152,13 @@ export default function SignUp() {
                 name="birthday"
                 type="date"
                 variant="outlined"
-                required
                 fullWidth
                 id="birthday"
                 label="Birthday"
                 autoComplete="Birthday"
-                onChange={changeHandler}
-
-                value={formData.birthday}
+                onChange={onChange}
+                value={value}
+                helperText={error ? error.message: null}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -205,15 +177,15 @@ export default function SignUp() {
               render={({field: {onChange,value},fieldState:{error}})=>(
                 <TextField
                   variant="outlined"
-                  required
                   fullWidth
                   id="email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={changeHandler}
-                  ref={inputRef}
-                  value={formData.email}
+                  onChange={onChange}
+                  value={value}
+                  error={!!error}
+                  helperText={error ? error.message: null}
                 />
 
               )}
@@ -231,21 +203,23 @@ export default function SignUp() {
                 <TextField
                 name="password"
                 variant="outlined"
-                required
                 fullWidth
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={changeHandler}
-                ref={inputRef}
-                value={formData.password}
+                onChange={onChange}
+                value={value}
+                error={!!error}
+                helperText={error ? error.message: null}
               />
 
               )}
               rules={{required: 'password required'}}
               />
             </Grid>
+
+            {/* NEWSLETTER */}
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -253,16 +227,19 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
+
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={submitHandler}
           >
             Sign Up
           </Button>
+
+          {/* LOGIN */}
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/login" variant="body2">
@@ -272,6 +249,8 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
+
+      {/* COPYRIGHT */}
       <Box mt={5}>
         <Copyright />
       </Box>

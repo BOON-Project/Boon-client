@@ -5,7 +5,7 @@ import { HIDE_ERROR, SET_ERROR } from "./types"
 export function setErrorAction(error){
     return {
     type: SET_ERROR,
-    error: error
+    payload: error
     }
    }
    

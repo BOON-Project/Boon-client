@@ -1,15 +1,15 @@
 // Users
 export const GET_USERS = "GET_USERS";
-export const ADD_USER = "ADD_USER";
+export const SIGNUP_USER = "SIGNUP_USER";
 export const EDIT_USER = "EDIT_USER";
 
 // Authentication
-export const USER_LOGIN = "USER_LOGIN";
-export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
-export const USER_LOGIN_ERROR = "USER_LOGIN_ERROR";
-export const USER_LOGOUT = "USER_LOGOUT";
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
-// export const EDIT_USER = "EDIT_USER";
+//Erros
+export const HIDE_ERROR = "HIDE_ERROR"
+export const SET_ERROR = "SET_ERROR"
 
 // Skills
 export const GET_SKILLS = "GET_SKILLS";

@@ -21,7 +21,6 @@ import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
-import { userLoginAction } from "../../store/actions/authActions";
 
 import useStyles from "./styles";
 
