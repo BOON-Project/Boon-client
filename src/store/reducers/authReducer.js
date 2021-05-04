@@ -2,6 +2,7 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
   USER_LOGOUT,
+  EDIT_USER
 } from "../actions/types";
 const initialState = {
   error: {},

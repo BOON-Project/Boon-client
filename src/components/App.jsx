@@ -22,7 +22,7 @@ const App = () => {
 
         {/* Private Routes =>  */}
         <PrivateRoute exact path="/userProfile" component={UserProfile} />
-        <PrivateRoute path="User" component={User} />
+        <PrivateRoute exact path="/users/" component={User} />
         {/* Error 404 Route =>  */}
         <Route path="/*" component={Error404} />
       </Switch>
