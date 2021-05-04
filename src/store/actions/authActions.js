@@ -1,38 +1,30 @@
-import {
-    helpCheckUser,
-    helpCheckoutUser,
-    helpEditUser
-
-  } from "../../helpers/apiCalls";
-  import {  USER_LOGIN, USER_LOGOUT, EDIT_USER } from "./types";
-  
-
+import { helpCheckUser, helpCheckoutUser } from "../../helpers/apiCalls";
+import { USER_LOGIN_SUCCESS, USER_LOGIN_ERROR, USER_LOGOUT } from "./types";
 
 export const userLoginAction = (formData) => async (dispatch) => {
+  try {
     const response = await helpCheckUser(formData);
-  
-     dispatch({
-       type: USER_LOGIN,
-      payload: response.data,
-    });
-   };
-
-   export const userLogoutAction = () => async (dispatch) => {
-    const response = await helpCheckoutUser();
-  
-     dispatch({
-       type: USER_LOGOUT,
-      payload: response.data,
-    });
-   };
-
-   export const editUserAction = (formData) => async (dispatch, getState) => {
-    const userId = getState().authReducer.user._id;
-  
-    const response = await helpEditUser(userId, formData);
-    console.log("formData from Action");
+    if (!response.message) {
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: response,
+      });
+      return;
+    }
+    throw new Error(response.message);
+  } catch (err) {
     dispatch({
-      type: EDIT_USER,
-      payload: response.data,
+      type: USER_LOGIN_ERROR,
+      payload: err.message,
     });
-  };
+  }
+};
+
+export const userLogoutAction = () => async (dispatch) => {
+  const response = await helpCheckoutUser();
+
+  dispatch({
+    type: USER_LOGOUT,
+    payload: response.data,
+  });
+};
