@@ -32,23 +32,21 @@ export const getSkills = async () => {
 
 // signup user
 
-export const helpAddUser = async (formData) =>{
-console.log("Signing up user: ", formData);
+export const helpAddUser = async (formData) => {
+  console.log("Signing up user: ", formData);
 
-  const response = axios.post("http://localhost:5000/user", formData);
-  return response
-
+  const response = await axios.post("http://localhost:5000/user", formData);
+  return response;
 };
 
 // login user authentication
 
 export const helpCheckUser = async (formData) => {
-    const response = await axios.post(
-      "http://localhost:5000/user/login",
-      formData
-    );
-    return response
-
+  const response = await axios.post(
+    "http://localhost:5000/user/login",
+    formData
+  );
+  return response;
 };
 
 // logout user

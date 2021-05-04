@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {userLoginAction} from '../../store/actions/authActions'
+// import { userLoginAction } from "../../store/actions/authActions";
 import { addUserAction } from "../../store/actions/userActions";
 
 //styling components
@@ -24,9 +24,9 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Boon
       </Link>{" "}
       {new Date().getFullYear()}
@@ -37,20 +37,19 @@ function Copyright() {
 //hook-form
 
 export default function SignUp() {
-//form!
-  const {register, errors, watch,handleSubmit, control} = useForm();
+  //form!
+  const { register, errors, watch, handleSubmit, control } = useForm();
 
-//password check
-let password = useRef({})
-password = watch('password', "");
+  //password check
+  let password = useRef({});
+  password = watch("password", "");
 
-//general calling functions !
+  //general calling functions !
   const classes = useStyles();
   const dispatch = useDispatch();
   const inputRef = useRef();
   //let user to go back
   const history = useHistory();
-
 
   //getting user's data and setting our state =>
   const [formData, setFormData] = useState({
@@ -62,10 +61,9 @@ password = watch('password', "");
     birthday: "",
   });
 
-
   //fetching our db
   useEffect(() => {
-    //inputRef.current.focus();
+    inputRef.current.focus();
   }, []);
 
   //setting our FormData with user's info =>
@@ -81,191 +79,204 @@ password = watch('password', "");
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
-        <form className={classes.form} noValidate
-          onSubmit={handleSubmit(submitHandler)}>
-
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}>
           {/* first name input! */}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Controller
-              name="firstName"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                  autoComplete="firstName"
-                  name="firstName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                  onChange={changeHandler}
-                  ref={inputRef}
-                  value={formData.firstName}
-                  error={!!error}
-                  helperText={error ? error.message: null}
-                />
-              )}
-              rules={{required: 'First Name required'}}
+                name='firstName'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    autoComplete='firstName'
+                    name='firstName'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='firstName'
+                    label='First Name'
+                    autoFocus
+                    onChange={changeHandler}
+                    ref={inputRef}
+                    value={formData.firstName}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                  />
+                )}
+                rules={{ required: "First Name required" }}
               />
             </Grid>
             {/* last name input!  */}
             <Grid item xs={12} sm={6}>
-            <Controller
-              name="lastName"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                  autoComplete="lastName"
-                  name="lastName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  onChange={changeHandler}
-                  value={formData.lastName}
-                  error={!!error}
-                  helperText={error ? error.message: null}
-                />
-              )}
-              rules={{required: 'Last Name required'}}
+              <Controller
+                name='lastName'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    autoComplete='lastName'
+                    name='lastName'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='lastName'
+                    label='Last Name'
+                    onChange={changeHandler}
+                    value={formData.lastName}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                  />
+                )}
+                rules={{ required: "Last Name required" }}
               />
             </Grid>
 
             {/* second row! */}
             <Grid item xs={12} sm={6}>
-            <Controller
-              name="userName"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                  autoComplete="userName"
-                  name="userName"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="userName"
-                  label="Username"
-                  onChange={changeHandler}
-                  value={formData.userName}
-                  error={!!error}
-                  helperText={error ? error.message: null}
-                />
-              )}
-              rules={{required: 'Username required'}}
+              <Controller
+                name='userName'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    autoComplete='userName'
+                    name='userName'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='userName'
+                    label='Username'
+                    onChange={changeHandler}
+                    value={formData.userName}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                  />
+                )}
+                rules={{ required: "Username required" }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-            <Controller
-              name="birthday"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                name="birthday"
-                type="date"
-                variant="outlined"
-                required
-                fullWidth
-                id="birthday"
-                label="Birthday"
-                autoComplete="Birthday"
-                onChange={changeHandler}
-
-                value={formData.birthday}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              )}
-              rules={{required: 'Birthday required'}}
+              <Controller
+                name='birthday'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    name='birthday'
+                    type='date'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='birthday'
+                    label='Birthday'
+                    autoComplete='Birthday'
+                    onChange={changeHandler}
+                    value={formData.birthday}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                )}
+                rules={{ required: "Birthday required" }}
               />
             </Grid>
 
             {/* 3rd row! */}
             <Grid item xs={12}>
-            <Controller
-              name="email"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  onChange={changeHandler}
-                  ref={inputRef}
-                  value={formData.email}
-                />
-
-              )}
-              rules={{required: 'Email required'}}
+              <Controller
+                name='email'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    variant='outlined'
+                    required
+                    fullWidth
+                    id='email'
+                    label='Email Address'
+                    name='email'
+                    autoComplete='email'
+                    onChange={changeHandler}
+                    value={formData.email}
+                  />
+                )}
+                rules={{ required: "Email required" }}
               />
             </Grid>
 
             {/* 4th row! */}
             <Grid item xs={12}>
-            <Controller
-              name="password"
-              control={control}
-              defaultValue=""
-              render={({field: {onChange,value},fieldState:{error}})=>(
-                <TextField
-                name="password"
-                variant="outlined"
-                required
-                fullWidth
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={changeHandler}
-                ref={inputRef}
-                value={formData.password}
-              />
-
-              )}
-              rules={{required: 'password required'}}
+              <Controller
+                name='password'
+                control={control}
+                defaultValue=''
+                render={({
+                  field: { onChange, value },
+                  fieldState: { error },
+                }) => (
+                  <TextField
+                    name='password'
+                    variant='outlined'
+                    required
+                    fullWidth
+                    label='Password'
+                    type='password'
+                    id='password'
+                    autoComplete='current-password'
+                    onChange={changeHandler}
+                    value={formData.password}
+                  />
+                )}
+                rules={{ required: "password required" }}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value='allowExtraEmails' color='primary' />}
+                label='I want to receive inspiration, marketing promotions and updates via email.'
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
-            onClick={submitHandler}
-          >
+            onClick={submitHandler}>
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify='flex-end'>
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link href='/login' variant='body2'>
                 Already have an account? Log in
               </Link>
             </Grid>
