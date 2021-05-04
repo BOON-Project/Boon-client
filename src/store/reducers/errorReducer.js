@@ -1,27 +1,23 @@
 // let's see if this works
-import React from 'react'
-import { HIDE_ERROR } from '../actions/types';
+import { HIDE_ERROR, SET_ERROR } from '../actions/types';
 
 const initState = {
     error: null,
     isOpen: false
    };
 
-   export function errorReducer(state = initState, action){
-    const { error } = action;
-
-    if(error){
-    return {
-    error: error,
-    isOpen: true
-    }
-    }else if(action.type === HIDE_ERROR){
-    return {
-    error: null,
-    isOpen: false
-    }
+export function errorReducer(state = initState, action){
+    switch(action.type){
+        case SET_ERROR:
+         return {
+            error: action.payload,
+            isOpen: true
+        } 
+        case HIDE_ERROR:
+            return initState 
+        default:
+            return state;
     }
 
-    return state;
-   }
+}
 export default errorReducer;
