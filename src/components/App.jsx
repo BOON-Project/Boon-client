@@ -20,11 +20,11 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/Signup' component={Signup} />
         <Route exact path='/Login' component={Login} />
+        <Route exact path='/UserProfile' component={UserProfile} />
 
         {/* Private Routes =>  */}
-        <PrivateRoute exact path='/UserProfile' component={UserProfile} />
-        <PrivateRoute path='User' component={User} />
-        <PrivateRoute path='EditUser' component={EditUser} />
+        <PrivateRoute path='/User' component={User} />
+        <PrivateRoute path='/EditUser' component={EditUser} />
         {/* Error 404 Route =>  */}
         <Route path='/*' component={Error404} />
       </Switch>

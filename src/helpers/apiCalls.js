@@ -42,16 +42,11 @@ export const helpAddUser = async (formData) => {
 // login user authentication
 
 export const helpCheckUser = async (formData) => {
-  try {
-    const response = await axios.post(
-      "http://localhost:5000/user/login",
-      formData
-    );
-
-    return response.data;
-  } catch (err) {
-    return err.response.data.error;
-  }
+  const response = await axios.post(
+    "http://localhost:5000/user/login",
+    formData
+  );
+  return response;
 };
 
 // logout user

@@ -39,9 +39,10 @@ function Copyright() {
 export default function SignUp() {
   //form!
   const { register, errors, watch, handleSubmit, control } = useForm();
-  const onSubmit = async (data) => {
-    console.log(data);
-  };
+
+  //password check
+  let password = useRef({});
+  password = watch("password", "");
 
   //general calling functions !
   const classes = useStyles();
@@ -73,7 +74,7 @@ export default function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserAction(formData));
-    // dispatch(userLoginAction(formData));
+    //dispatch(userLoginAction(formData));
     history.push("/");
   };
 

@@ -31,38 +31,13 @@ const Search = () => {
         )}
       />
 
-      <Box display='flex'>
-        <Button
-          size='large'
-          color='primary'
-          variant='outlined'
-          className={classes.tag}>
-          Petsiting
-        </Button>
-        <Button
-          size='large'
-          color='primary'
-          variant='outlined'
-          className={classes.tag}>
-          Bricolage
-        </Button>
-        <Button
-          size='large'
-          color='primary'
-          variant='outlined'
-          className={classes.tag}>
-          Painting
-        </Button>
-        <Button
-          size='large'
-          color='primary'
-          variant='outlined'
-          className={classes.tag}>
-          Massage
-        </Button>
-      </Box>
-    </>
-  );
-};
+        <Autocomplete
+            id="free-solo-demo"
+            freeSolo
+            options={skillsData.map((skill) => skill.name)}
+            renderInput={(params) => (
+            <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+            )}
+        />
 
 export default Search;
