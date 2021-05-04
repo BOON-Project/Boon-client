@@ -91,7 +91,7 @@ export default function SignUp() {
         <form
           className={classes.form}
           noValidate
-          onSubmit={handleSubmit(onSubmit)}>
+          onSubmit={handleSubmit(submitHandler)}>
           {/* first name input! */}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
