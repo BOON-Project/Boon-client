@@ -7,6 +7,7 @@ import Search from './Search';
 import TopRatedBoons from './TopRatedBoons';
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from '../../store/actions/skillsActions';
+import { getUsersAction } from '../../store/actions/usersAction';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
 
     useEffect(()=>{
         dispatch(getSkillsAction())
+        dispatch(getUsersAction())
     },[])
 
     return (

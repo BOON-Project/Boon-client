@@ -3,10 +3,8 @@ import { Typography, Box, Button, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
-
 const Search = () => {
   const skillsData = useSelector((state) => state.skillsReducer);
-
   const classes = useStyles();
   return (
     <>
@@ -16,7 +14,6 @@ const Search = () => {
           Explore our tags and search for what you need{" "}
         </Typography>
       </Box>
-
       <Autocomplete
         id='free-solo-demo'
         freeSolo
@@ -30,7 +27,6 @@ const Search = () => {
           />
         )}
       />
-
       <Box display='flex'>
         <Button
           size='large'
