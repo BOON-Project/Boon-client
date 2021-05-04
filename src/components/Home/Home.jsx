@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {Typography, Container, Box, Card, CardContent} from "@material-ui/core"
 import CurentlyOffering from "./CurrentlyOffering"
 import useStyles from "./styles"
 import TopRatedUsers from './TopRatedUsers';
 import Search from './Search';
 import TopRatedBoons from './TopRatedBoons';
-import { getUsers } from '../../helpers/apiCalls';
+import { useDispatch } from "react-redux";
+import { getSkillsAction } from '../../store/actions/skillsActions';
+
 
 const Home = () => {
     const classes = useStyles();
-    const [users,setUsers] = useState([])
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        console.log('Home is fetching users');
-        const getData = async () => {
-          let users = await getUsers();
-          setUsers(users);
-        };
-    
-        getData();
-      }, []);
-    
-    console.log(users);
+    useEffect(()=>{
+        dispatch(getSkillsAction())
+    },[])
 
     return (
         <Container maxWidth="lg" className={classes.root}>
