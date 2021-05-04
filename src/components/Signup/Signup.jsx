@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { userLoginAction } from "../../store/actions/authActions";
+// import { userLoginAction } from "../../store/actions/authActions";
 import { addUserAction } from "../../store/actions/userActions";
-import { userLoginAction } from "../../store/actions/authActions";
 
 //styling components
 import Avatar from "@material-ui/core/Avatar";
@@ -225,7 +224,6 @@ export default function SignUp() {
                     name='email'
                     autoComplete='email'
                     onChange={changeHandler}
-                    ref={inputRef}
                     value={formData.email}
                   />
                 )}
@@ -253,7 +251,6 @@ export default function SignUp() {
                     id='password'
                     autoComplete='current-password'
                     onChange={changeHandler}
-                    ref={inputRef}
                     value={formData.password}
                   />
                 )}
