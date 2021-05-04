@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //import {userLoginAction} from '../../store/actions/authAction';
 import { addUserAction } from "../../store/actions/userActions";
+import { userLoginAction } from "../../store/actions/authActions";
 
 //styling components
 import Avatar from "@material-ui/core/Avatar";
@@ -22,9 +23,9 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Boon
       </Link>{" "}
       {new Date().getFullYear()}
@@ -52,7 +53,7 @@ export default function SignUp() {
 
   //fetching our db
   useEffect(() => {
-    //inputRef.current.focus();
+    inputRef.current.focus();
   }, []);
 
   //setting our FormData with user's info =>
@@ -63,31 +64,31 @@ export default function SignUp() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserAction(formData));
-    //dispatch(userLoginAction(formData));
+    // dispatch(userLoginAction(formData));
     history.push("/");
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="firstName"
-                name="firstName"
-                variant="outlined"
+                autoComplete='firstName'
+                name='firstName'
+                variant='outlined'
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id='firstName'
+                label='First Name'
                 autoFocus
                 onChange={changeHandler}
                 ref={inputRef}
@@ -96,13 +97,13 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="lastName"
-                variant="outlined"
+                name='lastName'
+                variant='outlined'
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                autoComplete="lastName"
+                id='lastName'
+                label='Last Name'
+                autoComplete='lastName'
                 onChange={changeHandler}
                 ref={inputRef}
                 value={formData.lastName}
@@ -112,13 +113,13 @@ export default function SignUp() {
             {/* second row! */}
             <Grid item xs={12} sm={6}>
               <TextField
-                name="userName"
-                variant="outlined"
+                name='userName'
+                variant='outlined'
                 required
                 fullWidth
-                id="userName"
-                label="Username"
-                autoComplete="userName"
+                id='userName'
+                label='Username'
+                autoComplete='userName'
                 onChange={changeHandler}
                 ref={inputRef}
                 value={formData.userName}
@@ -126,14 +127,14 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="birthday"
-                type="date"
-                variant="outlined"
+                name='birthday'
+                type='date'
+                variant='outlined'
                 required
                 fullWidth
-                id="birthday"
-                label="Birthday"
-                autoComplete="Birthday"
+                id='birthday'
+                label='Birthday'
+                autoComplete='Birthday'
                 onChange={changeHandler}
                 ref={inputRef}
                 value={formData.birthday}
@@ -146,13 +147,13 @@ export default function SignUp() {
             {/* 3rd row! */}
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
                 onChange={changeHandler}
                 ref={inputRef}
                 value={formData.email}
@@ -160,14 +161,14 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="password"
-                variant="outlined"
+                name='password'
+                variant='outlined'
                 required
                 fullWidth
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
                 onChange={changeHandler}
                 ref={inputRef}
                 value={formData.password}
@@ -175,24 +176,23 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value='allowExtraEmails' color='primary' />}
+                label='I want to receive inspiration, marketing promotions and updates via email.'
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
-            onClick={submitHandler}
-          >
+            onClick={submitHandler}>
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify='flex-end'>
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link href='/login' variant='body2'>
                 Already have an account? Log in
               </Link>
             </Grid>
