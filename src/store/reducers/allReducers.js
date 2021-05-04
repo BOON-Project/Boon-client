@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import userReducer from './userReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 import skillsReducer from './skillsReducer'
@@ -7,6 +8,7 @@ import skillsReducer from './skillsReducer'
 
 const allReducers = combineReducers({
     usersReducer,
+    userReducer,
     authReducer,
     skillsReducer
 });
