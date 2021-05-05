@@ -23,7 +23,7 @@ import {
 
 //   export const editUserAction = (formData) => async (dispatch, getState) => {
 //     const userId = getState().user.user._id;
-  
+
 //     const response = await helpEditUser(userId, formData);
 //     console.log("formData from Action");
 //     dispatch({
@@ -31,15 +31,12 @@ import {
 //       payload: response.data,
 //     });
 //   };
-  
 
-  
 //   export const logoutUserAction = () => async (dispatch) => {
 //     const response = await helpCheckoutUser();
-  
+
 //     dispatch({
 //       type: USER_LOGOUT,
 //       payload: response.data,
 //     });
 //   };
-  
