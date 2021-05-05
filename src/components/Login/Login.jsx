@@ -43,8 +43,9 @@ export default function SignInSide() {
   const onSubmit = async (formData) => {
     let result = await loginUser(formData);
     console.log(result);
+
     // handle error case
-    if (result.message) {
+    if (result.error) {
       dispatch(setErrorAction(result));
       return;
     }
