@@ -24,6 +24,7 @@ export default function PrimarySearchAppBar() {
     if (Object.keys(user).length) setIsAuth(true);
   }, [user]);
   const handleProfileMenuOpen = (event) => {
+    event.preventDefault();
     setAnchorEl(event.currentTarget);
   };
 
@@ -37,6 +38,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleMobileMenuOpen = (event) => {
+    event.preventDefault();
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
