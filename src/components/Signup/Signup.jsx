@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signupAction } from "../../store/actions/userActions";
@@ -15,9 +15,9 @@ import { setErrorAction } from "../../store/actions/errorActions";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Boon
       </Link>{" "}
       {new Date().getFullYear()}
@@ -31,10 +31,10 @@ export default function SignUp() {
   //general calling functions !
     const classes = useStyles();
     const dispatch = useDispatch();
-  
+
     //let user to go back
     const history = useHistory();
-    
+
   //form!
   const {handleSubmit, control} = useForm();
 
@@ -55,13 +55,13 @@ export default function SignUp() {
 
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           Sign up
         </Typography>
 
@@ -223,18 +223,18 @@ export default function SignUp() {
             {/* NEWSLETTER */}
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                control={<Checkbox value='allowExtraEmails' color='primary' />}
+                label='I want to receive inspiration, marketing promotions and updates via email.'
               />
             </Grid>
           </Grid>
 
 
           <Button
-            type="submit"
+            type='submit'
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
           >
             Sign Up
@@ -243,7 +243,7 @@ export default function SignUp() {
           {/* LOGIN */}
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link href='/login' variant='body2'>
                 Already have an account? Log in
               </Link>
             </Grid>

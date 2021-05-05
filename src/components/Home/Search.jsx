@@ -1,7 +1,7 @@
 import React from "react";
-import {Typography, Box, Button, TextField} from "@material-ui/core"
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import useStyles from "./styles"
+import { Typography, Box, Button, TextField } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import useStyles from "./styles";
 import { useSelector } from "react-redux";
 
 const Search = () =>{
