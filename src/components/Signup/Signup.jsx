@@ -44,9 +44,10 @@ export default function SignUp() {
 
     // handle error case
     if(result.error){
-      dispatch(setErrorAction(result.data))
+      dispatch(setErrorAction(result))
       return
     }
+
     // handle success case
     dispatch(setErrorAction({}))
     dispatch(signupAction(data))
