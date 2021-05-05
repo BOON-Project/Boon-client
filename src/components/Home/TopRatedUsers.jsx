@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { getUsers } from '../../helpers/apiCalls';
+import React from "react";
 import {Typography, Box, Card, CardActions, Button, Avatar} from "@material-ui/core"
 import StarIcon from '@material-ui/icons/Star';
 import useStyles from "./styles"
+import { useSelector } from "react-redux";
 
 const TopRatedUsers = () => {
     const classes = useStyles();
-
-    const [loading, setLoading] = useState(true)
-    const [users,setUsers] = useState()
-
-    useEffect(() => {
-        console.log('Home is fetching users');
-        const getData = async () => {
-            try{
-                let users = await getUsers();
-                setUsers(users.data);
-                setLoading(false)
-            }
-            catch(err) {
-                console.log(err)
-            }
-        };
-        getData();
-      }, []);
+    
+    const users = useSelector((state) => state.usersReducer);
     
     return(
+        // TITLE
         <>
         <Box mt={8} display="flex"  alignItems="center">
             <Typography variant="h2" color="primary">Top Rated Booners</Typography>
@@ -33,12 +18,9 @@ const TopRatedUsers = () => {
 
         {/* CARDS */}
         <Box mt={5} display="flex" textAlign="center" justifyContent="center" alignItems="flex-start">
-            {loading ? (<p>Loading...</p>):
-            // IF LOADING FINISHED SHOW USERS
-            (<>
-                {users&&
-                // SORTING THE 4 BEST USERS AND MAPING THEM
-                users.sort((a,b)=>b.rating - a.rating ).slice(0,4).map((user)=> {
+
+                {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
+                {users.sort((a,b)=>b.rating - a.rating ).slice(0,4).map((user)=> {
                     return(
                     <Card className={classes.userCard} elevation={8} key={user._id} >
                         <Box display="flex" flexDirection="column">
@@ -51,10 +33,11 @@ const TopRatedUsers = () => {
                                 <Box m={4} display="flex" justifyContent="center"> 
                                     <Avatar alt="Remy Sharp" src="https://picsum.photos/200" className={classes.avatarBooners} />
                                 </Box>
+
                                 {/* MAP THROUGHT THE SKILLS */}
                                 {user.skills.map((skill) => {
                                     return ( 
-                                    <Box display="flex" justifyContent="center" flexDirection="column" pt={1} key={skill._id}>
+                                    <Box display="flex" justifyContent="center" flexDirection="column" pt={1} key={skill.skillID._id}>
                                         <Button size="medium" color="info" variant="outlined" className={classes.tag}>{skill.skillID.name}</Button>
                                     </Box>
                                     );
@@ -66,9 +49,8 @@ const TopRatedUsers = () => {
                         </Box>
                     </Card>
                 )})
-                }
-            </>) 
-            }
+                }) 
+
         </Box>
         </>
     )
