@@ -50,17 +50,10 @@ export const loginUser = async (formData) => {
 			formData
 		);
 
-<<<<<<< HEAD
-    return response.data;
-  } catch (err) {
-    return xtractApiError(err)
-  }
-=======
 		return response.data;
 	} catch (err) {
 		return extractApiError(err);
 	}
->>>>>>> 513ed088b6fe2b293680fe7e90df998447499b84
 };
 
 // logout user
