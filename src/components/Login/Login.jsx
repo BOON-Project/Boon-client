@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
+  setTokenInStorage,
+  setUserInStorage,
+} from "../../helpers/localStorage";
+import {
   Avatar,
   Button,
   CssBaseline,
@@ -52,6 +56,10 @@ export default function SignInSide() {
     // handle success case
     dispatch(setErrorAction({}));
     dispatch(loginAction(result));
+    setTokenInStorage(result.token);
+    setUserInStorage(result.user);
+
+    history.push("/");
   };
 
   // FUNCTION COPYRIGHT
