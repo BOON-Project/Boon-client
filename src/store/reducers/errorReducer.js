@@ -11,7 +11,7 @@ export function errorReducer(state = initState, action) {
 	switch (action.type) {
 		case SET_ERROR:
 			return {
-				error: action.payload.error.message,
+				error: action.payload,
 				isOpen: true,
 			};
 		case HIDE_ERROR:
