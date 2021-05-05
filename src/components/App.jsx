@@ -17,6 +17,7 @@ const App = () => {
     <>
       <Nav />
       <Switch>
+        {/* new files structure */}
         <Route exact path='/' component={Home} />
         <Route exact path='/Signup' component={Signup} />
         <Route exact path='/Login' component={Login} />
