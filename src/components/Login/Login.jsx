@@ -1,184 +1,181 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  setTokenInStorage,
-  setUserInStorage,
+	setTokenInStorage,
+	setUserInStorage,
 } from "../../helpers/localStorage";
 import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Paper,
-  Box,
-  Grid,
-  Typography,
+	Avatar,
+	Button,
+	CssBaseline,
+	TextField,
+	FormControlLabel,
+	Checkbox,
+	Link,
+	Paper,
+	Box,
+	Grid,
+	Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginUser } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import { loginAction } from "../../store/actions/userActions";
+import errorDisplay from "../../components/errorDisplay/errorDisplay";
+import ErrorDisplay from "../../components/errorDisplay/errorDisplay";
 
 export default function SignInSide() {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const { handleSubmit, control } = useForm();
+	const classes = useStyles();
+	const dispatch = useDispatch();
+	const { handleSubmit, control } = useForm();
 
-  // to go back
-  const history = useHistory();
+	// to go back
+	const history = useHistory();
+	const inputRef = useRef();
 
-  // Redux
-  // const user = useSelector((state) => state.authReducer.user);
-  const inputRef = useRef();
+	// ON FORM SUBMIT
+	const onSubmit = async (formData) => {
+		let result = await loginUser(formData);
+		console.log(result);
 
-  // REDIRECT AND FOCUS
-  /*   useEffect(() => {
-    Object.keys(user).length && history.push("/");
-    inputRef.current.focus();
-  }, [user]); */
+		// handle error case
+		if (result.error) {
+			dispatch(setErrorAction(result.error));
+			return;
+		}
+		// handle success case
+		dispatch(setErrorAction({}));
+		dispatch(loginAction(result));
+		setTokenInStorage(result.token);
+		setUserInStorage(result.user);
 
-  // ON FORM SUBMIT
-  const onSubmit = async (formData) => {
-    let result = await loginUser(formData);
-    console.log(result);
+		history.push("/");
+	};
 
-    // handle error case
-    if (result.error) {
-      dispatch(setErrorAction(result));
-      return;
-    }
-    // handle success case
-    dispatch(setErrorAction({}));
-    dispatch(loginAction(result));
-    setTokenInStorage(result.token);
-    setUserInStorage(result.user);
+	// FUNCTION COPYRIGHT
+	function Copyright() {
+		return (
+			<Typography variant="body2" color="textSecondary" align="center">
+				{"Copyright © "}
+				<Link color="inherit" href="https://material-ui.com/">
+					Boon
+				</Link>{" "}
+				{new Date().getFullYear()}
+				{"."}
+			</Typography>
+		);
+	}
 
-    history.push("/");
-  };
+	return (
+		<>
+			<ErrorDisplay />
+			<Grid container component="main" className={classes.root}>
+				{/* IMAGE COMPONENT */}
+				<CssBaseline />
+				<Grid item xs={false} sm={4} md={7} className={classes.image} />
 
-  // FUNCTION COPYRIGHT
-  function Copyright() {
-    return (
-      <Typography variant='body2' color='textSecondary' align='center'>
-        {"Copyright © "}
-        <Link color='inherit' href='https://material-ui.com/'>
-          Boon
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+				{/* LOGIN TITLE AND ICON */}
+				<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+					<div className={classes.paper}>
+						<Avatar className={classes.avatar}>
+							<LockOutlinedIcon className={classes.icon} />
+						</Avatar>
+						<Typography component="h1" variant="h5">
+							Log in
+						</Typography>
 
-  return (
-    <Grid container component='main' className={classes.root}>
-      {/* IMAGE COMPONENT */}
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+						{/* FORM */}
+						<form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+							{/* NAME INPUT */}
+							<Controller
+								name="userName"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { onChange, value },
+									fieldState: { error },
+								}) => (
+									<TextField
+										label="Your username"
+										variant="outlined"
+										value={value}
+										onChange={onChange}
+										error={!!error}
+										helperText={error ? error.message : null}
+										margin="normal"
+										fullWidth
+										id="userName"
+										autoComplete="username"
+										autoFocus
+									/>
+								)}
+								rules={{ required: "First name required" }}
+							/>
 
-      {/* LOGIN TITLE AND ICON */}
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon className={classes.icon} />
-          </Avatar>
-          <Typography component='h1' variant='h5'>
-            Log in
-          </Typography>
+							{/* PASSWORD INPUT */}
+							<Controller
+								name="password"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { onChange, value },
+									fieldState: { error },
+								}) => (
+									<TextField
+										label="Password"
+										variant="outlined"
+										margin="normal"
+										type="password"
+										fullWidth
+										id="password"
+										value={value}
+										onChange={onChange}
+										error={!!error}
+										helperText={error ? error.message : null}
+									/>
+								)}
+								rules={{ required: "Password required" }}
+							/>
 
-          {/* FORM */}
-          <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-            {/* NAME INPUT */}
-            <Controller
-              name='userName'
-              control={control}
-              defaultValue=''
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  label='Your username'
-                  variant='outlined'
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-                  margin='normal'
-                  fullWidth
-                  id='userName'
-                  autoComplete='username'
-                  autoFocus
-                />
-              )}
-              rules={{ required: "First name required" }}
-            />
+							<FormControlLabel
+								control={<Checkbox value="remember" color="primary" />}
+								label="Remember me"
+							/>
+							<Button
+								type="submit"
+								fullWidth
+								variant="contained"
+								color="primary"
+								className={classes.submit}
+							>
+								Log In
+							</Button>
+						</form>
 
-            {/* PASSWORD INPUT */}
-            <Controller
-              name='password'
-              control={control}
-              defaultValue=''
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  label='Password'
-                  variant='outlined'
-                  margin='normal'
-                  type='password'
-                  fullWidth
-                  id='password'
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-                />
-              )}
-              rules={{ required: "Password required" }}
-            />
+						{/* SIGNUP AND FORGOT PASSWORD */}
+						<Grid container>
+							<Grid item xs>
+								<Link href="#" variant="body2">
+									Forgot password?
+								</Link>
+							</Grid>
+							<Grid item>
+								<Link href="/Signup" variant="body2">
+									{"Don't have an account? Sign Up"}
+								</Link>
+							</Grid>
+						</Grid>
 
-            <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
-            />
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'
-              className={classes.submit}>
-              Log In
-            </Button>
-          </form>
-
-          {/* SIGNUP AND FORGOT PASSWORD */}
-          <Grid container>
-            <Grid item xs>
-              <Link href='#' variant='body2'>
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href='/Signup' variant='body2'>
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-
-          {/* COPYRIGHT */}
-          <Box mt={5}>
-            <Copyright />
-          </Box>
-        </div>
-      </Grid>
-    </Grid>
-  );
+						{/* COPYRIGHT */}
+						<Box mt={5}>
+							<Copyright />
+						</Box>
+					</div>
+				</Grid>
+			</Grid>
+		</>
+	);
 }
