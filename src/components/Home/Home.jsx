@@ -14,6 +14,7 @@ import TopRatedBoons from "./TopRatedBoons";
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
+import { getTasksAction } from "../../store/actions/tasksActions";
 
 const Home = () => {
   const classes = useStyles();
@@ -22,6 +23,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getSkillsAction());
     dispatch(getUsersAction());
+    dispatch(getTasksAction());
   }, []);
 
   return (
@@ -43,17 +45,19 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Typography variant='h5' color='info'>
-        {" "}
-        We make exchange based economy a reality with our money free exchange
-        platform{" "}
-      </Typography>
+      <Box mt={3} mb={3}>
+        <Typography variant='h4' color='info'>
+          {" "}
+          We make exchange based economy a reality with our money free exchange
+          platform
+        </Typography>
+      </Box>
 
       {/* SEARCH */}
       <Search />
 
       {/* CURRENTLY OFFERING */}
-      <CurentlyOffering />
+      {/* <CurentlyOffering/> */}
 
       {/* TOP RATED BOONERS */}
       <TopRatedUsers />

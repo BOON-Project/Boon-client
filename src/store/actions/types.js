@@ -13,3 +13,6 @@ export const SET_ERROR = "SET_ERROR";
 
 // Skills
 export const GET_SKILLS = "GET_SKILLS";
+
+//Tasks
+export const GET_TASKS = "GET_TASKS";
