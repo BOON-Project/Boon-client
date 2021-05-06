@@ -17,9 +17,7 @@ export default makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-  menuItem: {
-    fontSize: 15,
-  },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
