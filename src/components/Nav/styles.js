@@ -17,6 +17,9 @@ export default makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  menuItem: {
+    fontSize: 15,
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -30,7 +33,7 @@ export default makeStyles((theme) => ({
   inputRoot: {
     // color: "inherit",
   },
-  
+
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
