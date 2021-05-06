@@ -7,22 +7,23 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Link from "@material-ui/core/Link";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
+import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../store/actions/userActions";
 
 export default function PrimarySearchAppBar() {
-  // const user = useSelector((state) => state.authReducer.user);
-  const [isAuth, setIsAuth] = useState(false);
+  const user = useSelector((state) => state.userReducer.user);
+  const dispatch = useDispatch();
+  // const error = useSelector((state) => state.user.error);
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  // useEffect(() => {
-  //   if (Object.keys(user).length) setIsAuth(true);
-  // }, [user]);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,6 +33,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleMenuClose = () => {
+    console.log("Are you trggering yourself???");
     setAnchorEl(null);
     handleMobileMenuClose();
   };
@@ -41,7 +43,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = "primary-search-account-menu";
-  const renderMenu = !isAuth ? (
+  const renderMenu = !user ? (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -71,12 +73,15 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}>
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/UserProfile' color='primary'>
+        <Link underline='none' href='/EditUser' color='primary'>
           Profile
         </Link>{" "}
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link underline='none' href='/Logout' color='primary'>
+        <Link
+          onClick={() => dispatch(logoutAction())}
+          underline='none'
+          color='primary'>
           Logout
         </Link>{" "}
       </MenuItem>
@@ -84,7 +89,7 @@ export default function PrimarySearchAppBar() {
   );
 
   const mobileMenuId = "primary-account-menu-mobile";
-  const renderMobileMenu = !isAuth ? (
+  const renderMobileMenu = !user ? (
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -101,7 +106,7 @@ export default function PrimarySearchAppBar() {
           color='inherit'>
           <AccountCircle />
         </IconButton>
-        <Link underline='none' href='/UserProfile'>
+        <Link underline='none' href='/EditUser'>
           Profile
         </Link>
       </MenuItem>
@@ -137,12 +142,12 @@ export default function PrimarySearchAppBar() {
         color='inherit'>
         <AccountCircle />
       </IconButton>
-      <Link underline='none' href='/UserProfile'>
+      <Link underline='none' href='/EditUser'>
         Profile
       </Link>
     </Menu>
   );
-  if (!isAuth) {
+  if (!user) {
     return (
       <div className={classes.grow}>
         <AppBar className={classes.appBar} position='static'>
@@ -173,7 +178,7 @@ export default function PrimarySearchAppBar() {
                 aria-haspopup='true'
                 onClick={handleMobileMenuOpen}
                 color='inherit'>
-                <MoreIcon />
+                <MenuRoundedIcon />
               </IconButton>
             </div>
           </Toolbar>
@@ -234,7 +239,7 @@ export default function PrimarySearchAppBar() {
                 aria-haspopup='true'
                 onClick={handleMobileMenuOpen}
                 color='inherit'>
-                <MoreIcon />
+                <MenuRoundedIcon />
               </IconButton>
             </div>
           </Toolbar>
