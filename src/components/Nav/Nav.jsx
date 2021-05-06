@@ -19,8 +19,8 @@ export default function PrimarySearchAppBar() {
   const dispatch = useDispatch();
   // const error = useSelector((state) => state.user.error);
   /**
-   * @todo Take over the world
-   * @body Humans are weak; Robots are strong. We must cleans the world of the virus that is humanity.
+   * @todo Github
+   * @body I hope this implementations help us to track the PR and merging process....
    */
 
   const classes = useStyles();
