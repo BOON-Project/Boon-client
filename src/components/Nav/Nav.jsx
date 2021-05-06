@@ -11,7 +11,8 @@ import useStyles from "./styles";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../../store/actions/userActions";
-import { Button, ButtonGroup } from "@material-ui/core";
+import { Button, ButtonGroup, Typography } from "@material-ui/core";
+import OpenInBrowserOutlinedIcon from "@material-ui/icons/OpenInBrowserOutlined";
 
 export default function PrimarySearchAppBar() {
   const user = useSelector((state) => state.userReducer.user);
@@ -66,21 +67,30 @@ export default function PrimarySearchAppBar() {
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    Request a Boon
+                    <Typography variant='h5' color='info'>
+                      {" "}
+                      Request a Boon
+                    </Typography>
                   </Link>
                   <Link
                     underline='none'
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    My Boons
+                    <Typography variant='h5' color='info'>
+                      {" "}
+                      My Boons
+                    </Typography>
                   </Link>
                   <Link
                     underline='none'
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    Explore
+                    <Typography variant='h5' color='info'>
+                      {" "}
+                      Explore
+                    </Typography>
                   </Link>
                 </>
               ) : null}
@@ -117,23 +127,35 @@ export default function PrimarySearchAppBar() {
                 <>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      Request a Boon
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        Request a Boon
+                      </Typography>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      My Boons
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        My Boons
+                      </Typography>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      Explore
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        Explore
+                      </Typography>
                     </Link>
                   </MenuItem>
 
                   <MenuItem>
                     <Link underline='none' href='/EditUser'>
-                      Profile
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        Profile
+                      </Typography>
                     </Link>
                   </MenuItem>
                 </>
@@ -147,7 +169,10 @@ export default function PrimarySearchAppBar() {
                     <AccountCircle />
                   </IconButton>
                   <Link underline='none' href='/EditUser'>
-                    Profile
+                    <Typography variant='h5' color='info'>
+                      {" "}
+                      Profile
+                    </Typography>
                   </Link>
                 </MenuItem>
               )}
@@ -164,7 +189,10 @@ export default function PrimarySearchAppBar() {
                 <>
                   <MenuItem onClick={handleMenuClose}>
                     <Link underline='none' href='/EditUser' color='primary'>
-                      Profile
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        Profile
+                      </Typography>
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem onClick={handleMenuClose}>
@@ -172,7 +200,10 @@ export default function PrimarySearchAppBar() {
                       onClick={() => dispatch(logoutAction())}
                       underline='none'
                       color='primary'>
-                      Logout
+                      <Typography variant='h5' color='info'>
+                        {" "}
+                        Logout
+                      </Typography>
                     </Link>
                   </MenuItem>
                 </>

@@ -5,10 +5,10 @@ import { Provider } from "react-redux";
 import { store } from "./store/index";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-export const theme = createMuiTheme({
+export let theme = createMuiTheme({
   palette: {
     primary: {
       main: "#32908F",
@@ -33,6 +33,7 @@ export const theme = createMuiTheme({
     fontFamily: "Montserrat",
   },
 });
+theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -45,5 +46,5 @@ ReactDOM.render(
       </ThemeProvider>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
