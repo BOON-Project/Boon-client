@@ -21,12 +21,15 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
-import { setErrorAction } from "../../store/actions/errorActions";
+import {
+	hideErrorAction,
+	setErrorAction,
+} from "../../store/actions/errorActions";
 import {
 	setTokenInStorage,
 	setUserInStorage,
 } from "../../helpers/localStorage";
-import ErrorDisplay from "../errorDisplay/errorDisplay";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 //end fo styling components
 
@@ -66,7 +69,7 @@ export default function SignUp() {
 		}
 
 		// handle success case
-		dispatch(setErrorAction({}));
+		dispatch(hideErrorAction());
 		dispatch(signupAction(data));
 		setTokenInStorage(result.token);
 		setUserInStorage(result.user);
