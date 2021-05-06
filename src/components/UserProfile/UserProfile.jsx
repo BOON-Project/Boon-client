@@ -24,11 +24,8 @@ export default function UserProfile(){
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  //creating an initial state=>
-  const [user, setUser] = useState('')
-
 //use selector =>
-  const {user: currentUser} = useSelector((state)=>state.user.id)
+  //const user = useSelector((state)=>)
 
 
   //fetching user!
