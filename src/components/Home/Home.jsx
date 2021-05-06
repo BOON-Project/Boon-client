@@ -8,6 +8,7 @@ import TopRatedBoons from './TopRatedBoons';
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from '../../store/actions/skillsActions';
 import { getUsersAction } from '../../store/actions/usersAction';
+import { getTasksAction } from '../../store/actions/tasksActions';
 
 
 const Home = () => {
@@ -17,12 +18,13 @@ const Home = () => {
     useEffect(()=>{
         dispatch(getSkillsAction())
         dispatch(getUsersAction())
+        dispatch(getTasksAction())
     },[])
 
     return (
         <Container maxWidth="lg" className={classes.root}>
                 {/* DICTIONARY CARD */}
-                <Card className={classes.card} elevation={8}>
+                <Card className={classes.card} elevation={8} >
                     <CardContent>
                         <Box pb={2}>
                             <Typography variant="h2" color="primary">Boon</Typography>
@@ -32,14 +34,16 @@ const Home = () => {
                         <Typography variant="h5" color="info">2. A favour or request.</Typography>
                     </CardContent>
                 </Card>
-                <Typography variant="h5" color="info"> We make exchange based economy a reality with our money free exchange platform  </Typography>
+                <Box mt={3} mb={3}>  
+                    <Typography variant="h4" color="info" > We make exchange based economy a reality with our money free exchange platform</Typography>
+                </Box>
 
 
                 {/* SEARCH */}
                 <Search/>
 
                 {/* CURRENTLY OFFERING */}
-                <CurentlyOffering/>
+                {/* <CurentlyOffering/> */}
 
                 {/* TOP RATED BOONERS */}
                 <TopRatedUsers/>

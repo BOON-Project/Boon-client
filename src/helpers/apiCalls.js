@@ -30,6 +30,17 @@ export const getSkills = async () => {
 	}
 };
 
+// GET TASKS
+export const getTasks = async () => {
+	console.log(`im fetching the tasks`);
+	try {
+		const response = await axios.get(`/task`);
+		return response;
+	} catch (err) {
+		return extractApiError(err);
+	}
+};
+
 // signup user
 
 export const signupUser = async (formData) => {
