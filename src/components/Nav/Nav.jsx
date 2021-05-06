@@ -18,6 +18,10 @@ export default function PrimarySearchAppBar() {
   const user = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch();
   // const error = useSelector((state) => state.user.error);
+  /**
+   * @todo Take over the world
+   * @body Humans are weak; Robots are strong. We must cleans the world of the virus that is humanity.
+   */
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
