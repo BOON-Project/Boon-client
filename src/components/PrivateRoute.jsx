@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 const PrivateRoute = ({ path, component, redirectTo = "/login" }) => {
   // const [isAuth, setIsAuth] = useState(false);
-  const user = useSelector((state) => state.authReducer.user);
+  const user = useSelector((state) => state.userReducer.user);
   // useEffect(() => {
   //   if  setIsAuth(true);
   // }, []);
@@ -13,7 +13,7 @@ const PrivateRoute = ({ path, component, redirectTo = "/login" }) => {
 
   // in case we are logged in => allow passing the given route
   // in case we are NOT logged in => redirect that fu**** not known person to login
-  return Object.keys(user).length ? (
+  return user ? (
     <Route path={path} component={component} />
   ) : (
     <Redirect to={redirectTo} />
