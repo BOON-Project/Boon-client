@@ -11,6 +11,7 @@ import Login from "../components/Login/Login";
 import Error404 from "./Error404";
 import EditUser from "./EditUser";
 import User from "./User";
+import "../styles/index.css"
 
 const App = () => {
   return (
