@@ -1,35 +1,48 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+
+//MUI styling =>
 import avatar from "./img/avatar.jpg";
 import {
-  Box,
-  Typography,
-  Avatar,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  Paper,
-  Divider,
-  Container,
-  CssBaseline,
-  Grid,
-  Button,
-} from "@material-ui/core";
+  Box,Typography,Avatar,List,ListItem,ListItemText,ListItemAvatar,ListItemSecondaryAction,Paper,Divider,Container,CssBaseline,Grid,Button,} from "@material-ui/core";
 import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
 import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 
+//general imports
 import useStyles from "./styles";
+import { useDispatch, useSelector, Redirect } from "react-redux";
+import { useHistory } from "react-router";
+import axios from "axios";
 
-const UserProfile = () => {
+
+// start of our User Profile
+export default function UserProfile(){
+
+  //in order to use Material UI u need this =>
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
-  // const user = useSelector((state) => state.authUser.user);
+  //creating an initial state=>
+  const [user, setUser] = useState('')
 
+//use selector =>
+  const {user: currentUser} = useSelector((state)=>state.user.id)
+
+
+  //fetching user!
+
+
+
+
+
+
+
+  // to go back
+  const history = useHistory();
+
+  //Rendering part! =>
   return (
     <CssBaseline>
       <Typography variant="h3" color="secondary" className={classes.hero}>
@@ -128,4 +141,3 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;

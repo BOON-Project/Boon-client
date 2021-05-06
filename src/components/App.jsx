@@ -9,8 +9,8 @@ import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
-import EditUser from "./EditUser";
-import User from "./User";
+import EditUser from "./EditUser/EditUser";
+
 
 const App = () => {
   return (
