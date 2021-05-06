@@ -9,9 +9,8 @@ import UserProfile from "./UserProfile/UserProfile";
 import Signup from "./Signup/Signup";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
-import EditUser from "./EditUser";
-import User from "./User";
-import "../styles/index.css"
+import EditUser from "./EditUser/EditUser";
+
 
 const App = () => {
   return (
@@ -22,7 +21,7 @@ const App = () => {
         <Route exact path='/' component={Home} />
         <Route exact path='/Signup' component={Signup} />
         <Route exact path='/Login' component={Login} />
-        <Route exact path='/User/:id' component={User} />
+        <Route exact path='/UserProfile/:id' component={UserProfile} />
 
         {/* Private Routes =>  */}
         <PrivateRoute path='/EditUser' component={EditUser} />
