@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import {
 	setTokenInStorage,
 	setUserInStorage,
@@ -22,10 +22,12 @@ import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../helpers/apiCalls";
-import { setErrorAction } from "../../store/actions/errorActions";
+import {
+	hideErrorAction,
+	setErrorAction,
+} from "../../store/actions/errorActions";
 import { loginAction } from "../../store/actions/userActions";
-import errorDisplay from "../../components/errorDisplay/errorDisplay";
-import ErrorDisplay from "../../components/errorDisplay/errorDisplay";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 export default function SignInSide() {
 	const classes = useStyles();
@@ -34,12 +36,11 @@ export default function SignInSide() {
 
 	// to go back
 	const history = useHistory();
-	const inputRef = useRef();
 
 	// ON FORM SUBMIT
 	const onSubmit = async (formData) => {
 		let result = await loginUser(formData);
-		console.log(result);
+		// console.log(result);
 
 		// handle error case
 		if (result.error) {
@@ -47,7 +48,7 @@ export default function SignInSide() {
 			return;
 		}
 		// handle success case
-		dispatch(setErrorAction({}));
+		dispatch(hideErrorAction());
 		dispatch(loginAction(result));
 		setTokenInStorage(result.token);
 		setUserInStorage(result.user);
