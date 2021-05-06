@@ -7,7 +7,7 @@ const initState = {
 };
 
 export function errorReducer(state = initState, action) {
-	console.log(action.payload);
+	// console.log(action.payload);
 	switch (action.type) {
 		case SET_ERROR:
 			return {

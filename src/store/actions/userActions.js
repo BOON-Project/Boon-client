@@ -1,25 +1,20 @@
-import {
-    helpAddUser,
-    loginUser,
-  } from "../../helpers/apiCalls";
-  import { SIGNUP_USER, LOGIN_USER} from "./types";
-  
-  export const signupAction = (formData) => async (dispatch) => {
-    dispatch({
-      type: SIGNUP_USER,
-      payload: formData,
-    });
-  };
+import { helpAddUser, loginUser } from "../../helpers/apiCalls";
+import { SIGNUP_USER, LOGIN_USER } from "./types";
 
-  export const loginAction = (userData) => async (dispatch) => {
-    // console.log(userData);
-    dispatch({
-      type: LOGIN_USER,
-      payload: userData,
-    });
-  };
+export const signupAction = (formData) => async (dispatch) => {
+	dispatch({
+		type: SIGNUP_USER,
+		payload: formData,
+	});
+};
 
-
+export const loginAction = (userData) => async (dispatch) => {
+	// console.log(userData);
+	dispatch({
+		type: LOGIN_USER,
+		payload: userData,
+	});
+};
 
 //   export const editUserAction = (formData) => async (dispatch, getState) => {
 //     const userId = getState().user.user._id;
