@@ -27,11 +27,7 @@ import {
   setErrorAction,
 } from "../../store/actions/errorActions";
 import { loginAction } from "../../store/actions/userActions";
-<<<<<<< HEAD
-import ErrorDisplay from '../ErrorDisplay/ErrorDisplay'
-=======
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
->>>>>>> f4980fc22080bdd58498733185ba3fe532028e8b
 
 export default function SignInSide() {
   const classes = useStyles();
