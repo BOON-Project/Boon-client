@@ -18,6 +18,10 @@ export default function PrimarySearchAppBar() {
   const user = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch();
   // const error = useSelector((state) => state.user.error);
+  /**
+   * @todo Github and Slack together????? wowwww
+   * @body I hope this implementations help us to track the PR and merging process....
+   */
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -67,7 +71,7 @@ export default function PrimarySearchAppBar() {
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    <Typography variant='h5' color='info'>
+                    <Typography variant='h6' color='info'>
                       {" "}
                       Request a Boon
                     </Typography>
@@ -77,7 +81,7 @@ export default function PrimarySearchAppBar() {
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    <Typography variant='h5' color='info'>
+                    <Typography variant='h6' color='info'>
                       {" "}
                       My Boons
                     </Typography>
@@ -87,7 +91,7 @@ export default function PrimarySearchAppBar() {
                     href='#'
                     className={classes.link}
                     color='inherit'>
-                    <Typography variant='h5' color='info'>
+                    <Typography variant='h6' color='info'>
                       {" "}
                       Explore
                     </Typography>
@@ -127,7 +131,7 @@ export default function PrimarySearchAppBar() {
                 <>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         Request a Boon
                       </Typography>
@@ -135,7 +139,7 @@ export default function PrimarySearchAppBar() {
                   </MenuItem>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         My Boons
                       </Typography>
@@ -143,7 +147,7 @@ export default function PrimarySearchAppBar() {
                   </MenuItem>
                   <MenuItem>
                     <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         Explore
                       </Typography>
@@ -152,7 +156,7 @@ export default function PrimarySearchAppBar() {
 
                   <MenuItem>
                     <Link underline='none' href='/EditUser'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         Profile
                       </Typography>
@@ -169,7 +173,7 @@ export default function PrimarySearchAppBar() {
                     <AccountCircle />
                   </IconButton>
                   <Link underline='none' href='/EditUser'>
-                    <Typography variant='h5' color='info'>
+                    <Typography variant='h6' color='info'>
                       {" "}
                       Profile
                     </Typography>
@@ -189,7 +193,7 @@ export default function PrimarySearchAppBar() {
                 <>
                   <MenuItem onClick={handleMenuClose}>
                     <Link underline='none' href='/EditUser' color='primary'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         Profile
                       </Typography>
@@ -200,7 +204,7 @@ export default function PrimarySearchAppBar() {
                       onClick={() => dispatch(logoutAction())}
                       underline='none'
                       color='primary'>
-                      <Typography variant='h5' color='info'>
+                      <Typography variant='h6' color='info'>
                         {" "}
                         Logout
                       </Typography>

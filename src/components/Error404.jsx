@@ -8,15 +8,12 @@ const Error404 = () => {
     <div>
       <Box
         width='100%'
-        height='500px'
         display='flex'
         justifyContent='center'
         alignItems='center'
         flexDirection='column'
         pt='2rem'>
-        <Typography color='error' variant='h5'>
-          Error 404 Page not Found{" "}
-        </Typography>
+        <img height='600px' src='./images/Error.png' alt='Error' mt='10rem' />
         <Box pt='3rem'>
           <Button
             size='large'

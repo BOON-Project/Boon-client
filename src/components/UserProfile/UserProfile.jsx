@@ -1,9 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 //MUI styling =>
 import avatar from "./img/avatar.jpg";
 import {
-  Box,Typography,Avatar,List,ListItem,ListItemText,ListItemAvatar,ListItemSecondaryAction,Paper,Divider,Container,CssBaseline,Grid,Button,} from "@material-ui/core";
+  Box,
+  Typography,
+  Avatar,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  ListItemSecondaryAction,
+  Paper,
+  Divider,
+  Container,
+  CssBaseline,
+  Grid,
+  Button,
+} from "@material-ui/core";
 import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
 import StarIcon from "@material-ui/icons/Star";
 import AddIcon from "@material-ui/icons/Add";
@@ -16,20 +30,17 @@ import { useDispatch, useSelector, Redirect } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { getUsersAction } from "../../store/actions/usersAction";
-import {getSkillsAction } from "../../store/actions/skillsActions"
-import {getTasksAction} from "../../store/actions/tasksActions"
-
+import { getSkillsAction } from "../../store/actions/skillsActions";
+import { getTasksAction } from "../../store/actions/tasksActions";
 
 // start of our User Profile
-export default function UserProfile(){
-
+export default function UserProfile(props) {
   //in order to use Material UI u need this =>
   const classes = useStyles();
   const dispatch = useDispatch();
 
-//use selector =>
-const userData = useSelector((state) => state.userReducer);
-
+  //use selector =>
+  const userData = useSelector((state) => state.userReducer);
 
   //fetching user!
   useEffect(() => {
@@ -38,54 +49,53 @@ const userData = useSelector((state) => state.userReducer);
     dispatch(getTasksAction());
   }, [dispatch]);
 
-
   // to go back
   const history = useHistory();
 
   //Rendering part! =>
   return (
     <CssBaseline>
-      <Typography variant="h3" color="secondary" className={classes.hero}>
+      <Typography variant='h3' color='secondary' className={classes.hero}>
         Eniko
         {/* {formData.firstName} */}
       </Typography>
-      <Divider variant="middle" />
+      <Divider variant='middle' />
 
       <Grid container spacing={2} className={classes.container}>
-        <Box component="div">
+        <Box component='div'>
           <Grid item xs={6}>
-            <img src={avatar} alt="lady" className={classes.image} />
+            <img src={avatar} alt='lady' className={classes.image} />
           </Grid>
         </Box>
         <List className={classes.skills}>
-          <ListItem alignItems="flex-start">
-            <Typography variant="h4" color="secondary">
+          <ListItem alignItems='flex-start'>
+            <Typography variant='h4' color='secondary'>
               Current rating:{" "}
             </Typography>
             <ListItemSecondaryAction>
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
+              <StarIcon color='secondary' />
+              <StarIcon color='secondary' />
+              <StarIcon color='secondary' />
+              <StarIcon color='secondary' />
+              <StarIcon color='secondary' />
             </ListItemSecondaryAction>
           </ListItem>
-          <ListItem alignItems="flex-start">
-            <Typography variant="h5" color="primary">
+          <ListItem alignItems='flex-start'>
+            <Typography variant='h5' color='primary'>
               Skills offered:{" "}
             </Typography>
             <ListItemSecondaryAction>
-              <AddIcon color="primary" />
-              <MoreHorizIcon color="primary" />
+              <AddIcon color='primary' />
+              <MoreHorizIcon color='primary' />
             </ListItemSecondaryAction>
           </ListItem>
-          <ListItem alignItems="flex-start">
-            <Typography variant="h6" color="primary">
+          <ListItem alignItems='flex-start'>
+            <Typography variant='h6' color='primary'>
               Add up to 5 skills
             </Typography>
           </ListItem>
-          <ListItem alignItems="flex-start">
-            <Button size="large" color="primary" variant="outlined">
+          <ListItem alignItems='flex-start'>
+            <Button size='large' color='primary' variant='outlined'>
               Photography <LinkedCameraIcon className={classes.icon} />
             </Button>
 
@@ -99,7 +109,7 @@ const userData = useSelector((state) => state.userReducer);
       <div className={classes.root}>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Bio
             </Typography>
           </Grid>
@@ -116,7 +126,7 @@ const userData = useSelector((state) => state.userReducer);
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Name
             </Typography>
           </Grid>
@@ -126,7 +136,7 @@ const userData = useSelector((state) => state.userReducer);
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Location
             </Typography>
           </Grid>
@@ -139,5 +149,4 @@ const userData = useSelector((state) => state.userReducer);
       </div>
     </CssBaseline>
   );
-};
-
+}
