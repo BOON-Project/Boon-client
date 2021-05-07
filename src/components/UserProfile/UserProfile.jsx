@@ -27,9 +27,12 @@ export default function UserProfile(){
   const classes = useStyles();
   const dispatch = useDispatch();
 
+
+  // to go back
+  const history = useHistory();
+
 //use selector =>
 const userData = useSelector((state) => state.userReducer);
-
 
   //fetching user!
   useEffect(() => {
@@ -39,8 +42,6 @@ const userData = useSelector((state) => state.userReducer);
   }, [dispatch]);
 
 
-  // to go back
-  const history = useHistory();
 
   //Rendering part! =>
   return (
