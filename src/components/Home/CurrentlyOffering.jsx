@@ -36,12 +36,7 @@ const CurentlyOffering = () => {
                 image="https://picsum.photos/200"
                 title="User picture"
                 />
-                {/* <Link
-                to={{
-                    pathname: `/user/:${id}`,
-                    state: {user},
-                }}
-                /> */}
+               
                 <CardActions style={{padding:"0"}}>
                     <Button
                     size="large" color="primary" variant="contained" className={classes.button}>More</Button>
