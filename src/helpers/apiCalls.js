@@ -45,7 +45,7 @@ export const getTasks = async () => {
 
 export const signupUser = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:5000/user", formData);
+    const response = await axios.post("/user", formData);
     return response.data;
   } catch (err) {
     return extractApiError(err);
@@ -57,7 +57,7 @@ export const signupUser = async (formData) => {
 export const loginUser = async (formData) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/user/login",
+      "/user/login",
       formData
     );
 
@@ -67,12 +67,32 @@ export const loginUser = async (formData) => {
   }
 };
 
-// logout user
 
-// export const helpCheckoutUser = () =>
-//   axios.get("http://localhost:5000/user/logout");
+// edit user data (PRIVATE ROUTE, only user can be there & modify)
 
-// edit user data
+export const editUser = async (userId, updatedUser) =>{
+	try {
+		const response = axios.patch(
+		`/user/${userId}`,
+		updatedUser
+		);
+		return response;
+	} catch (err) {
+		return extractApiError(err);
+	}
+}
 
-export const helpEditUser = (userId, updatedUser) =>
-  axios.patch(`http://localhost:5000/users/${userId}`, updatedUser);
+//user profile (publiccccccccc)
+
+export const userProfile = async (userId)=>{
+	try {
+		const response = axios.get(
+		`/user/${userId}`,
+		userProfile
+		);
+		return response.data;
+	} catch (err) {
+		return extractApiError(err);
+	}
+
+}

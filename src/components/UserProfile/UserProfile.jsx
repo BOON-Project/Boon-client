@@ -15,6 +15,9 @@ import useStyles from "./styles";
 import { useDispatch, useSelector, Redirect } from "react-redux";
 import { useHistory } from "react-router";
 import axios from "axios";
+import { getUsersAction } from "../../store/actions/usersAction";
+import {getSkillsAction } from "../../store/actions/skillsActions"
+import {getTasksAction} from "../../store/actions/tasksActions"
 
 
 // start of our User Profile
@@ -25,15 +28,15 @@ export default function UserProfile(){
   const dispatch = useDispatch();
 
 //use selector =>
-  //const user = useSelector((state)=>)
+const userData = useSelector((state) => state.userReducer);
 
 
   //fetching user!
-
-
-
-
-
+  useEffect(() => {
+    dispatch(getSkillsAction());
+    dispatch(getUsersAction());
+    dispatch(getTasksAction());
+  }, [dispatch]);
 
 
   // to go back
