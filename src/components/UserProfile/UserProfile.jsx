@@ -34,9 +34,8 @@ export default function UserProfile(props){
 
   //deconstruct user info
   const {
-    firstName, userName,bio,rating,avatar
+    firstName, userName,bio,rating,avatar,skills
   } = props.location.state.user;
-
 
   //Rendering part! =>
   return (
@@ -44,7 +43,6 @@ export default function UserProfile(props){
 
       <Typography variant="h3" color="secondary" className={classes.hero}>
         {firstName}
-        {/* {formData.firstName} */}
       </Typography>
       <Divider variant="middle" />
 
@@ -59,33 +57,43 @@ export default function UserProfile(props){
             <Typography variant="h4" color="secondary">
               Current rating:{" "}
             </Typography>
+
+
+              {/* User Rating =>  */}
             <ListItemSecondaryAction>
             <Rating name="size-large" defaultValue={rating} size="large" precision={0.5} readOnly/>
             </ListItemSecondaryAction>
           </ListItem>
+
+          {/* start of skills =>  */}
           <ListItem alignItems="flex-start">
             <Typography variant="h5" color="primary">
               Skills offered:{" "}
             </Typography>
+
+            {/* skills mappp */}
             <ListItemSecondaryAction>
-              <AddIcon color="primary" />
-              <MoreHorizIcon color="primary" />
+              {skills[0].skillID.name},{skills[1].skillID.name}
             </ListItemSecondaryAction>
           </ListItem>
+
+
           <ListItem alignItems="flex-start">
             <Typography variant="h6" color="primary">
-              Add up to 5 skills
+              Best rated skills:
             </Typography>
           </ListItem>
           <ListItem alignItems="flex-start">
             <Button size="large" color="primary" variant="outlined">
-              Photography <LinkedCameraIcon className={classes.icon} />
+            {skills[0].skillID.name}
             </Button>
-
+            {/* Boons pro Stunde => */}
             <ListItemSecondaryAction>
-              <ListItemText primary={`50 boons per hour`} />
+              <ListItemText primary={`${skills[0].boons} boons per hour`} />
             </ListItemSecondaryAction>
           </ListItem>
+
+
         </List>
       </Grid>
 
