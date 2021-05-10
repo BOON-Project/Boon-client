@@ -12,7 +12,7 @@ const PrivateRoute = ({ path, component, redirectTo = "/login" }) => {
   // grab the info if user is logged in from context
 
   // in case we are logged in => allow passing the given route
-  // in case we are NOT logged in => redirect that fu**** not known person to login
+  // in case we are NOT logged in => redirect that fu***** unknown person to login
   return Object.keys(user).length ? (
     <Route path={path} component={component} />
   ) : (

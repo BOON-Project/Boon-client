@@ -12,7 +12,7 @@ import useStyles from "./styles";
 import { useSelector } from "react-redux";
 
 export default function PrimarySearchAppBar() {
-  const user = useSelector((state) => state.authReducer.user);
+  // const user = useSelector((state) => state.authReducer.user);
   const [isAuth, setIsAuth] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,9 +20,9 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  useEffect(() => {
-    if (Object.keys(user).length) setIsAuth(true);
-  }, [user]);
+  // useEffect(() => {
+  //   if (Object.keys(user).length) setIsAuth(true);
+  // }, [user]);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };

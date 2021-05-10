@@ -1,29 +1,29 @@
 import {
     helpAddUser,
-    helpCheckUser,
+    loginUser,
   } from "../../helpers/apiCalls";
-  import { ADD_USER, USER_LOGIN} from "./types";
+  import { SIGNUP_USER, LOGIN_USER} from "./types";
   
-  export const addUserAction = (formData) => async (dispatch) => {
-    const response = await helpAddUser(formData);
+  export const signupAction = (formData) => async (dispatch) => {
     dispatch({
-      type: ADD_USER,
-      payload: response.data,
+      type: SIGNUP_USER,
+      payload: formData,
     });
   };
 
-  export const userLoginAction = (formData) => async (dispatch) => {
-    const response = await helpCheckUser(formData);
-  
+  export const loginAction = (userData) => async (dispatch) => {
+    // console.log(userData);
     dispatch({
-      type: USER_LOGIN,
-      payload: response.data,
+      type: LOGIN_USER,
+      payload: userData,
     });
   };
+
+
 
 //   export const editUserAction = (formData) => async (dispatch, getState) => {
 //     const userId = getState().user.user._id;
-  
+
 //     const response = await helpEditUser(userId, formData);
 //     console.log("formData from Action");
 //     dispatch({
@@ -31,15 +31,12 @@ import {
 //       payload: response.data,
 //     });
 //   };
-  
 
-  
 //   export const logoutUserAction = () => async (dispatch) => {
 //     const response = await helpCheckoutUser();
-  
+
 //     dispatch({
 //       type: USER_LOGOUT,
 //       payload: response.data,
 //     });
 //   };
-  

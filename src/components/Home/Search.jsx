@@ -31,7 +31,20 @@ const Search = () => {
         )}
       />
 
-<<<<<<< HEAD
+      <Autocomplete
+        id="free-solo-demo"
+        freeSolo
+        options={skillsData.map((skill) => skill.name)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="freeSolo"
+            margin="normal"
+            variant="outlined"
+          />
+        )}
+      />
+
       <Box display="flex">
         <Button
           size="large"
@@ -69,15 +82,5 @@ const Search = () => {
     </>
   );
 };
-=======
-        <Autocomplete
-            id="free-solo-demo"
-            freeSolo
-            options={skillsData.map((skill) => skill.name)}
-            renderInput={(params) => (
-            <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
-            )}
-        />
->>>>>>> 2eef8de5f486ecd0fdf94065cdcbd42961364a35
 
 export default Search;
