@@ -7,9 +7,12 @@ export const EDIT_USER = "EDIT_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
-//Erros
-export const HIDE_ERROR = "HIDE_ERROR"
-export const SET_ERROR = "SET_ERROR"
+//Errors
+export const HIDE_ERROR = "HIDE_ERROR";
+export const SET_ERROR = "SET_ERROR";
 
 // Skills
 export const GET_SKILLS = "GET_SKILLS";
+
+//Tasks
+export const GET_TASKS = "GET_TASKS";

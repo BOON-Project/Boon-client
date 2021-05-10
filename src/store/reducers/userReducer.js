@@ -1,4 +1,4 @@
-import { SIGNUP_USER, LOGIN_USER } from "../actions/types";
+import { SIGNUP_USER, LOGIN_USER, LOGOUT_USER } from "../actions/types";
 import {
   loadTokenFromStorage,
   loadUserFromStorage,
@@ -23,6 +23,15 @@ const userReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
       };
+
+    case LOGOUT_USER:
+      localStorage.clear();
+      return {
+        ...state,
+        user: null,
+        token: null,
+      };
+
     default:
       return state;
   }

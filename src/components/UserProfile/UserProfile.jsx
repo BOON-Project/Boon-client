@@ -1,53 +1,98 @@
 import React from "react";
-import avatar from "./img/avatar.jpg";
+
+//MUI styling =>
 import {
   Box,
   Typography,
-  Avatar,
   List,
   ListItem,
   ListItemText,
-  Link,
-  ListItemAvatar,
   ListItemSecondaryAction,
   Paper,
   Divider,
-  Container,
   CssBaseline,
   InputAdornment,
   Grid,
   Button,
+  ButtonGroup,
+  Link,
   TextField,
 } from "@material-ui/core";
-import LinkedCameraIcon from "@material-ui/icons/LinkedCamera";
-import StarIcon from "@material-ui/icons/Star";
-import AddIcon from "@material-ui/icons/Add";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
-import { useSelector, useDispatch } from "react-redux";
-import Fab from "@material-ui/core/Fab";
+import Rating from "@material-ui/lab/Rating";
+
+//general imports
 import useStyles from "./styles";
+import { useDispatch, useSelector, Redirect } from "react-redux";
+import { useHistory } from "react-router";
+import { getUsersAction } from "../../store/actions/usersAction";
+import { getSkillsAction } from "../../store/actions/skillsActions";
+import { getTasksAction } from "../../store/actions/tasksActions";
 
-const UserProfile = () => {
+// start of our User Profile
+export default function UserProfile(props) {
+  //in order to use Material UI u need this =>
   const classes = useStyles();
-
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.authReducer.user);
-  console.log("user", user);
 
+  // to go back
+  const history = useHistory();
+
+  //deconstruct user's info
+  const {
+    firstName,
+    userName,
+    bio,
+    rating,
+    avatar,
+    skills,
+  } = props.location.state.user;
+
+  //Rendering skills!
+  // const skillItems = useSelector((state) => state.skills);
+
+  // const renderSkillsItems = skillItems.map((skill, index)=> (
+  // <div className={classes.root}>
+  //   <Grid container spacing={3}>
+
+  //     {/* Header */}
+  //     <Grid item xs={12} sm={6}>
+  //       <Paper className={classes.paper}>Offering</Paper>
+  //     </Grid>
+
+  //     <Grid item xs={6} sm={3}>
+  //           <Paper className={classes.paper}>Skill</Paper>
+  //     </Grid>
+  //         <Grid item xs={6} sm={3}>
+  //           <Paper className={classes.paper}>Boons</Paper>
+  //         </Grid>
+
+  //       {/* Skills List */}
+  //       <div key={index} className={classes.root}>
+
+  //       <Grid item xs={6} sm={3}>
+  //           <Paper className={classes.paper}>{skill.name}</Paper>
+  //     </Grid>
+  //         <Grid item xs={6} sm={3}>
+  //           <Paper className={classes.paper}>{skill.boons}</Paper>
+  //         </Grid>
+  //       </div>
+
+  //   </Grid>
+  // </div>
+  // ))
+
+  //Rendering part! =>
   return (
     <CssBaseline>
       <Typography variant="h3" color="secondary" className={classes.hero}>
-        {user.firstName}
+        {firstName}
       </Typography>
       <Divider variant="middle" />
       <Grid container spacing={2} className={classes.container}>
         <Box component="div">
           <Grid item xs={6}>
-            <img src={avatar} alt="lady" className={classes.image} />
-            <Fab color="primary" aria-label="add">
-              <AddIcon />
-            </Fab>
+            <img src={avatar} alt="avatar" className={classes.image} />
           </Grid>
         </Box>
         <List className={classes.skills}>
@@ -55,35 +100,43 @@ const UserProfile = () => {
             <Typography variant="h4" color="secondary">
               Current rating:{" "}
             </Typography>
+
+            {/* User Rating =>  */}
             <ListItemSecondaryAction>
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
-              <StarIcon color="secondary" />
+              <Rating
+                name="size-large"
+                defaultValue={rating}
+                size="large"
+                precision={0.5}
+                readOnly
+              />
             </ListItemSecondaryAction>
           </ListItem>
+
+          {/* start of skills =>  */}
           <ListItem alignItems="flex-start">
             <Typography variant="h5" color="primary">
               Skills offered:{" "}
             </Typography>
+
+            {/* skills mappp */}
             <ListItemSecondaryAction>
-              <AddIcon color="primary" />
-              <MoreHorizIcon color="primary" />
+              {skills[0].skillID.name},{skills[1].skillID.name}
             </ListItemSecondaryAction>
           </ListItem>
+
           <ListItem alignItems="flex-start">
             <Typography variant="h6" color="primary">
-              Add up to 5 skills
+              Best rated skills:
             </Typography>
           </ListItem>
           <ListItem alignItems="flex-start">
             <Button size="large" color="primary" variant="outlined">
-              Photography <LinkedCameraIcon className={classes.icon} />
+              {skills[0].skillID.name}
             </Button>
-
+            {/* Boons pro Stunde => */}
             <ListItemSecondaryAction>
-              <ListItemText primary={`50 boons per hour`} />
+              <ListItemText primary={`${skills[0].boons} boons per hour`} />
             </ListItemSecondaryAction>
           </ListItem>
         </List>
@@ -95,21 +148,8 @@ const UserProfile = () => {
               Bio
             </Typography>
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="outlined-read-only-input"
-              label="Outlined"
-              variant="outlined"
-              fullWidth
-              label="Bio"
-              multiline
-              defaultValue="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
-              tenetur ullam dignissimos animi veritatis exercitationem ex
-              maiores voluptas sit dolore? Repellendus, ipsam harum, perferendis
-              eos repellat voluptate voluptas quod mollitia soluta, voluptatum
-              expedita temporibus recusandae. Unde architecto blanditiis et sed
-              dolorum iure porro earum quis. Modi nisi repellendus labore quo?"
-            ></TextField>
+          <Grid item xs>
+            <Paper className={classes.paper}>{bio}</Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -118,23 +158,8 @@ const UserProfile = () => {
               Name
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <TextField
-              id="outlined-read-only-input"
-              defaultValue="Eniko"
-              label="Outlined"
-              fullWidth
-              variant="outlined"
-              label="First Name"
-              multiline
-            ></TextField>
-          </Grid>
-          <Grid item xs={4}>
-            <Link underline="none" href="/editUser">
-              <Button size="large" color="primary" variant="outlined">
-                Save
-              </Button>
-            </Link>
+          <Grid item xs>
+            <Paper className={classes.paper}>{userName}</Paper>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
@@ -163,8 +188,37 @@ const UserProfile = () => {
           </Grid>
         </Grid>
       </div>
+
+      {/* Last 2 Buttons!  */}
+
+      <Box className={classes.root} textAlign="center">
+        <ButtonGroup disableElevation variant="contained">
+          <Button
+            component={Link}
+            to="/home"
+            size="large"
+            color="secondary"
+            variant="contained"
+            onClick={() => history.goBack()}
+            className={classes.button}
+          >
+            Go back
+          </Button>
+
+          <Button
+            component={Link}
+            to="/home"
+            size="large"
+            color="secondary"
+            variant="contained"
+            //pending!!
+            onClick={() => history.goBack()}
+            className={classes.button}
+          >
+            Send a message
+          </Button>
+        </ButtonGroup>
+      </Box>
     </CssBaseline>
   );
-};
-
-export default UserProfile;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import {Typography, Box, Card, CardActions, Button, CardMedia} from "@material-ui/core"
 import useStyles from "./styles"
 import { useSelector } from "react-redux";
@@ -35,8 +36,10 @@ const CurentlyOffering = () => {
                 image="https://picsum.photos/200"
                 title="User picture"
                 />
+               
                 <CardActions style={{padding:"0"}}>
-                    <Button size="large" color="primary" variant="contained" className={classes.button}>More</Button>
+                    <Button
+                    size="large" color="primary" variant="contained" className={classes.button}>More</Button>
                 </CardActions>
             </Card>
         )})}
