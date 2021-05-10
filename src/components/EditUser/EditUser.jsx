@@ -84,6 +84,16 @@ const EditUser = () => {
             {/* first name input! */}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
+                <label htmlFor='avatar'>
+                  <img
+                    width='150'
+                    src={avatarPreview}
+                    alt='avatar'
+                    label='image'
+                  />
+                </label>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <List className={classes.skills}>
                   {" "}
                   <ListItem alignItems='flex-start'>
@@ -134,16 +144,7 @@ const EditUser = () => {
                   </ListItem>{" "}
                 </List>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <label htmlFor='avatar'>
-                  <img
-                    width='150'
-                    src={avatarPreview}
-                    alt='avatar'
-                    label='image'
-                  />
-                </label>
-              </Grid>
+
               <Grid item xs={12} sm={6}>
                 <Controller
                   name='firstName'
