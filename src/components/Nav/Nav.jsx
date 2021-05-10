@@ -53,12 +53,12 @@ export default function PrimarySearchAppBar() {
   return (
     <>
       <div className={classes.grow}>
-        <AppBar className={classes.appBar} position='static'>
+        <AppBar className={classes.appBar} position="static">
           <Toolbar>
-            <Link underline='none' href='/' color='primary'>
+            <Link underline="none" href="/" color="primary">
               <img
-                src='./images/Boon-big.svg'
-                alt='Boon-logo'
+                src="./images/Boon-big.svg"
+                alt="Boon-logo"
                 className={classes.logo}
               />
             </Link>
@@ -67,31 +67,34 @@ export default function PrimarySearchAppBar() {
               {user ? (
                 <>
                   <Link
-                    underline='none'
-                    href='#'
+                    underline="none"
+                    href="#"
                     className={classes.link}
-                    color='inherit'>
-                    <Typography variant='h6' color='info'>
+                    color="inherit"
+                  >
+                    <Typography variant="h6" color="info">
                       {" "}
                       Request a Boon
                     </Typography>
                   </Link>
                   <Link
-                    underline='none'
-                    href='#'
+                    underline="none"
+                    href="#"
                     className={classes.link}
-                    color='inherit'>
-                    <Typography variant='h6' color='info'>
+                    color="inherit"
+                  >
+                    <Typography variant="h6" color="info">
                       {" "}
                       My Boons
                     </Typography>
                   </Link>
                   <Link
-                    underline='none'
-                    href='#'
+                    underline="none"
+                    href="#"
                     className={classes.link}
-                    color='inherit'>
-                    <Typography variant='h6' color='info'>
+                    color="inherit"
+                  >
+                    <Typography variant="h6" color="info">
                       {" "}
                       Explore
                     </Typography>
@@ -99,22 +102,24 @@ export default function PrimarySearchAppBar() {
                 </>
               ) : null}
               <IconButton
-                edge='end'
-                aria-label='account of current user'
+                edge="end"
+                aria-label="account of current user"
                 aria-controls={menuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
-                aria-label='show more'
+                aria-label="show more"
                 aria-controls={mobileMenuId}
-                aria-haspopup='true'
+                aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
-                color='inherit'>
+                color="inherit"
+              >
                 <MenuRoundedIcon />
               </IconButton>
             </div>
@@ -126,28 +131,29 @@ export default function PrimarySearchAppBar() {
               keepMounted
               transformOrigin={{ vertical: "top", horizontal: "right" }}
               open={isMobileMenuOpen}
-              onClose={handleMobileMenuClose}>
+              onClose={handleMobileMenuClose}
+            >
               {user ? (
                 <>
                   <MenuItem>
-                    <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h6' color='info'>
+                    <Link underline="none" href="#" color="primary">
+                      <Typography variant="h6" color="info">
                         {" "}
                         Request a Boon
                       </Typography>
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h6' color='info'>
+                    <Link underline="none" href="#" color="primary">
+                      <Typography variant="h6" color="info">
                         {" "}
                         My Boons
                       </Typography>
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link underline='none' href='#' color='primary'>
-                      <Typography variant='h6' color='info'>
+                    <Link underline="none" href="#" color="primary">
+                      <Typography variant="h6" color="info">
                         {" "}
                         Explore
                       </Typography>
@@ -155,8 +161,8 @@ export default function PrimarySearchAppBar() {
                   </MenuItem>
 
                   <MenuItem>
-                    <Link underline='none' href='/EditUser'>
-                      <Typography variant='h6' color='info'>
+                    <Link underline="none" href="/EditUser">
+                      <Typography variant="h6" color="info">
                         {" "}
                         Profile
                       </Typography>
@@ -166,14 +172,15 @@ export default function PrimarySearchAppBar() {
               ) : (
                 <MenuItem onClick={handleProfileMenuOpen}>
                   <IconButton
-                    aria-label='account of current user'
-                    aria-controls='primary-search-account-menu'
-                    aria-haspopup='true'
-                    color='inherit'>
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
                     <AccountCircle />
                   </IconButton>
-                  <Link underline='none' href='/EditUser'>
-                    <Typography variant='h6' color='info'>
+                  <Link underline="none" href="/EditUser">
+                    <Typography variant="h6" color="info">
                       {" "}
                       Profile
                     </Typography>
@@ -188,12 +195,13 @@ export default function PrimarySearchAppBar() {
               id={menuId}
               transformOrigin={{ vertical: "top", horizontal: "right" }}
               open={isMenuOpen}
-              onClose={handleMenuClose}>
+              onClose={handleMenuClose}
+            >
               {user ? (
                 <>
                   <MenuItem onClick={handleMenuClose}>
-                    <Link underline='none' href='/EditUser' color='primary'>
-                      <Typography variant='h6' color='info'>
+                    <Link underline="none" href="/EditUser" color="primary">
+                      <Typography variant="h6" color="info">
                         {" "}
                         Profile
                       </Typography>
@@ -202,9 +210,10 @@ export default function PrimarySearchAppBar() {
                   <MenuItem onClick={handleMenuClose}>
                     <Link
                       onClick={() => dispatch(logoutAction())}
-                      underline='none'
-                      color='primary'>
-                      <Typography variant='h6' color='info'>
+                      underline="none"
+                      color="primary"
+                    >
+                      <Typography variant="h6" color="info">
                         {" "}
                         Logout
                       </Typography>
@@ -214,11 +223,12 @@ export default function PrimarySearchAppBar() {
               ) : (
                 <>
                   <ButtonGroup
-                    variant='text'
-                    color='primary'
-                    aria-label='text primary button group'>
-                    <Button href='/Login'>Login</Button>
-                    <Button href='/Signup'>Signup</Button>
+                    variant="text"
+                    color="primary"
+                    aria-label="text primary button group"
+                  >
+                    <Button href="/Login">Login</Button>
+                    <Button href="/Signup">Signup</Button>
                   </ButtonGroup>
                 </>
               )}
