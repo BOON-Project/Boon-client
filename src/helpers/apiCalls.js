@@ -41,6 +41,17 @@ export const getTasks = async () => {
 	}
 };
 
+// ADD TASK
+export const addTask = async (formData) => {
+	try {
+		const response = await axios.post("/task", formData);
+		console.log(response);
+		return response.data;
+	} catch (err) {
+		return extractApiError(err);
+	}
+};
+
 // signup user
 
 export const signupUser = async (formData) => {
@@ -70,16 +81,6 @@ export const editUser = async (userId, updatedUser) => {
 	try {
 		const response = axios.patch(`/user/${userId}`, updatedUser);
 		return response;
-	} catch (err) {
-		return extractApiError(err);
-	}
-};
-
-//user profile (publiccccccccc)
-export const getUserProfile = async (userId) => {
-	try {
-		const response = axios.get(`/user/${userId}`);
-		return response.data;
 	} catch (err) {
 		return extractApiError(err);
 	}

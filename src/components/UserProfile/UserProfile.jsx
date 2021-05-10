@@ -39,7 +39,6 @@ export default function UserProfile(props) {
 		avatar,
 		skills,
 	} = props.location.state.user;
-	console.log(user._id);
 
 	const skillsList = skills.map((skill) => {
 		return (

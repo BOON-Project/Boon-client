@@ -1,53 +1,192 @@
 import React from "react";
-import { InputLabel, FormControl, Select, makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-	formControl: {
-		margin: theme.spacing(1),
-		minWidth: 120,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing(2),
-	},
-}));
+import {
+	Box,
+	InputLabel,
+	Button,
+	Select,
+	Typography,
+	TextField,
+} from "@material-ui/core";
+import useStyles from "./styles";
+import { useForm, Controller } from "react-hook-form";
+import { addTask } from "../../helpers/apiCalls";
+import { useSelector } from "react-redux";
 
 export default function RequestBoon(props) {
-	const user = props.location.state.user;
-	console.log(user);
-	/* const classes = useStyles();
-	const [state, setState] = React.useState({
-		age: "",
-		name: "hai",
+	const booner = props.location.state.user;
+	const classes = useStyles();
+	const { handleSubmit, control } = useForm();
+	const boonee = useSelector((state) => state.userReducer.user);
+
+	//Map through skills for dropdown select
+	const skillsListSelect = booner.skills.map((skill) => {
+		return (
+			<>
+				<option value={skill.skillID._id}>{skill.skillID.name}</option>
+			</>
+		);
 	});
 
-	const handleChange = (event) => {
-		const name = event.target.name;
-		setState({
-			...state,
-			[name]: event.target.value,
-		});
-	}; */
+	const onSubmit = async (data) => {
+		let finalData = { ...data, booner: booner._id, boonee: boonee._id };
+		let result = await addTask(finalData);
+		if (result.error) {
+			alert(result.error);
+		}
+		alert(`Request sent to ${booner.userName}, let's hope they say yes`);
+	};
 
 	return (
-		<>
-			{/* <FormControl variant="outlined" className={classes.formControl}>
-				<InputLabel htmlFor="outlined-age-native-simple">Skill</InputLabel>
-				<Select
-					native
-					value={state.age}
-					onChange={handleChange}
-					label="Skill"
-					inputProps={{
-						name: "Skill",
-						id: "outlined-age-native-simple",
-					}}
+		<Box className={classes.main}>
+			<Typography variant="h3" color="secondary" className={classes.hero}>
+				Request a Boon from {booner.userName}
+			</Typography>
+			<form
+				className={classes.form}
+				noValidate
+				onSubmit={handleSubmit(onSubmit)}
+			>
+				{/* SELECT SKILL */}
+				<InputLabel htmlFor="skill" className={classes.label}>
+					Skill
+				</InputLabel>
+				<Controller
+					name="skill"
+					control={control}
+					defaultValue=""
+					render={({ field: { onChange, value }, fieldState: { error } }) => (
+						<Select
+							native
+							name="skill"
+							variant="outlined"
+							fullWidth
+							id="skill"
+							onChange={onChange}
+							value={value}
+							helperText={error ? error.message : null}
+							className={classes.input}
+						>
+							{skillsListSelect}
+						</Select>
+					)}
+					rules={{ required: "skill required" }}
+				></Controller>
+				{/*DATE*/}
+				<InputLabel htmlFor="date" className={classes.label}>
+					When?
+				</InputLabel>
+				<Controller
+					name="date"
+					control={control}
+					defaultValue=""
+					render={({ field: { onChange, value }, fieldState: { error } }) => (
+						<TextField
+							name="date"
+							type="date"
+							variant="outlined"
+							fullWidth
+							id="date"
+							onChange={onChange}
+							value={value}
+							helperText={error ? error.message : null}
+							InputLabelProps={{
+								shrink: true,
+							}}
+							className={classes.input}
+						/>
+					)}
+					rules={{ required: "date required" }}
+				/>
+				{/*HOW LONG*/}
+				<InputLabel htmlFor="duration" className={classes.label}>
+					How long?
+				</InputLabel>
+				<Controller
+					name="duration"
+					control={control}
+					render={({ field: { onChange, value }, fieldState: { error } }) => (
+						<TextField
+							name="duration"
+							variant="outlined"
+							fullWidth
+							id="duration"
+							placeholder="3 days"
+							onChange={onChange}
+							value={value}
+							helperText={error ? error.message : null}
+							InputLabelProps={{
+								shrink: true,
+							}}
+							className={classes.input}
+						/>
+					)}
+					rules={{ required: "duration required" }}
+				/>
+				{/*HOW MUCH*/}
+				<InputLabel htmlFor="boons" className={classes.label}>
+					How much?
+				</InputLabel>
+				<Controller
+					name="boons"
+					control={control}
+					render={({ field: { onChange, value }, fieldState: { error } }) => (
+						<TextField
+							name="boons"
+							variant="outlined"
+							fullWidt
+							type="number"
+							id="boons"
+							onChange={onChange}
+							value={value}
+							placeholder="20"
+							helperText={error ? error.message : null}
+							InputLabelProps={{
+								shrink: true,
+							}}
+							className={classes.input}
+						/>
+					)}
+					rules={{ required: "price required" }}
+				/>
+				{/* MESSAGE */}
+				<InputLabel htmlFor="message" className={classes.label}>
+					Message
+				</InputLabel>
+				<Controller
+					name="message"
+					control={control}
+					render={({ field: { onChange, value }, fieldState: { error } }) => (
+						<TextField
+							multiline
+							rows={4}
+							name="message"
+							variant="outlined"
+							fullWidth
+							id="message"
+							placeholder="Hello! I would love to get this boon from you"
+							onChange={onChange}
+							value={value}
+							helperText={error ? error.message : null}
+							maxLenght="400"
+							InputLabelProps={{
+								shrink: true,
+							}}
+							className={classes.input}
+						/>
+					)}
+					rules={{ maxLenght: 400 }}
+				/>
+				{/* SUBMIT BUTTON */}
+				<Button
+					type="submit"
+					fullWidth
+					variant="contained"
+					color="primary"
+					className={classes.submit}
 				>
-					<option aria-label="None" value="" />
-					<option value={10}>Ten</option>
-					<option value={20}>Twenty</option>
-					<option value={30}>Thirty</option>
-				</Select>
-			</FormControl> */}
-		</>
+					Request Boon
+				</Button>
+			</form>
+		</Box>
 	);
 }

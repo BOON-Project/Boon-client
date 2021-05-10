@@ -2,7 +2,6 @@
 export const GET_USERS = "GET_USERS";
 export const SIGNUP_USER = "SIGNUP_USER";
 export const EDIT_USER = "EDIT_USER";
-export const GET_USER_PROFILE = "USER_PROFILE";
 
 // Authentication
 export const LOGIN_USER = "LOGIN_USER";
