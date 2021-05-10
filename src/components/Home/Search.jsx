@@ -11,12 +11,24 @@ import { Link } from "react-router-dom";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 
 const Search = () => {
   const skillsData = useSelector((state) => state.skillsReducer);
-  const users = useSelector((state) => state.usersReducer);
+  //const users = useSelector((state) => state.usersReducer);
+  //1. wrap the search with form
+  //2. attach the formSubmit event to a function -> http request to the endpoint /skill/id
+  //3. get/post request
+  //4. setup the endpoint "route" to retrieve data from the DB according to the id in the req.body/params
+  //5. saving retrieved data to redux store
+  //6. select the data and render on view
+  const { handleSubmit } = useForm();
+  const goToSkill = (id) => {
+    console.log("plese work", id);
+  };
 
   const classes = useStyles();
+
   return (
     <>
       <Box pt="2rem">
@@ -25,29 +37,21 @@ const Search = () => {
           Explore our tags and search for what you need{" "}
         </Typography>
       </Box>
-
-      <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        options={skillsData.map((skill) => skill.name)}
-        renderInput={(params) => (
-          // <CardActions style={{ padding: "0" }}>
-          //   <Link
-          //     to={{
-          //       pathname: `/SkillByUser/${skill._id}`,
-          //       state: { skill },
-          //     }}
-          //   >
-          <TextField
-            {...params}
-            label="freeSolo"
-            margin="normal"
-            variant="outlined"
-          />
-          //   </Link>
-          // </CardActions>
-        )}
-      />
+      <form onClick={handleSubmit(goToSkill)}>
+        <Autocomplete
+          id="free-solo-demo"
+          freeSolo
+          options={skillsData.map((skill) => skill.name)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="freeSolo"
+              margin="normal"
+              variant="outlined"
+            />
+          )}
+        />
+      </form>
 
       <Box display="flex">
         <Button
