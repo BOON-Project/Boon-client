@@ -26,6 +26,9 @@ export default makeStyles({
 	button: {
 		width: "100%",
 		margin: 0,
+		backgroundColor: "#E4B363",
+		border: "none",
+		padding: "10px",
 	},
 	tag: {
 		margin: "5px 5px 5px 0",
