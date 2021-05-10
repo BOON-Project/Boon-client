@@ -21,6 +21,6 @@ export default makeStyles((theme) => ({
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
-    input: { display: "none" },
+    input: { opacity: 0 },
   },
 }));

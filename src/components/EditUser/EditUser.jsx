@@ -6,10 +6,15 @@ import {
   CssBaseline,
   Grid,
   Input,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
   Paper,
   TextField,
   Typography,
 } from "@material-ui/core";
+import Rating from "@material-ui/lab/Rating";
 import { useForm, Controller } from "react-hook-form";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
@@ -18,6 +23,7 @@ import { useHistory } from "react-router";
 
 const EditUser = () => {
   const user = useSelector((state) => state.userReducer.user);
+  const rating = useSelector((state) => state.userReducer.user.rating);
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
@@ -61,7 +67,7 @@ const EditUser = () => {
   };
 
   return (
-    <>
+    <CssBaseline>
       <Container component='main' maxWidth='md'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -77,7 +83,58 @@ const EditUser = () => {
             onSubmit={handleSubmit(onSubmit)}>
             {/* first name input! */}
             <Grid container spacing={2}>
-              <Grid item tem xs={12} sm={12}>
+              <Grid item xs={12} sm={6}>
+                <List className={classes.skills}>
+                  {" "}
+                  <ListItem alignItems='flex-start'>
+                    {" "}
+                    <Typography variant='h4' color='secondary'>
+                      {" "}
+                      Current rating:{" "}
+                    </Typography>{" "}
+                    <ListItemSecondaryAction>
+                      <Rating
+                        name='size-large'
+                        defaultValue={rating}
+                        size='large'
+                        precision={0.5}
+                        readOnly
+                      />
+                    </ListItemSecondaryAction>
+                  </ListItem>{" "}
+                  <ListItem alignItems='flex-start'>
+                    {" "}
+                    <Typography variant='h5' color='primary'>
+                      {" "}
+                      Skills offered:{" "}
+                    </Typography>{" "}
+                    <ListItemSecondaryAction>
+                      {" "}
+                      {/* <AddIcon color='primary' />{" "}
+                      <MoreHorizIcon color='primary' />{" "} */}
+                    </ListItemSecondaryAction>{" "}
+                  </ListItem>{" "}
+                  <ListItem alignItems='flex-start'>
+                    {" "}
+                    <Typography variant='h6' color='primary'>
+                      {" "}
+                      Add up to 5 skills{" "}
+                    </Typography>{" "}
+                  </ListItem>{" "}
+                  <ListItem alignItems='flex-start'>
+                    {" "}
+                    <Button size='large' color='primary' variant='outlined'>
+                      {" "}
+                      Skill
+                    </Button>
+                    <ListItemSecondaryAction>
+                      {" "}
+                      <ListItemText primary={`50 boons per hour`} />{" "}
+                    </ListItemSecondaryAction>{" "}
+                  </ListItem>{" "}
+                </List>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <label htmlFor='avatar'>
                   <img
                     width='150'
@@ -226,9 +283,11 @@ const EditUser = () => {
                   }) => <Paper className={classes.paper}>{user.bio}</Paper>}
                 />
               </Grid>
-              <div className={classes.input}>
+              <div>
                 <input
+                  className={classes.input}
                   accept='image/*'
+                  display='none'
                   type='file'
                   id='avatar'
                   name='avatar'
@@ -240,7 +299,7 @@ const EditUser = () => {
           </form>
         </div>
       </Container>
-    </>
+    </CssBaseline>
   );
 };
 
