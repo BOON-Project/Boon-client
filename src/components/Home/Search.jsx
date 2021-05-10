@@ -31,21 +31,21 @@ const Search = () => {
         freeSolo
         options={skillsData.map((skill) => skill.name)}
         renderInput={(params) => (
-          <CardActions style={{ padding: "0" }}>
-            <Link
-              to={{
-                pathname: `/SkillByUser/${skill._id}`,
-                state: { skill },
-              }}
-            >
-              <TextField
-                {...params}
-                label="freeSolo"
-                margin="normal"
-                variant="outlined"
-              />
-            </Link>
-          </CardActions>
+          // <CardActions style={{ padding: "0" }}>
+          //   <Link
+          //     to={{
+          //       pathname: `/SkillByUser/${skill._id}`,
+          //       state: { skill },
+          //     }}
+          //   >
+          <TextField
+            {...params}
+            label="freeSolo"
+            margin="normal"
+            variant="outlined"
+          />
+          //   </Link>
+          // </CardActions>
         )}
       />
 

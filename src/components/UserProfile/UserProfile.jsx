@@ -1,39 +1,30 @@
 import React from "react";
-
 //MUI styling =>
 import {
   Box,
   Typography,
   List,
   ListItem,
-  ListItemText,
   ListItemSecondaryAction,
   Paper,
   Divider,
   CssBaseline,
-  InputAdornment,
   Grid,
   Button,
   ButtonGroup,
   Link,
-  TextField,
 } from "@material-ui/core";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import Rating from "@material-ui/lab/Rating";
 
 //general imports
 import useStyles from "./styles";
-import { useDispatch, useSelector, Redirect } from "react-redux";
 import { useHistory } from "react-router";
-import { getUsersAction } from "../../store/actions/usersAction";
-import { getSkillsAction } from "../../store/actions/skillsActions";
-import { getTasksAction } from "../../store/actions/tasksActions";
 
 // start of our User Profile
 export default function UserProfile(props) {
   //in order to use Material UI u need this =>
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   // to go back
   const history = useHistory();
@@ -48,53 +39,35 @@ export default function UserProfile(props) {
     skills,
   } = props.location.state.user;
 
-  //Rendering skills!
-  // const skillItems = useSelector((state) => state.skills);
+  const skillsList = skills.map((skill) => {
+    return (
+      <Box display="flex" alignItems="center" m={1}>
+        <Button size="large" color="primary" variant="outlined">
+          {skill.skillID.name}
+        </Button>
+        <Box m={2}>
+          <Typography>{skill.boons} boons per hour</Typography>
+        </Box>
+      </Box>
+    );
+  });
 
-  // const renderSkillsItems = skillItems.map((skill, index)=> (
-  // <div className={classes.root}>
-  //   <Grid container spacing={3}>
-
-  //     {/* Header */}
-  //     <Grid item xs={12} sm={6}>
-  //       <Paper className={classes.paper}>Offering</Paper>
-  //     </Grid>
-
-  //     <Grid item xs={6} sm={3}>
-  //           <Paper className={classes.paper}>Skill</Paper>
-  //     </Grid>
-  //         <Grid item xs={6} sm={3}>
-  //           <Paper className={classes.paper}>Boons</Paper>
-  //         </Grid>
-
-  //       {/* Skills List */}
-  //       <div key={index} className={classes.root}>
-
-  //       <Grid item xs={6} sm={3}>
-  //           <Paper className={classes.paper}>{skill.name}</Paper>
-  //     </Grid>
-  //         <Grid item xs={6} sm={3}>
-  //           <Paper className={classes.paper}>{skill.boons}</Paper>
-  //         </Grid>
-  //       </div>
-
-  //   </Grid>
-  // </div>
-  // ))
-
-  //Rendering part! =>
   return (
     <CssBaseline>
+      {/* first name */}
       <Typography variant="h3" color="secondary" className={classes.hero}>
         {firstName}
       </Typography>
       <Divider variant="middle" />
+
+      {/* avatar */}
       <Grid container spacing={2} className={classes.container}>
         <Box component="div">
           <Grid item xs={6}>
             <img src={avatar} alt="avatar" className={classes.image} />
           </Grid>
         </Box>
+        {/* rating */}
         <List className={classes.skills}>
           <ListItem alignItems="flex-start">
             <Typography variant="h4" color="secondary">
@@ -113,35 +86,18 @@ export default function UserProfile(props) {
             </ListItemSecondaryAction>
           </ListItem>
 
-          {/* start of skills =>  */}
-          <ListItem alignItems="flex-start">
-            <Typography variant="h5" color="primary">
-              Skills offered:{" "}
-            </Typography>
-
-            {/* skills mappp */}
-            <ListItemSecondaryAction>
-              {skills[0].skillID.name},{skills[1].skillID.name}
-            </ListItemSecondaryAction>
-          </ListItem>
-
+          {/* skills  */}
           <ListItem alignItems="flex-start">
             <Typography variant="h6" color="primary">
-              Best rated skills:
+              Offered skills:
             </Typography>
           </ListItem>
-          <ListItem alignItems="flex-start">
-            <Button size="large" color="primary" variant="outlined">
-              {skills[0].skillID.name}
-            </Button>
-            {/* Boons pro Stunde => */}
-            <ListItemSecondaryAction>
-              <ListItemText primary={`${skills[0].boons} boons per hour`} />
-            </ListItemSecondaryAction>
-          </ListItem>
+          {skillsList}
         </List>
       </Grid>
+
       <div className={classes.root}>
+        {/* BIO */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <Typography variant="p" color="primary">
@@ -152,6 +108,7 @@ export default function UserProfile(props) {
             <Paper className={classes.paper}>{bio}</Paper>
           </Grid>
         </Grid>
+        {/* NAME */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <Typography variant="p" color="primary">
@@ -162,29 +119,17 @@ export default function UserProfile(props) {
             <Paper className={classes.paper}>{userName}</Paper>
           </Grid>
         </Grid>
+        {/* LOCATION */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <Typography variant="p" color="primary">
               Location
             </Typography>
           </Grid>
-          <Grid item xs={4}>
-            <TextField
-              fullWidth
-              id="outlined-read-only-input"
-              defaultValue=" Berlin | 10629"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PersonPinIcon className={classes.icon} />
-                  </InputAdornment>
-                ),
-              }}
-              label="Outlined"
-              variant="outlined"
-              label="First Name"
-              multiline
-            ></TextField>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <PersonPinIcon className={classes.icon} /> Berlin | 10629
+            </Paper>
           </Grid>
         </Grid>
       </div>
@@ -215,7 +160,7 @@ export default function UserProfile(props) {
             onClick={() => history.goBack()}
             className={classes.button}
           >
-            Send a message
+            Request a Boon
           </Button>
         </ButtonGroup>
       </Box>
