@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 //MUI styling =>
 import {
+<<<<<<< HEAD
 	Box,
 	Typography,
 	List,
@@ -13,6 +14,20 @@ import {
 	Grid,
 	Button,
 	ButtonGroup,
+=======
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  Paper,
+  Divider,
+  CssBaseline,
+  Grid,
+  Button,
+  ButtonGroup,
+  Link,
+>>>>>>> e8bc3ae2d72ac915913535c1b7193f5a317d8546
 } from "@material-ui/core";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import Rating from "@material-ui/lab/Rating";
@@ -23,12 +38,13 @@ import { useHistory } from "react-router";
 
 // start of our User Profile
 export default function UserProfile(props) {
-	//in order to use Material UI u need this =>
-	const classes = useStyles();
+  //in order to use Material UI u need this =>
+  const classes = useStyles();
 
-	// to go back
-	const history = useHistory();
+  // to go back
+  const history = useHistory();
 
+<<<<<<< HEAD
 	//deconstruct user's info
 	const user = props.location.state.user;
 	const {
@@ -40,117 +56,128 @@ export default function UserProfile(props) {
 		skills,
 	} = props.location.state.user;
 	console.log(user._id);
+=======
+  //deconstruct user's info
+  const {
+    firstName,
+    userName,
+    bio,
+    rating,
+    avatar,
+    skills,
+  } = props.location.state.user;
+>>>>>>> e8bc3ae2d72ac915913535c1b7193f5a317d8546
 
-	const skillsList = skills.map((skill) => {
-		return (
-			<Box display="flex" alignItems="center" m={1}>
-				<Button size="large" color="primary" variant="outlined">
-					{skill.skillID.name}
-				</Button>
-				<Box m={2}>
-					<Typography>{skill.boons} boons per hour</Typography>
-				</Box>
-			</Box>
-		);
-	});
+  const skillsList = skills.map((skill) => {
+    return (
+      <Box display="flex" alignItems="center" m={1}>
+        <Button size="large" color="primary" variant="outlined">
+          {skill.skillID.name}
+        </Button>
+        <Box m={2}>
+          <Typography>{skill.boons} boons per hour</Typography>
+        </Box>
+      </Box>
+    );
+  });
 
-	return (
-		<CssBaseline>
-			{/* first name */}
-			<Typography variant="h3" color="secondary" className={classes.hero}>
-				{firstName}
-			</Typography>
-			<Divider variant="middle" />
+  return (
+    <CssBaseline>
+      {/* first name */}
+      <Typography variant="h3" color="secondary" className={classes.hero}>
+        {firstName}
+      </Typography>
+      <Divider variant="middle" />
 
-			{/* avatar */}
-			<Grid container spacing={2} className={classes.container}>
-				<Box component="div">
-					<Grid item xs={6}>
-						<img src={avatar} alt="avatar" className={classes.image} />
-					</Grid>
-				</Box>
-				{/* rating */}
-				<List className={classes.skills}>
-					<ListItem alignItems="flex-start">
-						<Typography variant="h4" color="secondary">
-							Current rating:{" "}
-						</Typography>
+      {/* avatar */}
+      <Grid container spacing={2} className={classes.container}>
+        <Box component="div">
+          <Grid item xs={6}>
+            <img src={avatar} alt="avatar" className={classes.image} />
+          </Grid>
+        </Box>
+        {/* rating */}
+        <List className={classes.skills}>
+          <ListItem alignItems="flex-start">
+            <Typography variant="h4" color="secondary">
+              Current rating:{" "}
+            </Typography>
 
-						{/* User Rating =>  */}
-						<ListItemSecondaryAction>
-							<Rating
-								name="size-large"
-								defaultValue={rating}
-								size="large"
-								precision={0.5}
-								readOnly
-							/>
-						</ListItemSecondaryAction>
-					</ListItem>
+            {/* User Rating =>  */}
+            <ListItemSecondaryAction>
+              <Rating
+                name="size-large"
+                defaultValue={rating}
+                size="large"
+                precision={0.5}
+                readOnly
+              />
+            </ListItemSecondaryAction>
+          </ListItem>
 
-					{/* skills  */}
-					<ListItem alignItems="flex-start">
-						<Typography variant="h6" color="primary">
-							Offered skills:
-						</Typography>
-					</ListItem>
-					{skillsList}
-				</List>
-			</Grid>
+          {/* skills  */}
+          <ListItem alignItems="flex-start">
+            <Typography variant="h6" color="primary">
+              Offered skills:
+            </Typography>
+          </ListItem>
+          {skillsList}
+        </List>
+      </Grid>
 
-			<div className={classes.root}>
-				{/* BIO */}
-				<Grid container spacing={2}>
-					<Grid item xs={2}>
-						<Typography variant="p" color="primary">
-							Bio
-						</Typography>
-					</Grid>
-					<Grid item xs>
-						<Paper className={classes.paper}>{bio}</Paper>
-					</Grid>
-				</Grid>
-				{/* NAME */}
-				<Grid container spacing={2}>
-					<Grid item xs={2}>
-						<Typography variant="p" color="primary">
-							Name
-						</Typography>
-					</Grid>
-					<Grid item xs>
-						<Paper className={classes.paper}>{userName}</Paper>
-					</Grid>
-				</Grid>
-				{/* LOCATION */}
-				<Grid container spacing={2}>
-					<Grid item xs={2}>
-						<Typography variant="p" color="primary">
-							Location
-						</Typography>
-					</Grid>
-					<Grid item xs>
-						<Paper className={classes.paper}>
-							<PersonPinIcon className={classes.icon} /> Berlin | 10629
-						</Paper>
-					</Grid>
-				</Grid>
-			</div>
+      <div className={classes.root}>
+        {/* BIO */}
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Typography variant="p" color="primary">
+              Bio
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>{bio}</Paper>
+          </Grid>
+        </Grid>
+        {/* NAME */}
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Typography variant="p" color="primary">
+              Name
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>{userName}</Paper>
+          </Grid>
+        </Grid>
+        {/* LOCATION */}
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Typography variant="p" color="primary">
+              Location
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <PersonPinIcon className={classes.icon} /> Berlin | 10629
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
 
-			{/* Last 2 Buttons!  */}
+      {/* Last 2 Buttons!  */}
 
-			<Box className={classes.root} textAlign="center">
-				<ButtonGroup disableElevation variant="contained">
-					<Button
-						component={Link}
-						to="/home"
-						size="large"
-						color="secondary"
-						variant="contained"
-						onClick={() => history.goBack()}
-						className={classes.button}
-					>
-						Go back
-					</Button>
+      <Box className={classes.root} textAlign="center">
+        <ButtonGroup disableElevation variant="contained">
+          <Button
+            component={Link}
+            to="/home"
+            size="large"
+            color="secondary"
+            variant="contained"
+            onClick={() => history.goBack()}
+            className={classes.button}
+          >
+            Go back
+          </Button>
 
 					<Link
 						to={{
