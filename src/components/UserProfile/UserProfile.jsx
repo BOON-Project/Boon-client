@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //MUI styling =>
 import {
 	Box,
@@ -12,7 +13,6 @@ import {
 	Grid,
 	Button,
 	ButtonGroup,
-	Link,
 } from "@material-ui/core";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import Rating from "@material-ui/lab/Rating";
@@ -30,6 +30,7 @@ export default function UserProfile(props) {
 	const history = useHistory();
 
 	//deconstruct user's info
+	const user = props.location.state.user;
 	const {
 		firstName,
 		userName,
@@ -38,6 +39,7 @@ export default function UserProfile(props) {
 		avatar,
 		skills,
 	} = props.location.state.user;
+	console.log(user._id);
 
 	const skillsList = skills.map((skill) => {
 		return (
@@ -150,18 +152,21 @@ export default function UserProfile(props) {
 						Go back
 					</Button>
 
-					<Button
-						component={Link}
-						to="/home"
-						size="large"
-						color="secondary"
-						variant="contained"
-						//pending!!
-						onClick={() => history.goBack()}
-						className={classes.button}
+					<Link
+						to={{
+							pathname: `/RequestBoon/${user._id}`,
+							state: { user },
+						}}
 					>
-						Request a Boon
-					</Button>
+						<Button
+							size="large"
+							color="secondary"
+							variant="contained"
+							className={classes.button}
+						>
+							Request a Boon
+						</Button>
+					</Link>
 				</ButtonGroup>
 			</Box>
 		</CssBaseline>
