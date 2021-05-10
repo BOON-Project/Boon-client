@@ -10,12 +10,15 @@ import {
 import useStyles from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { addTask } from "../../helpers/apiCalls";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setErrorAction } from "../../store/actions/errorActions";
 
 export default function RequestBoon(props) {
-	const booner = props.location.state.user;
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const { handleSubmit, control } = useForm();
+
+	const booner = props.location.state.user;
 	const boonee = useSelector((state) => state.userReducer.user);
 
 	//Map through skills for dropdown select
@@ -31,7 +34,8 @@ export default function RequestBoon(props) {
 		let finalData = { ...data, booner: booner._id, boonee: boonee._id };
 		let result = await addTask(finalData);
 		if (result.error) {
-			alert(result.error);
+			dispatch(setErrorAction(result.error));
+			return;
 		}
 		alert(`Request sent to ${booner.userName}, let's hope they say yes`);
 	};

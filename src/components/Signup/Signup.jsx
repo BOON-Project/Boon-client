@@ -60,7 +60,6 @@ export default function SignUp() {
 
 	const onSubmit = async (data) => {
 		let result = await signupUser(data);
-		console.log(result);
 
 		// handle error case
 		if (result.error) {
