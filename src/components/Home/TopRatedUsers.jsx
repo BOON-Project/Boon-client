@@ -70,12 +70,6 @@ const TopRatedUsers = () => {
                             flexDirection='column'
                             pt={1}
                             key={skill.skillID._id}>
-                            {/* <Link
-                to={{
-                    pathname: `/user/:${id}`,
-                    state: {user},
-                }}
-                /> */}
 
                             <Button
                               size='medium'
@@ -88,13 +82,14 @@ const TopRatedUsers = () => {
                         );
                       })}
                     </Box>
-                    <CardActions style={{ padding: "0" }}>
+                    <CardActions style={{ padding: "0" }} >
                       <Link
                         to={{
                           pathname: `/UserProfile/${user._id}`,
                           state: { user },
                         }}>
                         <Button
+
                           size='large'
                           color='secondary'
                           variant='contained'
