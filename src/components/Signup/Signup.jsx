@@ -29,7 +29,7 @@ import {
   setTokenInStorage,
   setUserInStorage,
 } from "../../helpers/localStorage";
-import ErrorDisplay from "../errorDisplay/ErrorDisplay";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 //end fo styling components
 
