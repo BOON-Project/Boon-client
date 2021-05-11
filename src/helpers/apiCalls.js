@@ -96,3 +96,16 @@ export const userProfile = async (userId)=>{
 	}
 
 }
+
+
+// get all users with this skill
+
+export const getUsersBySkill = async (skillId) => {
+  console.log(`im fetching the users with this skills`);
+  try {
+    const response = await axios.get(`/skill/${skillId}`);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+};
