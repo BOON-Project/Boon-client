@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -60,7 +60,6 @@ export default function SignUp() {
 
   const onSubmit = async (data) => {
     let result = await signupUser(data);
-    console.log(result);
 
     // handle error case
     if (result.error) {

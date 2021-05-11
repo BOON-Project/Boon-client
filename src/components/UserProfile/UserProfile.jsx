@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //MUI styling =>
 import {
   Box,
@@ -12,7 +13,6 @@ import {
   Grid,
   Button,
   ButtonGroup,
-  Link,
 } from "@material-ui/core";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import Rating from "@material-ui/lab/Rating";
@@ -20,6 +20,7 @@ import Rating from "@material-ui/lab/Rating";
 //general imports
 import useStyles from "./styles";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 
 // start of our User Profile
 export default function UserProfile(props) {
@@ -30,14 +31,10 @@ export default function UserProfile(props) {
   const history = useHistory();
 
   //deconstruct user's info
-  const {
-    firstName,
-    userName,
-    bio,
-    rating,
-    avatar,
-    skills,
-  } = props.location.state.user;
+  const user = props.location.state.user;
+  const boonee = useSelector((state) => state.userReducer.user);
+  const { firstName, userName, bio, rating, avatar, skills } =
+    props.location.state.user;
 
   const skillsList = skills.map((skill) => {
     return (
@@ -51,6 +48,41 @@ export default function UserProfile(props) {
       </Box>
     );
   });
+
+  const linkConditional = () => {
+    if (boonee) {
+      console.log("this");
+      return (
+        <Link
+          to={{
+            pathname: `/RequestBoon/${user._id}`,
+            state: { user },
+          }}
+        >
+          <Button
+            size="large"
+            color="secondary"
+            variant="contained"
+            className={classes.button}
+          >
+            Request a Boon
+          </Button>
+        </Link>
+      );
+    } else {
+      return (
+        <Button
+          size="large"
+          color="secondary"
+          variant="contained"
+          className={classes.button}
+          onClick={() => history.push("/login")}
+        >
+          Request a Boon
+        </Button>
+      );
+    }
+  };
 
   return (
     <CssBaseline>
@@ -150,18 +182,7 @@ export default function UserProfile(props) {
             Go back
           </Button>
 
-          <Button
-            component={Link}
-            to="/home"
-            size="large"
-            color="secondary"
-            variant="contained"
-            //pending!!
-            onClick={() => history.goBack()}
-            className={classes.button}
-          >
-            Request a Boon
-          </Button>
+          {linkConditional()}
         </ButtonGroup>
       </Box>
     </CssBaseline>
