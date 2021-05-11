@@ -32,13 +32,24 @@ export const getSkills = async () => {
 
 // GET TASKS
 export const getTasks = async () => {
-	console.log(`im fetching the tasks`);
-	try {
-		const response = await axios.get(`/task`);
-		return response;
-	} catch (err) {
-		return extractApiError(err);
-	}
+  console.log(`im fetching the tasks`);
+  try {
+    const response = await axios.get(`/task`);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+};
+
+// ADD TASK
+export const addTask = async (formData) => {
+  try {
+    const response = await axios.post("/task", formData);
+    console.log(response);
+    return response.data;
+  } catch (err) {
+    return extractApiError(err);
+  }
 };
 
 // signup user
@@ -56,10 +67,7 @@ export const signupUser = async (formData) => {
 
 export const loginUser = async (formData) => {
   try {
-    const response = await axios.post(
-      "/user/login",
-      formData
-    );
+    const response = await axios.post("/user/login", formData);
 
     return response.data;
   } catch (err) {
@@ -67,36 +75,16 @@ export const loginUser = async (formData) => {
   }
 };
 
-
 // edit user data (PRIVATE ROUTE, only user can be there & modify)
 
-export const editUser = async (userId, updatedUser) =>{
-	try {
-		const response = axios.patch(
-		`/user/${userId}`,
-		updatedUser
-		);
-		return response;
-	} catch (err) {
-		return extractApiError(err);
-	}
-}
-
-//user profile (publiccccccccc)
-
-export const userProfile = async (userId)=>{
-	try {
-		const response = axios.get(
-		`/user/${userId}`,
-		userProfile
-		);
-		return response.data;
-	} catch (err) {
-		return extractApiError(err);
-	}
-
-}
-
+export const editUser = async (userId, updatedUser) => {
+  try {
+    const response = axios.patch(`/user/${userId}`, updatedUser);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+};
 
 // get all users with this skill
 

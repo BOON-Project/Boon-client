@@ -21,7 +21,7 @@ const TopRatedBoons = () => {
 		.filter((task) => task.rating > 0)
 		.sort((a, b) => b.rating - a.rating)
 		.slice(0, 4);
-	console.log("sorted", sortedTasks);
+	// console.log("sorted", sortedTasks);
 
 	// GRID
 	return (
@@ -35,7 +35,7 @@ const TopRatedBoons = () => {
 				{sortedTasks.map((task) => {
 					const rating = task.rating;
 					return (
-						<Grid item xs={12} md={6}>
+						<Grid item xs={12} md={6} key={task._id}>
 							<Card className={classes.ratingCard} elevation={8} p={2}>
 								{/* NAMES RATING AND SKILL CONTAINER */}
 								<CardContent>
