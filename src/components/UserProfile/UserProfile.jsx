@@ -38,8 +38,8 @@ export default function UserProfile(props) {
 
   const skillsList = skills.map((skill) => {
     return (
-      <Box display="flex" alignItems="center" m={1}>
-        <Button size="large" color="primary" variant="outlined">
+      <Box display='flex' alignItems='center' m={1}>
+        <Button size='large' color='primary' variant='outlined'>
           {skill.skillID.name}
         </Button>
         <Box m={2}>
@@ -87,31 +87,31 @@ export default function UserProfile(props) {
   return (
     <CssBaseline>
       {/* first name */}
-      <Typography variant="h3" color="secondary" className={classes.hero}>
+      <Typography variant='h3' color='secondary' className={classes.hero}>
         {firstName}
       </Typography>
-      <Divider variant="middle" />
+      <Divider variant='middle' />
 
       {/* avatar */}
       <Grid container spacing={2} className={classes.container}>
-        <Box component="div">
+        <Box component='div'>
           <Grid item xs={6}>
-            <img src={avatar} alt="avatar" className={classes.image} />
+            <img src={avatar} alt='avatar' className={classes.image} />
           </Grid>
         </Box>
         {/* rating */}
         <List className={classes.skills}>
-          <ListItem alignItems="flex-start">
-            <Typography variant="h4" color="secondary">
+          <ListItem alignItems='flex-start'>
+            <Typography variant='h4' color='secondary'>
               Current rating:{" "}
             </Typography>
 
             {/* User Rating =>  */}
             <ListItemSecondaryAction>
               <Rating
-                name="size-large"
+                name='size-large'
                 defaultValue={rating}
-                size="large"
+                size='large'
                 precision={0.5}
                 readOnly
               />
@@ -119,8 +119,8 @@ export default function UserProfile(props) {
           </ListItem>
 
           {/* skills  */}
-          <ListItem alignItems="flex-start">
-            <Typography variant="h6" color="primary">
+          <ListItem alignItems='flex-start'>
+            <Typography variant='h6' color='primary'>
               Offered skills:
             </Typography>
           </ListItem>
@@ -132,7 +132,7 @@ export default function UserProfile(props) {
         {/* BIO */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Bio
             </Typography>
           </Grid>
@@ -143,7 +143,7 @@ export default function UserProfile(props) {
         {/* NAME */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Name
             </Typography>
           </Grid>
@@ -154,7 +154,7 @@ export default function UserProfile(props) {
         {/* LOCATION */}
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <Typography variant="p" color="primary">
+            <Typography variant='p' color='primary'>
               Location
             </Typography>
           </Grid>
@@ -168,21 +168,33 @@ export default function UserProfile(props) {
 
       {/* Last 2 Buttons!  */}
 
-      <Box className={classes.root} textAlign="center">
-        <ButtonGroup disableElevation variant="contained">
+      <Box className={classes.root} textAlign='center'>
+        <ButtonGroup disableElevation variant='contained'>
           <Button
             component={Link}
-            to="/home"
-            size="large"
-            color="secondary"
-            variant="contained"
+            to='/home'
+            size='large'
+            color='secondary'
+            variant='contained'
             onClick={() => history.goBack()}
-            className={classes.button}
-          >
+            className={classes.button}>
             Go back
           </Button>
 
+
+          <Button
+            component={Link}
+            to='/home'
+            size='large'
+            color='secondary'
+            variant='contained'
+            //pending!!
+            onClick={() => history.goBack()}
+            className={classes.button}>
+            Request a Boon
+          </Button>
           {linkConditional()}
+
         </ButtonGroup>
       </Box>
     </CssBaseline>
