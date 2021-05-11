@@ -22,7 +22,7 @@ const App = () => {
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/UserProfile/:id" component={UserProfile} />
-        <Route excat path="/skills" component={SkillByUser} />
+        <Route exact path="/skills" component={SkillByUser} />
         {/* Private Routes =>  */}
         <PrivateRoute path="/EditUser" component={EditUser} />
         {/* Error 404 Route =>  */}
