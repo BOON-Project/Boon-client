@@ -6,7 +6,7 @@ import {
   TextField,
   CardActions,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
@@ -28,6 +28,7 @@ const Search = () => {
   };
 
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <>
@@ -37,21 +38,24 @@ const Search = () => {
           Explore our tags and search for what you need{" "}
         </Typography>
       </Box>
-      <form onClick={handleSubmit(goToSkill)}>
-        <Autocomplete
-          id="free-solo-demo"
-          freeSolo
-          options={skillsData.map((skill) => skill.name)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="freeSolo"
-              margin="normal"
-              variant="outlined"
-            />
-          )}
-        />
-      </form>
+
+      <Autocomplete
+        id="free-solo-demo"
+        freeSolo
+        options={skillsData}
+        getOptionLabel={(skill) => skill.name}
+        onChange={(event, skill) => {
+          history.push(`/skills/${skill._id}`);
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="freeSolo"
+            margin="normal"
+            variant="outlined"
+          />
+        )}
+      />
 
       <Box display="flex">
         <Button
