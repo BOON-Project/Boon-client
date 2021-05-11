@@ -27,7 +27,7 @@ import {
   setErrorAction,
 } from "../../store/actions/errorActions";
 import { loginAction } from "../../store/actions/userActions";
-import ErrorDisplay from "../errorDisplay/ErrorDisplay";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 export default function SignInSide() {
   const classes = useStyles();
@@ -59,9 +59,9 @@ export default function SignInSide() {
   // FUNCTION COPYRIGHT
   function Copyright() {
     return (
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant='body2' color='textSecondary' align='center'>
         {"Copyright © "}
-        <Link color="inherit" href="https://material-ui.com/">
+        <Link color='inherit' href='https://material-ui.com/'>
           Boon
         </Link>{" "}
         {new Date().getFullYear()}
@@ -73,7 +73,7 @@ export default function SignInSide() {
   return (
     <>
       <ErrorDisplay />
-      <Grid container component="main" className={classes.root}>
+      <Grid container component='main' className={classes.root}>
         {/* IMAGE COMPONENT */}
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -84,7 +84,7 @@ export default function SignInSide() {
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon className={classes.icon} />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component='h1' variant='h5'>
               Log in
             </Typography>
 
@@ -92,24 +92,24 @@ export default function SignInSide() {
             <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
               {/* NAME INPUT */}
               <Controller
-                name="userName"
+                name='userName'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({
                   field: { onChange, value },
                   fieldState: { error },
                 }) => (
                   <TextField
-                    label="Your username"
-                    variant="outlined"
+                    label='Your username'
+                    variant='outlined'
                     value={value}
                     onChange={onChange}
                     error={!!error}
                     helperText={error ? error.message : null}
-                    margin="normal"
+                    margin='normal'
                     fullWidth
-                    id="userName"
-                    autoComplete="username"
+                    id='userName'
+                    autoComplete='username'
                     autoFocus
                   />
                 )}
@@ -118,20 +118,20 @@ export default function SignInSide() {
 
               {/* PASSWORD INPUT */}
               <Controller
-                name="password"
+                name='password'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({
                   field: { onChange, value },
                   fieldState: { error },
                 }) => (
                   <TextField
-                    label="Password"
-                    variant="outlined"
-                    margin="normal"
-                    type="password"
+                    label='Password'
+                    variant='outlined'
+                    margin='normal'
+                    type='password'
                     fullWidth
-                    id="password"
+                    id='password'
                     value={value}
                     onChange={onChange}
                     error={!!error}
@@ -142,16 +142,15 @@ export default function SignInSide() {
               />
 
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                control={<Checkbox value='remember' color='primary' />}
+                label='Remember me'
               />
               <Button
-                type="submit"
+                type='submit'
                 fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
+                variant='contained'
+                color='primary'
+                className={classes.submit}>
                 Log In
               </Button>
             </form>
@@ -159,12 +158,12 @@ export default function SignInSide() {
             {/* SIGNUP AND FORGOT PASSWORD */}
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href='#' variant='body2'>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/Signup" variant="body2">
+                <Link href='/Signup' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

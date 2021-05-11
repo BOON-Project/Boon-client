@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {
+  Box,
   Button,
   Container,
   CssBaseline,
   Grid,
-  Input,
   List,
   ListItem,
   ListItemSecondaryAction,
@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { useForm, Controller } from "react-hook-form";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
@@ -22,8 +23,17 @@ import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 
 const EditUser = () => {
-  const user = useSelector((state) => state.userReducer.user);
-  const rating = useSelector((state) => state.userReducer.user.rating);
+  const {
+    rating,
+    skills,
+    bio,
+    firstName,
+    lastName,
+    email,
+    birthday,
+    userName,
+  } = useSelector((state) => state.userReducer.user);
+
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
@@ -66,6 +76,8 @@ const EditUser = () => {
     }
   };
 
+  console.log("user from editUser", skills);
+
   return (
     <CssBaseline>
       <Container component='main' maxWidth='md'>
@@ -81,7 +93,7 @@ const EditUser = () => {
             noValidate
             autoComplete='off'
             onSubmit={handleSubmit(onSubmit)}>
-            {/* first name input! */}
+            {/* Avatar input */}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <label htmlFor='avatar'>
@@ -93,6 +105,9 @@ const EditUser = () => {
                   />
                 </label>
               </Grid>
+
+              {/* Skills */}
+
               <Grid item xs={12} sm={6}>
                 <List className={classes.skills}>
                   {" "}
@@ -128,28 +143,34 @@ const EditUser = () => {
                     {" "}
                     <Typography variant='h6' color='primary'>
                       {" "}
-                      Add up to 5 skills{" "}
+                      Add up to 5 skills
+                      <MoreVertIcon />
                     </Typography>{" "}
                   </ListItem>{" "}
-                  <ListItem alignItems='flex-start'>
-                    {" "}
-                    <Button size='large' color='primary' variant='outlined'>
-                      {" "}
-                      Skill
-                    </Button>
-                    <ListItemSecondaryAction>
-                      {" "}
-                      <ListItemText primary={`50 boons per hour`} />{" "}
-                    </ListItemSecondaryAction>{" "}
-                  </ListItem>{" "}
+                  {skills.map((skill) => {
+                    return (
+                      <ListItem alignItems='flex-start'>
+                        {" "}
+                        <Button size='large' color='primary' variant='outlined'>
+                          {skill.skillID.name}
+                        </Button>
+                        <ListItemSecondaryAction>
+                          <ListItemText
+                            primary={`${skill.boons} boons per hour`}
+                          />
+                        </ListItemSecondaryAction>
+                      </ListItem>
+                    );
+                  })}
                 </List>
               </Grid>
 
+              {/* first name input! */}
               <Grid item xs={12} sm={6}>
                 <Controller
                   name='firstName'
                   control={control}
-                  defaultValue={user.firstName}
+                  defaultValue={firstName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -175,7 +196,7 @@ const EditUser = () => {
                 <Controller
                   name='lastName'
                   control={control}
-                  defaultValue={user.lastName}
+                  defaultValue={lastName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -200,7 +221,7 @@ const EditUser = () => {
                 <Controller
                   name='userName'
                   control={control}
-                  defaultValue={user.userName}
+                  defaultValue={userName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -223,7 +244,7 @@ const EditUser = () => {
                 <Controller
                   name='birthday'
                   control={control}
-                  defaultValue={user.birthday}
+                  defaultValue={birthday}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -251,7 +272,7 @@ const EditUser = () => {
                 <Controller
                   name='email'
                   control={control}
-                  defaultValue={user.email}
+                  defaultValue={email}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -277,24 +298,37 @@ const EditUser = () => {
                 <Controller
                   name='bio'
                   control={control}
-                  defaultValue={user.bio}
+                  defaultValue={bio}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
-                  }) => <Paper className={classes.paper}>{user.bio}</Paper>}
+                  }) => (
+                    <TextField
+                      fullWidth
+                      id='bio'
+                      label='Bio'
+                      name='bio'
+                      autoComplete='bio'
+                      onChange={onChange}
+                      value={value}
+                      error={!!error}
+                      helperText={error ? error.message : null}
+                    />
+                  )}
                 />
               </Grid>
-              <div>
+              {/* File Input */}
+
+              <Box display='none'>
                 <input
                   className={classes.input}
                   accept='image/*'
-                  display='none'
                   type='file'
                   id='avatar'
                   name='avatar'
                   onChange={onAvatarChange}
                 />
-              </div>
+              </Box>
               <Button variant='outlined'>Save changes</Button>
             </Grid>
           </form>
