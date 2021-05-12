@@ -10,6 +10,7 @@ import CurentlyOffering from "./CurrentlyOffering";
 import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
 import Search from "./Search";
+import SkillByUser from "../SkillByUser/SkillByUser";
 import TopRatedBoons from "./TopRatedBoons";
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
@@ -27,26 +28,26 @@ const Home = () => {
   }, []);
 
   return (
-    <Container maxWidth='lg' className={classes.root}>
+    <Container maxWidth="lg" className={classes.root}>
       {/* DICTIONARY CARD */}
       <Card className={classes.card} elevation={8}>
         <CardContent>
           <Box pb={2}>
-            <Typography variant='h2' color='primary'>
+            <Typography variant="h2" color="primary">
               Boon
             </Typography>
-            <Typography variant='subtitle1'>/buːn/</Typography>
+            <Typography variant="subtitle1">/buːn/</Typography>
           </Box>
-          <Typography variant='h5' color='info'>
+          <Typography variant="h5" color="info">
             1. A thing that is helpful or beneficial
           </Typography>
-          <Typography variant='h5' color='info'>
+          <Typography variant="h5" color="info">
             2. A favour or request.
           </Typography>
         </CardContent>
       </Card>
       <Box mt={3} mb={3}>
-        <Typography variant='h4' color='info'>
+        <Typography variant="h4" color="info">
           {" "}
           We make exchange based economy a reality with our money free exchange
           platform
@@ -54,7 +55,9 @@ const Home = () => {
       </Box>
 
       {/* SEARCH */}
-      <Search />
+      <Search>
+        <SkillByUser />
+      </Search>
 
       {/* CURRENTLY OFFERING */}
       {/* <CurentlyOffering/> */}

@@ -1,11 +1,14 @@
 import React from "react";
 
-export default function SkillByUser(props) {
-  const { name, creator } = props.location.state.skill;
-
+const SkillByUser = () => {
+  console.log();
+  //const id = props.match.params.id;
   return (
     <div>
-      <h1>{name}</h1>
+      <h1>Here we need a map for users</h1>
+      <div></div>
     </div>
   );
-}
+};
+
+export default SkillByUser;
