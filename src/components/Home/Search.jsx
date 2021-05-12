@@ -12,16 +12,12 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
+import { getUsersBySkillAction } from "../../store/actions/usersAction";
+import { useDispatch } from "react-redux";
 
 const Search = () => {
   const skillsData = useSelector((state) => state.skillsReducer);
-  //const users = useSelector((state) => state.usersReducer);
-  //1. wrap the search with form
-  //2. attach the formSubmit event to a function -> http request to the endpoint /skill/id
-  //3. get/post request
-  //4. setup the endpoint "route" to retrieve data from the DB according to the id in the req.body/params
-  //5. saving retrieved data to redux store
-  //6. select the data and render on view
+
   const { handleSubmit } = useForm();
   const goToSkill = (id) => {
     console.log("plese work", id);
@@ -29,6 +25,11 @@ const Search = () => {
 
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const handleInputChange = (skillID) => {
+    history.push(`/skill/${skillID}`);
+    dispatch(getUsersBySkillAction(skillID));
+  };
 
   return (
     <>
@@ -45,7 +46,7 @@ const Search = () => {
         options={skillsData}
         getOptionLabel={(skill) => skill.name}
         onChange={(event, skill) => {
-          history.push(`/skills/${skill._id}`);
+          handleInputChange(skill._id);
         }}
         renderInput={(params) => (
           <TextField

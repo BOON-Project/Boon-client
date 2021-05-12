@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { logoutAction } from "../../store/actions/userActions";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import OpenInBrowserOutlinedIcon from "@material-ui/icons/OpenInBrowserOutlined";
+import logo from "../../images/Boon-big.svg";
 
 export default function PrimarySearchAppBar() {
   const user = useSelector((state) => state.userReducer.user);
@@ -56,11 +57,7 @@ export default function PrimarySearchAppBar() {
         <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Link underline="none" href="/" color="primary">
-              <img
-                src="./images/Boon-big.svg"
-                alt="Boon-logo"
-                className={classes.logo}
-              />
+              <img src={logo} alt="Boon-logo" className={classes.logo} />
             </Link>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

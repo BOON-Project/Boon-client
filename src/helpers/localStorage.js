@@ -2,6 +2,7 @@
 const loadEntryFromStorage = (key) => {
   const userString = localStorage.getItem(key);
   // if item was found in localStorage => parse string into user object
+  //same as if(userString) return json.parse(userString)
   return userString && JSON.parse(userString);
 };
 

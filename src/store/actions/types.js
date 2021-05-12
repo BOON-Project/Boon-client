@@ -2,6 +2,7 @@
 export const GET_USERS = "GET_USERS";
 export const SIGNUP_USER = "SIGNUP_USER";
 export const EDIT_USER = "EDIT_USER";
+export const GET_USERS_BY_SKILL = "GET_USERS_BY_SKILL";
 
 // Authentication
 export const LOGIN_USER = "LOGIN_USER";
@@ -13,7 +14,6 @@ export const SET_ERROR = "SET_ERROR";
 
 // Skills
 export const GET_SKILLS = "GET_SKILLS";
-export const GET_SKILLS_BY_USER = "GET_SKILLS_BY_USER";
 
 //Tasks
 export const GET_TASKS = "GET_TASKS";
