@@ -14,8 +14,8 @@ export const getUsersAction = () => async (dispatch) => {
 // this means first calls the api
 // then gets the response into (Object) the payload
 
-export const getUsersBySkillAction = () => async (dispatch) => {
-  const response = await getUsersBySkill();
+export const getUsersBySkillAction = (skillId) => async (dispatch) => {
+  const response = await getUsersBySkill(skillId);
   console.log("we are looking for action", response);
   dispatch({
     type: GET_USERS_BY_SKILL,

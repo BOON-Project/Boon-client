@@ -5,7 +5,8 @@ import {
   Box,
   Card,
   CardContent,
-} from "@material-ui/core";
+} from "@material-ui/core"
+import Carousel from 'react-material-ui-carousel';
 import CurentlyOffering from "./CurrentlyOffering";
 import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
@@ -16,6 +17,9 @@ import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
+
+
+
 
 const Home = () => {
   const classes = useStyles();
@@ -59,11 +63,21 @@ const Home = () => {
         <SkillByUser />
       </Search>
 
+
+
+    {/* Adding carousel to them  */}
+
+<Box height="45rem" display="flex">
+    <Carousel autoPlay={false} display='flex'>
+
       {/* CURRENTLY OFFERING */}
-      {/* <CurentlyOffering/> */}
+      <CurentlyOffering/>
 
       {/* TOP RATED BOONERS */}
       <TopRatedUsers />
+
+    </Carousel>
+</Box>
 
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
