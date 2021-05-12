@@ -13,6 +13,25 @@ import Error404 from "./Error404";
 import RequestBoon from "./RequestBoon/RequestBoon";
 
 const App = () => {
+<<<<<<< HEAD
+  return (
+    <>
+      <Nav />
+      <Switch>
+        {/* new files structure */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/UserProfile/:id" component={UserProfile} />
+        <Route exact path="/skills" component={SkillByUser} />
+        {/* Private Routes =>  */}
+        <PrivateRoute path="/EditUser" component={EditUser} />
+        {/* Error 404 Route =>  */}
+        <Route path="/*" component={Error404} />
+      </Switch>
+    </>
+  );
+=======
 	return (
 		<>
 			<Nav />
@@ -30,6 +49,7 @@ const App = () => {
 			</Switch>
 		</>
 	);
+>>>>>>> 1cb3f43c88cab848e2b48c5a2026fdc89853a759
 };
 
 export default App;
