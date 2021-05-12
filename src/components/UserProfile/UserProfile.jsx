@@ -182,17 +182,15 @@ export default function UserProfile(props) {
           </Button>
 
 
-          <Button
+          {/* <Button
             component={Link}
             to='/home'
             size='large'
             color='secondary'
             variant='contained'
-            //pending!!
-            onClick={() => history.goBack()}
             className={classes.button}>
             Request a Boon
-          </Button>
+          </Button> */}
           {linkConditional()}
 
         </ButtonGroup>
