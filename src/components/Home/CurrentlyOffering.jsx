@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-import {Typography, Box, Card, CardActions, Button, CardMedia} from "@material-ui/core"
+import {Typography, Box, Card, CardActions, Button, CardMedia, Grid} from "@material-ui/core"
 import useStyles from "./styles"
 import { useSelector } from "react-redux";
 
@@ -24,10 +24,13 @@ const CurentlyOffering = () => {
     </Box>
 
     {/* CARDS */}
+
+    <Grid item xs={12} display="flex">
+
     <Box mt={5} display="flex" textAlign="center" justifyContent="center">
         {randomSkills.length>1&& randomSkills.map((skill)=>{
         return(  
-            <Card className={classes.card} elevation={8} key={skill._id}>
+            <Card className={classes.card} elevation={12} key={skill._id}>
                 <Box p={3}>
                     <Typography variant="h4" color="primary">{skill.name}</Typography>
                 </Box>
@@ -44,6 +47,7 @@ const CurentlyOffering = () => {
             </Card>
         )})}
     </Box>
+    </Grid>
     </>
     )
 }
