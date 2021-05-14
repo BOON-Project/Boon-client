@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Typography,
   Box,
@@ -11,21 +11,43 @@ import {
   Container,
   CssBaseline,
   TextField,
+  ButtonGroup,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
 
 const SkillByUser = () => {
   const classes = useStyles();
+   // to go back
+   const history = useHistory();
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
   console.log("state", users);
+
+
+   //footer function !
+  // FUNCTION COPYRIGHT
+  function Copyright() {
+    return (
+      <Typography variant='body2' color='white' align='center'>
+        {"Copyright © "}
+        <Link color='white' href='/'>
+          Boon
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
 
   return (
     <>
       <Box my={8} display='flex' alignItems='center'>
         <Typography variant='h2' color='primary'>
-          Top Rated Booners
+          Users available
         </Typography>
       </Box>
 
@@ -61,7 +83,7 @@ const SkillByUser = () => {
                         <Box m={4} display='flex' justifyContent='center'>
                           <Avatar
                             alt='Remy Sharp'
-                            src='https://picsum.photos/200'
+                            src={user.avatar}
                             className={classes.avatarBooners}
                           />
                         </Box>
@@ -108,6 +130,27 @@ const SkillByUser = () => {
               );
             })}
       </Grid>
+
+      {/* Buttons  */}
+      <Box className={classes.box} textAlign='center' mt={4} >
+        <ButtonGroup disableElevation variant='contained'>
+          <Button
+            component={Link}
+            to='/home'
+            size='large'
+            color='secondary'
+            variant='contained'
+            display='flex-end'
+            onClick={() => history.goBack()}
+            className={classes.button}>
+            Go back
+          </Button>
+
+        </ButtonGroup>
+      </Box>
+
+            {/* FOOTER component */}
+        <Footer />
     </>
   );
 };

@@ -11,6 +11,7 @@ import SkillByUser from "./SkillByUser/SkillByUser";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
 import RequestBoon from "./RequestBoon/RequestBoon";
+import Footer from "./Footer/Footer";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route exact path="/UserProfile/:id" component={UserProfile} />
         <Route exact path="/RequestBoon/:id" component={RequestBoon} />
         <Route exact path="/skill/:id" component={SkillByUser} />
+        <Route exact path="/Footer" component={Footer} />
         {/* Private Routes =>  */}
         <PrivateRoute path="/EditUser" component={EditUser} />
         {/* Error 404 Route =>  */}
