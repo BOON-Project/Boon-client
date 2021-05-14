@@ -34,6 +34,7 @@ const Home = () => {
   }, []);
 
 
+
   return (
     <>
     <Container maxWidth="lg" className={classes.root}>
@@ -85,6 +86,7 @@ const Home = () => {
 
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
+
 
     </Container>
 

@@ -86,6 +86,7 @@ export default function UserProfile(props) {
   };
 
 
+
   return (
     <CssBaseline>
       {/* first name */}
@@ -197,7 +198,9 @@ export default function UserProfile(props) {
 
         </ButtonGroup>
       </Box>
+
       <Footer />
+
     </CssBaseline>
   );
 }
