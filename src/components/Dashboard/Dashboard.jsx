@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from 'react';
+import useStyles from "./styles";
 import { Link, useHistory } from "react-router-dom";
 import {
   Typography,
@@ -16,12 +17,13 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
-import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 
-const SkillByUser = () => {
-  const classes = useStyles();
+
+
+const Dashboard = () => {
+    const classes = useStyles();
    // to go back
    const history = useHistory();
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
@@ -30,9 +32,9 @@ const SkillByUser = () => {
 
   return (
     <>
-      <Box className={classes.main} my={8} display='flex' alignItems='center'>
+      <Box my={8} display='flex' alignItems='center'>
         <Typography variant='h2' color='primary'>
-          Available users
+        People requesting for help
         </Typography>
       </Box>
 
@@ -140,4 +142,4 @@ const SkillByUser = () => {
   );
 };
 
-export default SkillByUser;
+export default Dashboard

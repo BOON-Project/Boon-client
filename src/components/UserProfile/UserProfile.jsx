@@ -172,7 +172,7 @@ export default function UserProfile(props) {
       {/* Last 2 Buttons!  */}
 
       <Box className={classes.root} textAlign='center'>
-        <ButtonGroup disableElevation variant='contained'>
+        <ButtonGroup  variant='contained'>
           <Button
             component={Link}
             to='/home'
