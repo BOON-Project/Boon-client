@@ -21,6 +21,7 @@ import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
 
 // start of our User Profile
 export default function UserProfile(props) {
@@ -84,20 +85,6 @@ export default function UserProfile(props) {
     }
   };
 
-  //footer function !
-  // FUNCTION COPYRIGHT
-  function Copyright() {
-    return (
-      <Typography variant='body2' color='textSecondary' align='center'>
-        {"Copyright © "}
-        <Link color='inherit' href='https://material-ui.com/'>
-          Boon
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
 
   return (
     <CssBaseline>
@@ -210,7 +197,7 @@ export default function UserProfile(props) {
 
         </ButtonGroup>
       </Box>
-      <Copyright />
+      <Footer />
     </CssBaseline>
   );
 }
