@@ -10,15 +10,11 @@ const usersReducer = (state = initialState, action) => {
     case GET_USERS:
       // const users = action.payload;
       // return users;
-      return {
-        allUsers: action.payload,
-      };
+      return { ...state, allUsers: action.payload };
     case GET_USERS_BY_SKILL:
       // const usersBySkill = action.payload;
       // return usersBySkill;
-      return {
-        usersWithSkill: action.payload,
-      };
+      return { ...state, usersWithSkill: action.payload };
     default:
       return state;
   }

@@ -84,6 +84,21 @@ export default function UserProfile(props) {
     }
   };
 
+  //footer function !
+  // FUNCTION COPYRIGHT
+  function Copyright() {
+    return (
+      <Typography variant='body2' color='textSecondary' align='center'>
+        {"Copyright © "}
+        <Link color='inherit' href='https://material-ui.com/'>
+          Boon
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
+
   return (
     <CssBaseline>
       {/* first name */}
@@ -195,6 +210,7 @@ export default function UserProfile(props) {
 
         </ButtonGroup>
       </Box>
+      <Copyright />
     </CssBaseline>
   );
 }

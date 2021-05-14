@@ -1,7 +1,7 @@
 import { useStyles } from "./styles";
 import { makeStyles } from "@material-ui/core";
 
-export default makeStyles({
+export default makeStyles((theme) => ({
 	root: {
 		marginTop: "5%",
 	},
@@ -44,4 +44,13 @@ export default makeStyles({
 		width: "150px",
 		height: "150px",
 	},
-});
+	miniavatar:{
+		right: '-65px',
+		height: theme.spacing(7),
+    	width: theme.spacing(7),
+	},
+
+
+}));
+
+

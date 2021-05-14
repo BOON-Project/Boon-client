@@ -57,7 +57,7 @@ const TopRatedUsers = () => {
                       <Box m={4} display="flex" justifyContent="center">
                         <Avatar
                           alt="Remy Sharp"
-                          src="https://picsum.photos/200"
+                          src={user.avatar}
                           className={classes.avatarBooners}
                         />
                       </Box>
