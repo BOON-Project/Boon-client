@@ -33,9 +33,7 @@ const EditUser = () => {
     birthday,
     userName,
   } = useSelector((state) => state.userReducer.user);
-  console.log("====================================");
-  console.log(bio);
-  console.log("====================================");
+
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
@@ -69,15 +67,16 @@ const EditUser = () => {
     console.log(jsonData);
 
     // signup user in backend
-    try {
-      let response = await axios.post("http://localhost:5000/user", jsonData);
-      console.log("Response: ", response.data); // => signed up user
-    } catch (errAxios) {
-      // handle error
-      console.log(errAxios.response && errAxios.response.data);
-    }
+    // try {
+    //   let response = await axios.put("http://localhost:5000/user", jsonData);
+    //   console.log("Response: ", response.data); // => signed up user
+    // } catch (errAxios) {
+    //   // handle error
+    //   console.log(errAxios.response && errAxios.response.data);
+    // }
   };
   const displayBD = birthday.slice(0, 10);
+
   return (
     <CssBaseline>
       <Container component='main' maxWidth='md'>
@@ -331,7 +330,9 @@ const EditUser = () => {
                   onChange={onAvatarChange}
                 />
               </Box>
-              <Button variant='outlined'>Save changes</Button>
+              <Button type='submit' variant='outlined'>
+                Save changes
+              </Button>
             </Grid>
           </form>
         </div>
