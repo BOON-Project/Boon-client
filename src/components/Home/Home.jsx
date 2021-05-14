@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
+import Footer from "../Footer/Footer";
 
 
 
@@ -33,22 +34,9 @@ const Home = () => {
   }, []);
 
 
-   //footer function !
-  // FUNCTION COPYRIGHT
-  function Copyright() {
-    return (
-      <Typography variant='body2' color='textSecondary' align='center' mt={3}>
-        {"Copyright © "}
-        <Link color='inherit' href='https://material-ui.com/'>
-          Boon
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
 
   return (
+    <>
     <Container maxWidth="lg" className={classes.root}>
       {/* DICTIONARY CARD */}
       <Card className={classes.card} elevation={8}>
@@ -99,8 +87,12 @@ const Home = () => {
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
 
-      <Copyright />
+
     </Container>
+
+      <Footer  />
+
+    </>
   );
 };
 
