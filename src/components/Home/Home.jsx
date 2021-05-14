@@ -13,6 +13,7 @@ import TopRatedUsers from "./TopRatedUsers";
 import Search from "./Search";
 import SkillByUser from "../SkillByUser/SkillByUser";
 import TopRatedBoons from "./TopRatedBoons";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
@@ -30,6 +31,22 @@ const Home = () => {
     dispatch(getUsersAction());
     dispatch(getTasksAction());
   }, []);
+
+
+   //footer function !
+  // FUNCTION COPYRIGHT
+  function Copyright() {
+    return (
+      <Typography variant='body2' color='textSecondary' align='center' mt={3}>
+        {"Copyright © "}
+        <Link color='inherit' href='https://material-ui.com/'>
+          Boon
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
 
   return (
     <Container maxWidth="lg" className={classes.root}>
@@ -81,6 +98,8 @@ const Home = () => {
 
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
+
+      <Copyright />
     </Container>
   );
 };

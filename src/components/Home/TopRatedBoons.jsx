@@ -15,7 +15,9 @@ import useStyles from "./styles";
 const TopRatedBoons = () => {
 	const classes = useStyles();
 
+
 	const tasks = useSelector((state) => state.tasksReducer);
+	const users = useSelector((state) => state.usersReducer.allUsers);
 
 	const sortedTasks = tasks
 		.filter((task) => task.rating > 0)
@@ -36,15 +38,24 @@ const TopRatedBoons = () => {
 					const rating = task.rating;
 					return (
 						<Grid item xs={12} md={6} key={task._id}>
-							<Card className={classes.ratingCard} elevation={8} p={2}>
+							<Card className={classes.ratingCard} elevation={8} p={2} >
 								{/* NAMES RATING AND SKILL CONTAINER */}
 								<CardContent>
-									<Typography>
+									<Grid container alignItems={"stretch"} >
+									<Grid item xs={9}>
 										<b>Bonee:</b> {task.boonee.userName}
-									</Typography>
-									<Typography>
-										<b>Boner:</b> {task.booner.userName}
-									</Typography>
+									</Grid>
+									<Grid item xs={9}>
+										<b>Booner:</b> {task.booner.userName}
+									</Grid>
+									{/* avatar */}
+										<Avatar
+									className={classes.miniavatar}
+									alt="boonee avatar" src={task.booner.avatar}  />
+
+									</Grid>
+
+
 									{/* RATING */}
 									<Box my={1}>
 										<Rating name="read-only" value={rating} readOnly />
