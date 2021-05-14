@@ -33,7 +33,9 @@ const EditUser = () => {
     birthday,
     userName,
   } = useSelector((state) => state.userReducer.user);
-
+  console.log("====================================");
+  console.log(bio);
+  console.log("====================================");
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
@@ -75,9 +77,7 @@ const EditUser = () => {
       console.log(errAxios.response && errAxios.response.data);
     }
   };
-
-  console.log("user from editUser", skills);
-
+  const displayBD = birthday.slice(0, 10);
   return (
     <CssBaseline>
       <Container component='main' maxWidth='md'>
@@ -244,7 +244,7 @@ const EditUser = () => {
                 <Controller
                   name='birthday'
                   control={control}
-                  defaultValue={birthday}
+                  defaultValue={displayBD}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -308,6 +308,8 @@ const EditUser = () => {
                       id='bio'
                       label='Bio'
                       name='bio'
+                      multiline
+                      rows={4}
                       autoComplete='bio'
                       onChange={onChange}
                       value={value}
