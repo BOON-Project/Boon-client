@@ -50,4 +50,11 @@ export default makeStyles({
     width: "150px",
     height: "150px",
   },
+  footer: {
+    position: "fixed",
+    bottom: 0,
+    textAlign: "center",
+    paddingBottom: 10,
+    color: "white",
+  }
 });
