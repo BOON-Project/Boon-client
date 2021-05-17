@@ -12,8 +12,11 @@ import { useForm, Controller } from "react-hook-form";
 import { addTask } from "../../helpers/apiCalls";
 import { useSelector, useDispatch } from "react-redux";
 import { setErrorAction } from "../../store/actions/errorActions";
+import {Link, useHistory} from "react-router-dom"
 
 export default function RequestBoon(props) {
+    // to go back
+  const history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
   const { handleSubmit, control } = useForm();
@@ -190,7 +193,22 @@ export default function RequestBoon(props) {
         >
           Request Boon
         </Button>
+
+{/* second button */}
+ <Button
+          component={Link}
+            to='/'
+            fullWidth
+            color='secondary'
+            variant='contained'
+            onClick={() => history.goBack()}
+            className={classes.button}>
+            Cancel
+          </Button>
+
       </form>
+
+      
     </Box>
   );
 }
