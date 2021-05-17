@@ -5,23 +5,17 @@ import {
   Box,
   Card,
   CardContent,
-} from "@material-ui/core"
-import Carousel from 'react-material-ui-carousel';
+} from "@material-ui/core";
 import CurentlyOffering from "./CurrentlyOffering";
 import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
 import Search from "./Search";
 import SkillByUser from "../SkillByUser/SkillByUser";
 import TopRatedBoons from "./TopRatedBoons";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
-import Footer from "../Footer/Footer";
-
-
-
 
 const Home = () => {
   const classes = useStyles();
@@ -33,10 +27,7 @@ const Home = () => {
     dispatch(getTasksAction());
   }, []);
 
-
-
   return (
-    <>
     <Container maxWidth="lg" className={classes.root}>
       {/* DICTIONARY CARD */}
       <Card className={classes.card} elevation={8}>
@@ -68,31 +59,15 @@ const Home = () => {
         <SkillByUser />
       </Search>
 
-
-
-    {/* Adding carousel to them  */}
-
-<Box height="45rem" display="flex">
-    <Carousel autoPlay={false} display='flex'>
-
       {/* CURRENTLY OFFERING */}
-      <CurentlyOffering/>
+      <CurentlyOffering />
 
       {/* TOP RATED BOONERS */}
       <TopRatedUsers />
 
-    </Carousel>
-</Box>
-
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
-
-
     </Container>
-
-      <Footer  />
-
-    </>
   );
 };
 

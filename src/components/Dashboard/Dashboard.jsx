@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import useStyles from "./styles";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -20,21 +20,18 @@ import StarIcon from "@material-ui/icons/Star";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 
-
-
 const Dashboard = () => {
-    const classes = useStyles();
-   // to go back
-   const history = useHistory();
+  const classes = useStyles();
+  // to go back
+  const history = useHistory();
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
   console.log("state", users);
 
-
   return (
     <>
-      <Box my={8} display='flex' alignItems='center'>
-        <Typography variant='h2' color='primary'>
-        People requesting for help
+      <Box my={8} display="flex" alignItems="center">
+        <Typography variant="h2" color="primary">
+          People requesting for help
         </Typography>
       </Box>
 
@@ -50,26 +47,28 @@ const Dashboard = () => {
                   <Card
                     className={classes.userCard}
                     elevation={8}
-                    key={user._id}>
-                    <Box display='flex' flexDirection='column'>
+                    key={user._id}
+                  >
+                    <Box display="flex" flexDirection="column">
                       <Box m={3}>
                         {/* NAME */}
-                        <Typography variant='h4' color='info'>
+                        <Typography variant="h4" color="info">
                           {user.userName}
                         </Typography>
                         {/* RATING */}
                         <Box
-                          display='flex'
-                          justifyContent='center'
-                          alignItems='center'>
-                          <Typography variant='h6' color='info'>
+                          display="flex"
+                          justifyContent="center"
+                          alignItems="center"
+                        >
+                          <Typography variant="h6" color="info">
                             {user.rating}
                           </Typography>
-                          <StarIcon color='secondary' />
+                          <StarIcon color="secondary" />
                         </Box>
-                        <Box m={4} display='flex' justifyContent='center'>
+                        <Box m={4} display="flex" justifyContent="center">
                           <Avatar
-                            alt='Remy Sharp'
+                            alt="Remy Sharp"
                             src={user.avatar}
                             className={classes.avatarBooners}
                           />
@@ -79,16 +78,18 @@ const Dashboard = () => {
                         {user.skills.map((skill) => {
                           return (
                             <Box
-                              display='flex'
-                              justifyContent='center'
-                              flexDirection='column'
+                              display="flex"
+                              justifyContent="center"
+                              flexDirection="column"
                               pt={1}
-                              key={skill.skillID._id}>
+                              key={skill.skillID._id}
+                            >
                               <Button
-                                size='medium'
-                                color='info'
-                                variant='outlined'
-                                className={classes.tag}>
+                                size="medium"
+                                color="info"
+                                variant="outlined"
+                                className={classes.tag}
+                              >
                                 {skill.skillID.name}
                               </Button>
                             </Box>
@@ -101,12 +102,14 @@ const Dashboard = () => {
                             pathname: `/UserProfile/${user._id}`,
                             state: { user },
                           }}
-                          style={{ width: "100%" }}>
+                          style={{ width: "100%" }}
+                        >
                           <Button
-                            size='large'
-                            color='secondary'
-                            variant='contained'
-                            className={classes.button}>
+                            size="large"
+                            color="secondary"
+                            variant="contained"
+                            className={classes.button}
+                          >
                             More
                           </Button>
                         </Link>
@@ -119,27 +122,24 @@ const Dashboard = () => {
       </Grid>
 
       {/* Buttons  */}
-      <Box className={classes.box} textAlign='center' mt={4} >
-        <ButtonGroup disableElevation variant='contained'>
+      <Box className={classes.box} textAlign="center" mt={4}>
+        <ButtonGroup disableElevation variant="contained">
           <Button
             component={Link}
-            to='/home'
-            size='large'
-            color='secondary'
-            variant='contained'
-            display='flex-end'
+            to="/home"
+            size="large"
+            color="secondary"
+            variant="contained"
+            display="flex-end"
             onClick={() => history.goBack()}
-            className={classes.button}>
+            className={classes.button}
+          >
             Go back
           </Button>
-
         </ButtonGroup>
       </Box>
-
-            {/* FOOTER component */}
-        <Footer  />
     </>
   );
 };
 
-export default Dashboard
+export default Dashboard;

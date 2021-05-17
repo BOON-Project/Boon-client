@@ -1,85 +1,83 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import Footer from "../Footer/Footer";
 
 //styling=>
 import {
-    Typography,
-    Box,
-    Container,
-    Button,
-    TextField,
-    InputLabel,
-    Select,
-    ButtonGroup,
-
-  } from "@material-ui/core";
-import { useDispatch, useSelector } from 'react-redux';
+  Typography,
+  Box,
+  Container,
+  Button,
+  TextField,
+  InputLabel,
+  Select,
+  ButtonGroup,
+} from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Controller, useForm } from 'react-hook-form';
-import { setErrorAction } from '../../store/actions/errorActions';
-import { addTask } from '../../helpers/apiCalls';
+import { Controller, useForm } from "react-hook-form";
+import { setErrorAction } from "../../store/actions/errorActions";
+import { addTask } from "../../helpers/apiCalls";
 
 export default function RequestBoon(props) {
-    const classes = useStyles();
-     // to go back
-   const history = useHistory();
-    const dispatch = useDispatch();
-    const { handleSubmit, control } = useForm();
+  const classes = useStyles();
+  // to go back
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { handleSubmit, control } = useForm();
 
-    //const user = props.location.state.user;
-    const boonee = useSelector((state) => state.userReducer.user);
-    //const { firstName, userName, bio, rating, avatar, skills } =
-      //props.location.state.user;
+  //const user = props.location.state.user;
+  const boonee = useSelector((state) => state.userReducer.user);
+  //const { firstName, userName, bio, rating, avatar, skills } =
+  //props.location.state.user;
 
-
-      //conditional LINK
-      const linkConditional = () => {
-        if (boonee) {
-          console.log("this");
-          return (
-            <Link
-              to={{
-                // pathname: `/RequestBoon/${user._id}`,
-                // state: { user },
-              }}
-            >
-              <Button
-               component={Link}
-               to='/Dashboard'
-               href="/Dashboard"
-                size="large"
-                color="secondary"
-                variant="contained"
-                className={classes.button}
-              >
-                Go to Dashboard
-              </Button>
-            </Link>
-          );
-        } else {
-          return (
-            <Button
+  //conditional LINK
+  const linkConditional = () => {
+    if (boonee) {
+      console.log("this");
+      return (
+        <Link
+          to={
+            {
+              // pathname: `/RequestBoon/${user._id}`,
+              // state: { user },
+            }
+          }
+        >
+          <Button
             component={Link}
-            to='/'
-            href="/"
-              size="large"
-              color="secondary"
-              variant="contained"
-              className={classes.button}
-              onClick={() => history.push("/")}
-            >
-              Go to Dashboard
-            </Button>
-          );
-        }
-      };
+            to="/Dashboard"
+            href="/Dashboard"
+            size="large"
+            color="secondary"
+            variant="contained"
+            className={classes.button}
+          >
+            Go to Dashboard
+          </Button>
+        </Link>
+      );
+    } else {
+      return (
+        <Button
+          component={Link}
+          to="/"
+          href="/"
+          size="large"
+          color="secondary"
+          variant="contained"
+          className={classes.button}
+          onClick={() => history.push("/")}
+        >
+          Go to Dashboard
+        </Button>
+      );
+    }
+  };
 
-
-
-    return (
-        <>
+  return (
+    <>
       <Box className={classes.main}>
         <Typography variant="h3" color="secondary" className={classes.hero}>
           Request a Boon in Dashboard
@@ -87,7 +85,7 @@ export default function RequestBoon(props) {
         <form
           className={classes.form}
           noValidate
-        //   onSubmit={handleSubmit(onSubmit)}
+          //   onSubmit={handleSubmit(onSubmit)}
         >
           {/* SELECT SKILL */}
           <InputLabel htmlFor="skill" className={classes.label}>
@@ -108,9 +106,7 @@ export default function RequestBoon(props) {
                 value={value}
                 helperText={error ? error.message : null}
                 className={classes.input}
-              >
-
-              </Select>
+              ></Select>
             )}
             rules={{ required: "skill required" }}
           ></Controller>
@@ -230,28 +226,26 @@ export default function RequestBoon(props) {
             Request Boon
           </Button>
 
-          <Box className={classes.box} textAlign='center' mt={4} >
-        <ButtonGroup  variant='contained'>
-          <Button
-            component={Link}
-            to='/'
-            size='large'
-            color='secondary'
-            variant='contained'
-            display='flex-end'
-            onClick={() => history.goBack()}
-            className={classes.button}>
-            Go back
-          </Button>
+          <Box className={classes.box} textAlign="center" mt={4}>
+            <ButtonGroup variant="contained">
+              <Button
+                component={Link}
+                to="/"
+                size="large"
+                color="secondary"
+                variant="contained"
+                display="flex-end"
+                onClick={() => history.goBack()}
+                className={classes.button}
+              >
+                Go back
+              </Button>
 
-          {linkConditional()}
-
-        </ButtonGroup>
-      </Box>
+              {linkConditional()}
+            </ButtonGroup>
+          </Box>
         </form>
       </Box>
-      <Footer />
-      </>
-    );
-  }
-
+    </>
+  );
+}

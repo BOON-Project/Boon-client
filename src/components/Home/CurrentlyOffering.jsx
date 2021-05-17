@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
+const allImages = require.context("../../images", true, /.svg$/);
 
 const CurentlyOffering = () => {
   const classes = useStyles();
@@ -27,6 +28,8 @@ const CurentlyOffering = () => {
     }
   }
 
+  console.log("hey", allImages);
+
   return (
     <>
       <Box mt={8} display="flex" alignItems="center">
@@ -41,6 +44,7 @@ const CurentlyOffering = () => {
         <Box mt={5} display="flex" textAlign="center" justifyContent="center">
           {randomSkills.length > 1 &&
             randomSkills.map((skill) => {
+              //console.log(allImages(`./${skill.avatar}`));
               return (
                 <Card className={classes.card} elevation={12} key={skill._id}>
                   <Box p={3}>
@@ -51,7 +55,7 @@ const CurentlyOffering = () => {
                   <Avatar
                     className={classes.media}
                     alt="boonee avatar"
-                    src={`/icons/${skill.avatar}`}
+                    src={allImages(`./${skill.avatar}`).default}
                   />
 
                   <CardActions style={{ padding: "0" }}>
