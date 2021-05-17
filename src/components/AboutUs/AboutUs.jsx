@@ -18,7 +18,7 @@ import {
   } from "@material-ui/core";
 
 
-export default function RequestBoon() {
+export default function AboutUs() {
   const classes = useStyles();
 
 
