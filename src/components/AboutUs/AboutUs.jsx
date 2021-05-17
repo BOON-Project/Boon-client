@@ -16,6 +16,7 @@ import {
     ButtonGroup,
 
   } from "@material-ui/core";
+import Footer from "../Footer/Footer";
 
 
 export default function AboutUs() {
