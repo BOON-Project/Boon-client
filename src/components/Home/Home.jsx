@@ -73,7 +73,7 @@ const Home = () => {
           <Typed
               strings={['1. A thing that is helpful or beneficial']}
               typeSpeed={40}
-              showCursor={false}
+
             />
           </Typography>
 
@@ -83,7 +83,7 @@ const Home = () => {
               strings={['2. A favour or request.']}
               typeSpeed={40}
               startDelay={3300}
-              showCursor={false}
+
             />
 
           </Typography>
