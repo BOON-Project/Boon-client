@@ -14,7 +14,7 @@ import Error404 from "./Error404";
 import RequestBoon from "./RequestBoon/RequestBoon";
 import Footer from "./Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
-import CreateBoon from "./CreateBoon/CreateBoon";
+import AboutUs from "./AboutUs/AboutUs";
 
 const App = () => {
   return (
@@ -29,14 +29,12 @@ const App = () => {
           <Route exact path="/UserProfile/:id" component={UserProfile} />
           <Route exact path="/RequestBoon/:id" component={RequestBoon} />
           <Route exact path="/skill/:id" component={SkillByUser} />
+          <Route exact path="/AboutUs" component={AboutUs} />
 
           {/* Private Routes =>  */}
 
           {/* where ppl can see last Boons (what ppl need) */}
           <PrivateRoute exact path="/Dashboard" component={Dashboard} />
-
-          {/* where ppl can post their needs */}
-          <PrivateRoute exact path="/CreateBoon" component={CreateBoon} />
 
           {/* where user can change personal info */}
           <PrivateRoute path="/EditUser" component={EditUser} />

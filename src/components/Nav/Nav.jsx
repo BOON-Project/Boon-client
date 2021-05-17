@@ -65,13 +65,13 @@ export default function PrimarySearchAppBar() {
                 <>
                   <Link
                     underline="none"
-                    href="/CreateBoon"
+                    href="/AboutUs"
                     className={classes.link}
                     color="inherit"
                   >
                     <Typography variant="h6" color="info">
                       {" "}
-                      Create a Boon
+                      About Us
                     </Typography>
                   </Link>
                   <Link

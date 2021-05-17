@@ -168,7 +168,7 @@ export default function UserProfile(props) {
 
       {/* Last 2 Buttons!  */}
 
-      <Box className={classes.root} textAlign="center">
+      <Box className={classes.root} textAlign="center" mt={3}>
         <ButtonGroup variant="contained">
           <Button
             component={Link}
@@ -181,16 +181,6 @@ export default function UserProfile(props) {
           >
             Go back
           </Button>
-
-          {/* <Button
-            component={Link}
-            to='/home'
-            size='large'
-            color='secondary'
-            variant='contained'
-            className={classes.button}>
-            Request a Boon
-          </Button> */}
           {linkConditional()}
         </ButtonGroup>
       </Box>
