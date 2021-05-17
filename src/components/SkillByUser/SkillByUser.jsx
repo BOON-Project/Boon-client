@@ -116,26 +116,8 @@ const SkillByUser = () => {
             })}
       </Grid>
 
-      {/* Buttons  */}
-      <Box className={classes.box} textAlign='center' mt={4} >
-        <ButtonGroup disableElevation variant='contained'>
-          <Button
-            component={Link}
-            to='/home'
-            size='large'
-            color='secondary'
-            variant='contained'
-            display='flex-end'
-            onClick={() => history.goBack()}
-            className={classes.button}>
-            Go back
-          </Button>
 
-        </ButtonGroup>
-      </Box>
 
-            {/* FOOTER component */}
-        <Footer  />
     </>
   );
 };

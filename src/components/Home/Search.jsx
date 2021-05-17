@@ -27,7 +27,6 @@ const Search = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleInputChange = (skillID) => {
-    history.push(`/skill/${skillID}`);
     dispatch(getUsersBySkillAction(skillID));
   };
 
