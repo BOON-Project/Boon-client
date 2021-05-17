@@ -51,7 +51,7 @@ const CurentlyOffering = () => {
                   <Avatar
                     className={classes.media}
                     alt="boonee avatar"
-                    src={skill.avatar}
+                    src={`/icons/${skill.avatar}`}
                   />
 
                   <CardActions style={{ padding: "0" }}>
