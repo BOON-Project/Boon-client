@@ -36,7 +36,7 @@ const TopRatedUsers = () => {
           .map((user) => {
             return (
               <Grid item xs={12} md={3}>
-                <Card className={classes.userCard} elevation={8} key={user._id}>
+                <Card className={classes.userCard} elevation={4} key={user._id}>
                   <Box display="flex" flexDirection="column">
                     <Box m={3}>
                       {/* NAME */}
@@ -84,7 +84,7 @@ const TopRatedUsers = () => {
                         );
                       })}
                     </Box>
-                    <CardActions style={{ padding: "0" }}>
+                    <CardActions style={{ padding: "10px" }}>
                       <Link
                         to={{
                           pathname: `/UserProfile/${user._id}`,
