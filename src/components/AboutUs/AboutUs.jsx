@@ -18,6 +18,7 @@ import {
   } from "@material-ui/core";
 
 
+
 export default function AboutUs() {
   const classes = useStyles();
 
@@ -35,7 +36,7 @@ export default function AboutUs() {
         </Box>
 
 </Container>
-      <Footer />
+
       </>
     );
   }

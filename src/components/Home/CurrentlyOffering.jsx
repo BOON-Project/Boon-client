@@ -19,7 +19,7 @@ const CurentlyOffering = () => {
   const skillsData = useSelector((state) => state.skillsReducer);
   // Create an array with five different skills from skills database
   const randomSkills = [];
-  for (let i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 4; i++) {
     const randomNumberRange = Math.floor(
       Math.random() * (skillsData.length - 0) + 0
     );
@@ -32,7 +32,7 @@ const CurentlyOffering = () => {
 
   return (
     <>
-      <Box mt={8} display="flex" alignItems="center">
+      <Box mt={10} display="flex" alignItems="center">
         <Typography variant="h2" color="secondary">
           Currently offering
         </Typography>
@@ -41,14 +41,14 @@ const CurentlyOffering = () => {
       {/* CARDS */}
 
       <Grid item xs={12} display="flex">
-        <Box mt={5} display="flex" textAlign="center" justifyContent="center">
+        <Box mt={3} display="flex" textAlign="center" justifyContent="center">
           {randomSkills.length > 1 &&
             randomSkills.map((skill) => {
               //console.log(allImages(`./${skill.avatar}`));
               return (
-                <Card className={classes.card} elevation={12} key={skill._id}>
+                <Card className={classes.card} elevation={9} key={skill._id}>
                   <Box p={3}>
-                    <Typography variant="h4" color="primary">
+                    <Typography variant="h5" color="primary">
                       {skill.name}
                     </Typography>
                   </Box>
@@ -58,7 +58,7 @@ const CurentlyOffering = () => {
                     src={allImages(`./${skill.avatar}`).default}
                   />
 
-                  <CardActions style={{ padding: "0" }}>
+                  <CardActions className={classes.more}>
                     <Button
                       size="large"
                       color="primary"

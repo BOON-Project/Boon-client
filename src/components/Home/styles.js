@@ -1,5 +1,6 @@
 import { useStyles } from "./styles";
 import { makeStyles } from "@material-ui/core";
+import Image from '../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg'
 
 export default makeStyles((theme) => ({
   root: {
@@ -9,6 +10,8 @@ export default makeStyles((theme) => ({
     width: "300px",
     marginTop: "20px",
     marginRight: "20px",
+    height: "400px",
+    display:'flex', justifyContent:'space-between', flexDirection:'column'
   },
   userCard: {
     padding: 0,
@@ -22,11 +25,10 @@ export default makeStyles((theme) => ({
   },
 
   circle: {
-    marginLeft: "40px",
+    marginLeft: "0px",
   },
   button: {
     width: "100%",
-    margin: 0,
     backgroundColor: "#E4B363",
     border: "none",
     padding: "10px",
@@ -35,8 +37,11 @@ export default makeStyles((theme) => ({
     margin: "5px 5px 5px 0",
   },
   media: {
-    height: 100,
-    width: 100,
+    height: "150px",
+    width: "150px",
+    right: "-50px",
+
+
   },
   avatar: {
     width: "80px",
@@ -68,7 +73,19 @@ hero: {
   color: "white",
   fontSize: "4rem",
   fontWeight: "bold",
-
+},
+more: {
+  padding: "10px",
+},
+booncard: {
+  width: "100%",
+    marginTop: "20px",
+    marginRight: "20px",
+    height: "250px",
+    display:'flex',
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${Image})`,
+    color: "white",
+    filter: 'brightness(90%)',
 
 }
 }));
