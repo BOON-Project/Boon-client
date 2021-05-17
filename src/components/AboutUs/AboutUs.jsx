@@ -16,7 +16,7 @@ import {
     ButtonGroup,
 
   } from "@material-ui/core";
-import Footer from "../Footer/Footer";
+
 
 
 export default function AboutUs() {
@@ -36,7 +36,7 @@ export default function AboutUs() {
         </Box>
 
 </Container>
-      <Footer />
+
       </>
     );
   }

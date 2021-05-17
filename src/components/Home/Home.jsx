@@ -20,7 +20,7 @@ import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
-import Footer from "../Footer/Footer";
+
 
 
 
@@ -110,7 +110,7 @@ const Home = () => {
     
     </Container>
 
-      <Footer  />
+
 
     </>
   );
