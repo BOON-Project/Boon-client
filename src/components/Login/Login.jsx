@@ -28,6 +28,7 @@ import {
 } from "../../store/actions/errorActions";
 import { loginAction } from "../../store/actions/userActions";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+import Footer from "../Footer/Footer";
 
 export default function SignInSide() {
   const classes = useStyles();
@@ -56,19 +57,6 @@ export default function SignInSide() {
     history.push("/");
   };
 
-  // FUNCTION COPYRIGHT
-  function Copyright() {
-    return (
-      <Typography variant='body2' color='textSecondary' align='center'>
-        {"Copyright © "}
-        <Link color='inherit' href='https://material-ui.com/'>
-          Boon
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
 
   return (
     <>
@@ -171,7 +159,7 @@ export default function SignInSide() {
 
             {/* COPYRIGHT */}
             <Box mt={5}>
-              <Copyright />
+              <Footer />
             </Box>
           </div>
         </Grid>

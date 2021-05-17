@@ -78,6 +78,7 @@ export default function UserProfile(props) {
           variant="contained"
           className={classes.button}
           onClick={() => history.push("/login")}
+
         >
           Request a Boon
         </Button>
