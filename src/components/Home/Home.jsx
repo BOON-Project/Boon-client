@@ -64,9 +64,9 @@ const Home = () => {
       </Box>
 
       {/* SEARCH */}
-      <Search>
+      {/* <Search>
         <SkillByUser />
-      </Search>
+      </Search> */}
 
 
 

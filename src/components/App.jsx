@@ -13,7 +13,7 @@ import Error404 from "./Error404";
 import RequestBoon from "./RequestBoon/RequestBoon";
 import Footer from "./Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
-import CreateBoon from "./CreateBoon/CreateBoon";
+import AboutUs from "./AboutUs/AboutUs";
 
 const App = () => {
   return (
@@ -28,6 +28,7 @@ const App = () => {
         <Route exact path="/RequestBoon/:id" component={RequestBoon} />
         <Route exact path="/skill/:id" component={SkillByUser} />
         <Route exact path="/Footer" component={Footer} />
+        <Route exact path="/AboutUs" component={AboutUs} />
 
 
         {/* Private Routes =>  */}
@@ -36,7 +37,6 @@ const App = () => {
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
 
         {/* where ppl can post their needs */}
-        <PrivateRoute exact path="/CreateBoon" component={CreateBoon} />
 
         {/* where user can change personal info */}
         <PrivateRoute path="/EditUser" component={EditUser} />
