@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import useStyles from "./styles";
-import Footer from "../Footer/Footer";
 
 
 //styling=>
 import {
+
     Typography,
     Box,
     Container,
@@ -39,4 +39,3 @@ export default function AboutUs() {
       </>
     );
   }
-
