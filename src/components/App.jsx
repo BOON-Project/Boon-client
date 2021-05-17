@@ -31,6 +31,7 @@ const App = () => {
         <Route exact path="/AboutUs" component={AboutUs} />
 
 
+
         {/* Private Routes =>  */}
 
         {/* where ppl can see last Boons (what ppl need) */}

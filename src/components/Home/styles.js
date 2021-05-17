@@ -51,4 +51,24 @@ export default makeStyles((theme) => ({
     height: theme.spacing(7),
     width: theme.spacing(7),
   },
+  appBar: {
+backgroundColor: `${theme.primary}`,
+color: "white",
+  },
+hero: {
+  backgroundImage:  'url(https://source.unsplash.com/random)',
+  height: "500px",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  color: "white",
+  fontSize: "4rem",
+  fontWeight: "bold",
+
+
+}
 }));

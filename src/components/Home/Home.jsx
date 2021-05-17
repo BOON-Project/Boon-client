@@ -5,6 +5,8 @@ import {
   Box,
   Card,
   CardContent,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core"
 import Carousel from 'react-material-ui-carousel';
 import CurentlyOffering from "./CurrentlyOffering";
@@ -23,6 +25,7 @@ import Footer from "../Footer/Footer";
 
 
 
+
 const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -37,7 +40,22 @@ const Home = () => {
 
   return (
     <>
+    {/* Top main image */}
+    <AppBar className={classes.appBar} position="static">
+      {/* <Toolbar>
+        <Typography variant="h6" color="white">
+            Do you want to be part of the change?
+        </Typography>
+      </Toolbar> */}
+    </AppBar>
+    <Box className={classes.hero}>
+      <Box>
+          Join the new social media!
+      </Box>
+    </Box>
     <Container maxWidth="lg" className={classes.root}>
+
+
       {/* DICTIONARY CARD */}
       <Card className={classes.card} elevation={8}>
         <CardContent>
@@ -64,15 +82,14 @@ const Home = () => {
       </Box>
 
       {/* SEARCH */}
-      {/* <Search>
+      {/* <Search> this is explore component!!
         <SkillByUser />
       </Search> */}
 
 
 
     {/* Adding carousel to them  */}
-
-<Box height="45rem" display="flex">
+      <Box height="45rem" display="flex">
     <Carousel autoPlay={false} display='flex'>
 
       {/* CURRENTLY OFFERING */}
@@ -82,12 +99,15 @@ const Home = () => {
       <TopRatedUsers />
 
     </Carousel>
-</Box>
+      </Box>
+
+
+
 
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
 
-
+    
     </Container>
 
       <Footer  />
