@@ -78,8 +78,6 @@ const Home = () => {
         {/* TOP RATED BOONS */}
         <TopRatedBoons />
       </Container>
-
-      <Footer />
     </>
   );
 };

@@ -21,7 +21,6 @@ import {
 import { useDispatch } from "react-redux";
 import SkillByUser from "../SkillByUser/SkillByUser";
 import Search from "../Home/Search";
-import Footer from "../Footer/Footer";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getTasksAction } from "../../store/actions/tasksActions";
 
@@ -82,7 +81,6 @@ const Dashboard = () => {
       </Container>
 
       {/* FOOTER component */}
-      <Footer />
     </>
   );
 };
