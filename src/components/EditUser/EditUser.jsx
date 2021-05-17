@@ -18,12 +18,15 @@ import Rating from "@material-ui/lab/Rating";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { useForm, Controller } from "react-hook-form";
 import useStyles from "./styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 
+import { editUserAction } from "../../store/actions/userActions";
+
 const EditUser = () => {
   const {
+    _id,
     rating,
     skills,
     bio,
@@ -44,6 +47,7 @@ const EditUser = () => {
     formState: { errors },
   } = useForm();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onAvatarChange = (e) => {
     let fileSelected = e.target.files[0]; // grab selected file
@@ -60,11 +64,12 @@ const EditUser = () => {
     };
   };
 
-  const onSubmit = async (jsonData) => {
+  const onSubmit = (jsonData) => {
     // merge avatar file with data
     jsonData.avatar = avatarPreview;
 
     console.log(jsonData);
+    dispatch(editUserAction(_id));
 
     // signup user in backend
     // try {

@@ -3,6 +3,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   GET_USERS,
+  EDIT_USER,
 } from "../actions/types";
 import {
   loadTokenFromStorage,
@@ -36,6 +37,11 @@ const userReducer = (state = initialState, action) => {
         user: null,
         token: null,
       };
+
+    case EDIT_USER:
+      return state.user.map((user) =>
+        user._id === action.payload._id ? action.payload : user
+      );
 
     default:
       return state;

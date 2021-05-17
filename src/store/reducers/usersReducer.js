@@ -1,4 +1,4 @@
-import { EDIT_USER, GET_USERS, GET_USERS_BY_SKILL } from "../actions/types";
+import { GET_USERS, GET_USERS_BY_SKILL } from "../actions/types";
 
 const initialState = {
   usersWithSkill: [],
@@ -16,8 +16,6 @@ const usersReducer = (state = initialState, action) => {
       // return usersBySkill;
       return { ...state, usersWithSkill: action.payload };
 
-    case EDIT_USER:
-      return { ...state };
     default:
       return state;
   }
