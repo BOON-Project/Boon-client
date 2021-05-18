@@ -87,5 +87,8 @@ booncard: {
     color: "white",
     filter: 'brightness(90%)',
 
+},
+carousel: {
+
 }
 }));
