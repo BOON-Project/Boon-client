@@ -21,7 +21,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  // console.log(action.payload);
   switch (action.type) {
     case SIGNUP_USER:
     case LOGIN_USER:
@@ -39,6 +38,9 @@ const userReducer = (state = initialState, action) => {
       };
 
     case EDIT_USER:
+      console.clear();
+      console.log("action.payload", action.payload);
+      localStorage.setItem("user", action.payload);
       return { ...state, user: { ...state.user, ...action.payload } };
 
     default:

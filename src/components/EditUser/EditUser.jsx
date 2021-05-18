@@ -25,17 +25,7 @@ import { useHistory } from "react-router";
 import { editUserAction } from "../../store/actions/userActions";
 
 const EditUser = () => {
-  const {
-    _id,
-    rating,
-    skills,
-    bio,
-    firstName,
-    lastName,
-    email,
-    birthday,
-    userName,
-  } = useSelector((state) => state.userReducer.user);
+  const user = useSelector((state) => state.userReducer.user);
 
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
@@ -64,12 +54,11 @@ const EditUser = () => {
     };
   };
 
-  const onSubmit = (jsonData) => {
+  const onSubmitForm = (data) => {
     // merge avatar file with data
-    jsonData.avatar = avatarPreview;
+    data.avatar = avatarPreview;
 
-    console.log(jsonData);
-    dispatch(editUserAction(_id));
+    dispatch(editUserAction({ ...data, id: user._id }));
 
     // signup user in backend
     // try {
@@ -80,7 +69,7 @@ const EditUser = () => {
     //   console.log(errAxios.response && errAxios.response.data);
     // }
   };
-  // const displayBD = birthday.slice(0, 10);
+  const displayBD = user.birthday.slice(0, 10);
 
   return (
     <CssBaseline>
@@ -96,7 +85,7 @@ const EditUser = () => {
             className={classes.form}
             noValidate
             autoComplete='off'
-            onSubmit={handleSubmit(onSubmit)}>
+            onSubmit={handleSubmit(onSubmitForm)}>
             {/* Avatar input */}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -124,7 +113,7 @@ const EditUser = () => {
                     <ListItemSecondaryAction>
                       <Rating
                         name='size-large'
-                        defaultValue={rating}
+                        defaultValue={user.rating}
                         size='large'
                         precision={0.5}
                         readOnly
@@ -151,7 +140,7 @@ const EditUser = () => {
                       <MoreVertIcon />
                     </Typography>{" "}
                   </ListItem>{" "}
-                  {skills.map((skill) => {
+                  {user.skills.map((skill) => {
                     return (
                       <ListItem alignItems='flex-start'>
                         {" "}
@@ -174,7 +163,7 @@ const EditUser = () => {
                 <Controller
                   name='firstName'
                   control={control}
-                  defaultValue={firstName}
+                  defaultValue={user.firstName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -200,7 +189,7 @@ const EditUser = () => {
                 <Controller
                   name='lastName'
                   control={control}
-                  defaultValue={lastName}
+                  defaultValue={user.lastName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -225,7 +214,7 @@ const EditUser = () => {
                 <Controller
                   name='userName'
                   control={control}
-                  defaultValue={userName}
+                  defaultValue={user.userName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -243,12 +232,34 @@ const EditUser = () => {
                     />
                   )}
                 />
+                <Controller
+                  name='password'
+                  control={control}
+                  defaultValue=''
+                  render={({
+                    field: { onChange, value },
+                    fieldState: { error },
+                  }) => (
+                    <TextField
+                      label='Password'
+                      variant='outlined'
+                      margin='normal'
+                      type='password'
+                      fullWidth
+                      id='password'
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}
+                      helperText={error ? error.message : null}
+                    />
+                  )}
+                />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Controller
                   name='birthday'
                   control={control}
-                  defaultValue={birthday}
+                  defaultValue={user.birthday}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -276,7 +287,7 @@ const EditUser = () => {
                 <Controller
                   name='email'
                   control={control}
-                  defaultValue={email}
+                  defaultValue={user.email}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -302,7 +313,7 @@ const EditUser = () => {
                 <Controller
                   name='bio'
                   control={control}
-                  defaultValue={bio}
+                  defaultValue={user.bio}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },

@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <AppBar className={classes.footer} color='primary'>
-      <Container className={classes.container} align='center'>
+      {/* <Container className={classes.container} align='center'>
         <Toolbar align='center'>
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -46,7 +46,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Toolbar>
-      </Container>
+      </Container> */}
     </AppBar>
   );
 };
