@@ -1,7 +1,13 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import useStyles from "./styles";
-import { AppBar, Box, Container, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Container,
+  Grid,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 
 const Footer = () => {
   const classes = useStyles();
@@ -24,15 +30,24 @@ const Footer = () => {
   }
 
   return (
-    <Box align='center'>
-      <AppBar className={classes.footer} color='primary'>
-        <Container className={classes.container} align='center'>
-          <Typography align='center' color='inherit'>
-            <Copyright />
-          </Typography>
-        </Container>
-      </AppBar>
-    </Box>
+    <AppBar className={classes.footer} color='primary'>
+      <Container className={classes.container} align='center'>
+        <Toolbar align='center'>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography align='center' color='inherit'>
+                <Copyright />
+              </Typography>
+              <Typography>
+                <a href='https://icons8.com/icon/JoAq-WcWdsp8/jake'>
+                  Jake icon by Icons8
+                </a>
+              </Typography>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 

@@ -27,7 +27,6 @@ const Search = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleInputChange = (skillID) => {
-    history.push(`/skill/${skillID}`);
     dispatch(getUsersBySkillAction(skillID));
   };
 
@@ -57,15 +56,17 @@ const Search = () => {
           />
         )}
       />
-
-      <Box display="flex">
+      <Box display="flex" >
+      <Typography >
+        <p>Try with:  </p>
+      </Typography>
         <Button
           size="large"
           color="primary"
           variant="outlined"
           className={classes.tag}
         >
-          Petsiting
+           Petsiting
         </Button>
         <Button
           size="large"

@@ -21,7 +21,7 @@ export const editUserAction = (userId) => async (dispatch) => {
   console.log("we are looking for action", response);
   dispatch({
     type: EDIT_USER,
-    payload: response,
+    payload: response.data,
   });
 };
 

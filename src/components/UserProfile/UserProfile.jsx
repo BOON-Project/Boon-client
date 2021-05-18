@@ -78,6 +78,7 @@ export default function UserProfile(props) {
           variant="contained"
           className={classes.button}
           onClick={() => history.push("/login")}
+
         >
           Request a Boon
         </Button>
@@ -171,8 +172,8 @@ export default function UserProfile(props) {
 
       {/* Last 2 Buttons!  */}
 
-      <Box className={classes.root} textAlign='center'>
-        <ButtonGroup disableElevation variant='contained'>
+      <Box className={classes.root} textAlign='center' mt={3}>
+        <ButtonGroup  variant='contained'>
           <Button
             component={Link}
             to='/home'
@@ -183,17 +184,6 @@ export default function UserProfile(props) {
             className={classes.button}>
             Go back
           </Button>
-
-
-          {/* <Button
-            component={Link}
-            to='/home'
-            size='large'
-            color='secondary'
-            variant='contained'
-            className={classes.button}>
-            Request a Boon
-          </Button> */}
           {linkConditional()}
 
         </ButtonGroup>

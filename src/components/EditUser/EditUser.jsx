@@ -80,7 +80,7 @@ const EditUser = () => {
     //   console.log(errAxios.response && errAxios.response.data);
     // }
   };
-  const displayBD = birthday.slice(0, 10);
+  // const displayBD = birthday.slice(0, 10);
 
   return (
     <CssBaseline>
@@ -248,7 +248,7 @@ const EditUser = () => {
                 <Controller
                   name='birthday'
                   control={control}
-                  defaultValue={displayBD}
+                  defaultValue={birthday}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },

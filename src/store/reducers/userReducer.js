@@ -39,9 +39,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case EDIT_USER:
-      return state.user.map((user) =>
-        user._id === action.payload._id ? action.payload : user
-      );
+      return { ...state, user: { ...state.user, ...action.payload } };
 
     default:
       return state;
