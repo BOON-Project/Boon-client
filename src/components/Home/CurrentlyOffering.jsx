@@ -42,13 +42,15 @@ const CurentlyOffering = () => {
 
       {/* CARDS */}
 
-      <Grid item xs={12} display="flex">
-        <Box className={classes.cardBox} mt={3} display="flex" textAlign="center" justifyContent="center">
+      <Grid item xs={12}  display="flex">
+        <Box className={classes.cardBox} mt={2} display="flex" textAlign="center" justifyContent="center">
           {randomSkills.length > 1 &&
             randomSkills.map((skill) => {
               //console.log(allImages(`./${skill.avatar}`));
               return (
-                <Card className='card' className={classes.currentlyCard}  key={skill._id}>
+                <Grid item sm={6} >
+
+                <Card  className={classes.currentlyCard}  key={skill._id}>
                   <Box p={3}>
                     <Typography variant="h5" color="primary">
                       {skill.name}
@@ -58,7 +60,7 @@ const CurentlyOffering = () => {
                     className={classes.media}
                     alt="boonee avatar"
                     src={allImages(`./${skill.avatar}`).default}
-                  />
+                    />
 
                   <CardActions className={classes.more}>
                     <Button
@@ -66,11 +68,12 @@ const CurentlyOffering = () => {
                       color="primary"
                       variant="contained"
                       className={classes.button}
-                    >
+                      >
                       More
                     </Button>
                   </CardActions>
                 </Card>
+                      </Grid>
               );
             })}
         </Box>

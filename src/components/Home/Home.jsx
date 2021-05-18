@@ -102,9 +102,11 @@ const Home = () => {
         {/* Adding carousel to them  */}
         <Box height="41rem" display="flex">
           <Carousel
+          centerSlidePercentage={55}
             className={classes.carousel}
             autoPlay={false}
             display="flex"
+            animation='slide'
             navButtonsAlwaysVisible={true}
             //styling tiny dots at bottom
             indicatorIconButtonProps={{

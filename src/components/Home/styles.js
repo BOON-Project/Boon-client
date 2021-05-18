@@ -115,8 +115,7 @@ export default makeStyles((theme) => ({
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
       currentlyCard: {
-        maxWidth: "500px",
-        minWidth: "400px",
+
       },
       media: {
         height: "10px",
