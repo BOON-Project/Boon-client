@@ -4,6 +4,7 @@ import useStyles from "./styles";
 
 //styling=>
 import {
+  Avatar,
   Typography,
   Box,
   Container,
@@ -141,77 +142,89 @@ export default function AboutUs() {
           <p>Want to join us?</p>
           <p>Open positions</p>
         </Box>
+
+        <Grid container spacing={3}>
+          <Grid item xs={4}>
+            <Card className={classes.root}>
+              <CardActionArea className={classes.intro}>
+                <Avatar
+                  className={classes.avatar}
+                  src={cindy}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography align="center" variant="h5" component="h2">
+                    Cindy
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Sunt, sapiente explicabo? Cupiditate deleniti et, iusto
+                    voluptas animi sint praesentium qui.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Card className={classes.root}>
+              <CardActionArea className={classes.intro}>
+                <Avatar
+                  className={classes.avatar}
+                  src={guitar}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography align="center" variant="h5" component="h2">
+                    Azael
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                    nulla magni cum exercitationem veniam nisi et ipsam officia
+                    adipisci labore, laboriosam eveniet quibusdam animi incidunt
+                    necessitatibus accusantium sint odio voluptates.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Card className={classes.root}>
+              <CardActionArea className={classes.intro}>
+                <Avatar
+                  className={classes.avatar}
+                  src={eniko}
+                  title="Contemplative Reptile"
+                />
+                <CardContent>
+                  <Typography align="center" variant="h5" component="h2">
+                    Enikö
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Repudiandae, nemo alias accusantium quas eum doloribus
+                    similique non natus delectus animi cumque quam ea quos
+                    voluptates obcaecati assumenda. Cum, quae dolorem.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        </Grid>
       </Container>
-
-      <Grid container spacing={3}>
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={cindy}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Cindy
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Sunt, sapiente explicabo? Cupiditate deleniti et, iusto
-                  voluptas animi sint praesentium qui.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={guitar}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Azael
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                  nulla magni cum exercitationem veniam nisi et ipsam officia
-                  adipisci labore, laboriosam eveniet quibusdam animi incidunt
-                  necessitatibus accusantium sint odio voluptates.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={eniko}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Enikö
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repudiandae, nemo alias accusantium quas eum doloribus
-                  similique non natus delectus animi cumque quam ea quos
-                  voluptates obcaecati assumenda. Cum, quae dolorem.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-      </Grid>
     </>
   );
 }
