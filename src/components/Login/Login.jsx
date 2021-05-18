@@ -57,6 +57,20 @@ export default function SignInSide() {
     history.push("/");
   };
 
+  //special footer function
+  function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="/">
+          Boon
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+
 
   return (
     <>
@@ -159,7 +173,7 @@ export default function SignInSide() {
 
             {/* COPYRIGHT */}
             <Box mt={5}>
-              <Footer />
+            <Copyright />
             </Box>
           </div>
         </Grid>

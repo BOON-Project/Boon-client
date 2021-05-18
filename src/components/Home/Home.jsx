@@ -5,8 +5,11 @@ import {
   Box,
   Card,
   CardContent,
+  AppBar,
+  Toolbar,
 } from "@material-ui/core"
 import Carousel from 'react-material-ui-carousel';
+import Typed from 'react-typed';
 import CurentlyOffering from "./CurrentlyOffering";
 import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
@@ -18,7 +21,8 @@ import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
-import Footer from "../Footer/Footer";
+
+
 
 
 
@@ -37,21 +41,51 @@ const Home = () => {
 
   return (
     <>
+    {/* Top main image */}
+    <AppBar className={classes.appBar} position="static">
+      {/* <Toolbar>
+        <Typography variant="h6" color="white">
+            Do you want to be part of the change?
+        </Typography>
+      </Toolbar> */}
+    </AppBar>
+    <Box className={classes.hero} >
+      <Box align="center" >
+        Boon <br />
+          The new social media
+      </Box>
+    </Box>
     <Container maxWidth="lg" className={classes.root}>
+
+
       {/* DICTIONARY CARD */}
-      <Card className={classes.card} elevation={8}>
+      <Card className={classes.booncard} elevation={8}>
         <CardContent>
           <Box pb={2}>
-            <Typography variant="h2" color="primary">
+            <Typography variant="h2" color="secondary" style={{"fontWeight": 600}} >
               Boon
             </Typography>
-            <Typography variant="subtitle1">/buːn/</Typography>
+            <Typography variant="subtitle2" style={{"fontWeight": 600}}  >/buːn/</Typography>
           </Box>
-          <Typography variant="h5" color="info">
-            1. A thing that is helpful or beneficial
+
+          {/* small typing animation 1 */}
+          <Typography variant="h4" color="info">
+          <Typed
+              strings={['1. A thing that is helpful or beneficial']}
+              typeSpeed={40}
+
+            />
           </Typography>
-          <Typography variant="h5" color="info">
-            2. A favour or request.
+
+          {/* small typing animation 2 */}
+          <Typography variant="h4" color="info">
+            <Typed
+              strings={['2. A favour or request.']}
+              typeSpeed={40}
+              startDelay={3300}
+
+            />
+
           </Typography>
         </CardContent>
       </Card>
@@ -64,25 +98,31 @@ const Home = () => {
       </Box>
 
       {/* SEARCH */}
-      {/* <Search>
+      {/* <Search> this is explore component!!
         <SkillByUser />
       </Search> */}
 
 
 
     {/* Adding carousel to them  */}
-
-<Box height="45rem" display="flex">
+      <Box height="45rem" display="flex">
     <Carousel autoPlay={false} display='flex'>
 
       {/* CURRENTLY OFFERING */}
       <CurentlyOffering/>
+    </Carousel>
+      </Box>
 
       {/* TOP RATED BOONERS */}
-      <TopRatedUsers />
 
+      <Box height="45rem" display="flex">
+    <Carousel autoPlay={false} display='flex'>
+
+      {/* CURRENTLY OFFERING */}
+      <TopRatedUsers />
     </Carousel>
-</Box>
+      </Box>
+
 
       {/* TOP RATED BOONS */}
       <TopRatedBoons />
@@ -90,7 +130,7 @@ const Home = () => {
 
     </Container>
 
-      <Footer  />
+
 
     </>
   );
