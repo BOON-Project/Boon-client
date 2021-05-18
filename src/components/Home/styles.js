@@ -1,34 +1,33 @@
 import { useStyles } from "./styles";
 import { makeStyles } from "@material-ui/core";
-import Image from '../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg'
+import Image from "../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg";
 
 export default makeStyles((theme) => ({
   root: {
     marginTop: "5%",
 
-
     //media queries mobile version
     padding: theme.spacing(1),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       backgroundColor: theme.palette.secondary.main,
-      currentlyCard:{
-        maxWidth: '500px',
-        minWidth: '400px',
-        backgroundColor: 'red'
+      currentlyCard: {
+        maxWidth: "500px",
+        minWidth: "400px",
+        backgroundColor: "red",
       },
-      avatar:{
-        height: '10px',
-        width: '5px'
-      }
+      avatar: {
+        height: "10px",
+        width: "5px",
+      },
     },
 
     //media queries tablet
-    [theme.breakpoints.up('md')]: {
-      backgroundColor: 'none',
+    [theme.breakpoints.up("md")]: {
+      backgroundColor: "none",
     },
     //media queries pcs
-    [theme.breakpoints.up('lg')]: {
-      backgroundColor: 'none',
+    [theme.breakpoints.up("lg")]: {
+      backgroundColor: "none",
     },
   },
   card: {
@@ -36,7 +35,9 @@ export default makeStyles((theme) => ({
     marginTop: "20px",
     marginRight: "20px",
     height: "400px",
-    display:'flex', justifyContent:'space-between', flexDirection:'column'
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
   },
   userCard: {
     padding: 0,
@@ -65,8 +66,6 @@ export default makeStyles((theme) => ({
     height: "150px",
     width: "150px",
     right: "-50px",
-
-
   },
   avatar: {
     width: "80px",
@@ -82,58 +81,55 @@ export default makeStyles((theme) => ({
     width: theme.spacing(7),
   },
   appBar: {
-backgroundColor: `${theme.primary}`,
-color: "white",
+    backgroundColor: `${theme.primary}`,
+    color: "white",
   },
-hero: {
-  backgroundImage:  'url(https://source.unsplash.com/random)',
-  height: "500px",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  color: "white",
-  fontSize: "4rem",
-  fontWeight: "bold",
-},
-more: {
-  padding: "10px",
-},
-booncard: {
-  width: "100%",
+  hero: {
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    height: "500px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+    fontSize: "4rem",
+    fontWeight: "bold",
+  },
+  more: {
+    padding: "10px",
+  },
+  booncard: {
+    width: "100%",
     marginTop: "20px",
     marginRight: "20px",
     height: "250px",
-    display:'flex',
+    display: "flex",
     backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${Image})`,
     color: "white",
-    filter: 'brightness(90%)',
-
-},
-currentlyCard: {
-  padding: theme.spacing(1),
-  [theme.breakpoints.down('sm')]: {
-    currentlyCard:{
-      maxWidth: '500px',
-      minWidth: '400px',
-    },
-    media:{
-      height: '10px',
-      width: '5px'
-    }
+    filter: "brightness(90%)",
   },
+  currentlyCard: {
+    padding: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      currentlyCard: {
+        maxWidth: "500px",
+        minWidth: "400px",
+      },
+      media: {
+        height: "10px",
+        width: "5px",
+      },
+    },
     width: "300px",
     marginTop: "20px",
     marginRight: "20px",
     height: "400px",
-    display:'flex', justifyContent:'space-around',
-    flexDirection:'column',
-
-},
-cardBox:{
-
-}
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "column",
+  },
+  cardBox: {},
 }));
