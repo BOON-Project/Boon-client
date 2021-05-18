@@ -12,7 +12,9 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
+
 const allImages = require.context("../../images", true, /.svg$/);
+
 
 const CurentlyOffering = () => {
   const classes = useStyles();
@@ -41,12 +43,12 @@ const CurentlyOffering = () => {
       {/* CARDS */}
 
       <Grid item xs={12} display="flex">
-        <Box mt={3} display="flex" textAlign="center" justifyContent="center">
+        <Box className={classes.cardBox} mt={3} display="flex" textAlign="center" justifyContent="center">
           {randomSkills.length > 1 &&
             randomSkills.map((skill) => {
               //console.log(allImages(`./${skill.avatar}`));
               return (
-                <Card className={classes.card} elevation={9} key={skill._id}>
+                <Card className='card' className={classes.currentlyCard}  key={skill._id}>
                   <Box p={3}>
                     <Typography variant="h5" color="primary">
                       {skill.name}

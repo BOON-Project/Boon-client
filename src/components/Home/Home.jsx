@@ -195,8 +195,8 @@ const Home = () => {
             }}
           >
             {/* CURRENTLY OFFERING */}
-            <TopRatedUsers />
-            <TopRatedUsers />
+            {/* <TopRatedUsers />
+      <TopRatedUsers /> */}
           </Carousel>
         </Box>
 
