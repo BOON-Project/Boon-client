@@ -25,6 +25,7 @@ import guitar from "../../images/guitar-5531027_1920.jpg";
 import friends from "../../images/friends-581753_1920.jpg";
 import cindy from "../../images/cindy.jpg";
 import eniko from "../../images/eniko.jpg";
+import aza from "../../images/aza.jpg";
 
 export default function AboutUs() {
   const classes = useStyles();
@@ -147,11 +148,7 @@ export default function AboutUs() {
           <Grid item xs={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
-                <Avatar
-                  className={classes.avatar}
-                  src={cindy}
-                  title="Contemplative Reptile"
-                />
+                <Avatar className={classes.avatar} src={cindy} title="Cindy" />
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Cindy
@@ -173,11 +170,7 @@ export default function AboutUs() {
           <Grid item xs={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
-                <Avatar
-                  className={classes.avatar}
-                  src={guitar}
-                  title="Contemplative Reptile"
-                />
+                <Avatar className={classes.avatar} src={aza} title="Azael" />
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Azael
@@ -200,11 +193,7 @@ export default function AboutUs() {
           <Grid item xs={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
-                <Avatar
-                  className={classes.avatar}
-                  src={eniko}
-                  title="Contemplative Reptile"
-                />
+                <Avatar className={classes.avatar} src={eniko} title="Enikö" />
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Enikö
