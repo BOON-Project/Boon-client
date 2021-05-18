@@ -20,7 +20,7 @@ const Footer = () => {
     return (
       <Typography variant='body2' color='white' align='center'>
         {"Copyright © "}
-        <Link color='white' href='/'>
+        <Link s href='/' style={{ color: "white", textDecoration: "none" }}>
           Boon
         </Link>{" "}
         {new Date().getFullYear()}
@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <AppBar className={classes.footer} color='primary'>
-      {/* <Container className={classes.container} align='center'>
+      <Container className={classes.container} align='center'>
         <Toolbar align='center'>
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -39,14 +39,16 @@ const Footer = () => {
                 <Copyright />
               </Typography>
               <Typography>
-                <a href='https://icons8.com/icon/JoAq-WcWdsp8/jake'>
+                <a
+                  href='https://icons8.com/icon/JoAq-WcWdsp8/jake'
+                  style={{ color: "white", textDecoration: "none" }}>
                   Jake icon by Icons8
                 </a>
               </Typography>
             </Grid>
           </Grid>
         </Toolbar>
-      </Container> */}
+      </Container>
     </AppBar>
   );
 };

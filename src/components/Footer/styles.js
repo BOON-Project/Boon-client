@@ -5,9 +5,17 @@ export default makeStyles({
   footer: {
     textAlign: "center",
     color: "white",
-    marginTop: "2rem",
+    top: "10rem",
+    bottom: '0',
   },
   container: {
     textAlign: "center",
   },
+  href: {
+    color: "white",
+  },
+  a:{
+    color:'white'
+  }
 });
+

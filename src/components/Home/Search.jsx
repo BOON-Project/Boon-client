@@ -46,10 +46,6 @@ const Search = () => {
         getOptionLabel={(skill) => skill.name}
         onChange={(event, skill) => {
           handleInputChange(skill._id);
-
-
-
-
         }}
         renderInput={(params) => (
           <TextField
@@ -60,17 +56,17 @@ const Search = () => {
           />
         )}
       />
-      <Box display="flex" >
-      <Typography >
-        <p>Try with:  </p>
-      </Typography>
+      <Box display="flex">
+        <Typography>
+          <p>Try with: </p>
+        </Typography>
         <Button
           size="large"
           color="primary"
           variant="outlined"
           className={classes.tag}
         >
-           Petsiting
+          Petsiting
         </Button>
         <Button
           size="large"
