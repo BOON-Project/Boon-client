@@ -5,6 +5,31 @@ import Image from '../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg'
 export default makeStyles((theme) => ({
   root: {
     marginTop: "5%",
+
+
+    //media queries mobile version
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: theme.palette.secondary.main,
+      currentlyCard:{
+        maxWidth: '500px',
+        minWidth: '400px',
+        backgroundColor: 'red'
+      },
+      avatar:{
+        height: '10px',
+        width: '5px'
+      }
+    },
+
+    //media queries tablet
+    [theme.breakpoints.up('md')]: {
+      backgroundColor: 'none',
+    },
+    //media queries pcs
+    [theme.breakpoints.up('lg')]: {
+      backgroundColor: 'none',
+    },
   },
   card: {
     width: "300px",
@@ -88,7 +113,27 @@ booncard: {
     filter: 'brightness(90%)',
 
 },
-carousel: {
+currentlyCard: {
+  padding: theme.spacing(1),
+  [theme.breakpoints.down('sm')]: {
+    currentlyCard:{
+      maxWidth: '500px',
+      minWidth: '400px',
+    },
+    media:{
+      height: '10px',
+      width: '5px'
+    }
+  },
+    width: "300px",
+    marginTop: "20px",
+    marginRight: "20px",
+    height: "400px",
+    display:'flex', justifyContent:'space-around',
+    flexDirection:'column',
+
+},
+cardBox:{
 
 }
 }));
