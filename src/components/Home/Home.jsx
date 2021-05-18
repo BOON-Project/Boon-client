@@ -33,7 +33,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={classes.wrapper}>
+    <>
       {/* Top main image */}
       <AppBar className={classes.appBar} position="static">
         {/* <Toolbar>
@@ -48,6 +48,8 @@ const Home = () => {
           The new social media
         </Box>
       </Box>
+
+      {/* ****************************************************************** */}
       <Container maxWidth="lg" className={classes.root}>
         {/* DICTIONARY CARD */}
         <Card className={classes.booncard} elevation={8}>
@@ -90,6 +92,7 @@ const Home = () => {
             exchange platform
           </Typography>
         </Box>
+        {/* ***************************************************************** */}
 
         {/* SEARCH */}
         {/* <Search> this is explore component!!
@@ -97,26 +100,110 @@ const Home = () => {
       </Search> */}
 
         {/* Adding carousel to them  */}
-        <Box height="45rem" display="flex">
-          <Carousel autoPlay={false} display="flex">
+        <Box height="41rem" display="flex">
+          <Carousel
+            className={classes.carousel}
+            autoPlay={false}
+            display="flex"
+            navButtonsAlwaysVisible={true}
+            //styling tiny dots at bottom
+            indicatorIconButtonProps={{
+              style: {
+                padding: "5px", // 1
+                color: "#32908F", // 3
+              },
+            }}
+            activeIndicatorIconButtonProps={{
+              style: {
+                backgroundColor: "#E4B363", // 2
+              },
+            }}
+            indicatorContainerProps={{
+              style: {
+                marginTop: "30px", // 5
+              },
+            }}
+            indicatorIcon={{
+              style: {
+                color: "#E4B363",
+              },
+            }}
+            //styling arrow icons!
+            fullHeightHover={false}
+            navButtonsProps={{
+              style: {
+                backgroundColor: "#E4B363",
+                color: "#32908F",
+              },
+            }}
+            navButtonsWrapperProps={{
+              style: {
+                bottom: "0",
+              },
+            }}
+          >
             {/* CURRENTLY OFFERING */}
+            <CurentlyOffering />
+            <CurentlyOffering />
             <CurentlyOffering />
           </Carousel>
         </Box>
 
-        {/* TOP RATED BOONERS */}
+        {/* TOP RATED BOONERS // second carousel */}
 
-        <Box height="45rem" display="flex">
-          <Carousel autoPlay={false} display="flex">
+        <Box height="48rem" display="flex">
+          <Carousel
+            autoPlay={false}
+            display="flex"
+            autoPlay={false}
+            display="flex"
+            navButtonsAlwaysVisible={true}
+            //styling tiny dots at bottom
+            indicatorIconButtonProps={{
+              style: {
+                padding: "5px", // 1
+                color: "#32908F", // 3
+              },
+            }}
+            activeIndicatorIconButtonProps={{
+              style: {
+                backgroundColor: "#E4B363", // 2
+              },
+            }}
+            indicatorContainerProps={{
+              style: {
+                marginTop: "30px", // 5
+              },
+            }}
+            indicatorIcon={{
+              style: {
+                color: "#E4B363",
+              },
+            }}
+            //styling arrow icons!
+            fullHeightHover={false}
+            navButtonsProps={{
+              style: {
+                backgroundColor: "#E4B363",
+                color: "#32908F",
+              },
+            }}
+            navButtonsWrapperProps={{
+              style: {
+                bottom: "0",
+              },
+            }}
+          >
             {/* CURRENTLY OFFERING */}
+            <TopRatedUsers />
             <TopRatedUsers />
           </Carousel>
         </Box>
 
-        {/* TOP RATED BOONS */}
+        {/* TOP RATED BOONS AT BOTTOM */}
         <TopRatedBoons />
       </Container>
-    </div>
+    </>
   );
 };
 

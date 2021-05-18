@@ -87,4 +87,5 @@ export default makeStyles((theme) => ({
     color: "white",
     filter: "brightness(90%)",
   },
+  carousel: {},
 }));
