@@ -55,7 +55,7 @@ export default function AboutUs() {
               rem?
             </p>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -81,7 +81,7 @@ export default function AboutUs() {
             </Card>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -108,7 +108,7 @@ export default function AboutUs() {
             </Card>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -145,7 +145,7 @@ export default function AboutUs() {
         </Box>
 
         <Grid container spacing={3}>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
                 <Avatar className={classes.avatar} src={cindy} title="Cindy" />
@@ -167,7 +167,7 @@ export default function AboutUs() {
             </Card>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
                 <Avatar className={classes.avatar} src={aza} title="Azael" />
@@ -190,7 +190,7 @@ export default function AboutUs() {
             </Card>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <Card className={classes.root}>
               <CardActionArea className={classes.intro}>
                 <Avatar className={classes.avatar} src={eniko} title="Enikö" />
