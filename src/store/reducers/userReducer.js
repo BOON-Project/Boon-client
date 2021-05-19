@@ -2,7 +2,6 @@ import {
   SIGNUP_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_USERS,
   EDIT_USER,
 } from "../actions/types";
 import {
@@ -38,10 +37,11 @@ const userReducer = (state = initialState, action) => {
       };
 
     case EDIT_USER:
-      console.clear();
-      console.log("action.payload", action.payload);
       localStorage.setItem("user", action.payload);
-      return { ...state, user: { ...state.user, ...action.payload } };
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload },
+      };
 
     default:
       return state;

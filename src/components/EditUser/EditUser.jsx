@@ -56,9 +56,16 @@ const EditUser = () => {
 
   const onSubmitForm = (data) => {
     // merge avatar file with data
+    console.log({ data });
     data.avatar = avatarPreview;
+    let filteredFields = {};
+    Object.keys(data).forEach((key) => {
+      if (data[key].length > 0) {
+        filteredFields[key] = data[key];
+      }
+    });
 
-    dispatch(editUserAction({ ...data, id: user._id }));
+    dispatch(editUserAction(filteredFields));
 
     // signup user in backend
     // try {
@@ -235,14 +242,13 @@ const EditUser = () => {
                 <Controller
                   name='password'
                   control={control}
-                  defaultValue=''
+                  defaultValue={user.password}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
                   }) => (
                     <TextField
                       label='Password'
-                      variant='outlined'
                       margin='normal'
                       type='password'
                       fullWidth

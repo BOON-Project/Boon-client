@@ -16,9 +16,12 @@ export const loginAction = (userData) => async (dispatch) => {
   });
 };
 
-export const editUserAction = (user) => async (dispatch) => {
-  console.log("we are looking for action", user);
-  const resposeData = await editUser(user);
+export const editUserAction = (user) => async (dispatch, getState) => {
+  console.log("====================================");
+  console.log(getState());
+  console.log("====================================");
+  const userId = getState().userReducer.user._id;
+  const resposeData = await editUser(userId, user);
   dispatch({
     type: EDIT_USER,
     payload: resposeData,
