@@ -2,7 +2,7 @@ import {
   SIGNUP_USER,
   LOGIN_USER,
   LOGOUT_USER,
-  GET_USERS,
+  EDIT_USER,
 } from "../actions/types";
 import {
   loadTokenFromStorage,
@@ -20,7 +20,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  // console.log(action.payload);
   switch (action.type) {
     case SIGNUP_USER:
     case LOGIN_USER:
@@ -35,6 +34,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: null,
         token: null,
+      };
+
+    case EDIT_USER:
+      const stringObject = JSON.stringify(action.payload);
+      localStorage.setItem("user", stringObject);
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload },
       };
 
     default:

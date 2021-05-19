@@ -18,24 +18,15 @@ import Rating from "@material-ui/lab/Rating";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { useForm, Controller } from "react-hook-form";
 import useStyles from "./styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 
+import { editUserAction } from "../../store/actions/userActions";
+
 const EditUser = () => {
-  const {
-    rating,
-    skills,
-    bio,
-    firstName,
-    lastName,
-    email,
-    birthday,
-    userName,
-  } = useSelector((state) => state.userReducer.user);
-  console.log("====================================");
-  console.log(bio);
-  console.log("====================================");
+  const user = useSelector((state) => state.userReducer.user);
+
   const classes = useStyles();
   const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
@@ -46,6 +37,7 @@ const EditUser = () => {
     formState: { errors },
   } = useForm();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onAvatarChange = (e) => {
     let fileSelected = e.target.files[0]; // grab selected file
@@ -62,22 +54,24 @@ const EditUser = () => {
     };
   };
 
-  const onSubmit = async (jsonData) => {
+  const onSubmitForm = (data) => {
     // merge avatar file with data
-    jsonData.avatar = avatarPreview;
+    console.log({ data });
+    data.avatar = avatarPreview;
 
-    console.log(jsonData);
+    dispatch(editUserAction(data));
 
     // signup user in backend
-    try {
-      let response = await axios.post("http://localhost:5000/user", jsonData);
-      console.log("Response: ", response.data); // => signed up user
-    } catch (errAxios) {
-      // handle error
-      console.log(errAxios.response && errAxios.response.data);
-    }
+    // try {
+    //   let response = await axios.put("http://localhost:5000/user", jsonData);
+    //   console.log("Response: ", response.data); // => signed up user
+    // } catch (errAxios) {
+    //   // handle error
+    //   console.log(errAxios.response && errAxios.response.data);
+    // }
   };
-  const displayBD = birthday.slice(0, 10);
+  const displayBD = user.birthday.slice(0, 10);
+
   return (
     <CssBaseline>
       <Container component='main' maxWidth='md'>
@@ -92,14 +86,14 @@ const EditUser = () => {
             className={classes.form}
             noValidate
             autoComplete='off'
-            onSubmit={handleSubmit(onSubmit)}>
+            onSubmit={handleSubmit(onSubmitForm)}>
             {/* Avatar input */}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <label htmlFor='avatar'>
                   <img
                     width='150'
-                    src={avatarPreview}
+                    src={user.avatar}
                     alt='avatar'
                     label='image'
                   />
@@ -120,7 +114,7 @@ const EditUser = () => {
                     <ListItemSecondaryAction>
                       <Rating
                         name='size-large'
-                        defaultValue={rating}
+                        defaultValue={user.rating}
                         size='large'
                         precision={0.5}
                         readOnly
@@ -147,7 +141,7 @@ const EditUser = () => {
                       <MoreVertIcon />
                     </Typography>{" "}
                   </ListItem>{" "}
-                  {skills.map((skill) => {
+                  {user.skills.map((skill) => {
                     return (
                       <ListItem alignItems='flex-start'>
                         {" "}
@@ -170,7 +164,7 @@ const EditUser = () => {
                 <Controller
                   name='firstName'
                   control={control}
-                  defaultValue={firstName}
+                  defaultValue={user.firstName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -196,7 +190,7 @@ const EditUser = () => {
                 <Controller
                   name='lastName'
                   control={control}
-                  defaultValue={lastName}
+                  defaultValue={user.lastName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -221,7 +215,7 @@ const EditUser = () => {
                 <Controller
                   name='userName'
                   control={control}
-                  defaultValue={userName}
+                  defaultValue={user.userName}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -239,12 +233,33 @@ const EditUser = () => {
                     />
                   )}
                 />
+                <Controller
+                  name='password'
+                  control={control}
+                  defaultValue=''
+                  render={({
+                    field: { onChange, value },
+                    fieldState: { error },
+                  }) => (
+                    <TextField
+                      label='Password'
+                      margin='normal'
+                      type='password'
+                      fullWidth
+                      id='password'
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}
+                      helperText={error ? error.message : null}
+                    />
+                  )}
+                />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Controller
                   name='birthday'
                   control={control}
-                  defaultValue={displayBD}
+                  defaultValue={user.birthday}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -272,7 +287,7 @@ const EditUser = () => {
                 <Controller
                   name='email'
                   control={control}
-                  defaultValue={email}
+                  defaultValue={user.email}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -298,7 +313,7 @@ const EditUser = () => {
                 <Controller
                   name='bio'
                   control={control}
-                  defaultValue={bio}
+                  defaultValue={user.bio}
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
@@ -331,7 +346,9 @@ const EditUser = () => {
                   onChange={onAvatarChange}
                 />
               </Box>
-              <Button variant='outlined'>Save changes</Button>
+              <Button type='submit' variant='outlined'>
+                Save changes
+              </Button>
             </Grid>
           </form>
         </div>
