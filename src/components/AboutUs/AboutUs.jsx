@@ -8,14 +8,18 @@ import {
   Typography,
   Box,
   Container,
-  Button,
   Grid,
   Card,
   CardActionArea,
+  CardActions,
+  IconButton,
   CardMedia,
   CardContent,
   Paper,
 } from "@material-ui/core";
+
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 //pictures for the page
 import team from "../../images/people-discussion-5069845_1920.jpg";
@@ -30,6 +34,11 @@ import Footer from "../Footer/Footer";
 
 export default function AboutUs() {
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <>
@@ -153,7 +162,7 @@ export default function AboutUs() {
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Cindy
-                  </Typography>
+                  </Typography>{" "}
                   <Typography
                     variant="body2"
                     color="textSecondary"
@@ -165,6 +174,15 @@ export default function AboutUs() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
+
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <LinkedInIcon />
+                </IconButton>
+              </CardActions>
             </Card>
           </Grid>
 
@@ -175,19 +193,27 @@ export default function AboutUs() {
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Azael
-                  </Typography>
+                  </Typography>{" "}
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                    nulla magni cum exercitationem veniam nisi et ipsam officia
-                    adipisci labore, laboriosam eveniet quibusdam animi incidunt
-                    necessitatibus accusantium sint odio voluptates.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Sunt, sapiente explicabo? Cupiditate deleniti et, iusto
+                    voluptas animi sint praesentium qui.
                   </Typography>
                 </CardContent>
               </CardActionArea>
+
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <LinkedInIcon />
+                </IconButton>
+              </CardActions>
             </Card>
           </Grid>
 
@@ -198,19 +224,27 @@ export default function AboutUs() {
                 <CardContent>
                   <Typography align="center" variant="h5" component="h2">
                     Enikö
-                  </Typography>
+                  </Typography>{" "}
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Repudiandae, nemo alias accusantium quas eum doloribus
-                    similique non natus delectus animi cumque quam ea quos
-                    voluptates obcaecati assumenda. Cum, quae dolorem.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Sunt, sapiente explicabo? Cupiditate deleniti et, iusto
+                    voluptas animi sint praesentium qui.
                   </Typography>
                 </CardContent>
               </CardActionArea>
+
+              <CardActions>
+                <IconButton aria-label="add to favorites">
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <LinkedInIcon />
+                </IconButton>
+              </CardActions>
             </Card>
           </Grid>
         </Grid>
