@@ -26,6 +26,7 @@ import friends from "../../images/friends-581753_1920.jpg";
 import cindy from "../../images/cindy.jpg";
 import eniko from "../../images/eniko.jpg";
 import aza from "../../images/aza.jpg";
+import Footer from "../Footer/Footer";
 
 export default function AboutUs() {
   const classes = useStyles();
@@ -214,6 +215,7 @@ export default function AboutUs() {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </>
   );
 }
