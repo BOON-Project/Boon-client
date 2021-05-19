@@ -63,6 +63,14 @@ const CurentlyOffering = () => {
                     />
 
                   <CardActions className={classes.more}>
+                    <Link
+                     to={{
+                      pathname: `/Dashboard`,
+                      state: { skill},
+                    }}
+                    style={{ width: "100%" }}
+                    >
+
                     <Button
                       size="large"
                       color="primary"
@@ -71,6 +79,7 @@ const CurentlyOffering = () => {
                       >
                       More
                     </Button>
+                        </Link>
                   </CardActions>
                 </Card>
                       </Grid>

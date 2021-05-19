@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const classes = useStyles();
@@ -72,6 +73,7 @@ const Home = () => {
               <Typed
                 strings={["1. A thing that is helpful or beneficial"]}
                 typeSpeed={40}
+                onReset='true'
               />
             </Typography>
 
@@ -197,14 +199,17 @@ const Home = () => {
             }}
           >
             {/* CURRENTLY OFFERING */}
-            {/* <TopRatedUsers />
-      <TopRatedUsers /> */}
+            <TopRatedUsers />
+            <TopRatedUsers />
           </Carousel>
         </Box>
 
         {/* TOP RATED BOONS AT BOTTOM */}
         <TopRatedBoons />
+
+
       </Container>
+        <Footer />
     </>
   );
 };

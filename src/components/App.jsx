@@ -19,7 +19,7 @@ import AboutUs from "./AboutUs/AboutUs";
 const App = () => {
   return (
     <>
-      <div className="wrapper">
+
         <Nav />
         <Switch>
           {/* new files structure */}
@@ -42,10 +42,10 @@ const App = () => {
           {/* Error 404 Route =>  */}
           <Route path="/*" component={Error404} />
         </Switch>
-        <div className="footer">
-          <Footer />
-        </div>
-      </div>
+
+
+
+
     </>
   );
 };
