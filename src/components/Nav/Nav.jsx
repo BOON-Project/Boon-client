@@ -96,6 +96,17 @@ export default function PrimarySearchAppBar() {
                       Explore
                     </Typography>
                   </Link>
+                  <Link
+                    underline="none"
+                    href="/Contact"
+                    className={classes.link}
+                    color="inherit"
+                  >
+                    <Typography variant="h6" color="info">
+                      {" "}
+                      Contact
+                    </Typography>
+                  </Link>
                 </>
               ) : null}
               <IconButton
