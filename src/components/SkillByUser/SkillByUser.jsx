@@ -30,8 +30,8 @@ const SkillByUser = () => {
 
   return (
     <>
-      <Box className={classes.main} my={8} display='flex' alignItems='center'>
-        <Typography variant='h2' color='primary'>
+      <Box className={classes.main}  display='flex' alignItems='center'>
+        <Typography variant='h3' color='primary'>
           Available users
         </Typography>
       </Box>
@@ -50,7 +50,7 @@ const SkillByUser = () => {
                     elevation={8}
                     key={user._id}>
                     <Box display='flex' flexDirection='column'>
-                      <Box m={3}>
+                      <Box m={2}>
                         {/* NAME */}
                         <Typography variant='h4' color='info'>
                           {user.userName}
@@ -114,7 +114,32 @@ const SkillByUser = () => {
                 </Grid>
               );
             })}
+
+
+<Grid container spacing={2} justify="center"
+  alignItems="center" >
+<Grid item xs={12} md={3}   >
+        <ButtonGroup variant="contained">
+          <Button
+          type="button"
+            size="large"
+            color="secondary"
+            variant="contained"
+            onClick={()=> history.push('/') }
+            className={classes.button}
+            >
+                Go back
+          </Button>
+
+        </ButtonGroup>
+
+
+</Grid>
       </Grid>
+
+
+
+            </Grid>
 
 
 
