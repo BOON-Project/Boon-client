@@ -1,4 +1,5 @@
-import { SIGNUP_USER, LOGIN_USER, LOGOUT_USER } from "./types";
+import { editUser } from "../../helpers/apiCalls";
+import { SIGNUP_USER, LOGIN_USER, LOGOUT_USER, EDIT_USER } from "./types";
 
 export const signupAction = (formData) => async (dispatch) => {
   dispatch({
@@ -12,6 +13,15 @@ export const loginAction = (userData) => async (dispatch) => {
   dispatch({
     type: LOGIN_USER,
     payload: userData,
+  });
+};
+
+export const editUserAction = (user) => async (dispatch, getState) => {
+  const userId = getState().userReducer.user._id;
+  const resposeData = await editUser(userId, user);
+  dispatch({
+    type: EDIT_USER,
+    payload: resposeData,
   });
 };
 

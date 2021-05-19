@@ -18,9 +18,9 @@ const Footer = () => {
   // FUNCTION COPYRIGHT
   function Copyright() {
     return (
-      <Typography variant="body2" color="white" align="center">
+      <Typography variant='body2' color='white' align='center'>
         {"Copyright © "}
-        <Link s href="/" style={{color: 'white', textDecoration:'none'}}>
+        <Link s href='/' style={{ color: "white", textDecoration: "none" }}>
           Boon
         </Link>{" "}
         {new Date().getFullYear()}
@@ -30,20 +30,18 @@ const Footer = () => {
   }
 
   return (
-
-
-
-
-    <AppBar className={classes.footer} color="primary">
-      <Container className={classes.container} align="center">
-        <Toolbar align="center">
+    <AppBar className={classes.footer} color='primary'>
+      <Container className={classes.container} align='center'>
+        <Toolbar align='center'>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Typography align="center" color="inherit">
+              <Typography align='center' color='inherit'>
                 <Copyright />
               </Typography>
-              <Typography >
-                <a href="https://icons8.com/icon/JoAq-WcWdsp8/jake" style={{color: 'white', textDecoration: 'none'}}>
+              <Typography>
+                <a
+                  href='https://icons8.com/icon/JoAq-WcWdsp8/jake'
+                  style={{ color: "white", textDecoration: "none" }}>
                   Jake icon by Icons8
                 </a>
               </Typography>

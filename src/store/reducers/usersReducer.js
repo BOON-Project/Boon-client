@@ -15,6 +15,7 @@ const usersReducer = (state = initialState, action) => {
       // const usersBySkill = action.payload;
       // return usersBySkill;
       return { ...state, usersWithSkill: action.payload };
+
     default:
       return state;
   }

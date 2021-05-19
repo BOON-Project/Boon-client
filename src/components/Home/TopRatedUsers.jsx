@@ -21,8 +21,8 @@ const TopRatedUsers = () => {
   return (
     // TITLE
     <>
-      <Box my={8} display="flex" alignItems="center">
-        <Typography variant="h2" color="primary">
+      <Box my={8} display='flex' alignItems='center'>
+        <Typography variant='h2' color='primary'>
           Top Rated Booners
         </Typography>
       </Box>
@@ -37,52 +37,50 @@ const TopRatedUsers = () => {
             return (
               <Grid item xs={12} md={3}>
                 <Card className={classes.userCard} elevation={4} key={user._id}>
-                  <Box display="flex" flexDirection="column">
+                  <Box display='flex' flexDirection='column'>
                     <Box m={3}>
                       {/* NAME */}
-                      <Typography variant="h4" color="info">
+                      <Typography variant='h4' color='info'>
                         {user.userName}
                       </Typography>
                       {/* RATING */}
                       <Box
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                      >
-                        <Typography variant="h6" color="info">
+                        display='flex'
+                        justifyContent='center'
+                        alignItems='center'>
+                        <Typography variant='h6' color='info'>
                           {user.rating}
                         </Typography>
-                        <StarIcon color="secondary" />
+                        <StarIcon color='secondary' />
                       </Box>
-                      <Box m={4} display="flex" justifyContent="center">
+                      <Box m={4} display='flex' justifyContent='center'>
                         <Avatar
-                          alt="Remy Sharp"
+                          alt='Remy Sharp'
                           src={user.avatar}
                           className={classes.avatarBooners}
                         />
                       </Box>
 
                       {/* MAP THROUGHT THE SKILLS */}
-                      {user.skills.map((skill) => {
-                        return (
-                          <Box
-                            display="flex"
-                            justifyContent="center"
-                            flexDirection="column"
-                            pt={1}
-                            key={skill.skillID._id}
-                          >
-                            <Button
-                              size="medium"
-                              color="info"
-                              variant="outlined"
-                              className={classes.tag}
-                            >
-                              {skill.skillID.name}
-                            </Button>
-                          </Box>
-                        );
-                      })}
+                      {[] ||
+                        user.skills.map((skill) => {
+                          return (
+                            <Box
+                              display='flex'
+                              justifyContent='center'
+                              flexDirection='column'
+                              pt={1}
+                              key={skill.skillID._id}>
+                              <Button
+                                size='medium'
+                                color='info'
+                                variant='outlined'
+                                className={classes.tag}>
+                                {skill.skillID.name}
+                              </Button>
+                            </Box>
+                          );
+                        })}
                     </Box>
                     <CardActions style={{ padding: "10px" }}>
                       <Link
@@ -90,14 +88,12 @@ const TopRatedUsers = () => {
                           pathname: `/UserProfile/${user._id}`,
                           state: { user },
                         }}
-                        style={{ width: "100%" }}
-                      >
+                        style={{ width: "100%" }}>
                         <Button
-                          size="large"
-                          color="secondary"
-                          variant="contained"
-                          className={classes.button}
-                        >
+                          size='large'
+                          color='secondary'
+                          variant='contained'
+                          className={classes.button}>
                           More
                         </Button>
                       </Link>
