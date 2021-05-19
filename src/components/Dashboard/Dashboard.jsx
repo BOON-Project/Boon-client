@@ -23,6 +23,7 @@ import SkillByUser from "../SkillByUser/SkillByUser";
 import Search from "../Home/Search";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getTasksAction } from "../../store/actions/tasksActions";
+import Footer from "../Footer/Footer";
 
 const Dashboard = () => {
   // to go back
@@ -36,9 +37,19 @@ const Dashboard = () => {
     dispatch(getTasksAction());
   }, []);
 
+
+
+
+
   return (
     <>
-      <Container maxWidth="lg" className={classes.root}>
+      <Container maxWidth="lg" style={{
+        display: 'flex',
+        minHeight: '100vh',
+        flexDirection: 'column'
+      }}
+
+      className={classes.root}>
         {/* title */}
         <Box className={classes.box} mt={3}>
           <Typography variant="h2" color="primary">
@@ -49,38 +60,12 @@ const Dashboard = () => {
         {/* SEARCH */}
         <Search />
         <SkillByUser />
+          </Container>
+        <Footer />
 
-        {/* Last 2 Buttons!  */}
 
-        <Box className={classes.root} textAlign="center" mt={4}>
-          <ButtonGroup variant="contained">
-            <Button
-              component={Link}
-              to="/"
-              size="large"
-              color="secondary"
-              variant="contained"
-              //onClick={() => history.goBack()}
-              className={classes.button}
-            >
-              Go back
-            </Button>
 
-            {/* <Button
-            component={Link}
-            to='/home'
-            size='large'
-            color='secondary'
-            variant='contained'
-            className={classes.button}>
-            Request a Boon
-          </Button> */}
-            {/* {linkConditional()} */}
-          </ButtonGroup>
-        </Box>
-      </Container>
 
-      {/* FOOTER component */}
     </>
   );
 };
