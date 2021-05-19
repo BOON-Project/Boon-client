@@ -71,6 +71,10 @@ const EditUser = () => {
     // }
   };
   const displayBD = user.birthday.slice(0, 10);
+  /**
+   * @todo modify Birthday format
+   * @body we should take care of the format(The specified value "2003-04-30T00:00:00.000Z" does not conform to the required format, "yyyy-MM-dd")
+   */
 
   return (
     <CssBaseline>
