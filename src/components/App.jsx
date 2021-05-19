@@ -16,6 +16,8 @@ import Footer from "./Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 
+import Contact from "./Contact/Contact";
+
 const App = () => {
   return (
     <>
@@ -30,7 +32,7 @@ const App = () => {
           <Route exact path="/RequestBoon/:id" component={RequestBoon} />
           <Route exact path="/skill/:id" component={SkillByUser} />
           <Route exact path="/AboutUs" component={AboutUs} />
-
+          <Route exact path="/Contact" component={Contact} />
           {/* Private Routes =>  */}
 
           {/* where ppl can see last Boons (what ppl need) */}
