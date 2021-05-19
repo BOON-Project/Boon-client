@@ -58,14 +58,8 @@ const EditUser = () => {
     // merge avatar file with data
     console.log({ data });
     data.avatar = avatarPreview;
-    let filteredFields = {};
-    Object.keys(data).forEach((key) => {
-      if (data[key].length > 0) {
-        filteredFields[key] = data[key];
-      }
-    });
 
-    dispatch(editUserAction(filteredFields));
+    dispatch(editUserAction(data));
 
     // signup user in backend
     // try {
@@ -99,7 +93,7 @@ const EditUser = () => {
                 <label htmlFor='avatar'>
                   <img
                     width='150'
-                    src={avatarPreview}
+                    src={user.avatar}
                     alt='avatar'
                     label='image'
                   />
@@ -242,7 +236,7 @@ const EditUser = () => {
                 <Controller
                   name='password'
                   control={control}
-                  defaultValue={user.password}
+                  defaultValue=''
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
