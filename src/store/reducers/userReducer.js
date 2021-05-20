@@ -37,8 +37,9 @@ const userReducer = (state = initialState, action) => {
       };
 
     case EDIT_USER:
-      const stringObject = JSON.stringify(action.payload);
-      localStorage.setItem("user", stringObject);
+      console.log("Action.payload", action.payload);
+      const stringUser = JSON.stringify(action.payload);
+      localStorage.setItem("user", stringUser);
       return {
         ...state,
         user: { ...state.user, ...action.payload },

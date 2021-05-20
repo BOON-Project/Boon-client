@@ -12,6 +12,7 @@ import {
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
+import Booners from "../../images/Booners.svg";
 
 const TopRatedUsers = () => {
   const classes = useStyles();
@@ -22,6 +23,9 @@ const TopRatedUsers = () => {
     // TITLE
     <>
       <Box my={8} display='flex' alignItems='center'>
+        <Box display='flex' justifyContent='center'>
+          <img src={Booners} alt='happy-booners' height='200' />
+        </Box>
         <Typography variant='h2' color='primary'>
           Top Rated Booners
         </Typography>

@@ -78,9 +78,6 @@ export const loginUser = async (formData) => {
 // edit user data (PRIVATE ROUTE, only user can be there & modify)
 
 export const editUser = async (id, data) => {
-  console.log("====================================");
-  console.log({ data });
-  console.log("====================================");
   try {
     const response = await axios.patch(`/user/${id}`, data);
 

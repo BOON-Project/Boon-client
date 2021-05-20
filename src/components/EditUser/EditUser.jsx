@@ -23,6 +23,13 @@ import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 
 import { editUserAction } from "../../store/actions/userActions";
+import { editUser } from "../../helpers/apiCalls";
+import {
+  hideErrorAction,
+  setErrorAction,
+} from "../../store/actions/errorActions";
+import { setUserInStorage } from "../../helpers/localStorage";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 const EditUser = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -54,23 +61,27 @@ const EditUser = () => {
     };
   };
 
-  const onSubmitForm = (data) => {
-    // merge avatar file with data
-    console.log({ data });
+  const onSubmitForm = async (data) => {
+    console.log("====================================");
+    console.log(data, user._id);
+    console.log("====================================");
     data.avatar = avatarPreview;
+    let result = await editUser(user._id, data);
 
-    dispatch(editUserAction(data));
+    // handle error case
+    if (result.error) {
+      console.log(result.error);
+      dispatch(setErrorAction(result.error));
+      return;
+    }
+    // merge avatar file with data
 
-    // signup user in backend
-    // try {
-    //   let response = await axios.put("http://localhost:5000/user", jsonData);
-    //   console.log("Response: ", response.data); // => signed up user
-    // } catch (errAxios) {
-    //   // handle error
-    //   console.log(errAxios.response && errAxios.response.data);
-    // }
+    dispatch(hideErrorAction());
+    setUserInStorage(result);
+
+    dispatch(editUserAction(result));
   };
-  const displayBD = user.birthday.slice(0, 10);
+  // const displayBD = user.birthday.slice(0, 10);
   /**
    * @todo modify Birthday format
    * @body we should take care of the format(The specified value "2003-04-30T00:00:00.000Z" does not conform to the required format, "yyyy-MM-dd")
@@ -78,10 +89,11 @@ const EditUser = () => {
 
   return (
     <CssBaseline>
-      <Container component="main" maxWidth="md">
+      <ErrorDisplay />
+      <Container component='main' maxWidth='md'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Typography component="h1" color="primary" variant="h3" mt="2">
+          <Typography component='h1' color='primary' variant='h3' mt='2'>
             My Booner Profile
           </Typography>
 
@@ -89,18 +101,17 @@ const EditUser = () => {
           <form
             className={classes.form}
             noValidate
-            autoComplete="off"
-            onSubmit={handleSubmit(onSubmitForm)}
-          >
+            autoComplete='off'
+            onSubmit={handleSubmit(onSubmitForm)}>
             {/* Avatar input */}
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <label htmlFor="avatar">
+                <label htmlFor='avatar'>
                   <img
-                    width="150"
+                    width='150'
                     src={user.avatar}
-                    alt="avatar"
-                    label="image"
+                    alt='avatar'
+                    label='image'
                   />
                 </label>
               </Grid>
@@ -110,25 +121,25 @@ const EditUser = () => {
               <Grid item xs={12} sm={6}>
                 <List className={classes.skills}>
                   {" "}
-                  <ListItem alignItems="flex-start">
+                  <ListItem alignItems='flex-start'>
                     {" "}
-                    <Typography variant="h4" color="secondary">
+                    <Typography variant='h4' color='secondary'>
                       {" "}
                       Current rating:{" "}
                     </Typography>{" "}
                     <ListItemSecondaryAction>
                       <Rating
-                        name="size-large"
+                        name='size-large'
                         defaultValue={user.rating}
-                        size="large"
+                        size='large'
                         precision={0.5}
                         readOnly
                       />
                     </ListItemSecondaryAction>
                   </ListItem>{" "}
-                  <ListItem alignItems="flex-start">
+                  <ListItem alignItems='flex-start'>
                     {" "}
-                    <Typography variant="h5" color="primary">
+                    <Typography variant='h5' color='primary'>
                       {" "}
                       Skills offered:{" "}
                     </Typography>{" "}
@@ -138,36 +149,40 @@ const EditUser = () => {
                       <MoreHorizIcon color='primary' />{" "} */}
                     </ListItemSecondaryAction>{" "}
                   </ListItem>{" "}
-                  <ListItem alignItems="flex-start">
+                  <ListItem alignItems='flex-start'>
                     {" "}
-                    <Typography variant="h6" color="primary">
+                    <Typography variant='h6' color='primary'>
                       {" "}
                       Add up to 5 skills
                       <MoreVertIcon />
                     </Typography>{" "}
                   </ListItem>{" "}
-                  {user.skills.map((skill) => {
-                    return (
-                      <ListItem alignItems="flex-start">
-                        {" "}
-                        <Button size="large" color="primary" variant="outlined">
-                          {skill.skillID.name}
-                        </Button>
-                        <ListItemSecondaryAction>
-                          <ListItemText
-                            primary={`${skill.boons} boons per hour`}
-                          />
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                    );
-                  })}
+                  {user.skills &&
+                    user.skills.map((skill) => {
+                      return (
+                        <ListItem alignItems='flex-start'>
+                          {" "}
+                          <Button
+                            size='large'
+                            color='primary'
+                            variant='outlined'>
+                            {skill.skillID.name}
+                          </Button>
+                          <ListItemSecondaryAction>
+                            <ListItemText
+                              primary={`${skill.boons} boons per hour`}
+                            />
+                          </ListItemSecondaryAction>
+                        </ListItem>
+                      );
+                    })}
                 </List>
               </Grid>
 
               {/* first name input! */}
               <Grid item xs={12} sm={6}>
                 <Controller
-                  name="firstName"
+                  name='firstName'
                   control={control}
                   defaultValue={user.firstName}
                   render={({
@@ -175,11 +190,11 @@ const EditUser = () => {
                     fieldState: { error },
                   }) => (
                     <TextField
-                      autoComplete="firstName"
-                      name="firstName"
+                      autoComplete='firstName'
+                      name='firstName'
                       fullWidth
-                      id="firstName"
-                      label="First Name"
+                      id='firstName'
+                      label='First Name'
                       autoFocus
                       onChange={onChange}
                       error={!!error}
@@ -193,7 +208,7 @@ const EditUser = () => {
               {/* last name input!  */}
               <Grid item xs={12} sm={6}>
                 <Controller
-                  name="lastName"
+                  name='lastName'
                   control={control}
                   defaultValue={user.lastName}
                   render={({
@@ -201,11 +216,11 @@ const EditUser = () => {
                     fieldState: { error },
                   }) => (
                     <TextField
-                      label="Last Name"
-                      autoComplete="lastName"
-                      name="lastName"
+                      label='Last Name'
+                      autoComplete='lastName'
+                      name='lastName'
                       fullWidth
-                      id="lastName"
+                      id='lastName'
                       onChange={onChange}
                       value={value}
                       error={!!error}
@@ -218,7 +233,7 @@ const EditUser = () => {
               {/* second row! */}
               <Grid item xs={12} sm={6}>
                 <Controller
-                  name="userName"
+                  name='userName'
                   control={control}
                   defaultValue={user.userName}
                   render={({
@@ -226,11 +241,11 @@ const EditUser = () => {
                     fieldState: { error },
                   }) => (
                     <TextField
-                      autoComplete="userName"
-                      name="userName"
+                      autoComplete='userName'
+                      name='userName'
                       fullWidth
-                      id="userName"
-                      label="Username"
+                      id='userName'
+                      label='Username'
                       onChange={onChange}
                       value={value}
                       error={!!error}
@@ -239,19 +254,19 @@ const EditUser = () => {
                   )}
                 />
                 <Controller
-                  name="password"
+                  name='password'
                   control={control}
-                  defaultValue=""
+                  defaultValue=''
                   render={({
                     field: { onChange, value },
                     fieldState: { error },
                   }) => (
                     <TextField
-                      label="Password"
-                      margin="normal"
-                      type="password"
+                      label='Password'
+                      margin='normal'
+                      type='password'
                       fullWidth
-                      id="password"
+                      id='password'
                       value={value}
                       onChange={onChange}
                       error={!!error}
@@ -262,7 +277,7 @@ const EditUser = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Controller
-                  name="birthday"
+                  name='birthday'
                   control={control}
                   defaultValue={user.birthday}
                   render={({
@@ -270,12 +285,12 @@ const EditUser = () => {
                     fieldState: { error },
                   }) => (
                     <TextField
-                      name="birthday"
-                      type="date"
+                      name='birthday'
+                      type='date'
                       fullWidth
-                      id="birthday"
-                      label="Birthday"
-                      autoComplete="Birthday"
+                      id='birthday'
+                      label='Birthday'
+                      autoComplete='Birthday'
                       onChange={onChange}
                       value={value}
                       helperText={error ? error.message : null}
@@ -290,7 +305,7 @@ const EditUser = () => {
               {/* 3rd row! */}
               <Grid item xs={12}>
                 <Controller
-                  name="email"
+                  name='email'
                   control={control}
                   defaultValue={user.email}
                   render={({
@@ -299,10 +314,10 @@ const EditUser = () => {
                   }) => (
                     <TextField
                       fullWidth
-                      id="email"
-                      label="Email Address"
-                      name="email"
-                      autoComplete="email"
+                      id='email'
+                      label='Email Address'
+                      name='email'
+                      autoComplete='email'
                       onChange={onChange}
                       value={value}
                       error={!!error}
@@ -316,7 +331,7 @@ const EditUser = () => {
 
               <Grid item xs={12}>
                 <Controller
-                  name="bio"
+                  name='bio'
                   control={control}
                   defaultValue={user.bio}
                   render={({
@@ -325,12 +340,12 @@ const EditUser = () => {
                   }) => (
                     <TextField
                       fullWidth
-                      id="bio"
-                      label="Bio"
-                      name="bio"
+                      id='bio'
+                      label='Bio'
+                      name='bio'
                       multiline
                       rows={4}
-                      autoComplete="bio"
+                      autoComplete='bio'
                       onChange={onChange}
                       value={value}
                       error={!!error}
@@ -341,17 +356,17 @@ const EditUser = () => {
               </Grid>
               {/* File Input */}
 
-              <Box display="none">
+              <Box display='none'>
                 <input
                   className={classes.input}
-                  accept="image/*"
-                  type="file"
-                  id="avatar"
-                  name="avatar"
+                  accept='image/*'
+                  type='file'
+                  id='avatar'
+                  name='avatar'
                   onChange={onAvatarChange}
                 />
               </Box>
-              <Button type="submit" variant="outlined">
+              <Button type='submit' variant='outlined'>
                 Save changes
               </Button>
             </Grid>
