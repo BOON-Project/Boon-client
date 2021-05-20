@@ -22,6 +22,7 @@ import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
 import Footer from "../Footer/Footer";
+import TopCarousel from './TopCarousel'
 
 const Home = () => {
   const classes = useStyles();
@@ -35,19 +36,11 @@ const Home = () => {
 
   return (
     <>
+
       {/* Top main image */}
-      <AppBar className={classes.appBar} position="static">
-        {/* <Toolbar>
-        <Typography variant="h6" color="white">
-            Do you want to be part of the change?
-        </Typography>
-      </Toolbar> */}
-      </AppBar>
-      <Box className={classes.hero}>
-        <Box align="center">
-          Boon <br />
-          The new social media
-        </Box>
+
+      <Box className={classes.root}>
+      <TopCarousel />
       </Box>
 
       {/* ****************************************************************** */}
@@ -74,6 +67,7 @@ const Home = () => {
                 strings={["1. A thing that is helpful or beneficial"]}
                 typeSpeed={40}
                 onReset='true'
+                showCursor={false}
               />
             </Typography>
 
@@ -83,6 +77,7 @@ const Home = () => {
                 strings={["2. A favour or request."]}
                 typeSpeed={40}
                 startDelay={3300}
+                showCursor={false}
               />
             </Typography>
           </CardContent>
