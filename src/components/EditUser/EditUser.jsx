@@ -23,6 +23,13 @@ import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 
 import { editUserAction } from "../../store/actions/userActions";
+import { editUser } from "../../helpers/apiCalls";
+import {
+  hideErrorAction,
+  setErrorAction,
+} from "../../store/actions/errorActions";
+import { setUserInStorage } from "../../helpers/localStorage";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 const EditUser = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -54,23 +61,23 @@ const EditUser = () => {
     };
   };
 
-  const onSubmitForm = (data) => {
+  const onSubmitForm = async (data) => {
+    let result = await editUser(data);
+
+    // handle error case
+    if (result.error) {
+      dispatch(setErrorAction(result.error));
+      return;
+    }
     // merge avatar file with data
     console.log({ data });
     data.avatar = avatarPreview;
+    dispatch(hideErrorAction());
+    setUserInStorage(result.user);
 
     dispatch(editUserAction(data));
-
-    // signup user in backend
-    // try {
-    //   let response = await axios.put("http://localhost:5000/user", jsonData);
-    //   console.log("Response: ", response.data); // => signed up user
-    // } catch (errAxios) {
-    //   // handle error
-    //   console.log(errAxios.response && errAxios.response.data);
-    // }
   };
-  const displayBD = user.birthday.slice(0, 10);
+  // const displayBD = user.birthday.slice(0, 10);
   /**
    * @todo modify Birthday format
    * @body we should take care of the format(The specified value "2003-04-30T00:00:00.000Z" does not conform to the required format, "yyyy-MM-dd")
@@ -78,6 +85,7 @@ const EditUser = () => {
 
   return (
     <CssBaseline>
+      <ErrorDisplay />
       <Container component='main' maxWidth='md'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -145,21 +153,25 @@ const EditUser = () => {
                       <MoreVertIcon />
                     </Typography>{" "}
                   </ListItem>{" "}
-                  {user.skills.map((skill) => {
-                    return (
-                      <ListItem alignItems='flex-start'>
-                        {" "}
-                        <Button size='large' color='primary' variant='outlined'>
-                          {skill.skillID.name}
-                        </Button>
-                        <ListItemSecondaryAction>
-                          <ListItemText
-                            primary={`${skill.boons} boons per hour`}
-                          />
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                    );
-                  })}
+                  {user.skills &&
+                    user.skills.map((skill) => {
+                      return (
+                        <ListItem alignItems='flex-start'>
+                          {" "}
+                          <Button
+                            size='large'
+                            color='primary'
+                            variant='outlined'>
+                            {skill.skillID.name}
+                          </Button>
+                          <ListItemSecondaryAction>
+                            <ListItemText
+                              primary={`${skill.boons} boons per hour`}
+                            />
+                          </ListItemSecondaryAction>
+                        </ListItem>
+                      );
+                    })}
                 </List>
               </Grid>
 
