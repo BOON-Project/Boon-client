@@ -45,7 +45,7 @@ const Search = () => {
         options={skillsData}
         getOptionLabel={(skill) => skill.name}
         onChange={(event, skill) => {
-          handleInputChange(skill._id);
+          skill && handleInputChange(skill._id);
         }}
         renderInput={(params) => (
           <TextField

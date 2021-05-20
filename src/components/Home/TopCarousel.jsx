@@ -3,14 +3,9 @@ import {
   Typography,
   Container,
   Box,
-  Card,
-  CardContent,
-  AppBar,
-  Toolbar,
+
 } from "@material-ui/core";
 import Carousel from "react-material-ui-carousel";
-import Typed from "react-typed";
-import CurentlyOffering from "./CurrentlyOffering";
 import useStyles from "./styles";
 
 
@@ -23,8 +18,6 @@ const TopCarousel = () => {
 
 
       {/* ****************************************************************** */}
-
-
 
         {/* Adding carousel to them  */}
         <Box >
