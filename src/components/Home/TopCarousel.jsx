@@ -27,30 +27,9 @@ const TopCarousel = () => {
             autoPlay={true}
             display="flex"
             animation='slide'
-            transition= "2000ms"
             navButtonsAlwaysVisible={false}
-            //styling tiny dots at bottom
-            indicatorIconButtonProps={{
-              style: {
-                padding: "5px", // 1
-                color: "#32908F", // 3
-              },
-            }}
-            activeIndicatorIconButtonProps={{
-              style: {
-                backgroundColor: "#E4B363", // 2
-              },
-            }}
-            indicatorContainerProps={{
-              style: {
-                marginTop: "30px", // 5
-              },
-            }}
-            indicatorIcon={{
-              style: {
-                color: "#E4B363",
-              },
-            }}
+            indicators={false}
+
             //styling arrow icons!
             fullHeightHover={false}
             navButtonsProps={{

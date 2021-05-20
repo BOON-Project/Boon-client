@@ -42,7 +42,7 @@ const SkillByUser = () => {
     setTimeout(()=>{
      users.users = users
       setLoading(false);
-    },4000)
+    },3000)
   }, [])
 
 

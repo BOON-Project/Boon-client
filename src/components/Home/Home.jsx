@@ -153,6 +153,7 @@ const Home = () => {
             autoPlay={false}
             display='flex'
             navButtonsAlwaysVisible={true}
+            indicators={false}
             //styling tiny dots at bottom
             indicatorIconButtonProps={{
               style: {
