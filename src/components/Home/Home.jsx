@@ -22,6 +22,8 @@ import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
 import Footer from "../Footer/Footer";
+import TopCarousel from "./TopCarousel";
+import Booners from "../../images/Booners.svg";
 
 const Home = () => {
   const classes = useStyles();
@@ -36,59 +38,51 @@ const Home = () => {
   return (
     <>
       {/* Top main image */}
-      <AppBar className={classes.appBar} position="static">
-        {/* <Toolbar>
-        <Typography variant="h6" color="white">
-            Do you want to be part of the change?
-        </Typography>
-      </Toolbar> */}
-      </AppBar>
-      <Box className={classes.hero}>
-        <Box align="center">
-          Boon <br />
-          The new social media
-        </Box>
+
+      <Box className={classes.root}>
+        <TopCarousel />
       </Box>
 
       {/* ****************************************************************** */}
-      <Container maxWidth="lg" className={classes.root}>
+      <Container maxWidth='lg' className={classes.root}>
         {/* DICTIONARY CARD */}
         <Card className={classes.booncard} elevation={8}>
           <CardContent>
             <Box pb={2}>
               <Typography
-                variant="h2"
-                color="secondary"
-                style={{ fontWeight: 600 }}
-              >
+                variant='h2'
+                color='secondary'
+                style={{ fontWeight: 600 }}>
                 Boon
               </Typography>
-              <Typography variant="subtitle2" style={{ fontWeight: 600 }}>
+              <Typography variant='subtitle2' style={{ fontWeight: 600 }}>
                 /buːn/
               </Typography>
             </Box>
 
             {/* small typing animation 1 */}
-            <Typography variant="h4" color="info">
+            <Typography variant='h4' color='info'>
               <Typed
                 strings={["1. A thing that is helpful or beneficial"]}
                 typeSpeed={40}
                 onReset='true'
+                showCursor={false}
               />
             </Typography>
 
             {/* small typing animation 2 */}
-            <Typography variant="h4" color="info">
+            <Typography variant='h4' color='info'>
               <Typed
                 strings={["2. A favour or request."]}
                 typeSpeed={40}
                 startDelay={3300}
+                showCursor={false}
               />
             </Typography>
           </CardContent>
         </Card>
         <Box mt={3} mb={3}>
-          <Typography variant="h4" color="info">
+          <Typography variant='h4' color='info'>
             {" "}
             We make exchange based economy a reality with our money free
             exchange platform
@@ -102,12 +96,12 @@ const Home = () => {
       </Search> */}
 
         {/* Adding carousel to them  */}
-        <Box height="41rem" display="flex">
+        <Box height='41rem' display='flex'>
           <Carousel
-          centerSlidePercentage={55}
+            centerSlidePercentage={55}
             className={classes.carousel}
             autoPlay={false}
-            display="flex"
+            display='flex'
             animation='slide'
             navButtonsAlwaysVisible={true}
             //styling tiny dots at bottom
@@ -144,8 +138,7 @@ const Home = () => {
               style: {
                 bottom: "0",
               },
-            }}
-          >
+            }}>
             {/* CURRENTLY OFFERING */}
             <CurentlyOffering />
             <CurentlyOffering />
@@ -155,12 +148,10 @@ const Home = () => {
 
         {/* TOP RATED BOONERS // second carousel */}
 
-        <Box height="48rem" display="flex">
+        <Box height='48rem' display='flex'>
           <Carousel
             autoPlay={false}
-            display="flex"
-            autoPlay={false}
-            display="flex"
+            display='flex'
             navButtonsAlwaysVisible={true}
             //styling tiny dots at bottom
             indicatorIconButtonProps={{
@@ -196,8 +187,7 @@ const Home = () => {
               style: {
                 bottom: "0",
               },
-            }}
-          >
+            }}>
             {/* CURRENTLY OFFERING */}
             <TopRatedUsers />
             <TopRatedUsers />
@@ -206,10 +196,8 @@ const Home = () => {
 
         {/* TOP RATED BOONS AT BOTTOM */}
         <TopRatedBoons />
-
-
       </Container>
-        <Footer />
+      <Footer />
     </>
   );
 };

@@ -15,7 +15,7 @@ import RequestBoon from "./RequestBoon/RequestBoon";
 import Footer from "./Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
-
+import TopCarousel from './Home/TopCarousel'
 import Contact from "./Contact/Contact";
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
           <Route exact path="/skill/:id" component={SkillByUser} />
           <Route exact path="/AboutUs" component={AboutUs} />
           <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/TopCarousel" component={TopCarousel} />
           {/* Private Routes =>  */}
 
           {/* where ppl can see last Boons (what ppl need) */}
