@@ -13,3 +13,7 @@
 .footer header {
   position: relative;
 }
+
+#no-hecking-padding {
+  padding: 0;
+}
