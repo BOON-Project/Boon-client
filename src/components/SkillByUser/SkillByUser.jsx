@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+//styingggggggggggggggggggggg
 import {
   Typography,
   Box,
@@ -17,15 +18,33 @@ import {
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
+import Skeleton from '@material-ui/lab/Skeleton'
+
+//general imports like components or logical helpers
 import { useDispatch, useSelector } from "react-redux";
-import Footer from "../Footer/Footer";
+
 
 const SkillByUser = () => {
+  //material ui classes
   const classes = useStyles();
+
    // to go back
    const history = useHistory();
+
+   //getting all users with skills !!
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
   console.log("state", users);
+
+  //setting skeletong initial state
+  const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    setLoading(true);
+    setTimeout(()=>{
+     users.users = users
+      setLoading(false);
+    },4000)
+  }, [])
+
 
 
   return (
@@ -42,8 +61,12 @@ const SkillByUser = () => {
         {users &&
           users
             .sort((a, b) => b.rating - a.rating)
-            .map((user) => {
+            .map((user) =>
+
+
+            {
               return (
+
                 <Grid item xs={12} md={3}>
                   <Card
                     className={classes.userCard}
@@ -52,25 +75,32 @@ const SkillByUser = () => {
                     <Box display='flex' flexDirection='column'>
                       <Box m={2}>
                         {/* NAME */}
+                        {loading ? <Skeleton variant="text" />:
                         <Typography variant='h4' color='info'>
                           {user.userName}
                         </Typography>
+                        }
+
                         {/* RATING */}
                         <Box
                           display='flex'
                           justifyContent='center'
                           alignItems='center'>
+                            {loading ? <Skeleton variant="text" /> :
                           <Typography variant='h6' color='info'>
                             {user.rating}
                           </Typography>
+                            }
                           <StarIcon color='secondary' />
                         </Box>
                         <Box m={4} display='flex' justifyContent='center'>
+                          {loading ? <Skeleton variant="circle" /> :
                           <Avatar
                             alt='Remy Sharp'
                             src={user.avatar}
                             className={classes.avatarBooners}
                           />
+                          }
                         </Box>
 
                         {/* MAP THROUGHT THE SKILLS */}
@@ -82,6 +112,8 @@ const SkillByUser = () => {
                               flexDirection='column'
                               pt={1}
                               key={skill.skillID._id}>
+                                {loading ? <Skeleton variant="text" /> :
+
                               <Button
                                 size='medium'
                                 color='info'
@@ -89,6 +121,7 @@ const SkillByUser = () => {
                                 className={classes.tag}>
                                 {skill.skillID.name}
                               </Button>
+                                }
                             </Box>
                           );
                         })}
