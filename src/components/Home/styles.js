@@ -1,10 +1,10 @@
-import { useStyles } from "./styles";
+
 import { makeStyles } from "@material-ui/core";
 import Image from "../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg";
 
 export default makeStyles((theme) => ({
   root: {
-    marginTop: "5%",
+    marginTop: "0%",
 
     //media queries mobile version
     padding: theme.spacing(1),
@@ -84,20 +84,6 @@ export default makeStyles((theme) => ({
     backgroundColor: `${theme.primary}`,
     color: "white",
   },
-  hero: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
-    height: "500px",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    position: "relative",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-    fontSize: "4rem",
-    fontWeight: "bold",
-  },
   more: {
     padding: "10px",
   },
@@ -131,4 +117,86 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardBox: {},
+
+  //** ******************TOP IMAGES SLIDES**************************** */
+hero:{
+  marginTop: '0'
+
+},
+
+  hero1: {
+    height: "500px",
+    backgroundImage: "url(https://images.unsplash.com/photo-1620841713108-18ad2b52d15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+    fontSize: "4rem",
+    fontWeight: "bold",
+  },
+  hero2: {
+    backgroundImage: "url(https://images.unsplash.com/photo-1580709839515-54b8991e2813?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1315&q=80)",
+    height: "500px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#fdffa7",
+    fontSize: "4rem",
+    fontWeight: "bold",
+    backgroundPositionY: 'center'
+  },
+  hero3: {
+    backgroundImage: "url(https://images.unsplash.com/photo-1541944743827-e04aa6427c33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1226&q=80)",
+    height: "500px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#feffe1",
+    fontSize: "4rem",
+    fontWeight: "bold",
+    backgroundPositionY: 'center'
+  },
+  hero4: {
+    backgroundImage: "url(https://images.unsplash.com/photo-1518542698889-ca82262f08d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80)",
+    height: "500px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#bb0058",
+    fontSize: "4rem",
+    fontWeight: "bold",
+    backgroundPositionY: 'center'
+  },
+  hero5: {
+    backgroundImage: "url(https://images.unsplash.com/photo-1521732670659-b8c918da61dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
+    height: "500px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#9100e2",
+    fontSize: "4rem",
+    fontWeight: "bold",
+    backgroundPositionY: 'center'
+  },
+
 }));
