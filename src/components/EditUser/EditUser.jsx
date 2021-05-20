@@ -62,20 +62,24 @@ const EditUser = () => {
   };
 
   const onSubmitForm = async (data) => {
-    let result = await editUser(data);
+    console.log("====================================");
+    console.log(data, user._id);
+    console.log("====================================");
+    data.avatar = avatarPreview;
+    let result = await editUser(user._id, data);
 
     // handle error case
     if (result.error) {
+      console.log(result.error);
       dispatch(setErrorAction(result.error));
       return;
     }
     // merge avatar file with data
-    console.log({ data });
-    data.avatar = avatarPreview;
-    dispatch(hideErrorAction());
-    setUserInStorage(result.user);
 
-    dispatch(editUserAction(data));
+    dispatch(hideErrorAction());
+    setUserInStorage(result);
+
+    dispatch(editUserAction(result));
   };
   // const displayBD = user.birthday.slice(0, 10);
   /**
