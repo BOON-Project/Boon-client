@@ -41,7 +41,7 @@ const SkillByUser = () => {
     showLoader();
     setLoading(true);
     setTimeout(()=>{
-     users.users = users
+     users.users = users;
       setLoading(false);
       hideLoader();
     },3000)
@@ -58,6 +58,7 @@ const SkillByUser = () => {
         <Typography variant='h3' color='primary'>
           Available users
         </Typography>
+
 
       </Box>
 
@@ -172,18 +173,10 @@ const SkillByUser = () => {
             >
                 Go back
           </Button>
-
         </ButtonGroup>
-
-
 </Grid>
       </Grid>
-
-
-
             </Grid>
-
-
 
     </>
   );
