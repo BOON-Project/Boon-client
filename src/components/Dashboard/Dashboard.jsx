@@ -9,7 +9,7 @@ import {
   ButtonGroup,
 } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-
+import LoadingBar from 'react-redux-loading-bar'
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
@@ -59,6 +59,8 @@ const Dashboard = () => {
 
         {/* SEARCH */}
         <Search />
+
+
         <SkillByUser />
           </Container>
         <Footer />

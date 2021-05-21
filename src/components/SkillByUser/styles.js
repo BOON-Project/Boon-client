@@ -7,7 +7,7 @@ export default makeStyles({
     borderRadius: 3,
 
     color: "white",
-    height: 48,
+    height: '48',
     padding: "0 30px",
     marginTop: "5%",
   },
@@ -59,5 +59,9 @@ export default makeStyles({
   },
   main:{
     height: '11vh'
+  },
+  container:{
+    marginBottom: '25px',
+    marginTop: '25px',
   }
 });
