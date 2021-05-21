@@ -18,20 +18,21 @@ import {
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
-import Skeleton from '@material-ui/lab/Skeleton'
+import Skeleton from "@material-ui/lab/Skeleton";
 
 //general imports like components or logical helpers
 import { useDispatch, useSelector } from "react-redux";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
+
 const SkillByUser = () => {
   //material ui classes
   const classes = useStyles();
 
-   // to go back
-   const history = useHistory();
+  // to go back
+  const history = useHistory();
 
-   //getting all users with skills !!
+  //getting all users with skills !!
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
   console.log("state", users.length);
 
@@ -52,9 +53,10 @@ const SkillByUser = () => {
 
 
 
+
   return (
     <>
-      <Box className={classes.main}  display='flex' alignItems='center'>
+      <Box className={classes.main} display='flex' alignItems='center'>
         <Typography variant='h3' color='primary'>
           Available users
         </Typography>
@@ -75,6 +77,7 @@ const SkillByUser = () => {
             return (
               <>
               {loader}
+
                 <Grid item xs={12} md={3}>
                   <Card
                     className={classes.userCard}
@@ -83,56 +86,64 @@ const SkillByUser = () => {
                     <Box display='flex' flexDirection='column'>
                       <Box m={2}>
                         {/* NAME */}
-                        {loading ? <Skeleton variant="text" />:
-                        <Typography variant='h4' color='info'>
-                          {user.userName}
-                        </Typography>
-                        }
+                        {loading ? (
+                          <Skeleton variant='text' />
+                        ) : (
+                          <Typography variant='h4' color='info'>
+                            {user.userName}
+                          </Typography>
+                        )}
 
                         {/* RATING */}
                         <Box
                           display='flex'
                           justifyContent='center'
                           alignItems='center'>
-                            {loading ? <Skeleton variant="text" /> :
-                          <Typography variant='h6' color='info'>
-                            {user.rating}
-                          </Typography>
-                            }
+                          {loading ? (
+                            <Skeleton variant='text' />
+                          ) : (
+                            <Typography variant='h6' color='info'>
+                              {user.rating}
+                            </Typography>
+                          )}
                           <StarIcon color='secondary' />
                         </Box>
                         <Box m={4} display='flex' justifyContent='center'>
-                          {loading ? <Skeleton variant="circle" /> :
-                          <Avatar
-                            alt='Remy Sharp'
-                            src={user.avatar}
-                            className={classes.avatarBooners}
-                          />
-                          }
+                          {loading ? (
+                            <Skeleton variant='circle' />
+                          ) : (
+                            <Avatar
+                              alt='Remy Sharp'
+                              src={user.avatar}
+                              className={classes.avatarBooners}
+                            />
+                          )}
                         </Box>
 
                         {/* MAP THROUGHT THE SKILLS */}
-                        {user.skills.map((skill) => {
-                          return (
-                            <Box
-                              display='flex'
-                              justifyContent='center'
-                              flexDirection='column'
-                              pt={1}
-                              key={skill.skillID._id}>
-                                {loading ? <Skeleton variant="text" /> :
-
-                              <Button
-                                size='medium'
-                                color='info'
-                                variant='outlined'
-                                className={classes.tag}>
-                                {skill.skillID.name}
-                              </Button>
-                                }
-                            </Box>
-                          );
-                        })}
+                        {user.skills &&
+                          user.skills.map((skill) => {
+                            return (
+                              <Box
+                                display='flex'
+                                justifyContent='center'
+                                flexDirection='column'
+                                pt={1}
+                                key={skill.skillID._id}>
+                                {loading ? (
+                                  <Skeleton variant='text' />
+                                ) : (
+                                  <Button
+                                    size='medium'
+                                    color='info'
+                                    variant='outlined'
+                                    className={classes.tag}>
+                                    {skill.skillID.name}
+                                  </Button>
+                                )}
+                              </Box>
+                            );
+                          })}
                       </Box>
                       <CardActions style={{ padding: "0" }}>
                         <Link
@@ -158,7 +169,6 @@ const SkillByUser = () => {
             }
             )}
 
-
 <Grid container  justify="center"
   alignItems="center" className={classes.container} >
 <Grid item md={3}   >
@@ -177,6 +187,7 @@ const SkillByUser = () => {
 </Grid>
       </Grid>
             </Grid>
+
 
     </>
   );
