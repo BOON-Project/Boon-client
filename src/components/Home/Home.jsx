@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+
+//stylinggggggggggggggggggggggggggggggggggggggggggg
+import useStyles from "./styles";
 import {
   Typography,
   Container,
@@ -10,20 +13,23 @@ import {
 } from "@material-ui/core";
 import Carousel from "react-material-ui-carousel";
 import Typed from "react-typed";
+import TopCarousel from "./TopCarousel";
+import Booners from "../../images/Booners.svg";
+
+//components
 import CurentlyOffering from "./CurrentlyOffering";
-import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
 import Search from "./Search";
 import SkillByUser from "../SkillByUser/SkillByUser";
 import TopRatedBoons from "./TopRatedBoons";
+import Footer from "../Footer/Footer";
+
+//logical components
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
-import Footer from "../Footer/Footer";
-import TopCarousel from "./TopCarousel";
-import Booners from "../../images/Booners.svg";
 
 const Home = () => {
   const classes = useStyles();

@@ -29,6 +29,7 @@ import {
 import { loginAction } from "../../store/actions/userActions";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 import Footer from "../Footer/Footer";
+import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function SignInSide() {
   const classes = useStyles();
@@ -40,12 +41,15 @@ export default function SignInSide() {
 
   // ON FORM SUBMIT
   const onSubmit = async (formData) => {
+    showLoader();
+
     let result = await loginUser(formData);
     // console.log(result);
 
     // handle error case
     if (result.error) {
       dispatch(setErrorAction(result.error));
+      hideLoader();
       return;
     }
     // handle success case
@@ -53,9 +57,12 @@ export default function SignInSide() {
     dispatch(loginAction(result));
     setTokenInStorage(result.token);
     setUserInStorage(result.user);
-
     history.push("/");
   };
+
+  //loading state
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
+
 
   //special footer function
   function Copyright() {
@@ -74,11 +81,12 @@ export default function SignInSide() {
   return (
     <>
       <ErrorDisplay />
+
       <Grid container component='main' className={classes.root}>
+
         {/* IMAGE COMPONENT */}
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
-
         {/* LOGIN TITLE AND ICON */}
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
@@ -91,6 +99,7 @@ export default function SignInSide() {
 
             {/* FORM */}
             <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+            {loader}
               {/* NAME INPUT */}
               <Controller
                 name='userName'

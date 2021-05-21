@@ -22,7 +22,7 @@ import Skeleton from '@material-ui/lab/Skeleton'
 
 //general imports like components or logical helpers
 import { useDispatch, useSelector } from "react-redux";
-
+import useFullPageLoader from "../hooks/useFullPageLoader";
 
 const SkillByUser = () => {
   //material ui classes
@@ -33,17 +33,22 @@ const SkillByUser = () => {
 
    //getting all users with skills !!
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
-  console.log("state", users);
+  console.log("state", users.length);
 
   //setting skeletong initial state
   const [loading, setLoading] = useState(false);
   useEffect(()=>{
+    showLoader();
     setLoading(true);
     setTimeout(()=>{
      users.users = users
       setLoading(false);
+      hideLoader();
     },3000)
   }, [])
+
+   //loading state
+   const [loader, showLoader, hideLoader] = useFullPageLoader();
 
 
 
@@ -53,20 +58,22 @@ const SkillByUser = () => {
         <Typography variant='h3' color='primary'>
           Available users
         </Typography>
+
       </Box>
 
       {/* CARDS */}
-      <Grid container spacing={1}>
+      <Grid container spacing={1} >
+
         {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
         {users &&
           users
-            .sort((a, b) => b.rating - a.rating)
-            .map((user) =>
+          .sort((a, b) => b.rating - a.rating)
+          .map((user) =>
+          {
 
-
-            {
-              return (
-
+            return (
+              <>
+              {loader}
                 <Grid item xs={12} md={3}>
                   <Card
                     className={classes.userCard}
@@ -145,14 +152,16 @@ const SkillByUser = () => {
                     </Box>
                   </Card>
                 </Grid>
-              );
-            })}
+                </>
+              ) ;
+            }
+            )}
 
 
-<Grid container spacing={2} justify="center"
-  alignItems="center" >
-<Grid item xs={12} md={3}   >
-        <ButtonGroup variant="contained">
+<Grid container  justify="center"
+  alignItems="center" className={classes.container} >
+<Grid item md={3}   >
+        <ButtonGroup variant="contained" >
           <Button
           type="button"
             size="large"
