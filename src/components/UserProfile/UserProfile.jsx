@@ -32,7 +32,9 @@ export default function UserProfile(props) {
 
     //deconstruct user's info
     const user = props.location.state.user;
+
     const boonee = useSelector((state) => state.userReducer.user);
+
     const { firstName, userName, bio, rating, avatar, skills } =
         props.location.state.user;
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import {
     Box,
     Button,
@@ -16,6 +15,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+
 import Rating from "@material-ui/lab/Rating";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { useForm, Controller } from "react-hook-form";
@@ -23,7 +23,6 @@ import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
-
 import { editUserAction } from "../../store/actions/userActions";
 import { editUser } from "../../helpers/apiCalls";
 import {
@@ -91,7 +90,6 @@ const EditUser = () => {
         <CssBaseline>
             <ErrorDisplay />
             <Container component='main' maxWidth='md'>
-                <CssBaseline />
                 <Paper className={classes.paper}>
                     <Typography
                         component='h1'
@@ -383,7 +381,7 @@ const EditUser = () => {
                                 Save changes
                             </Button>
                             <Button
-                                onClick={history.push("/")}
+                                onClick={() => history.push("/")}
                                 variant='outlined'>
                                 Go Back
                             </Button>
