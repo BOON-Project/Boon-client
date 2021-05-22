@@ -30,6 +30,8 @@ import {
   setUserInStorage,
 } from "../../helpers/localStorage";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+import useFullPageLoader from "../hooks/useFullPageLoader";
+
 
 //end fo styling components
 
@@ -59,11 +61,13 @@ export default function SignUp() {
   const { handleSubmit, control } = useForm();
 
   const onSubmit = async (data) => {
+    showLoader();
     let result = await signupUser(data);
 
     // handle error case
     if (result.error) {
       dispatch(setErrorAction(result.error));
+      hideLoader()
       return;
     }
 
@@ -75,10 +79,14 @@ export default function SignUp() {
     history.push("/");
   };
 
+  //loading state
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
+
   return (
     <>
       <ErrorDisplay />
       <Container component='main' maxWidth='xs'>
+        {loader}
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -295,6 +303,7 @@ export default function SignUp() {
           <Copyright />
         </Box>
       </Container>
+      {/* {loader} */}
     </>
   );
 }
