@@ -37,15 +37,17 @@ const EditUser = () => {
     const user = useSelector((state) => state.userReducer.user);
 
     const classes = useStyles();
+
     const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
 
     const {
         control,
-        register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+
     const history = useHistory();
+
     const dispatch = useDispatch();
 
     const onAvatarChange = (e) => {
@@ -77,7 +79,6 @@ const EditUser = () => {
 
         dispatch(hideErrorAction());
         setUserInStorage(result);
-
         dispatch(editUserAction(result));
     };
     // const displayBD = user.birthday.slice(0, 10);
@@ -380,6 +381,11 @@ const EditUser = () => {
                             </Box>
                             <Button type='submit' variant='outlined'>
                                 Save changes
+                            </Button>
+                            <Button
+                                onClick={history.push("/")}
+                                variant='outlined'>
+                                Go Back
                             </Button>
                         </Grid>
                     </form>
