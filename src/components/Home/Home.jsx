@@ -90,7 +90,7 @@ const Home = () => {
                     <Typography variant='h4' color='info'>
                         {" "}
                         We make exchange based economy a reality with our money
-                        free exchange platform
+                        free platform
                     </Typography>
                 </Box>
                 {/* ***************************************************************** */}

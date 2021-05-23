@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles";
+import Boons from "../../images/Boons.svg";
 
 const TopRatedBoons = () => {
     const classes = useStyles();
@@ -29,9 +30,14 @@ const TopRatedBoons = () => {
     return (
         <>
             <Box my={8} display='flex' alignItems='center'>
-                <Typography variant='h2' color='primary'>
-                    Top Rated Boons
-                </Typography>
+                <Box display='flex' flexGrow={1}>
+                    <img src={Boons} alt='happy-booners' height='200' />
+                </Box>
+                <Box>
+                    <Typography variant='h2' color='primary'>
+                        Top Rated Boons
+                    </Typography>
+                </Box>
             </Box>
             <Grid container spacing={1}>
                 {sortedTasks.map((task) => {
