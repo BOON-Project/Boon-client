@@ -23,12 +23,14 @@ const TopRatedUsers = () => {
         // TITLE
         <>
             <Box my={8} display='flex' alignItems='center'>
-                <Box display='flex' justifyContent='center'>
+                <Box display='flex' flexGrow={1}>
                     <img src={Booners} alt='happy-booners' height='200' />
                 </Box>
-                <Typography variant='h2' color='primary'>
-                    Top Rated Booners
-                </Typography>
+                <Box>
+                    <Typography variant='h2' color='primary'>
+                        Top Rated Booners
+                    </Typography>
+                </Box>
             </Box>
 
             {/* CARDS */}
