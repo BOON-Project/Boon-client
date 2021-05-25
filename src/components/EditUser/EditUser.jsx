@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useGeolocation } from "react-use";
 import {
     Box,
     Button,
+    Checkbox,
     Container,
     CssBaseline,
+    FormControlLabel,
     Grid,
     IconButton,
     List,
@@ -15,13 +18,14 @@ import {
     Typography,
 } from "@material-ui/core";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+import MyLocationIcon from "@material-ui/icons/MyLocation";
+import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 
 import Rating from "@material-ui/lab/Rating";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { useForm, Controller } from "react-hook-form";
 import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import avatarDefault from "./BoonAvatar.svg";
 import { useHistory } from "react-router";
 import { editUserAction } from "../../store/actions/userActions";
 import { editUser } from "../../helpers/apiCalls";
@@ -31,13 +35,20 @@ import {
 } from "../../store/actions/errorActions";
 import { setUserInStorage } from "../../helpers/localStorage";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+import { Favorite, FavoriteBorder } from "@material-ui/icons";
 
 const EditUser = () => {
     const user = useSelector((state) => state.userReducer.user);
+    const allSkills = useSelector((state) => state.skillsReducer);
 
     const classes = useStyles();
 
-    const [avatarPreview, setAvatarPreview] = useState(avatarDefault);
+    const [avatarPreview, setAvatarPreview] = useState(user.avatar);
+
+    const geoLocation = useGeolocation();
+    console.log("====================================");
+    console.log(geoLocation);
+    console.log("====================================");
 
     const {
         control,
@@ -63,8 +74,28 @@ const EditUser = () => {
             setAvatarPreview(fileReader.result);
         };
     };
+    const onEditSKills = () => {};
+    /**
+     * @todo bug!  location not applied to user object
+     * @body we need to check the logic to send the location
+     */
+    const onShareLocation = (e) => {
+        console.log("====================================");
+        console.log("target", e.target.checked);
+        console.log("====================================");
+        if (e.target.checked) {
+            user.location.latitude = geoLocation.latitude;
+            user.location.longitude = geoLocation.longitude;
+        }
+    };
 
     const onSubmitForm = async (data) => {
+        data.location = {
+            latitude: geoLocation.latitude,
+            longitude: geoLocation.longitude,
+        };
+
+        // data.location = geoLocation.longitude;
         data.avatar = avatarPreview;
         let result = await editUser(user._id, data);
 
@@ -72,11 +103,11 @@ const EditUser = () => {
         if (result.error) {
             console.log(result.error);
             dispatch(setErrorAction(result.error));
+            dispatch(hideErrorAction());
             return;
         }
         // merge avatar file with data
 
-        dispatch(hideErrorAction());
         setUserInStorage(result);
         dispatch(editUserAction(result));
     };
@@ -149,7 +180,7 @@ const EditUser = () => {
                                             color='primary'>
                                             {" "}
                                             Add up to 5 skills
-                                            <IconButton>
+                                            <IconButton onCLick={onEditSKills}>
                                                 <MoreHorizIcon />
                                             </IconButton>
                                         </Typography>{" "}
@@ -367,25 +398,39 @@ const EditUser = () => {
                             </Grid>
                             {/* File Input */}
 
-                            <Box display='none'>
-                                <input
-                                    className={classes.input}
-                                    accept='image/*'
-                                    type='file'
-                                    id='avatar'
-                                    name='avatar'
-                                    onChange={onAvatarChange}
-                                />
-                            </Box>
-                            <Button type='submit' variant='outlined'>
-                                Save changes
-                            </Button>
-                            <Button
-                                onClick={() => history.push("/")}
-                                variant='outlined'>
-                                Go Back
-                            </Button>
+                            <Grid item xs={12}>
+                                <Box className={classes.buttonsBox}>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                icon={<LocationSearchingIcon />}
+                                                checkedIcon={<MyLocationIcon />}
+                                                onChange={onShareLocation}
+                                            />
+                                        }
+                                        label='Share location'
+                                    />
+                                    <Button
+                                        onClick={() => history.push("/")}
+                                        variant='outlined'>
+                                        Go Back
+                                    </Button>
+                                    <Button type='submit' variant='outlined'>
+                                        Save changes
+                                    </Button>
+                                </Box>
+                            </Grid>
                         </Grid>
+                        <Box display='none'>
+                            <input
+                                className={classes.input}
+                                accept='image/*'
+                                type='file'
+                                id='avatar'
+                                name='avatar'
+                                onChange={onAvatarChange}
+                            />
+                        </Box>
                     </form>
                 </Paper>
             </Container>

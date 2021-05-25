@@ -24,4 +24,9 @@ export default makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
     input: { opacity: 0 },
+    buttonsBox: {
+        margin: "1rem",
+        display: "flex",
+        justifyContent: "space-between",
+    },
 }));
