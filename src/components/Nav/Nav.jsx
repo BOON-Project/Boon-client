@@ -257,6 +257,11 @@ export default function PrimarySearchAppBar() {
                                             href='/EditUser'
                                             color='primary'>
                                             <Typography
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    flexWrap: "wrap",
+                                                }}
                                                 variant='h6'
                                                 color='info'>
                                                 {" "}
@@ -273,6 +278,10 @@ export default function PrimarySearchAppBar() {
                                             underline='none'
                                             color='primary'>
                                             <Typography
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                }}
                                                 variant='h6'
                                                 color='info'>
                                                 {" "}

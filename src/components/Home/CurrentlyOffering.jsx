@@ -20,6 +20,7 @@ const CurentlyOffering = () => {
 
     // Create an array with five different skills from skills database
     const randomSkills = [];
+
     for (let i = 0; i <= 3; i++) {
         const randomNumberRange = Math.floor(
             Math.random() * (skillsData.length - 0) + 0
