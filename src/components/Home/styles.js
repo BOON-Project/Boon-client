@@ -11,6 +11,7 @@ export default makeStyles((theme) => ({
         maxWidth: "500px",
         minWidth: "400px",
         backgroundColor: "red",
+        alignItems: "center",
       },
       avatar: {
         height: "10px",
@@ -70,9 +71,10 @@ export default makeStyles((theme) => ({
     margin: "5px 5px 5px 0",
   },
   media: {
-    height: "150px",
-    width: "150px",
-    right: "-50px",
+    height: "220px",
+    width: "220px",
+    alignSelf: 'center'
+
   },
   avatar: {
     width: "80px",
