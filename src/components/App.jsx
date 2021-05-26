@@ -16,35 +16,38 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
+import Test from "./Test/Test";
 
 const App = () => {
-    return (
-        <>
-            <Nav />
-            <Switch>
-                {/* new files structure */}
-                <Route exact path='/' component={Home} />
-                <Route exact path='/Signup' component={Signup} />
-                <Route exact path='/Login' component={Login} />
-                <Route exact path='/UserProfile/:id' component={UserProfile} />
-                <Route exact path='/RequestBoon/:id' component={RequestBoon} />
-                <Route exact path='/skill/:id' component={SkillByUser} />
-                <Route exact path='/AboutUs' component={AboutUs} />
-                <Route exact path='/Contact' component={Contact} />
-                <Route exact path='/TopCarousel' component={TopCarousel} />
-                {/* Private Routes =>  */}
+  return (
+    <>
+      <Nav />
+      <Switch>
+        {/* new files structure */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/UserProfile/:id" component={UserProfile} />
+        <Route exact path="/RequestBoon/:id" component={RequestBoon} />
+        <Route exact path="/skill/:id" component={SkillByUser} />
+        <Route exact path="/AboutUs" component={AboutUs} />
+        <Route exact path="/Contact" component={Contact} />
+        <Route exact path="/test" component={Test} />
 
-                {/* where ppl can see last Boons (what ppl need) */}
-                <PrivateRoute exact path='/Dashboard' component={Dashboard} />
+        <Route exact path="/TopCarousel" component={TopCarousel} />
+        {/* Private Routes =>  */}
 
-                {/* where user can change personal info */}
-                <PrivateRoute path='/EditUser' component={EditUser} />
+        {/* where ppl can see last Boons (what ppl need) */}
+        <PrivateRoute exact path="/Dashboard" component={Dashboard} />
 
-                {/* Error 404 Route =>  */}
-                <Route path='/*' component={Error404} />
-            </Switch>
-        </>
-    );
+        {/* where user can change personal info */}
+        <PrivateRoute path="/EditUser" component={EditUser} />
+
+        {/* Error 404 Route =>  */}
+        <Route path="/*" component={Error404} />
+      </Switch>
+    </>
+  );
 };
 
 export default App;
