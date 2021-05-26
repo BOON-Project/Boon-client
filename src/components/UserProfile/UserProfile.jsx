@@ -22,8 +22,16 @@ import useStyles from "./styles";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 
+
+
+
 // start of our User Profile
 export default function UserProfile(props) {
+//user location
+
+
+
+
     //in order to use Material UI u need this =>
     const classes = useStyles();
 
@@ -155,6 +163,8 @@ export default function UserProfile(props) {
                     </Grid>
                 </Grid>
                 {/* LOCATION */}
+
+
                 <Grid container spacing={2}>
                     <Grid item xs={2}>
                         <Typography variant='p' color='primary'>
