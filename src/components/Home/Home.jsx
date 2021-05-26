@@ -1,32 +1,33 @@
 import React, { useEffect } from "react";
+
+//stylinggggggggggggggggggggggggggggggggggggggggggg
+import useStyles from "./styles";
 import {
   Typography,
   Container,
   Box,
   Card,
   CardContent,
-  AppBar,
-  Toolbar,
 } from "@material-ui/core";
 import Carousel from "react-material-ui-carousel";
 import Typed from "react-typed";
+import TopCarousel from "./TopCarousel";
+
+//components
 import CurentlyOffering from "./CurrentlyOffering";
-import useStyles from "./styles";
 import TopRatedUsers from "./TopRatedUsers";
-import Search from "./Search";
-import SkillByUser from "../SkillByUser/SkillByUser";
 import TopRatedBoons from "./TopRatedBoons";
-import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
+
+//REDUX
 import { useDispatch } from "react-redux";
 import { getSkillsAction } from "../../store/actions/skillsActions";
 import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
-import Footer from "../Footer/Footer";
-import TopCarousel from "./TopCarousel";
-import Booners from "../../images/Booners.svg";
 
 const Home = () => {
   const classes = useStyles();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -86,7 +87,7 @@ const Home = () => {
           <Typography variant="h4" color="info">
             {" "}
             We make exchange based economy a reality with our money free
-            exchange platform
+            platform
           </Typography>
         </Box>
         {/* ***************************************************************** */}
@@ -155,6 +156,7 @@ const Home = () => {
             autoPlay={false}
             display="flex"
             navButtonsAlwaysVisible={true}
+            indicators={false}
             //styling tiny dots at bottom
             indicatorIconButtonProps={{
               style: {
@@ -192,7 +194,6 @@ const Home = () => {
             }}
           >
             {/* CURRENTLY OFFERING */}
-            <TopRatedUsers />
             <TopRatedUsers />
           </Carousel>
         </Box>

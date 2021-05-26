@@ -6,21 +6,22 @@ import {
   Card,
   CardActions,
   Button,
-  CardMedia,
   Grid,
-  Avatar,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
 
-const allImages = require.context("../../images", true, /.svg$/);
+const allImages = require.context("../../images", true, /.jpg$/);
 
 const CurentlyOffering = () => {
   const classes = useStyles();
+
   const skillsData = useSelector((state) => state.skillsReducer);
+
   // Create an array with five different skills from skills database
   const randomSkills = [];
-  for (let i = 0; i <= 4; i++) {
+
+  for (let i = 0; i <= 3; i++) {
     const randomNumberRange = Math.floor(
       Math.random() * (skillsData.length - 0) + 0
     );
@@ -28,8 +29,6 @@ const CurentlyOffering = () => {
       randomSkills.push(skillsData[randomNumberRange]);
     }
   }
-
-  console.log("hey", allImages);
 
   return (
     <>
@@ -60,7 +59,8 @@ const CurentlyOffering = () => {
                         {skill.name}
                       </Typography>
                     </Box>
-                    <Avatar
+
+                    <img
                       className={classes.media}
                       alt="boonee avatar"
                       src={allImages(`./${skill.avatar}`).default}

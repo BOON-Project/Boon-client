@@ -1,31 +1,33 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { HIDE_ERROR } from "../../store/actions/types";
-
-import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
 const ErrorDisplay = (props) => {
-  const isOpen = useSelector((state) => state.errorReducer.isOpen);
-  const error = useSelector((state) => state.errorReducer.error);
+    const isOpen = useSelector((state) => state.errorReducer.isOpen);
 
-  const dispatch = useDispatch();
+    const error = useSelector((state) => state.errorReducer.error);
 
-  const closeError = () => dispatch({ type: HIDE_ERROR });
+    const dispatch = useDispatch();
 
-  if (isOpen) {
-    setTimeout(closeError, 6000);
-  }
+    const closeError = () => dispatch({ type: HIDE_ERROR });
 
-  return (
-    <>
-      {isOpen && (
-        <Alert onClose={closeError} autoHideDuration={6000} severity='error'>
-          {error}
-        </Alert>
-      )}
-    </>
-  );
+    if (isOpen) {
+        setTimeout(closeError, 6000);
+    }
+
+    return (
+        <>
+            {isOpen && (
+                <Alert
+                    onClose={closeError}
+                    autoHideDuration={6000}
+                    severity='error'>
+                    {error}
+                </Alert>
+            )}
+        </>
+    );
 };
 
 export default ErrorDisplay;

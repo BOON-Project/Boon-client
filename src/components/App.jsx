@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/index.css";
-import Nav from "./Nav/Nav";
 import { Route, Switch } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
 //Components
+import Nav from "./Nav/Nav";
+import PrivateRoute from "./PrivateRoute";
 import Home from "./Home/Home";
 import UserProfile from "./UserProfile/UserProfile";
 import EditUser from "./EditUser/EditUser";
@@ -12,7 +12,6 @@ import SkillByUser from "./SkillByUser/SkillByUser";
 import Login from "../components/Login/Login";
 import Error404 from "./Error404";
 import RequestBoon from "./RequestBoon/RequestBoon";
-import Footer from "./Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";

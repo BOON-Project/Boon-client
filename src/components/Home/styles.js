@@ -3,8 +3,6 @@ import Image from "../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg";
 
 export default makeStyles((theme) => ({
   root: {
-    marginTop: "0%",
-
     //media queries mobile version
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
@@ -29,6 +27,16 @@ export default makeStyles((theme) => ({
       backgroundColor: "none",
     },
   },
+
+  //media queries tablet
+  [theme.breakpoints.up("md")]: {
+    backgroundColor: "none",
+  },
+  //media queries pcs
+  [theme.breakpoints.up("lg")]: {
+    backgroundColor: "none",
+  },
+
   card: {
     width: "300px",
     marginTop: "20px",
