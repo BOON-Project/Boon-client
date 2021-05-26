@@ -16,6 +16,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
+import MyBoons from "./MyBoons/MyBoons";
 
 const App = () => {
     return (
@@ -31,6 +32,8 @@ const App = () => {
                 <Route exact path='/skill/:id' component={SkillByUser} />
                 <Route exact path='/AboutUs' component={AboutUs} />
                 <Route exact path='/Contact' component={Contact} />
+                <Route exact path='/MyBoons' component={MyBoons} />
+
                 <Route exact path='/TopCarousel' component={TopCarousel} />
                 {/* Private Routes =>  */}
 

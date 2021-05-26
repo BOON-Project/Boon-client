@@ -17,3 +17,5 @@ export const GET_SKILLS = "GET_SKILLS";
 
 //Tasks
 export const GET_TASKS = "GET_TASKS";
+export const GET_USER_OFFERED_TASKS = "GET_USER_OFFERED_TASKS";
+export const GET_USER_RECEIVED_TASKS = "GET_USER_RECEIVED_TASKS";

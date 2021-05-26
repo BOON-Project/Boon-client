@@ -1,15 +1,22 @@
 import { GET_TASKS } from "../actions/types";
 
-const initialState = [];
+const initialState = {
+    allTasks: [],
+    authUserOfferedTasks: [],
+    authUserReceivedTasks: [],
+};
 
 const tasksReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case GET_TASKS:
-			const tasks = action.payload;
-			return tasks;
-		default:
-			return state;
-	}
+    switch (action.type) {
+        case GET_TASKS:
+            return {
+                ...state,
+                allTasks: action.payload,
+            };
+
+        default:
+            return state;
+    }
 };
 
 export default tasksReducer;

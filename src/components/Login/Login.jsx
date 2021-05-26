@@ -21,7 +21,7 @@ import useStyles from "./styles";
 import { useForm, Controller } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../helpers/apiCalls";
+import { loginUser, updateAuthHeader } from "../../helpers/apiCalls";
 import {
     hideErrorAction,
     setErrorAction,
@@ -58,6 +58,7 @@ export default function SignInSide() {
         dispatch(loginAction(result));
         setTokenInStorage(result.token);
         setUserInStorage(result.user);
+        updateAuthHeader(result.token);
         history.push("/");
     };
 

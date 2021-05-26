@@ -16,7 +16,7 @@ import Boons from "../../images/Boons.svg";
 const TopRatedBoons = () => {
     const classes = useStyles();
 
-    const tasks = useSelector((state) => state.tasksReducer);
+    const tasks = useSelector((state) => state.tasksReducer.allTasks);
 
     const users = useSelector((state) => state.usersReducer.allUsers);
 
