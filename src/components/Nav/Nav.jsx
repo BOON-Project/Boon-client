@@ -19,6 +19,7 @@ import {
 } from "@material-ui/icons";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import logo from "../../images/Boon-big.svg";
+import { clearAuthHeader } from "../../helpers/apiCalls";
 
 export default function PrimarySearchAppBar() {
     const classes = useStyles();
@@ -54,6 +55,11 @@ export default function PrimarySearchAppBar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const handleLogout = () => {
+        clearAuthHeader();
+        dispatch(logoutAction());
+    };
+
     const menuId = "primary-search-account-menu";
 
     const mobileMenuId = "primary-account-menu-mobile";
@@ -86,7 +92,7 @@ export default function PrimarySearchAppBar() {
                                     </Link>
                                     <Link
                                         underline='none'
-                                        href='#'
+                                        href='/MyBoons'
                                         className={classes.link}
                                         color='inherit'>
                                         <Typography variant='h6' color='info'>
@@ -169,7 +175,7 @@ export default function PrimarySearchAppBar() {
                                     <MenuItem>
                                         <Link
                                             underline='none'
-                                            href='#'
+                                            href='/MyBoons'
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
@@ -272,9 +278,7 @@ export default function PrimarySearchAppBar() {
                                     </MenuItem>
                                     <MenuItem onClick={handleMenuClose}>
                                         <Link
-                                            onClick={() =>
-                                                dispatch(logoutAction())
-                                            }
+                                            onClick={handleLogout}
                                             underline='none'
                                             color='primary'>
                                             <Typography
