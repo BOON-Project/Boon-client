@@ -18,20 +18,20 @@ export const getTasksAction = () => async (dispatch) => {
     });
 };
 
-export const getUserOfferedTasksAction = (userId) => async (dispatch) => {
-    const response = await getUserOfferedTasks(userId);
-    // console.log("task actions", response);
+export const getUserOfferedTasksAction = () => async (dispatch) => {
+    const response = await getUserOfferedTasks();
+    console.log("task actions", response);
     dispatch({
         type: GET_USER_OFFERED_TASKS,
-        payload: response.data,
+        payload: response,
     });
 };
 
-export const getUserReceivedTasksAction = (userId) => async (dispatch) => {
-    const response = await getUserReceivedTasks(userId);
-    // console.log("task actions", response);
+export const getUserReceivedTasksAction = () => async (dispatch) => {
+    const response = await getUserReceivedTasks();
+    console.log("task actions", response);
     dispatch({
         type: GET_USER_RECEIVED_TASKS,
-        payload: response.data,
+        payload: response,
     });
 };

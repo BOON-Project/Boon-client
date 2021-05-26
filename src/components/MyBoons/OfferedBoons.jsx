@@ -3,14 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserOfferedTasksAction } from "../../store/actions/tasksActions";
 
 const RequestedBoons = () => {
-    const tasks = useSelector((state) => state.tasksReducer);
+    const tasks = useSelector(
+        (state) => state.tasksReducer.authUserOfferedTasks
+    );
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.userReducer.user._id);
+
     useEffect(() => {
         dispatch(getUserOfferedTasksAction());
     }, []);
 
-    return <div></div>;
+    return (
+        <>
+            {tasks.map((task) => (
+                <p>{task._id}</p>
+            ))}
+        </>
+    );
 };
 
 export default RequestedBoons;

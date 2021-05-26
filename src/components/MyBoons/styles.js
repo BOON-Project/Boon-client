@@ -1,10 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 
-const drawerWidth = 240;
-
 export default makeStyles((theme) => ({
     root: {
-        marginTop: "5%",
         display: "flex",
     },
     paper: {
@@ -14,33 +11,18 @@ export default makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center",
         padding: "1rem",
+        height: "75vh",
     },
-
-    drawer: {
-        [theme.breakpoints.up("sm")]: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
+    box: {
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        height: "35px",
+        backgroundColor: "#E4B363",
     },
-    appBar: {
-        [theme.breakpoints.up("sm")]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up("sm")]: {
-            display: "none",
-        },
-    },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
+    buttonBox: {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "2rem",
     },
 }));

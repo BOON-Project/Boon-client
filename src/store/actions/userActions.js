@@ -1,26 +1,25 @@
-import { editUser } from "../../helpers/apiCalls";
 import { SIGNUP_USER, LOGIN_USER, LOGOUT_USER, EDIT_USER } from "./types";
 
 export const signupAction = (formData) => async (dispatch) => {
-  dispatch({
-    type: SIGNUP_USER,
-    payload: formData,
-  });
+    dispatch({
+        type: SIGNUP_USER,
+        payload: formData,
+    });
 };
 
 export const loginAction = (userData) => async (dispatch) => {
-  // console.log(userData);
-  dispatch({
-    type: LOGIN_USER,
-    payload: userData,
-  });
+    // console.log(userData);
+    dispatch({
+        type: LOGIN_USER,
+        payload: userData,
+    });
 };
 
 export const editUserAction = (user) => async (dispatch) => {
-  dispatch({
-    type: EDIT_USER,
-    payload: user,
-  });
+    dispatch({
+        type: EDIT_USER,
+        payload: user,
+    });
 };
 
 //   export const editUserAction = (formData) => async (dispatch, getState) => {
@@ -35,9 +34,9 @@ export const editUserAction = (user) => async (dispatch) => {
 //   };
 
 export const logoutAction = () => {
-  // const response = await helpCheckoutUser();
+    // const response = await helpCheckoutUser();
 
-  return {
-    type: LOGOUT_USER,
-  };
+    return {
+        type: LOGOUT_USER,
+    };
 };
