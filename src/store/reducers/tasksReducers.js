@@ -1,4 +1,8 @@
-import { GET_TASKS } from "../actions/types";
+import {
+    GET_TASKS,
+    GET_USER_RECEIVED_TASKS,
+    GET_USER_OFFERED_TASKS,
+} from "../actions/types";
 
 const initialState = {
     allTasks: [],
@@ -12,6 +16,18 @@ const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allTasks: action.payload,
+            };
+
+        case GET_USER_OFFERED_TASKS:
+            return {
+                ...state,
+                authUserOfferedTasks: action.payload,
+            };
+
+        case GET_USER_RECEIVED_TASKS:
+            return {
+                ...state,
+                authUserReceivedTasks: action.payload,
             };
 
         default:
