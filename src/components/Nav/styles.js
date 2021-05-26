@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
   logo: {
-    maxWidth: 140,
+    maxWidth: 120,
     marginRight: "10px",
   },
   link: {
@@ -12,7 +12,6 @@ export default makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#ffff",
     color: "#313638",
-    padding: "1rem",
   },
   grow: {
     flexGrow: 1,

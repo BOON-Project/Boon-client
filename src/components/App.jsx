@@ -16,7 +16,9 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
+
 import MyBoons from "./MyBoons/MyBoons";
+import Test from "./Test/Test";
 
 const App = () => {
     return (
@@ -33,21 +35,26 @@ const App = () => {
                 <Route exact path='/AboutUs' component={AboutUs} />
                 <Route exact path='/Contact' component={Contact} />
                 <Route exact path='/MyBoons' component={MyBoons} />
+                  <Route exact path="/test" component={Test} />
 
                 <Route exact path='/TopCarousel' component={TopCarousel} />
                 {/* Private Routes =>  */}
 
-                {/* where ppl can see last Boons (what ppl need) */}
-                <PrivateRoute exact path='/Dashboard' component={Dashboard} />
 
-                {/* where user can change personal info */}
-                <PrivateRoute path='/EditUser' component={EditUser} />
+        <Route exact path="/TopCarousel" component={TopCarousel} />
+        {/* Private Routes =>  */}
 
-                {/* Error 404 Route =>  */}
-                <Route path='/*' component={Error404} />
-            </Switch>
-        </>
-    );
+        {/* where ppl can see last Boons (what ppl need) */}
+        <PrivateRoute exact path="/Dashboard" component={Dashboard} />
+
+        {/* where user can change personal info */}
+        <PrivateRoute path="/EditUser" component={EditUser} />
+
+        {/* Error 404 Route =>  */}
+        <Route path="/*" component={Error404} />
+      </Switch>
+    </>
+  );
 };
 
 export default App;
