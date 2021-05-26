@@ -16,23 +16,30 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
+
+import MyBoons from "./MyBoons/MyBoons";
 import Test from "./Test/Test";
 
 const App = () => {
-  return (
-    <>
-      <Nav />
-      <Switch>
-        {/* new files structure */}
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/UserProfile/:id" component={UserProfile} />
-        <Route exact path="/RequestBoon/:id" component={RequestBoon} />
-        <Route exact path="/skill/:id" component={SkillByUser} />
-        <Route exact path="/AboutUs" component={AboutUs} />
-        <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/test" component={Test} />
+    return (
+        <>
+            <Nav />
+            <Switch>
+                {/* new files structure */}
+                <Route exact path='/' component={Home} />
+                <Route exact path='/Signup' component={Signup} />
+                <Route exact path='/Login' component={Login} />
+                <Route exact path='/UserProfile/:id' component={UserProfile} />
+                <Route exact path='/RequestBoon/:id' component={RequestBoon} />
+                <Route exact path='/skill/:id' component={SkillByUser} />
+                <Route exact path='/AboutUs' component={AboutUs} />
+                <Route exact path='/Contact' component={Contact} />
+                <Route exact path='/MyBoons' component={MyBoons} />
+                  <Route exact path="/test" component={Test} />
+
+                <Route exact path='/TopCarousel' component={TopCarousel} />
+                {/* Private Routes =>  */}
+
 
         <Route exact path="/TopCarousel" component={TopCarousel} />
         {/* Private Routes =>  */}

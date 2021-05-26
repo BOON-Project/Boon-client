@@ -75,14 +75,8 @@ const EditUser = () => {
         };
     };
     const onEditSKills = () => {};
-    /**
-     * @todo bug!  location not applied to user object
-     * @body we need to check the logic to send the location
-     */
+
     const onShareLocation = (e) => {
-        console.log("====================================");
-        console.log("target", e.target.checked);
-        console.log("====================================");
         if (e.target.checked) {
             user.location.latitude = geoLocation.latitude;
             user.location.longitude = geoLocation.longitude;

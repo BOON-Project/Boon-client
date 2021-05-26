@@ -1,4 +1,9 @@
 import axios from "axios";
+import { loadTokenFromStorage } from "./localStorage";
+
+const token = loadTokenFromStorage(); // load authentication token
+token && (axios.defaults.headers.token = token); // attach auth token (if exists) to Axios config
+// so it will be sent automatically on all our requests to the API
 axios.defaults.baseURL =
     process.env.REACT_APP_API_BASE_URL || `http://localhost:5000`;
 
@@ -6,6 +11,17 @@ const extractApiError = (errAxios) => {
     return errAxios.response
         ? errAxios.response.data
         : { error: { message: "API not reachable" } };
+};
+
+// after login we need to place the new, fresh token in the Axios header
+// => the token will then be sent on every request to the backend!
+export const updateAuthHeader = (token) => {
+    axios.defaults.headers.token = token;
+};
+
+// on logout we need to clear the auth token from our request
+export const clearAuthHeader = () => {
+    delete axios.defaults.headers.token;
 };
 
 // GET USERS
@@ -92,6 +108,28 @@ export const getUsersBySkill = async (skillId) => {
     //console.log(`im fetching the users with this skills`);
     try {
         const response = await axios.get(`/skill/${skillId}`);
+        return response.data;
+    } catch (err) {
+        return extractApiError(err);
+    }
+};
+
+// GET USER`S TASKS
+
+export const getUserOfferedTasks = async () => {
+    console.log(`im fetching the offered tasks from the AuthUser `);
+    try {
+        const response = await axios.get(`/me/offered`);
+        return response.data;
+    } catch (err) {
+        return extractApiError(err);
+    }
+};
+
+export const getUserReceivedTasks = async () => {
+    console.log(`im fetching the received tasks from the AuthUser `);
+    try {
+        const response = await axios.get(`/me/received`);
         return response.data;
     } catch (err) {
         return extractApiError(err);

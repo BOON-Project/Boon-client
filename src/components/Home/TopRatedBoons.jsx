@@ -16,8 +16,10 @@ import useStyles from "./styles";
 const TopRatedBoons = () => {
   const classes = useStyles();
 
-  const tasks = useSelector((state) => state.tasksReducer);
-  const users = useSelector((state) => state.usersReducer.allUsers);
+
+    const tasks = useSelector((state) => state.tasksReducer.allTasks);
+   const users = useSelector((state) => state.usersReducer.allUsers)
+
 
   const sortedTasks = tasks
     .filter((task) => task.rating > 0)
