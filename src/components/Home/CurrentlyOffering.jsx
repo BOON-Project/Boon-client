@@ -15,7 +15,6 @@ import { useSelector } from "react-redux";
 
 const allImages = require.context("../../images", true, /.svg$/);
 
-
 const CurentlyOffering = () => {
   const classes = useStyles();
   const skillsData = useSelector((state) => state.skillsReducer);
@@ -42,47 +41,51 @@ const CurentlyOffering = () => {
 
       {/* CARDS */}
 
-      <Grid item xs={12}  display="flex">
-        <Box className={classes.cardBox} mt={2} display="flex" textAlign="center" justifyContent="center">
+      <Grid item xs={12} display="flex">
+        <Box
+          className={classes.cardBox}
+          mt={2}
+          display="flex"
+          textAlign="center"
+          justifyContent="center"
+        >
           {randomSkills.length > 1 &&
             randomSkills.map((skill) => {
               //console.log(allImages(`./${skill.avatar}`));
               return (
-                <Grid item sm={6} >
-
-                <Card  className={classes.currentlyCard}  key={skill._id}>
-                  <Box p={3}>
-                    <Typography variant="h5" color="primary">
-                      {skill.name}
-                    </Typography>
-                  </Box>
-                  <Avatar
-                    className={classes.media}
-                    alt="boonee avatar"
-                    src={allImages(`./${skill.avatar}`).default}
+                <Grid item sm={6}>
+                  <Card className={classes.currentlyCard} key={skill._id}>
+                    <Box p={3}>
+                      <Typography variant="h5" color="primary">
+                        {skill.name}
+                      </Typography>
+                    </Box>
+                    <Avatar
+                      className={classes.media}
+                      alt="boonee avatar"
+                      src={allImages(`./${skill.avatar}`).default}
                     />
 
-                  <CardActions className={classes.more}>
-                    <Link
-                     to={{
-                      pathname: `/Dashboard`,
-                      state: { skill},
-                    }}
-                    style={{ width: "100%" }}
-                    >
-
-                    <Button
-                      size="large"
-                      color="primary"
-                      variant="contained"
-                      className={classes.button}
+                    <CardActions className={classes.more}>
+                      <Link
+                        to={{
+                          pathname: `/Dashboard`,
+                          state: { skill },
+                        }}
+                        style={{ width: "100%" }}
                       >
-                      More
-                    </Button>
-                        </Link>
-                  </CardActions>
-                </Card>
-                      </Grid>
+                        <Button
+                          size="large"
+                          color="primary"
+                          variant="contained"
+                          className={classes.button}
+                        >
+                          More
+                        </Button>
+                      </Link>
+                    </CardActions>
+                  </Card>
+                </Grid>
               );
             })}
         </Box>

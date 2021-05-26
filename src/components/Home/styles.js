@@ -1,4 +1,3 @@
-
 import { makeStyles } from "@material-ui/core";
 import Image from "../../images/romain-vignes-ywqa9IZB-dU-unsplash.jpg";
 
@@ -76,9 +75,8 @@ export default makeStyles((theme) => ({
     height: "150px",
   },
   miniavatar: {
-    right: "-65px",
-    height: theme.spacing(7),
-    width: theme.spacing(7),
+    height: theme.spacing(14),
+    width: theme.spacing(14),
   },
   appBar: {
     backgroundColor: `${theme.primary}`,
@@ -100,9 +98,7 @@ export default makeStyles((theme) => ({
   currentlyCard: {
     padding: theme.spacing(1),
     [theme.breakpoints.down("sm")]: {
-      currentlyCard: {
-
-      },
+      currentlyCard: {},
       media: {
         height: "10px",
         width: "5px",
@@ -119,14 +115,14 @@ export default makeStyles((theme) => ({
   cardBox: {},
 
   //** ******************TOP IMAGES SLIDES**************************** */
-hero:{
-  marginTop: '0'
-
-},
+  hero: {
+    marginTop: "0",
+  },
 
   hero1: {
     height: "500px",
-    backgroundImage: "url(https://images.unsplash.com/photo-1620841713108-18ad2b52d15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1620841713108-18ad2b52d15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -139,7 +135,8 @@ hero:{
     fontWeight: "bold",
   },
   hero2: {
-    backgroundImage: "url(https://images.unsplash.com/photo-1580709839515-54b8991e2813?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1315&q=80)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1580709839515-54b8991e2813?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1315&q=80)",
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -151,10 +148,11 @@ hero:{
     color: "#fdffa7",
     fontSize: "4rem",
     fontWeight: "bold",
-    backgroundPositionY: 'center'
+    backgroundPositionY: "center",
   },
   hero3: {
-    backgroundImage: "url(https://images.unsplash.com/photo-1541944743827-e04aa6427c33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1226&q=80)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1541944743827-e04aa6427c33?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1226&q=80)",
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -166,10 +164,11 @@ hero:{
     color: "#feffe1",
     fontSize: "4rem",
     fontWeight: "bold",
-    backgroundPositionY: 'center'
+    backgroundPositionY: "center",
   },
   hero4: {
-    backgroundImage: "url(https://images.unsplash.com/photo-1518542698889-ca82262f08d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1518542698889-ca82262f08d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80)",
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -181,10 +180,11 @@ hero:{
     color: "#bb0058",
     fontSize: "4rem",
     fontWeight: "bold",
-    backgroundPositionY: 'center'
+    backgroundPositionY: "center",
   },
   hero5: {
-    backgroundImage: "url(https://images.unsplash.com/photo-1521732670659-b8c918da61dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
+    backgroundImage:
+      "url(https://images.unsplash.com/photo-1521732670659-b8c918da61dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)",
     height: "500px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -196,7 +196,6 @@ hero:{
     color: "#9100e2",
     fontSize: "4rem",
     fontWeight: "bold",
-    backgroundPositionY: 'center'
+    backgroundPositionY: "center",
   },
-
 }));
