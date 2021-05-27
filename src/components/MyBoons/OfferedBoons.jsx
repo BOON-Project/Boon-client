@@ -33,12 +33,15 @@ const RequestedBoons = () => {
               <CardContent>
                 <Grid container alignItems={"stretch"}>
                   <Grid item xs={4}>
-
+                    {/* <img
+                      src={allImages(`./${task.skill.avatar}`).default}
+                      className={classes.image}
+                    ></img> */}
                   </Grid>
                   <Grid item xs={5}>
                     {/* NAMES RATING AND SKILL CONTAINER */}
                     <Typography>
-                      <b>Bonee:</b> {task.boonee.userName}
+                      <b>Boonee:</b> {task.boonee.userName}
                     </Typography>
 
                     {/* SKILL */}
