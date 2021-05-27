@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        height: "35px",
+        height: "45px",
         backgroundColor: "#E4B363",
     },
     buttonBox: {
