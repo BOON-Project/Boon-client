@@ -26,6 +26,7 @@ const RequestedBoons = () => {
         dispatch(getUserOfferedTasksAction());
     }, []);
 
+
     return (
         <>
             <Grid container spacing={1}>
@@ -55,7 +56,10 @@ const RequestedBoons = () => {
                                             {task.boonee.userName}
                                         </Typography>
 
+
+
                                         {/* SKILL */}
+
 
                                         <Button
                                             size='small'
@@ -80,6 +84,7 @@ const RequestedBoons = () => {
                                                 {task.status}
                                             </Typography>
                                         </Alert>
+
 
                                         {/* avatar and small avatar (badge)*/}
 
