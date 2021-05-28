@@ -6,6 +6,7 @@ import {
     MenuItem,
     Menu,
     Link,
+    Avatar,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
@@ -130,7 +131,21 @@ export default function PrimarySearchAppBar() {
                                 aria-haspopup='true'
                                 onClick={handleProfileMenuOpen}
                                 color='inherit'>
-                                <AccountCircle />
+
+                                    {user ?
+
+                                    (<Avatar
+                                    alt='Remy Sharp'
+                                    src={
+                                        user.avatar
+                                    }
+                                    className={
+                                        classes.avatarBooners
+                                    }
+                                    />) : (<AccountCircle />)
+                                }
+
+
                             </IconButton>
                         </div>
                         <div className={classes.sectionMobile}>
