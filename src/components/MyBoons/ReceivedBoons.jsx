@@ -1,9 +1,21 @@
-import { Box } from "@material-ui/core";
+import {
+  Typography,
+  Box,
+  Card,
+  Button,
+  Grid,
+  Avatar,
+  CardContent,
+  Badge,
+} from "@material-ui/core";
 import React, { useEffect } from "react";
+import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReceivedTasksAction } from "../../store/actions/tasksActions";
+const allImages = require.context("../../images", true, /.jpg$/);
 
 const RequestedBoons = () => {
+  const classes = useStyles();
   const tasks = useSelector(
     (state) => state.tasksReducer.authUserReceivedTasks
   );
@@ -12,25 +24,65 @@ const RequestedBoons = () => {
   useEffect(() => {
     dispatch(getUserReceivedTasksAction());
   }, []);
-  console.log("====================================");
-  console.log(tasks);
-  console.log("====================================");
+
   return (
     <>
-      {tasks.map((task) => (
-        <Box key={task._id} style={{ border: "1px solid" }}>
-          <span>{task.status}</span>
-          <br />
-          <span>{task.booner.userName}</span>
-          <br />
-          <span>{task.skill.name}</span>
-          <br />
-          <span>{task.boons}</span>
-          <br />
-          <span>{task.message}</span>
-          <br />
-        </Box>
-      ))}
+     <Grid container spacing={1}>
+        {tasks.map((task) => (
+          <Grid item xs={12} key={task._id}>
+            <Card className={classes.ratingCard} elevation={8} p={2}>
+              <CardContent>
+                <Grid container alignItems={"stretch"}>
+                  <Grid item xs={4}>
+                    <img
+                    alt='skill'
+                    src={allImages(`./${task.skill.avatar}`).default}
+                    className={classes.image}
+                    />
+                  </Grid>
+                  <Grid item xs={5}>
+                    {/* NAMES RATING AND SKILL CONTAINER */}
+                    <Typography>
+                      <b>Booner:</b> {task.booner.userName}
+                    </Typography>
+
+                    {/* SKILL */}
+
+                    <Button
+                      size="small"
+                      color="info"
+                      variant="outlined"
+                      className={classes.tag}
+                    >
+                      {task.skill.name}
+                    </Button>
+                    {/* RATING TEXT */}
+                    <Typography variant="body1" p={4}>
+                      {task.status}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={3} className={classes.avatarwrap}>
+                    <Typography>{task.status}</Typography>
+                    {/* avatar and small avatar (badge)*/}
+
+                    <Avatar
+                      className={classes.avatar}
+                      alt="boonee avatar"
+                      src={task.booner.avatar}
+                    ></Avatar>
+                  </Grid>
+                </Grid>
+              </CardContent>
+
+              {/* </Box> */}
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+
+
+
     </>
   );
 };
