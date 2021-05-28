@@ -10,7 +10,6 @@ import {
 } from "@material-ui/core";
 import React, { useEffect } from "react";
 import useStyles from "./styles";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getUserOfferedTasksAction } from "../../store/actions/tasksActions";
 const allImages = require.context("../../images", true, /.jpg$/);
@@ -33,10 +32,11 @@ const RequestedBoons = () => {
               <CardContent>
                 <Grid container alignItems={"stretch"}>
                   <Grid item xs={4}>
-                    {/* <img
-                      src={allImages(`./${task.skill.avatar}`).default}
-                      className={classes.image}
-                    ></img> */}
+                    <img
+                    alt='skill'
+                    src={allImages(`./${task.skill.avatar}`).default}
+                    className={classes.image}
+                    />
                   </Grid>
                   <Grid item xs={5}>
                     {/* NAMES RATING AND SKILL CONTAINER */}
