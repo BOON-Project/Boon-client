@@ -80,16 +80,7 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.sectionDesktop}>
                             {user ? (
                                 <>
-                                    <Link
-                                        underline='none'
-                                        href='/AboutUs'
-                                        className={classes.link}
-                                        color='inherit'>
-                                        <Typography variant='h6' color='info'>
-                                            {" "}
-                                            About Us
-                                        </Typography>
-                                    </Link>
+
                                     <Link
                                         underline='none'
                                         href='/MyBoons'
@@ -108,6 +99,16 @@ export default function PrimarySearchAppBar() {
                                         <Typography variant='h6' color='info'>
                                             {" "}
                                             Explore
+                                        </Typography>
+                                    </Link>
+                                    <Link
+                                        underline='none'
+                                        href='/AboutUs'
+                                        className={classes.link}
+                                        color='inherit'>
+                                        <Typography variant='h6' color='info'>
+                                            {" "}
+                                            About Us
                                         </Typography>
                                     </Link>
                                     <Link
@@ -168,7 +169,7 @@ export default function PrimarySearchAppBar() {
                                                 variant='h6'
                                                 color='info'>
                                                 {" "}
-                                                About us
+                                                About
                                             </Typography>
                                         </Link>
                                     </MenuItem>
