@@ -50,6 +50,7 @@ const RequestedBoons = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={5}>
+                                      <Box ml={1}>
                                         {/* NAMES RATING AND SKILL CONTAINER */}
                                         <Typography>
                                             <b>Boonee:</b>{" "}
@@ -72,6 +73,8 @@ const RequestedBoons = () => {
                                         <Typography variant='body1' p={4}>
                                             {task.status}
                                         </Typography>
+
+                                      </Box>
                                     </Grid>
                                     <Grid
                                         item
