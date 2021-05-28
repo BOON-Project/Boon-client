@@ -24,6 +24,7 @@ const RequestedBoons = () => {
   );
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
   useEffect(() => {
     dispatch(getUserReceivedTasksAction());
   }, []);
@@ -62,6 +63,76 @@ const RequestedBoons = () => {
                       </Typography>
 
                       {/* SKILL */}
+=======
+    useEffect(() => {
+        dispatch(getUserReceivedTasksAction());
+    }, []);
+    // const [alertSeverity, setAlertSeverity] = useState({
+    //     severity: ["warning", "success", "error"],
+    // });
+    // const handleSeverity = () => {
+    //     if (task.status === "pending") return setAlertSeverity("warning");
+    // };
+    return (
+        <>
+            <Grid container spacing={1}>
+                {tasks.map((task) => (
+                    <Grid item xs={12} key={task._id}>
+                        <Card
+                            className={classes.ratingCard}
+                            elevation={8}
+                            p={2}>
+                            <CardContent>
+                                <Grid container alignItems={"stretch"}>
+                                    <Grid item xs={4}>
+                                        <img
+                                            alt='skill'
+                                            src={
+                                                allImages(
+                                                    `./${task.skill.avatar}`
+                                                ).default
+                                            }
+                                            className={classes.image}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={5}>
+                                        <Box ml={1}>
+
+                                        {/* NAMES RATING AND SKILL CONTAINER */}
+                                        <Typography>
+                                            <b>Booner:</b>{" "}
+                                            {task.booner.userName}
+                                        </Typography>
+
+                                        {/* SKILL */}
+
+                                        <Button
+                                            size='small'
+                                            color='info'
+                                            variant='outlined'
+                                            className={classes.tag}>
+                                            {task.skill.name}
+                                        </Button>
+                                        {/* RATING TEXT */}
+                                        <Typography variant='body1' p={4}>
+                                            {task.status}
+                                        </Typography>
+
+                                        </Box>
+                                    </Grid>
+                                    <Grid
+                                        item
+                                        xs={3}
+                                        className={classes.avatarwrap}>
+                                        <Alert
+                                            variant='filled'
+                                            severity='warning'>
+                                            <Typography>
+                                                {task.status}
+                                            </Typography>
+                                        </Alert>
+                                        {/* avatar and small avatar (badge)*/}
+>>>>>>> f52e848aa423c72773b881851fd040e15f231481
 
                       <Chip
                         label={task.skill.name}
