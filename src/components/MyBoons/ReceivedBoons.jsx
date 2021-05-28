@@ -54,12 +54,15 @@ const RequestedBoons = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={5}>
-                                        <Box ml={2}>
+                                        <Box ml={1}>
+                                            {/* NAMES RATING AND SKILL CONTAINER */}
                                             <Typography>
                                                 <b>Booner:</b>{" "}
                                                 {task.booner.userName}
                                             </Typography>
+
                                             {/* SKILL */}
+
                                             <Button
                                                 size='small'
                                                 color='info'
@@ -68,11 +71,7 @@ const RequestedBoons = () => {
                                                 {task.skill.name}
                                             </Button>
                                             {/* RATING TEXT */}
-                                            <Typography variant='body1' p={4}>
-                                                {/* {task.message} */}
-                                            </Typography>
                                         </Box>
-                                        {/* NAMES  AND SKILL CONTAINER */}
                                     </Grid>
                                     <Grid
                                         item

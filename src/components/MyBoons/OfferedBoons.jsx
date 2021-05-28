@@ -73,13 +73,11 @@ const RequestedBoons = () => {
                                         item
                                         xs={3}
                                         className={classes.avatarwrap}>
-                                        <Alert
-                                            variant='filled'
-                                            severity='warning'>
+                                        <div>
                                             <Typography>
                                                 {task.status}
                                             </Typography>
-                                        </Alert>
+                                        </div>
                                         {/* avatar and small avatar (badge)*/}
 
                                         {/* avatar and small avatar (badge)*/}
