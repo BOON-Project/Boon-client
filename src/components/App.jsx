@@ -19,8 +19,7 @@ import Contact from "./Contact/Contact";
 
 import MyBoons from "./MyBoons/MyBoons";
 import Test from "./Test/Test";
-import Task from "./MyBoons/Task";
-
+import TaskDetails from "./MyBoons/TaskDetails";
 const App = () => {
   return (
     <>
@@ -32,11 +31,11 @@ const App = () => {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/UserProfile/:id" component={UserProfile} />
         <Route exact path="/RequestBoon/:id" component={RequestBoon} />
-        <Route exact path="/task/:id" component={Task} />
         <Route exact path="/skill/:id" component={SkillByUser} />
         <Route exact path="/AboutUs" component={AboutUs} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/MyBoons" component={MyBoons} />
+        <Route exact path="/MyBoons/:id" component={TaskDetails} />
         <Route exact path="/test" component={Test} />
 
         <Route exact path="/TopCarousel" component={TopCarousel} />
