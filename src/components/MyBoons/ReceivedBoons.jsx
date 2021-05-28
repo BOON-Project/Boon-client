@@ -54,25 +54,25 @@ const RequestedBoons = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={5}>
-                                        {/* NAMES RATING AND SKILL CONTAINER */}
-                                        <Typography>
-                                            <b>Booner:</b>{" "}
-                                            {task.booner.userName}
-                                        </Typography>
-
-                                        {/* SKILL */}
-
-                                        <Button
-                                            size='small'
-                                            color='info'
-                                            variant='outlined'
-                                            className={classes.tag}>
-                                            {task.skill.name}
-                                        </Button>
-                                        {/* RATING TEXT */}
-                                        <Typography variant='body1' p={4}>
-                                            {task.status}
-                                        </Typography>
+                                        <Box ml={2}>
+                                            <Typography>
+                                                <b>Booner:</b>{" "}
+                                                {task.booner.userName}
+                                            </Typography>
+                                            {/* SKILL */}
+                                            <Button
+                                                size='small'
+                                                color='info'
+                                                variant='outlined'
+                                                className={classes.tag}>
+                                                {task.skill.name}
+                                            </Button>
+                                            {/* RATING TEXT */}
+                                            <Typography variant='body1' p={4}>
+                                                {/* {task.message} */}
+                                            </Typography>
+                                        </Box>
+                                        {/* NAMES  AND SKILL CONTAINER */}
                                     </Grid>
                                     <Grid
                                         item
