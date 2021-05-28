@@ -42,4 +42,15 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     flexDirection: "column",
   },
+  // taskDetails
+  taskimg: {
+    height: "200px",
+  },
+  //offeredboons
+  gridinfo: {
+    paddingLeft: "1rem",
+  },
+  tag: {
+    color: "black",
+  },
 }));
