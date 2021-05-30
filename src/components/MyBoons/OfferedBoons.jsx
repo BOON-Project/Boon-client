@@ -42,8 +42,9 @@ const RequestedBoons = () => {
                 <CardContent>
                   <Grid container alignItems={"stretch"}>
                     {/* image grid */}
-                    <Grid item xs={4}>
+                    <Grid item xs={4} className={classes.boxImage}>
                       <img
+                      alt='img'
                         src={allImages(`./${task.skill.avatar}`).default}
                         className={classes.image}
                       ></img>
@@ -54,14 +55,13 @@ const RequestedBoons = () => {
                         label={task.skill.name}
                         variant="outlined"
                         color="info"
-                        variant="outlined"
                         className={classes.tag}
                       >
                         {task.skill.name}
                       </Chip>
 
                       <Typography>
-                        <b>Bonee:</b> {task.boonee.userName}
+                        <b>Boonee:</b> {task.boonee.userName}
                       </Typography>
 
                       {/* SKILL */}

@@ -72,7 +72,7 @@ const CurentlyOffering = () => {
                           pathname: `/Dashboard`,
                           state: { skill },
                         }}
-                        style={{ width: "100%" }}
+                        style={{ width: "100%",textDecoration: 'none' }}
                       >
                         <Button
                           size="large"

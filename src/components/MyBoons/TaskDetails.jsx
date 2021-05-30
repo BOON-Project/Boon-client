@@ -11,10 +11,12 @@ import {
   Chip,
 } from "@material-ui/core";
 import React from "react";
+import { useHistory } from "react-router";
 import useStyles from "./styles";
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const TaskDetails = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const task = props.location.state.task;
 
@@ -23,12 +25,8 @@ const TaskDetails = (props) => {
     <Container maxWidth="md" className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <Typography>{task.date}</Typography>
-
-            <Typography>{task._id}</Typography>
-          </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={9}>
+          <Grid item xs={12}>
             {" "}
             {/* avatar and small avatar (badge)*/}
             <Avatar
@@ -36,21 +34,33 @@ const TaskDetails = (props) => {
               alt="boonee avatar"
               src={task.boonee.avatar}
             ></Avatar>
-          </Grid>
-          <Grid item xs={4}>
+
+            <Grid item xs={2}>
             {" "}
             <Chip
               label={task.skill.name}
               variant="outlined"
               color="info"
-              variant="outlined"
               className={classes.tag}
             >
               {task.skill.name}
             </Chip>
           </Grid>
+          </Grid>
+             {/* NAMES RATING AND SKILL CONTAINER */}
+          <Typography>
+            <b>Boonee:</b> {task.boonee.userName}
+          </Typography>
 
-          <Grid item xs={4}>
+          {/* date  */}
+            <Typography>Date: {task.date}</Typography>
+
+            <Typography>Task code: {task._id}</Typography>
+          </Grid>
+
+
+
+          <Grid item xs={12}>
             <Typography>Message:</Typography>
           </Grid>
 
@@ -59,21 +69,16 @@ const TaskDetails = (props) => {
               {task.message}
             </Typography>
           </Grid>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4}></Grid>
-          <Grid item xs={4}></Grid>
           <Grid item xs={12}>
             {" "}
             <img
+            alt='img'
               src={allImages(`./${task.skill.avatar}`).default}
               className={classes.taskimg}
             ></img>
           </Grid>
 
-          {/* NAMES RATING AND SKILL CONTAINER */}
-          <Typography>
-            <b>Bonee:</b> {task.boonee.userName}
-          </Typography>
+
 
           {/* SKILL */}
 
@@ -82,8 +87,30 @@ const TaskDetails = (props) => {
             {task.status}
           </Typography>
 
-          <Typography>{task.status}</Typography>
+          <Grid container >
+
+          <Grid item xs={4}>asfwef</Grid>
+          <Grid item xs={4}>awefwe</Grid>
+          <Grid item xs={4}>awfwef</Grid>
+
+          </Grid>
+
         </Grid>
+
+        {/* Last last button at bottom */}
+      <Box className={classes.buttonBox}>
+        <Button
+          to="/home"
+          size="large"
+          //you can change this color as you like im only testing
+          color="primary"
+          variant="contained"
+          onClick={() => history.goBack()}
+          className={classes.button}
+        >
+          Go back
+        </Button>
+      </Box>
       </Paper>
     </Container>
   );

@@ -21,8 +21,11 @@ import {
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import logo from "../../images/Boon-big.svg";
 import { clearAuthHeader } from "../../helpers/apiCalls";
+import { useHistory } from "react-router-dom";
 
 export default function PrimarySearchAppBar() {
+    const history = useHistory();
+
     const classes = useStyles();
 
     // REDUX
@@ -306,7 +309,9 @@ export default function PrimarySearchAppBar() {
                                                 color='info'>
                                                 {" "}
                                                 Logout
-                                                <ExitToApp fontSize='large' />
+                                                <ExitToApp fontSize='large'
+                                                onClick={() => history.go("/")}
+                                                />
                                             </Typography>
                                         </Link>
                                     </MenuItem>

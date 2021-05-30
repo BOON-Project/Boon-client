@@ -30,11 +30,15 @@ export default makeStyles((theme) => ({
     background: "hsla(37, 70%, 64%, 1)",
   },
   image: {
-    width: "100%",
+    width: "80%",
+    height: "80%",
+    border: '8px solid #329282'
+
   },
   avatar: {
     width: "100px",
     height: "100px",
+    border: '8px solid #329282'
   },
   avatarwrap: {
     display: "flex",
@@ -53,4 +57,10 @@ export default makeStyles((theme) => ({
   tag: {
     color: "black",
   },
+  boxImage:{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center"
+  }
 }));

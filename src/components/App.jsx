@@ -34,21 +34,22 @@ const App = () => {
         <Route exact path="/skill/:id" component={SkillByUser} />
         <Route exact path="/AboutUs" component={AboutUs} />
         <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/MyBoons" component={MyBoons} />
-        <Route exact path="/MyBoons/:id" component={TaskDetails} />
         <Route exact path="/test" component={Test} />
-
         <Route exact path="/TopCarousel" component={TopCarousel} />
-        {/* Private Routes =>  */}
-
         <Route exact path="/TopCarousel" component={TopCarousel} />
-        {/* Private Routes =>  */}
 
-        {/* where ppl can see last Boons (what ppl need) */}
+
+                    {/* PRIVATE ROUTES */}
+
+        {/* where ppl can see Boonees by skill (what ppl need) */}
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
 
         {/* where user can change personal info */}
         <PrivateRoute path="/EditUser" component={EditUser} />
+
+        {/* MAIN CORE OF THE PROJECT  - USER CAN CHECK TASKS*/}
+        <PrivateRoute exact path="/MyBoons/:id" component={TaskDetails} />
+        <PrivateRoute exact path="/MyBoons" component={MyBoons} />
 
         {/* Error 404 Route =>  */}
         <Route path="/*" component={Error404} />
