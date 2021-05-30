@@ -24,63 +24,67 @@ const RequestedBoons = () => {
     );
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getUserReceivedTasksAction());
-    }, []);
-    // const [alertSeverity, setAlertSeverity] = useState({
-    //     severity: ["warning", "success", "error"],
-    // });
-    // const handleSeverity = () => {
-    //     if (task.status === "pending") return setAlertSeverity("warning");
-    // };
-    return (
-        <>
-            <Grid container spacing={1}>
-                {tasks.map((task) => (
-                    <Grid item xs={12} key={task._id}>
-                        <Link
-                            to={{
-                                pathname: `/MyBoons/${task._id}`,
-                                state: { task },
-                            }}
-                            style={{ width: "100%", textDecoration: "none" }}>
-                            <Card
-                                className={classes.ratingCard}
-                                elevation={8}
-                                p={2}>
-                                <CardContent>
-                                    <Grid container alignItems={"stretch"}>
-                                        {/* image grid */}
-                                        <Grid item xs={4}>
-                                            <img
-                                                alt='skill'
-                                                src={
-                                                    allImages(
-                                                        `./${task.skill.avatar}`
-                                                    ).default
-                                                }
-                                                className={classes.image}
-                                            />
-                                        </Grid>
-                                        {/* info grid */}
-                                        <Grid
-                                            item
-                                            xs={5}
-                                            className={classes.gridinfo}>
-                                            <Chip
-                                                label={task.skill.name}
-                                                variant='outlined'
-                                                color='info'
-                                                className={classes.tag}>
-                                                {task.skill.name}
-                                            </Chip>
+  useEffect(() => {
+    dispatch(getUserReceivedTasksAction());
+  }, []);
+  // const [alertSeverity, setAlertSeverity] = useState({
+  //     severity: ["warning", "success", "error"],
+  // });
+  // const handleSeverity = () => {
+  //     if (task.status === "pending") return setAlertSeverity("warning");
+  // };
+  return (
+    <>
+      <Grid container spacing={1}>
+        {tasks.map((task) => (
+          <Grid item xs={12} key={task._id}>
+            <Link
+              to={{
+                pathname: `/MyBoons/${task._id}`,
+                state: { task },
+              }}
+              style={{ width: "100%", textDecoration: "none" }}
+            >
+              <Card className={classes.ratingCard} elevation={8} p={2}>
+                <CardContent>
+                    {/* image grid */}
+                  <Grid container alignItems={"stretch"} >
+                    <Grid item xs={4} className={classes.boxImage}>
+                      <img
+                        alt="skill"
+                        src={allImages(`./${task.skill.avatar}`).default}
+                        className={classes.image}
+                      />
+                    </Grid>
+                    <Grid item xs={5}>
+                      {/* NAMES RATING AND SKILL CONTAINER */}
+                      <Typography>
+                        <b>Booner:</b> {task.booner.userName}
+                      </Typography>
 
                                             <Typography>
                                                 <b>Boner:</b>{" "}
                                                 {task.booner.userName}
                                             </Typography>
 
-                                            {/* SKILL */}
+                      <Chip
+                        label={task.skill.name}
+                        variant="outlined"
+                        color="info"
+                        className={classes.tag}
+                      >
+                        {task.skill.name}
+                      </Chip>
+                      {/* RATING TEXT */}
+                      <Typography variant="body1" p={4}>
+                        {task.status}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={3} className={classes.avatarwrap}>
+                      <Alert variant="filled" severity="warning">
+                        <Typography>{task.status}</Typography>
+                      </Alert>
+                      {/* avatar and small avatar (badge)*/}
 
                                             {/* RATING TEXT */}
                                             <Typography

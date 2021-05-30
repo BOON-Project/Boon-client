@@ -45,7 +45,7 @@ const TopRatedBoons = () => {
                     <Grid item xs={4}>
                       {/* NAMES RATING AND SKILL CONTAINER */}
                       <Typography>
-                        <b>Bonee:</b> {task.boonee.userName}
+                        <b>Boonee:</b> {task.boonee.userName}
                       </Typography>
                       <Typography>
                         <b>Booner:</b> {task.booner.userName}
@@ -77,7 +77,6 @@ const TopRatedBoons = () => {
                         label={task.skill.name}
                         variant="outlined"
                         color="info"
-                        variant="outlined"
                         className={classes.tag}
                       >
                         {task.skill.name}
