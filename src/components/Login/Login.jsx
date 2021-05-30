@@ -60,9 +60,6 @@ export default function SignInSide() {
         setUserInStorage(result.user);
         updateAuthHeader(result.token);
         history.push("/");
-        console.log("====================================");
-        console.log(result.token);
-        console.log("====================================");
     };
 
     //loading state
