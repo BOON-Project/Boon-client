@@ -116,7 +116,7 @@ const TopRatedUsers = () => {
                                                     pathname: `/UserProfile/${user._id}`,
                                                     state: { user },
                                                 }}
-                                                style={{ width: "100%" }}>
+                                                style={{ width: "100%",textDecoration: 'none' }}>
                                                 <Button
                                                     size='large'
                                                     color='secondary'

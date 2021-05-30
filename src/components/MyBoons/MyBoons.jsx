@@ -7,6 +7,7 @@ import {
   Tab,
   Tabs,
 } from "@material-ui/core";
+import Slide from '@material-ui/core/Slide';
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -24,11 +25,53 @@ const MyBoons = () => {
     setValue(newValue);
   };
 
+
+
   // in order to use material ui we need =>
   const classes = useStyles();
 
   //managing an array of menu items and we're gonna select component that will render
   const [page, setPage] = useState("OfferedBoons");
+
+  //if there's no user, go to login
+  const boonee = useSelector((state) => state.userReducer.user);
+  const linkConditional = () => {
+    if (boonee) {
+        console.log("this");
+        return (
+            <Link
+            style={{ textDecoration: 'none' }}
+                to={{
+                    pathname: `/RequestBoon/${tasks._id}`,
+                    state: { boonee },
+                }}>
+                <Button
+          to="/home"
+          size="large"
+          //you can change this color as you like im only testing
+          color="primary"
+          variant="contained"
+          onClick={() => history.goBack()}
+          className={classes.button}
+        >
+          Take me back
+        </Button>
+            </Link>
+        );
+    } else {
+        return (
+            <Button
+                textDecoration='none'
+                size='large'
+                color='secondary'
+                variant='contained'
+                className={classes.button}
+                onClick={() => history.push("/login")}>
+                Go to Login
+            </Button>
+        );
+    }
+};
 
   return (
     <>
@@ -69,7 +112,7 @@ const MyBoons = () => {
 
       {/* Last last button at bottom */}
       <Box className={classes.buttonBox}>
-        <Button
+        {/* <Button
           to="/home"
           size="large"
           //you can change this color as you like im only testing
@@ -79,7 +122,9 @@ const MyBoons = () => {
           className={classes.button}
         >
           Take me back
-        </Button>
+        </Button> */}
+        {linkConditional()}
+
       </Box>
     </>
   );
