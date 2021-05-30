@@ -1,11 +1,9 @@
 import {
-  getTask,
   getTasks,
   getUserOfferedTasks,
   getUserReceivedTasks,
 } from "../../helpers/apiCalls";
 import {
-  GET_TASK,
   GET_TASKS,
   GET_USER_OFFERED_TASKS,
   GET_USER_RECEIVED_TASKS,
@@ -20,14 +18,14 @@ export const getTasksAction = () => async (dispatch) => {
   });
 };
 
-export const getTaskAction = () => async (dispatch) => {
-  const response = await getTask();
-  // console.log("task actions", response);
-  dispatch({
-    type: GET_TASK,
-    payload: response.data,
-  });
-};
+// export const getTaskAction = () => async (dispatch) => {
+//   const response = await getTask();
+//   // console.log("task actions", response);
+//   dispatch({
+//     type: GET_TASK,
+//     payload: response.data,
+//   });
+// };
 
 export const getUserOfferedTasksAction = () => async (dispatch) => {
   const response = await getUserOfferedTasks();

@@ -73,8 +73,7 @@ export default makeStyles((theme) => ({
   media: {
     height: "220px",
     width: "220px",
-    alignSelf: 'center'
-
+    alignSelf: "center",
   },
   avatar: {
     width: "80px",
@@ -123,6 +122,8 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardBox: {},
+
+  //search
 
   //** ******************TOP IMAGES SLIDES**************************** */
   hero: {

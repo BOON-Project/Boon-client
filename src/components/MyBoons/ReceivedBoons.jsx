@@ -7,12 +7,14 @@ import {
     Avatar,
     CardContent,
     Badge,
+    Chip,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReceivedTasksAction } from "../../store/actions/tasksActions";
 import Alert from "@material-ui/lab/Alert";
+import { Link } from "react-router-dom";
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const RequestedBoons = () => {
@@ -36,66 +38,90 @@ const RequestedBoons = () => {
             <Grid container spacing={1}>
                 {tasks.map((task) => (
                     <Grid item xs={12} key={task._id}>
-                        <Card
-                            className={classes.ratingCard}
-                            elevation={8}
-                            p={2}>
-                            <CardContent>
-                                <Grid container alignItems={"stretch"}>
-                                    <Grid item xs={4}>
-                                        <img
-                                            alt='skill'
-                                            src={
-                                                allImages(
-                                                    `./${task.skill.avatar}`
-                                                ).default
-                                            }
-                                            className={classes.image}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={5}>
-                                        <Box ml={1}>
-                                            {/* NAMES RATING AND SKILL CONTAINER */}
+                        <Link
+                            to={{
+                                pathname: `/MyBoons/${task._id}`,
+                                state: { task },
+                            }}
+                            style={{ width: "100%", textDecoration: "none" }}>
+                            <Card
+                                className={classes.ratingCard}
+                                elevation={8}
+                                p={2}>
+                                <CardContent>
+                                    <Grid container alignItems={"stretch"}>
+                                        {/* image grid */}
+                                        <Grid item xs={4}>
+                                            <img
+                                                alt='skill'
+                                                src={
+                                                    allImages(
+                                                        `./${task.skill.avatar}`
+                                                    ).default
+                                                }
+                                                className={classes.image}
+                                            />
+                                        </Grid>
+                                        {/* info grid */}
+                                        <Grid
+                                            item
+                                            xs={5}
+                                            className={classes.gridinfo}>
+                                            <Chip
+                                                label={task.skill.name}
+                                                variant='outlined'
+                                                color='info'
+                                                className={classes.tag}>
+                                                {task.skill.name}
+                                            </Chip>
+
                                             <Typography>
-                                                <b>Booner:</b>{" "}
+                                                <b>Boner:</b>{" "}
                                                 {task.booner.userName}
                                             </Typography>
 
                                             {/* SKILL */}
 
-                                            <Button
-                                                size='small'
-                                                color='info'
-                                                variant='outlined'
-                                                className={classes.tag}>
-                                                {task.skill.name}
-                                            </Button>
                                             {/* RATING TEXT */}
-                                        </Box>
-                                    </Grid>
-                                    <Grid
-                                        item
-                                        xs={3}
-                                        className={classes.avatarwrap}>
-                                        <Alert
-                                            variant='filled'
-                                            severity='warning'>
+                                            <Typography
+                                                variant='body1'
+                                                p={4}></Typography>
+                                            <Typography>
+                                                <b>Boons:</b> {task.boons}
+                                            </Typography>
+                                            <Typography>
+                                                <b>Boon ID: </b>
+                                                {task._id}
+                                            </Typography>
+                                            <Typography>
+                                                {" "}
+                                                <b>Created: </b>
+                                                {task.date.slice(0, 10)}
+                                            </Typography>
+                                        </Grid>
+                                        {/* avatar image */}
+                                        <Grid
+                                            item
+                                            xs={3}
+                                            className={classes.avatarwrap}>
                                             <Typography>
                                                 {task.status}
                                             </Typography>
-                                        </Alert>
-                                        {/* avatar and small avatar (badge)*/}
+                                            {/* avatar and small avatar (badge)*/}
 
-                                        <Avatar
-                                            className={classes.avatar}
-                                            alt='boonee avatar'
-                                            src={task.booner.avatar}></Avatar>
+                                            <Avatar
+                                                className={classes.avatar}
+                                                alt='booner avatar'
+                                                src={
+                                                    task.booner.avatar
+                                                }></Avatar>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </CardContent>
+                                </CardContent>
 
-                            {/* </Box> */}
-                        </Card>
+                                {/* </Box> */}
+                            </Card>
+                        </Link>
                     </Grid>
                 ))}
             </Grid>

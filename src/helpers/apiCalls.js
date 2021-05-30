@@ -136,13 +136,13 @@ export const getUserReceivedTasks = async () => {
   }
 };
 
-// GET ONE TASK  BY ID
+// GET ONE TASK BY ID
 
-export const getTask = async (taskId) => {
-  try {
-    const response = await axios.get(`/task/${taskId}`);
-    return response;
-  } catch (err) {
-    return extractApiError(err);
-  }
-};
+// export const getTask = async (taskId) => {
+//   try {
+//     const response = await axios.get(`/task/${taskId}`);
+//     return response;
+//   } catch (err) {
+//     return extractApiError(err);
+//   }
+// };

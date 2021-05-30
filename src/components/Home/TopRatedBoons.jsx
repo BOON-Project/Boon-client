@@ -9,6 +9,7 @@ import {
   Avatar,
   CardContent,
   Badge,
+  Chip,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles";
@@ -16,10 +17,8 @@ import useStyles from "./styles";
 const TopRatedBoons = () => {
   const classes = useStyles();
 
-
-    const tasks = useSelector((state) => state.tasksReducer.allTasks);
-   const users = useSelector((state) => state.usersReducer.allUsers)
-
+  const tasks = useSelector((state) => state.tasksReducer.allTasks);
+  const users = useSelector((state) => state.usersReducer.allUsers);
 
   const sortedTasks = tasks
     .filter((task) => task.rating > 0)
@@ -74,14 +73,15 @@ const TopRatedBoons = () => {
 
                       {/* SKILL */}
 
-                      <Button
-                        size="small"
+                      <Chip
+                        label={task.skill.name}
+                        variant="outlined"
                         color="info"
                         variant="outlined"
                         className={classes.tag}
                       >
                         {task.skill.name}
-                      </Button>
+                      </Chip>
                     </Grid>
                     <Grid item xs={8}>
                       {/* RATING TEXT */}
