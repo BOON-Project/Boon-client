@@ -14,6 +14,16 @@ export default makeStyles((theme) => ({
     height: "75vh",
     overflow: "scroll",
   },
+  paperTaskDetails: {
+    width: "100%",
+    marginTop: theme.spacing(4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "1rem",
+    height: "75vh",
+    
+  },
   box: {
     display: "flex",
     justifyContent: "flex-start",

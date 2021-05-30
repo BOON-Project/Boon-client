@@ -1,13 +1,13 @@
 import {
-  Typography,
-  Box,
-  Card,
-  Button,
-  Grid,
-  Avatar,
-  CardContent,
-  Badge,
-  Chip,
+    Typography,
+    Box,
+    Card,
+    Button,
+    Grid,
+    Avatar,
+    CardContent,
+    Badge,
+    Chip,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import useStyles from "./styles";
@@ -18,11 +18,11 @@ import { Link } from "react-router-dom";
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const RequestedBoons = () => {
-  const classes = useStyles();
-  const tasks = useSelector(
-    (state) => state.tasksReducer.authUserReceivedTasks
-  );
-  const dispatch = useDispatch();
+    const classes = useStyles();
+    const tasks = useSelector(
+        (state) => state.tasksReducer.authUserReceivedTasks
+    );
+    const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserReceivedTasksAction());
@@ -62,7 +62,10 @@ const RequestedBoons = () => {
                         <b>Booner:</b> {task.booner.userName}
                       </Typography>
 
-                      {/* SKILL */}
+                                            <Typography>
+                                                <b>Boner:</b>{" "}
+                                                {task.booner.userName}
+                                            </Typography>
 
                       <Chip
                         label={task.skill.name}
@@ -83,23 +86,51 @@ const RequestedBoons = () => {
                       </Alert>
                       {/* avatar and small avatar (badge)*/}
 
-                      <Avatar
-                        className={classes.avatar}
-                        alt="boonee avatar"
-                        src={task.booner.avatar}
-                      ></Avatar>
-                    </Grid>
-                  </Grid>
-                </CardContent>
+                                            {/* RATING TEXT */}
+                                            <Typography
+                                                variant='body1'
+                                                p={4}></Typography>
+                                            <Typography>
+                                                <b>Boons:</b> {task.boons}
+                                            </Typography>
+                                            <Typography>
+                                                <b>Boon ID: </b>
+                                                {task._id}
+                                            </Typography>
+                                            <Typography>
+                                                {" "}
+                                                <b>Created: </b>
+                                                {task.date.slice(0, 10)}
+                                            </Typography>
+                                        </Grid>
+                                        {/* avatar image */}
+                                        <Grid
+                                            item
+                                            xs={3}
+                                            className={classes.avatarwrap}>
+                                            <Typography>
+                                                {task.status}
+                                            </Typography>
+                                            {/* avatar and small avatar (badge)*/}
 
-                {/* </Box> */}
-              </Card>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-    </>
-  );
+                                            <Avatar
+                                                className={classes.avatar}
+                                                alt='booner avatar'
+                                                src={
+                                                    task.booner.avatar
+                                                }></Avatar>
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+
+                                {/* </Box> */}
+                            </Card>
+                        </Link>
+                    </Grid>
+                ))}
+            </Grid>
+        </>
+    );
 };
 
 export default RequestedBoons;
