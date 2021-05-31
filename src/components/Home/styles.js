@@ -6,22 +6,23 @@ export default makeStyles((theme) => ({
         //media queries mobile version
         padding: theme.spacing(1),
         [theme.breakpoints.down("sm")]: {
-            backgroundColor: theme.palette.secondary.main,
             currentlyCard: {
                 maxWidth: "500px",
                 minWidth: "400px",
                 backgroundColor: "red",
                 alignItems: "center",
             },
-            avatar: {
-                height: "10px",
-                width: "5px",
-            },
+
         },
 
         //media queries tablet
         [theme.breakpoints.up("md")]: {
             backgroundColor: "none",
+
+            avatar: {
+                height: "5px",
+                width: "5px",
+            },
         },
         //media queries pcs
         [theme.breakpoints.up("lg")]: {
@@ -32,10 +33,18 @@ export default makeStyles((theme) => ({
     //media queries tablet
     [theme.breakpoints.up("md")]: {
         backgroundColor: "none",
+        avatar: {
+            height: "5px",
+            width: "5px",
+        },
     },
     //media queries pcs
     [theme.breakpoints.up("lg")]: {
         backgroundColor: "none",
+        avatar: {
+            height: "5px",
+            width: "5px",
+        },
     },
 
     card: {
