@@ -30,7 +30,7 @@ const App = () => {
                 <Route exact path='/Signup' component={Signup} />
                 <Route exact path='/Login' component={Login} />
                 <Route exact path='/UserProfile/:id' component={UserProfile} />
-                <Route exact path='/RequestBoon/:id' component={RequestBoon} />
+                <PrivateRoute exact path='/RequestBoon/:id' component={RequestBoon} />
                 <Route exact path='/skill/:id' component={SkillByUser} />
                 <Route exact path='/AboutUs' component={AboutUs} />
                 <Route exact path='/Contact' component={Contact} />
@@ -41,7 +41,7 @@ const App = () => {
                 {/* PRIVATE ROUTES */}
 
                 {/* where ppl can see Boonees by skill (what ppl need) */}
-                <Route exact path='/Dashboard' component={Dashboard} />
+                <PrivateRoute exact path='/Dashboard' component={Dashboard} />
 
                 {/* where user can change personal info */}
                 <PrivateRoute path='/EditUser' component={EditUser} />
