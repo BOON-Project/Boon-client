@@ -134,7 +134,6 @@ const SkillByUser = () => {
                                       label={skill.skillID.name}
                                       variant="outlined"
                                       color="info"
-                                      variant="outlined"
                                       //className={classes.tag}
                                     ></Chip>
 
@@ -168,6 +167,7 @@ const SkillByUser = () => {
                             }}
                             style={{
                               width: "100%",
+                              textDecoration: "none",
                             }}
                           >
                             <Button

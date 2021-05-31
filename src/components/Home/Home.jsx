@@ -154,9 +154,6 @@ const Home = () => {
         {/* it works better without carousel!  */}
 
 
-
-
-
         {/* TOP RATED BOONS AT BOTTOM */}
         <TopRatedBoons />
       </Container>
