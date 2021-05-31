@@ -34,7 +34,7 @@ const TopRatedUsers = () => {
             </Box>
 
             {/* CARDS */}
-            <Grid container spacing={2} xs={12}>
+            <Grid container spacing={2} >
                 {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
                 {users
                     .sort((a, b) => b.rating - a.rating)
@@ -51,7 +51,7 @@ const TopRatedUsers = () => {
                                             {/* NAME */}
                                             <Typography
                                                 variant='h5'
-                                                color='info'>
+                                                color='primary'>
                                                 {user.userName}
                                             </Typography>
                                             {/* RATING */}
@@ -61,7 +61,7 @@ const TopRatedUsers = () => {
                                                 alignItems='center'>
                                                 <Typography
                                                     variant='h6'
-                                                    color='info'>
+                                                    color='primary'>
                                                     {user.rating}
                                                 </Typography>
                                                 <StarIcon color='secondary' />
@@ -94,7 +94,7 @@ const TopRatedUsers = () => {
                                                             }>
                                                             <Button
                                                                 size='medium'
-                                                                color='info'
+                                                                color='primary'
                                                                 variant='outlined'
                                                                 className={
                                                                     classes.tag

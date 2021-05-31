@@ -17,7 +17,7 @@ import {
     TextField,
     Typography,
 } from "@material-ui/core";
-import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+
 import MyLocationIcon from "@material-ui/icons/MyLocation";
 import LocationSearchingIcon from "@material-ui/icons/LocationSearching";
 
@@ -35,11 +35,11 @@ import {
 } from "../../store/actions/errorActions";
 import { setUserInStorage } from "../../helpers/localStorage";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
-import { Favorite, FavoriteBorder } from "@material-ui/icons";
+
 
 const EditUser = () => {
     const user = useSelector((state) => state.userReducer.user);
-    const allSkills = useSelector((state) => state.skillsReducer);
+
 
     const classes = useStyles();
 
@@ -98,7 +98,7 @@ const EditUser = () => {
             console.log(result.error);
             dispatch(setErrorAction(result.error));
             dispatch(hideErrorAction());
-            return;
+            return errors;
         }
         // merge avatar file with data
 

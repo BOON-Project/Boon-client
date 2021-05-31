@@ -15,7 +15,7 @@ const TopCarousel = () => {
       <Carousel
         centerSlidePercentage={100}
         className={classes.carousel}
-        autoPlay={true}
+        autoPlay='true'
         display="flex"
         animation="slide"
         navButtonsAlwaysVisible={false}

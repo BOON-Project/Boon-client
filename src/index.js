@@ -39,10 +39,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <ThemeProvider theme={theme}>
-        <React.Fragment>
+
           <CssBaseline />
           <App />
-        </React.Fragment>
+
       </ThemeProvider>
     </Router>
   </Provider>,

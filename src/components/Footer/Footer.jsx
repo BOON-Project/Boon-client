@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import {
     AppBar,
@@ -7,6 +6,7 @@ import {
     Grid,
     Toolbar,
     Typography,
+    Link
 } from "@material-ui/core";
 
 const Footer = () => {
@@ -15,12 +15,12 @@ const Footer = () => {
     // FUNCTION COPYRIGHT
     function Copyright() {
         return (
-            <Typography variant='body2' color='white' align='center'>
+            <Typography variant='body2' color='inherit' align='center'>
                 {"Copyright © "}
                 <Link
                     s
                     href='/'
-                    style={{ color: "white", textDecoration: "none" }}>
+                    style={{ color: "inherit", textDecoration: "none" }}>
                     Boon
                 </Link>{" "}
                 {new Date().getFullYear()}
