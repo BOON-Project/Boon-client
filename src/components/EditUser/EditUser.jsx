@@ -309,7 +309,7 @@ const EditUser = () => {
                                 <Controller
                                     name='birthday'
                                     control={control}
-                                    defaultValue={user.birthday}
+                                    defaultValue={user.BDay}
                                     render={({
                                         field: { onChange, value },
                                         fieldState: { error },

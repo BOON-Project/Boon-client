@@ -98,7 +98,7 @@ const RequestedBoons = () => {
                                                 </Typography>
                                                 <Typography>
                                                     {" "}
-                                                    <b>Created: </b>
+                                                    <b>Date: </b>
                                                     {task.date.slice(0, 10)}
                                                 </Typography>
                                             </Grid>

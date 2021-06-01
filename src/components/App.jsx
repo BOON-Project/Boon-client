@@ -34,7 +34,7 @@ const App = () => {
                 <Route exact path='/skill/:id' component={SkillByUser} />
                 <Route exact path='/AboutUs' component={AboutUs} />
                 <Route exact path='/Contact' component={Contact} />
-                <Route exact path='/test' component={Test} />
+                {/* <Route exact path='/test' component={Test} /> */}
                 <Route exact path='/TopCarousel' component={TopCarousel} />
                 <Route exact path='/TopCarousel' component={TopCarousel} />
 
