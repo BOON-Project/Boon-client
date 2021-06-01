@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center",
         padding: "1rem",
-        height: "75vh",
+        height: "78vh",
         overflow: "scroll",
     },
     paperTaskDetails: {
@@ -57,7 +57,12 @@ export default makeStyles((theme) => ({
     },
     // taskDetails
     taskimg: {
-        height: "200px",
+        height: "150px",
+        width: "250px",
+        borderRadius: '20%',
+        border: '5px solid #329282',
+        opacity: '0.9',
+
     },
     //offeredboons
     gridinfo: {
@@ -94,4 +99,13 @@ export default makeStyles((theme) => ({
         height: "100%",
         maxWidth: "6rem",
     },
+    buttonBox1:{
+        display: "flex",
+        position: "relative",
+    width: '100%',
+    marginBottom: '5px'
+    },
+    button:{
+
+    }
 }));
