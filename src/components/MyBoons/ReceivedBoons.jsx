@@ -1,12 +1,9 @@
 import {
   Typography,
-  Box,
   Card,
-  Button,
   Grid,
   Avatar,
   CardContent,
-  Badge,
   Chip,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
@@ -26,7 +23,7 @@ const RequestedBoons = () => {
 
   useEffect(() => {
     dispatch(getUserReceivedTasksAction());
-  }, []);
+  }, [dispatch]);
   // const [alertSeverity, setAlertSeverity] = useState({
   //     severity: ["warning", "success", "error"],
   // });
@@ -65,7 +62,7 @@ const RequestedBoons = () => {
                         <Chip
                           label={task.skill.name}
                           variant="outlined"
-                          color="info"
+                          color="primary"
                           className={classes.tag}
                         >
                           {task.skill.name}

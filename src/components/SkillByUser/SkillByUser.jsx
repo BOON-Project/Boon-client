@@ -9,13 +9,7 @@ import {
   Button,
   Avatar,
   Grid,
-  Container,
-  CssBaseline,
-  TextField,
   ButtonGroup,
-  AppBar,
-  Toolbar,
-  Grow,
   Chip,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
@@ -23,7 +17,7 @@ import useStyles from "./styles";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 //general imports like components or logical helpers
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 const SkillByUser = () => {
@@ -35,8 +29,9 @@ const SkillByUser = () => {
 
   //getting all users with skills !!
   const users = useSelector((state) => state.usersReducer.usersWithSkill);
-  console.log("state", users.length);
 
+  //loading state
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
   //setting skeletong initial state
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -47,10 +42,9 @@ const SkillByUser = () => {
       setLoading(false);
       hideLoader();
     }, 3000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users]);
 
-  //loading state
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
 
   return (
     <>
@@ -133,14 +127,13 @@ const SkillByUser = () => {
                                     <Chip
                                       label={skill.skillID.name}
                                       variant="outlined"
-                                      color="info"
-                                      variant="outlined"
+                                      color="primary"
                                       //className={classes.tag}
                                     ></Chip>
 
                                     // <Button
                                     //     size='medium'
-                                    //     color='info'
+                                    //     color='primary'
                                     //     variant='outlined'
                                     //     className={
                                     //         classes.tag
@@ -168,6 +161,7 @@ const SkillByUser = () => {
                             }}
                             style={{
                               width: "100%",
+                              textDecoration: "none",
                             }}
                           >
                             <Button
