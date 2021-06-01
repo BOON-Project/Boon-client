@@ -173,6 +173,7 @@ const SkillByUser = () => {
                                                         }}
                                                         style={{
                                                             width: "100%",
+                                                            textDecoration: "none",
                                                         }}>
                                                         <Button
                                                             size='large'
