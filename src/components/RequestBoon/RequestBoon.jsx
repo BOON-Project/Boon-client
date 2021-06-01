@@ -95,7 +95,7 @@ export default function RequestBoon(props) {
                     }) => (
                         <TextField
                             name='date'
-                            type='date'
+                            type='datetime-local'
                             variant='outlined'
                             fullWidth
                             id='date'
@@ -110,34 +110,7 @@ export default function RequestBoon(props) {
                     )}
                     rules={{ required: "date required" }}
                 />
-                {/*HOW LONG*/}
-                <InputLabel htmlFor='duration' className={classes.label}>
-                    How long?
-                </InputLabel>
-                <Controller
-                    name='duration'
-                    control={control}
-                    render={({
-                        field: { onChange, value },
-                        fieldState: { error },
-                    }) => (
-                        <TextField
-                            name='duration'
-                            variant='outlined'
-                            fullWidth
-                            id='duration'
-                            placeholder='3 days'
-                            onChange={onChange}
-                            value={value}
-                            helperText={error ? error.message : null}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            className={classes.input}
-                        />
-                    )}
-                    rules={{ required: "duration required" }}
-                />
+
                 {/*HOW MUCH*/}
                 <InputLabel htmlFor='boons' className={classes.label}>
                     How much?
@@ -201,7 +174,6 @@ export default function RequestBoon(props) {
                 {/* SUBMIT BUTTON */}
                 <Button
                     type='submit'
-                    fullWidth
                     variant='contained'
                     color='primary'
                     className={classes.submit}>
@@ -212,7 +184,6 @@ export default function RequestBoon(props) {
                 <Button
                     component={Link}
                     to='/'
-                    fullWidth
                     color='secondary'
                     variant='contained'
                     onClick={() => history.goBack()}

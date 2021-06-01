@@ -10,26 +10,72 @@ import {
     Container,
     Chip,
 } from "@material-ui/core";
-import React from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router";
+import { getTaskAction } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
 const allImages = require.context("../../images", true, /.jpg$/);
 
-const TaskDetails = (props) => {
-    const user = useSelector((state) => state.userReducer.user);
-    const history = useHistory();
-    const classes = useStyles();
-    const task = props.location.state.task;
+const TaskDetails = () => {
+    const dispatch = useDispatch();
 
-    //console.log(task.boonee.firstName);
+    const params = useParams();
+
+    const task = useSelector((state) => state.tasksReducer.task);
+    const user = useSelector((state) => state.userReducer.user);
+
+    const history = useHistory();
+
+    const classes = useStyles();
+
+    useEffect(() => {
+        dispatch(getTaskAction(params.id));
+    }, []);
+
     return (
         <>
-            <Container maxWidth='md' className={classes.root}>
-                <Paper className={classes.paperTaskDetails}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={9}>
-                            <Grid item xs={12}>
+            {task?._id && (
+                <Container maxWidth='md' className={classes.root}>
+                    <Paper className={classes.paperTaskDetails}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={9}>
+                                <Grid item xs={12}>
+                                    {/* avatar and small avatar (badge)*/}
+                                    {user._id !== task.boonee._id ? (
+                                        <Avatar
+                                            className={classes.avatar}
+                                            alt='boonee avatar'
+                                            src={task.boonee.avatar}></Avatar>
+                                    ) : (
+                                        <Avatar
+                                            className={classes.avatar}
+                                            alt='booner avatar'
+                                            src={task.booner.avatar}></Avatar>
+                                    )}
+                                    <Chip
+                                        label={task.skill.name}
+                                        variant='outlined'
+                                        color='info'
+                                        className={classes.tag}>
+                                        {task.skill.name}
+                                    </Chip>
+                                </Grid>
+                                {/* NAMES RATING AND SKILL CONTAINER */}
+                                <Typography>
+                                    {user._id !== task.boonee._id ? (
+                                        <b>Boonee: {task.boonee.userName}</b>
+                                    ) : (
+                                        <b>Booner: {task.booner.userName}</b>
+                                    )}
+                                </Typography>
+                                {/* date  */}
+                                <Typography>Date: {task.date}</Typography>
+                                <Typography>Task code: {task._id}</Typography>
+                            </Grid>
+                            <Grid item
+                                <Typography>Message:</Typography>
+
                                 {/* avatar and small avatar (badge)*/}
                                 {user._id !== task.boonee._id ? (
                                     <Avatar
@@ -50,63 +96,43 @@ const TaskDetails = (props) => {
                                     className={classes.tag}>
                                     {task.skill.name}
                                 </Chip>
+                           </Grid>
+                            <Grid item xs={8}>
+                                {/* <Typography variant='body1' p={4}>
+                                {task.messages[0].msg}
+                            </Typography> */}
                             </Grid>
-                            {/* NAMES RATING AND SKILL CONTAINER */}
-                            <Typography>
-                                {user._id !== task.boonee._id ? (
-                                    <b>Boonee: {task.boonee.userName}</b>
-                                ) : (
-                                    <b>Booner: {task.booner.userName}</b>
-                                )}
-                            </Typography>
-
-                            {/* date  */}
-                            <Typography>Date: {task.date}</Typography>
-
-                            <Typography>Task code: {task._id}</Typography>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <Typography>Message:</Typography>
-                        </Grid>
-
-                        <Grid item xs={8}>
+                            <Grid item xs={12}>
+                                {" "}
+                                <img
+                                    alt='img'
+                                    src={
+                                        allImages(`./${task.skill.avatar}`)
+                                            .default
+                                    }
+                                    className={classes.taskimg}></img>
+                            </Grid>
+                            {/* SKILL */}
+                            {/* RATING TEXT */}
                             <Typography variant='body1' p={4}>
-                                {task.message}
+                                {task.status}
                             </Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                            {" "}
-                            <img
-                                alt='img'
-                                src={
-                                    allImages(`./${task.skill.avatar}`).default
-                                }
-                                className={classes.taskimg}></img>
-                        </Grid>
-
-                        {/* SKILL */}
-
-                        {/* RATING TEXT */}
-                        <Typography variant='body1' p={4}>
-                            {task.status}
-                        </Typography>
-
-                        <Grid container>
-                            <Grid item xs={4}>
-                                asfwef
-                            </Grid>
-                            <Grid item xs={4}>
-                                awefwe
-                            </Grid>
-                            <Grid item xs={4}>
-                                awfwef
+                            <Grid container>
+                                <Grid item xs={4}>
+                                    asfwef
+                                </Grid>
+                                <Grid item xs={4}>
+                                    awefwe
+                                </Grid>
+                                <Grid item xs={4}>
+                                    awfwef
+                                </Grid>
                             </Grid>
                         </Grid>
-                    </Grid>
-                </Paper>
-                {/* Last last button at bottom */}
-            </Container>
+                    </Paper>
+                    {/* Last last button at bottom */}
+                </Container>
+            )}
             <Box className={classes.buttonBox}>
                 <Button
                     to='/home'

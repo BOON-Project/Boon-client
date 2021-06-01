@@ -32,16 +32,16 @@ const MyBoons = () => {
     const [page, setPage] = useState("OfferedBoons");
 
     //if there's no user, go to login
-    const boonee = useSelector((state) => state.userReducer.user);
+    const user = useSelector((state) => state.userReducer.user);
     const linkConditional = () => {
-        if (boonee) {
+        if (user) {
             console.log("this");
             return (
                 <Link
                     style={{ textDecoration: "none" }}
                     to={{
                         pathname: `/RequestBoon/${tasks._id}`,
-                        state: { boonee },
+                        state: { user },
                     }}>
                     <Button
                         to='/home'

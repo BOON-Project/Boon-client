@@ -84,7 +84,6 @@ export default function PrimarySearchAppBar() {
                         <div className={classes.sectionDesktop}>
                             {user ? (
                                 <>
-
                                     <Link
                                         underline='none'
                                         href='/MyBoons'
@@ -134,21 +133,15 @@ export default function PrimarySearchAppBar() {
                                 aria-haspopup='true'
                                 onClick={handleProfileMenuOpen}
                                 color='inherit'>
-
-                                    {user ?
-
-                                    (<Avatar
-                                    alt='Remy Sharp'
-                                    src={
-                                        user.avatar
-                                    }
-                                    className={
-                                        classes.avatarBooners
-                                    }
-                                    />) : (<AccountCircle />)
-                                }
-
-
+                                {user ? (
+                                    <Avatar
+                                        alt='Remy Sharp'
+                                        src={user.avatar}
+                                        className={classes.avatarBooners}
+                                    />
+                                ) : (
+                                    <AccountCircle />
+                                )}
                             </IconButton>
                         </div>
                         <div className={classes.sectionMobile}>
@@ -309,23 +302,24 @@ export default function PrimarySearchAppBar() {
                                                 color='primary'>
                                                 {" "}
                                                 Logout
-                                                <ExitToApp fontSize='large'
-                                                onClick={() => history.go("/")}
+                                                <ExitToApp
+                                                    fontSize='large'
+                                                    onClick={() =>
+                                                        history.go("/")
+                                                    }
                                                 />
                                             </Typography>
                                         </Link>
                                     </MenuItem>
                                 </>
                             ) : (
-                                <>
-                                    <ButtonGroup
-                                        variant='text'
-                                        color='primary'
-                                        aria-label='text primary button group'>
-                                        <Button href='/Login'>Login</Button>
-                                        <Button href='/Signup'>Signup</Button>
-                                    </ButtonGroup>
-                                </>
+                                <ButtonGroup
+                                    variant='text'
+                                    color='primary'
+                                    aria-label='text primary button group'>
+                                    <Button href='/Login'>Login</Button>
+                                    <Button href='/Signup'>Signup</Button>
+                                </ButtonGroup>
                             )}
                         </Menu>
                     </Toolbar>
