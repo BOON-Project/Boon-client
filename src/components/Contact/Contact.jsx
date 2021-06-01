@@ -1,4 +1,5 @@
-
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import "../../styles/index.css";
 import useStyles from "./styles";
 import {
@@ -7,11 +8,18 @@ import {
     Typography,
     Grid,
     FormControl,
+    Button,
 } from "@material-ui/core";
 import video from "../../images/contact.mp4";
 
 export default function AboutUs() {
     const classes = useStyles();
+
+    //form state
+    const [state, handleSubmit] = useForm("xzbyrbab");
+    if (state.succeeded) {
+        return <p>Thanks for joining!</p>;
+    }
 
     return (
         <>
@@ -27,7 +35,7 @@ export default function AboutUs() {
                     </video>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <FormControl
+                    <form onSubmit={handleSubmit}
                         className={classes.root}
                         noValidate
                         autoComplete='off'>
@@ -61,8 +69,19 @@ export default function AboutUs() {
                                 placeholder='Type your message here'
                                 variant='outlined'
                             />
+                            <Button
+                            onClick={handleSubmit}
+                            type='submit'
+                            size='large'
+                            //you can change this color as you like im only testing
+                            color='primary'
+                            variant='contained'
+                            className={classes.button}>
+
+                            Send
+                             </Button>
                         </Box>
-                    </FormControl>
+                    </form>
                 </Grid>
             </Grid>
         </>
