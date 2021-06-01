@@ -2,16 +2,19 @@ import {
     Paper,
     Typography,
     Box,
-    Card,
     Button,
     Grid,
     Avatar,
-    CardContent,
     Container,
     Chip,
     TextField,
-    InputLabel,
+    Tooltip,
+    Fab,
 } from "@material-ui/core";
+import DoneIcon from '@material-ui/icons/Done';
+import CancelPresentationIcon from '@material-ui/icons/CancelPresentation';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,9 +23,11 @@ import { getTasks } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import { getTaskAction } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
+import chatStore from '../../store/chatStore'
+import Chat from '../Chat/Chat'
 const allImages = require.context("../../images", true, /.jpg$/);
 
-const TaskDetails = () => {
+const TaskDetails = (props) => {
     const { handleSubmit, control } = useForm();
 
     const dispatch = useDispatch();
@@ -52,10 +57,27 @@ const TaskDetails = () => {
         <>
             {task?._id && (
                 <Container maxWidth='md' className={classes.root}>
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paper} >
+
+                        {/* button at top  */}
+                    <Box className={classes.buttonBox1} justifyContent="flex-end" >
+                <Button
+                    to='/home'
+                    size='large'
+                    //you can change this color as you like im only testing
+                    color='secondary'
+                    variant='contained'
+                    onClick={() => history.goBack()}
+                    className={classes.button}>
+                    <ArrowBackIcon color='primary' />
+                </Button>
+            </Box>
+            {/* end of button at top  */}
+
+                {/* start of main container  */}
                         <Grid container spacing={3}>
-                            <Grid item xs={9}>
-                                <Grid item xs={12}>
+                            <Grid item xs={6}>
+                                <Grid item xs={4}>
                                     {/* avatar and small avatar (badge)*/}
                                     {user._id !== task.boonee._id ? (
                                         <Avatar
@@ -71,7 +93,7 @@ const TaskDetails = () => {
                                     <Chip
                                         label={task.skill.name}
                                         variant='outlined'
-                                        color='info'
+                                        color='inherit'
                                         className={classes.tag}>
                                         {task.skill.name}
                                     </Chip>
@@ -88,18 +110,11 @@ const TaskDetails = () => {
                                 <Typography>Date: {task.date}</Typography>
                                 <Typography>Task code: {task._id}</Typography>
                             </Grid>
-                            <Grid item xs={12}>
-                                <Typography>
-                                    Message:<span>{task.message}</span>
-                                </Typography>
-                            </Grid>
 
-                            <Grid item xs={8}>
-                                {/* <Typography variant='body1' p={4}>
-                                {task.messages[0].msg}
-                            </Typography> */}
-                            </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={3} >
+                            <Typography
+                            variant="h6" component="h2" color="secondary" align="center"
+                            >{task.skill.name}</Typography>
                                 {" "}
                                 <img
                                     alt='img'
@@ -108,17 +123,42 @@ const TaskDetails = () => {
                                             .default
                                     }
                                     className={classes.taskimg}></img>
+
                             </Grid>
+                            <Grid item xs={12}>
+                                {/* <Typography>
+                                    Message:<span>{task.message}</span>
+                                </Typography> */}
+                            </Grid>
+
+
+                            {/* <Grid item xs={12}>
+                                {" "}
+                                <img
+                                    alt='img'
+                                    src={
+                                        allImages(`./${task.skill.avatar}`)
+                                            .default
+                                    }
+                                    className={classes.taskimg}></img>
+                            </Grid> */}
                             <Grid
                                 style={{
-                                    border: "1px solid gray",
+                                    border: '3px solid #329282',
                                     height: "20rem",
                                     borderRadius: "1rem",
                                 }}
                                 item
                                 xs={12}>
                                 <Container className={classes.messageFormBox}>
-                                    <form
+
+
+                                <chatStore>
+
+                                    <Chat />
+
+                                </chatStore>
+                                    {/* <form
                                         className={classes.form}
                                         noValidate
                                         onSubmit={handleSubmit(onSubmit)}>
@@ -154,7 +194,7 @@ const TaskDetails = () => {
                                             rules={{ maxLenght: 100 }}
                                         />
                                         {/* SUBMIT BUTTON */}
-                                        <Button
+                                        {/* <Button
                                             type='submit'
                                             fullWidth
                                             variant='contained'
@@ -162,7 +202,7 @@ const TaskDetails = () => {
                                             className={classes.submit}>
                                             Send Message
                                         </Button>
-                                    </form>{" "}
+                                    </form>{" "} */}
                                 </Container>
                             </Grid>
                             {/* SKILL */}
@@ -170,15 +210,27 @@ const TaskDetails = () => {
                             <Typography variant='body1' p={4}>
                                 {task.status}
                             </Typography>
-                            <Grid container>
+                            <Grid container align='center'>
                                 <Grid item xs={4}>
-                                    asfwef
-                                </Grid>
+                                <Tooltip title="Accept" aria-label="add">
+                                    <Fab color="secondary" className={classes.fab}>
+                                        <DoneIcon color='primary'/>
+                                    </Fab>
+                                </Tooltip>
+                            </Grid>
                                 <Grid item xs={4}>
-                                    awefwe
-                                </Grid>
+                                <Tooltip title="Decline" aria-label="add">
+                                    <Fab color="secondary" className={classes.fab}>
+                                        <CancelPresentationIcon color='primary' />
+                                    </Fab>
+                                </Tooltip>
+                            </Grid>
                                 <Grid item xs={4}>
-                                    awfwef
+                                <Tooltip title="Ask" aria-label="add">
+                                    <Fab color="secondary" className={classes.fab}>
+                                        <HelpOutlineIcon color='primary' />
+                                    </Fab>
+                                </Tooltip>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -186,18 +238,7 @@ const TaskDetails = () => {
                     {/* Last last button at bottom */}
                 </Container>
             )}
-            <Box className={classes.buttonBox}>
-                <Button
-                    to='/home'
-                    size='large'
-                    //you can change this color as you like im only testing
-                    color='primary'
-                    variant='contained'
-                    onClick={() => history.goBack()}
-                    className={classes.button}>
-                    Go back
-                </Button>
-            </Box>
+
         </>
     );
 };

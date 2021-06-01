@@ -27,6 +27,6 @@ export default makeStyles((theme) => ({
     height: "380px",
   },
   video: {
-    height: "380px",
+    height: "400px",
   },
 }));
