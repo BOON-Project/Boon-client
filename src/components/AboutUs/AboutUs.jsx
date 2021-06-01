@@ -13,15 +13,12 @@ import {
     IconButton,
     CardMedia,
     CardContent,
-    Paper,
     Link,
 } from "@material-ui/core";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import TwitterIcon from "@material-ui/icons/Twitter";
 //pictures for the page
-import team from "../../images/people-discussion-5069845_1920.jpg";
-import berlin from "../../images/architecture-3171308_1920.jpg";
 import dog from "../../images/woman-6197737_1920.jpg";
 import guitar from "../../images/guitar-5531027_1920.jpg";
 import friends from "../../images/friends-581753_1920.jpg";
@@ -33,11 +30,11 @@ import Footer from "../Footer/Footer";
 export default function AboutUs() {
     const classes = useStyles();
 
-    const [expanded, setExpanded] = React.useState(false);
+    // const [expanded, setExpanded] = React.useState(false);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    // const handleExpandClick = () => {
+    //     setExpanded(!expanded);
+    // };
 
     return (
         <>
@@ -350,14 +347,14 @@ export default function AboutUs() {
                                 align='center'
                                 variant='h2'
                                 component='h2'
-                                style={{ color: "white", fontWeight: 600 }}>
+                                style={{ color: "inherit", fontWeight: 600 }}>
                                 Are you ready to catch 'em all ?
                             </Typography>{" "}
                             {/* second sentence */}
                             <Typography
                                 align='center'
                                 variant='h5'
-                                style={{ color: "white", fontWeight: 500 }}>
+                                style={{ color: "inherit", fontWeight: 500 }}>
                                 Stay tuned to get our latest job offers
                             </Typography>
                             {/* stupid and sensual icons  */}

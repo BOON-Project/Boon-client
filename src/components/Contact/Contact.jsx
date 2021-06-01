@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import "../../styles/index.css";
 import useStyles from "./styles";
 import {
@@ -32,7 +32,7 @@ export default function AboutUs() {
                         noValidate
                         autoComplete='off'>
                         <Box pt='2rem' className={classes.wrapper}>
-                            <Typography variant='h6' color='info'>
+                            <Typography variant='h6' color='primary'>
                                 Do you have any questions?
                             </Typography>
                             <TextField

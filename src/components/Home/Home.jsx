@@ -34,7 +34,7 @@ const Home = () => {
     dispatch(getSkillsAction());
     dispatch(getUsersAction());
     dispatch(getTasksAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -63,17 +63,16 @@ const Home = () => {
             </Box>
 
             {/* small typing animation 1 */}
-            <Typography variant="h4" color="info">
+            <Typography variant="h4" color="initial">
               <Typed
                 strings={["1. A thing that is helpful or beneficial"]}
                 typeSpeed={40}
-                onReset="true"
                 showCursor={false}
               />
             </Typography>
 
             {/* small typing animation 2 */}
-            <Typography variant="h4" color="info">
+            <Typography variant="h4" color="initial">
               <Typed
                 strings={["2. A favour or request."]}
                 typeSpeed={40}
@@ -84,7 +83,7 @@ const Home = () => {
           </CardContent>
         </Card>
         <Box mt={3} mb={3}>
-          <Typography variant="h4" color="info">
+          <Typography variant="h4" color="inherit">
             {" "}
             We make exchange based economy a reality with our money free
             platform
@@ -105,7 +104,7 @@ const Home = () => {
             autoPlay={false}
             display="flex"
             animation="slide"
-            navButtonsAlwaysVisible={true}
+            navButtonsAlwaysVisible='true'
             //styling tiny dots at bottom
             indicatorIconButtonProps={{
               style: {
@@ -149,54 +148,10 @@ const Home = () => {
           </Carousel>
         </Box>
 
-        {/* TOP RATED BOONERS // second carousel */}
-
-        <Box height="48rem" display="flex">
-          <Carousel
-            autoPlay={false}
-            display="flex"
-            navButtonsAlwaysVisible={true}
-            indicators={false}
-            //styling tiny dots at bottom
-            indicatorIconButtonProps={{
-              style: {
-                padding: "5px", // 1
-                color: "#32908F", // 3
-              },
-            }}
-            activeIndicatorIconButtonProps={{
-              style: {
-                backgroundColor: "#E4B363", // 2
-              },
-            }}
-            indicatorContainerProps={{
-              style: {
-                marginTop: "30px", // 5
-              },
-            }}
-            indicatorIcon={{
-              style: {
-                color: "#E4B363",
-              },
-            }}
-            //styling arrow icons!
-            fullHeightHover={false}
-            navButtonsProps={{
-              style: {
-                backgroundColor: "#E4B363",
-                color: "#32908F",
-              },
-            }}
-            navButtonsWrapperProps={{
-              style: {
-                bottom: "0",
-              },
-            }}
-          >
-            {/* CURRENTLY OFFERING */}
+        {/* TOP RATED BOONERS // kein carousel */}
             <TopRatedUsers />
-          </Carousel>
-        </Box>
+        {/* it works better without carousel!  */}
+
 
         {/* TOP RATED BOONS AT BOTTOM */}
         <TopRatedBoons />

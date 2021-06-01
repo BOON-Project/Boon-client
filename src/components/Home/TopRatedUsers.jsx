@@ -22,7 +22,7 @@ const TopRatedUsers = () => {
     return (
         // TITLE
         <>
-            <Box my={8} display='flex' alignItems='center'>
+            <Box my={2} display='flex' alignItems='center'>
                 <Box display='flex' flexGrow={1}>
                     <img src={Booners} alt='happy-booners' height='200' />
                 </Box>
@@ -34,24 +34,24 @@ const TopRatedUsers = () => {
             </Box>
 
             {/* CARDS */}
-            <Grid container spacing={1}>
+            <Grid container spacing={2} >
                 {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
                 {users
                     .sort((a, b) => b.rating - a.rating)
                     .slice(0, 4)
                     .map((user) => {
                         return (
-                            <Grid item xs={12} md={3}>
+                            <Grid item xs={6} md={3} className={classes.cardContainer} >
                                 <Card
                                     className={classes.userCard}
-                                    elevation={4}
+                                    elevation={8}
                                     key={user._id}>
                                     <Box display='flex' flexDirection='column'>
                                         <Box m={3}>
                                             {/* NAME */}
                                             <Typography
-                                                variant='h4'
-                                                color='info'>
+                                                variant='h5'
+                                                color='primary'>
                                                 {user.userName}
                                             </Typography>
                                             {/* RATING */}
@@ -61,7 +61,7 @@ const TopRatedUsers = () => {
                                                 alignItems='center'>
                                                 <Typography
                                                     variant='h6'
-                                                    color='info'>
+                                                    color='primary'>
                                                     {user.rating}
                                                 </Typography>
                                                 <StarIcon color='secondary' />
@@ -94,7 +94,7 @@ const TopRatedUsers = () => {
                                                             }>
                                                             <Button
                                                                 size='medium'
-                                                                color='info'
+                                                                color='primary'
                                                                 variant='outlined'
                                                                 className={
                                                                     classes.tag

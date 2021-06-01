@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import team from "../../images/people-discussion-5069845_1920.jpg";
 import berlin from "../../images/architecture-3171308_1920.jpg";
 
 export default makeStyles((theme) => ({

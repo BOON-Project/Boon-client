@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import {
     Typography,
     Box,
-    Button,
-    TextField,
-    CardActions,
     Container,
-    ButtonGroup,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { getUsersAction } from "../../store/actions/usersAction";
@@ -26,7 +22,7 @@ const Dashboard = () => {
         dispatch(getSkillsAction());
         dispatch(getUsersAction());
         dispatch(getTasksAction());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

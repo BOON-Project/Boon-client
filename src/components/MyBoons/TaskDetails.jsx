@@ -73,9 +73,30 @@ const TaskDetails = () => {
                                 <Typography>Date: {task.date}</Typography>
                                 <Typography>Task code: {task._id}</Typography>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item
                                 <Typography>Message:</Typography>
-                            </Grid>
+
+                                {/* avatar and small avatar (badge)*/}
+                                {user._id !== task.boonee._id ? (
+                                    <Avatar
+                                        className={classes.avatar}
+                                        alt='boonee avatar'
+                                        src={task.boonee.avatar}></Avatar>
+                                ) : (
+                                    <Avatar
+                                        className={classes.avatar}
+                                        alt='booner avatar'
+                                        src={task.booner.avatar}></Avatar>
+                                )}
+
+                                <Chip
+                                    label={task.skill.name}
+                                    variant='outlined'
+                                    color='primary'
+                                    className={classes.tag}>
+                                    {task.skill.name}
+                                </Chip>
+                           </Grid>
                             <Grid item xs={8}>
                                 {/* <Typography variant='body1' p={4}>
                                 {task.messages[0].msg}

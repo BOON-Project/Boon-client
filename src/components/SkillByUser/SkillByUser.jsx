@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 //styingggggggggggggggggggggg
 import {
+
     Typography,
     Box,
     Card,
@@ -17,13 +18,14 @@ import {
     Toolbar,
     Grow,
     Chip,
+
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 //general imports like components or logical helpers
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 const SkillByUser = () => {
@@ -51,6 +53,7 @@ const SkillByUser = () => {
 
     //loading state
     const [loader, showLoader, hideLoader] = useFullPageLoader();
+
 
     return (
         <>
@@ -126,6 +129,7 @@ const SkillByUser = () => {
                                                         )}
                                                     </Box>
 
+
                                                     {/* MAP THROUGHT THE SKILLS */}
                                                     {user.skills &&
                                                         user.skills.map(
@@ -199,6 +203,7 @@ const SkillByUser = () => {
                     className={classes.container}>
                     <Grid item md={3}>
                         <ButtonGroup variant='contained'>
+
                             <Button
                                 type='button'
                                 size='large'
