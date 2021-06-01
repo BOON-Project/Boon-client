@@ -16,17 +16,11 @@ import { Link, useHistory } from "react-router-dom";
 export default function RequestBoon(props) {
     // to go back
     const history = useHistory();
-
     const { handleSubmit, control } = useForm();
-
     const classes = useStyles();
-
     const dispatch = useDispatch();
-
     const booner = props.location.state.user;
-
     const boonee = useSelector((state) => state.userReducer.user);
-
     //Map through skills for dropdown select
     const skillsListSelect = booner.skills.map((skill) => {
         return (
@@ -35,7 +29,6 @@ export default function RequestBoon(props) {
             </>
         );
     });
-
     const onSubmit = async (data) => {
         let finalData = { ...data, booner: booner._id, boonee: boonee._id };
         let result = await addTask(finalData);
@@ -45,7 +38,6 @@ export default function RequestBoon(props) {
         }
         alert(`Request sent to ${booner.userName}, let's hope they say yes`);
     };
-
     return (
         <Box className={classes.main}>
             <Typography variant='h3' color='secondary' className={classes.hero}>
@@ -95,7 +87,7 @@ export default function RequestBoon(props) {
                     }) => (
                         <TextField
                             name='date'
-                            type='datetime-local'
+                            type='date'
                             variant='outlined'
                             fullWidth
                             id='date'
@@ -110,7 +102,34 @@ export default function RequestBoon(props) {
                     )}
                     rules={{ required: "date required" }}
                 />
-
+                {/*HOW LONG*/}
+                <InputLabel htmlFor='duration' className={classes.label}>
+                    How long?
+                </InputLabel>
+                <Controller
+                    name='duration'
+                    control={control}
+                    render={({
+                        field: { onChange, value },
+                        fieldState: { error },
+                    }) => (
+                        <TextField
+                            name='duration'
+                            variant='outlined'
+                            fullWidth
+                            id='duration'
+                            placeholder='3 days'
+                            onChange={onChange}
+                            value={value}
+                            helperText={error ? error.message : null}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            className={classes.input}
+                        />
+                    )}
+                    rules={{ required: "duration required" }}
+                />
                 {/*HOW MUCH*/}
                 <InputLabel htmlFor='boons' className={classes.label}>
                     How much?
@@ -174,16 +193,17 @@ export default function RequestBoon(props) {
                 {/* SUBMIT BUTTON */}
                 <Button
                     type='submit'
+                    fullWidth
                     variant='contained'
                     color='primary'
                     className={classes.submit}>
                     Request Boon
                 </Button>
-
                 {/* second button */}
                 <Button
                     component={Link}
                     to='/'
+                    fullWidth
                     color='secondary'
                     variant='contained'
                     onClick={() => history.goBack()}

@@ -9,15 +9,22 @@ import {
     CardContent,
     Container,
     Chip,
+    TextField,
+    InputLabel,
 } from "@material-ui/core";
 import React, { useEffect } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
+import { getTasks } from "../../helpers/apiCalls";
+import { setErrorAction } from "../../store/actions/errorActions";
 import { getTaskAction } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const TaskDetails = () => {
+    const { handleSubmit, control } = useForm();
+
     const dispatch = useDispatch();
 
     const params = useParams();
@@ -33,11 +40,19 @@ const TaskDetails = () => {
         dispatch(getTaskAction(params.id));
     }, []);
 
+    const onSubmit = async (data) => {
+        let result = await getTasks();
+        if (result.error) {
+            dispatch(setErrorAction(result.error));
+            return;
+        }
+    };
+
     return (
         <>
             {task?._id && (
                 <Container maxWidth='md' className={classes.root}>
-                    <Paper className={classes.paperTaskDetails}>
+                    <Paper className={classes.paper}>
                         <Grid container spacing={3}>
                             <Grid item xs={9}>
                                 <Grid item xs={12}>
@@ -74,8 +89,11 @@ const TaskDetails = () => {
                                 <Typography>Task code: {task._id}</Typography>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography>Message:</Typography>
+                                <Typography>
+                                    Message:<span>{task.message}</span>
+                                </Typography>
                             </Grid>
+
                             <Grid item xs={8}>
                                 {/* <Typography variant='body1' p={4}>
                                 {task.messages[0].msg}
@@ -90,6 +108,62 @@ const TaskDetails = () => {
                                             .default
                                     }
                                     className={classes.taskimg}></img>
+                            </Grid>
+                            <Grid
+                                style={{
+                                    border: "1px solid gray",
+                                    height: "20rem",
+                                    borderRadius: "1rem",
+                                }}
+                                item
+                                xs={12}>
+                                <Container className={classes.messageFormBox}>
+                                    <form
+                                        className={classes.form}
+                                        noValidate
+                                        onSubmit={handleSubmit(onSubmit)}>
+                                        <Controller
+                                            name='message'
+                                            control={control}
+                                            render={({
+                                                field: { onChange, value },
+                                                fieldState: { error },
+                                            }) => (
+                                                <TextField
+                                                    multiline
+                                                    rows={2}
+                                                    name='message'
+                                                    variant='outlined'
+                                                    fullWidth
+                                                    id='message'
+                                                    placeholder='Hello! I would love to get this boon from you'
+                                                    onChange={onChange}
+                                                    value={value}
+                                                    helperText={
+                                                        error
+                                                            ? error.message
+                                                            : null
+                                                    }
+                                                    maxLenght='100'
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                    className={classes.input}
+                                                />
+                                            )}
+                                            rules={{ maxLenght: 100 }}
+                                        />
+                                        {/* SUBMIT BUTTON */}
+                                        <Button
+                                            type='submit'
+                                            fullWidth
+                                            variant='contained'
+                                            color='primary'
+                                            className={classes.submit}>
+                                            Send Message
+                                        </Button>
+                                    </form>{" "}
+                                </Container>
                             </Grid>
                             {/* SKILL */}
                             {/* RATING TEXT */}
