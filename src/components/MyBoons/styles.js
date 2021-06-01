@@ -72,4 +72,26 @@ export default makeStyles((theme) => ({
         justifyContent: "center",
         alignSelf: "center",
     },
+    messageFormBox: {
+        position: "relative",
+        height: "2rem",
+    },
+    form: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: 230,
+        right: -10,
+        width: "70%",
+    },
+
+    input: {
+        marginBottom: "20px",
+        height: "100%",
+    },
+    submit: {
+        height: "100%",
+        maxWidth: "6rem",
+    },
 }));

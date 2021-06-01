@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 //styingggggggggggggggggggggg
 import {
-
     Typography,
     Box,
     Card,
@@ -18,7 +17,6 @@ import {
     Toolbar,
     Grow,
     Chip,
-
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
@@ -53,7 +51,6 @@ const SkillByUser = () => {
 
     //loading state
     const [loader, showLoader, hideLoader] = useFullPageLoader();
-
 
     return (
         <>
@@ -129,7 +126,6 @@ const SkillByUser = () => {
                                                         )}
                                                     </Box>
 
-
                                                     {/* MAP THROUGHT THE SKILLS */}
                                                     {user.skills &&
                                                         user.skills.map(
@@ -203,7 +199,6 @@ const SkillByUser = () => {
                     className={classes.container}>
                     <Grid item md={3}>
                         <ButtonGroup variant='contained'>
-
                             <Button
                                 type='button'
                                 size='large'
