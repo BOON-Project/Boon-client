@@ -64,9 +64,11 @@ export default function UserProfile(props) {
             console.log("this");
             return (
                 <Link
+                style={{ textDecoration: 'none' }}
                     to={{
                         pathname: `/RequestBoon/${user._id}`,
                         state: { user },
+
                     }}>
                     <Button
                         size='large'

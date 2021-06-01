@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 //styingggggggggggggggggggggg
 import {
+<<<<<<< HEAD
     Typography,
     Box,
     Card,
@@ -17,13 +18,24 @@ import {
     Toolbar,
     Grow,
     Chip,
+=======
+  Typography,
+  Box,
+  Card,
+  CardActions,
+  Button,
+  Avatar,
+  Grid,
+  ButtonGroup,
+  Chip,
+>>>>>>> 8f9ffff58282a4b96c0ca9885221145f06fc9ae4
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 import useStyles from "./styles";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 //general imports like components or logical helpers
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 const SkillByUser = () => {

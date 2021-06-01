@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import {
     AppBar,
     Toolbar,
@@ -89,7 +89,7 @@ export default function PrimarySearchAppBar() {
                                         href='/MyBoons'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='info'>
+                                        <Typography variant='h6' color='primary'>
                                             {" "}
                                             My Boons
                                         </Typography>
@@ -99,7 +99,7 @@ export default function PrimarySearchAppBar() {
                                         href='/Dashboard'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='info'>
+                                        <Typography variant='h6' color='primary'>
                                             {" "}
                                             Explore
                                         </Typography>
@@ -109,7 +109,7 @@ export default function PrimarySearchAppBar() {
                                         href='/AboutUs'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='info'>
+                                        <Typography variant='h6' color='primary'>
                                             {" "}
                                             About Us
                                         </Typography>
@@ -119,7 +119,7 @@ export default function PrimarySearchAppBar() {
                                         href='/Contact'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='info'>
+                                        <Typography variant='h6' color='primary'>
                                             {" "}
                                             Contact
                                         </Typography>
@@ -178,7 +178,7 @@ export default function PrimarySearchAppBar() {
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 About
                                             </Typography>
@@ -191,7 +191,7 @@ export default function PrimarySearchAppBar() {
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 My Boons
                                             </Typography>
@@ -204,7 +204,7 @@ export default function PrimarySearchAppBar() {
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 Explore
                                             </Typography>
@@ -217,7 +217,7 @@ export default function PrimarySearchAppBar() {
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 Contact
                                             </Typography>
@@ -228,7 +228,7 @@ export default function PrimarySearchAppBar() {
                                         <Link underline='none' href='/EditUser'>
                                             <Typography
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 Profile
                                             </Typography>
@@ -245,7 +245,7 @@ export default function PrimarySearchAppBar() {
                                         <AccountCircle />
                                     </IconButton>
                                     <Link underline='none' href='/EditUser'>
-                                        <Typography variant='h6' color='info'>
+                                        <Typography variant='h6' color='primary'>
                                             {" "}
                                             Profile
                                         </Typography>
@@ -281,7 +281,7 @@ export default function PrimarySearchAppBar() {
                                                     flexWrap: "wrap",
                                                 }}
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 Profile
                                                 <Person fontSize='large' />
@@ -299,7 +299,7 @@ export default function PrimarySearchAppBar() {
                                                     alignItems: "center",
                                                 }}
                                                 variant='h6'
-                                                color='info'>
+                                                color='primary'>
                                                 {" "}
                                                 Logout
                                                 <ExitToApp

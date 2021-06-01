@@ -4,7 +4,6 @@ import {
   Typography,
   Box,
   Card,
-  Button,
   Grid,
   Avatar,
   CardContent,
@@ -18,7 +17,7 @@ const TopRatedBoons = () => {
   const classes = useStyles();
 
   const tasks = useSelector((state) => state.tasksReducer.allTasks);
-  const users = useSelector((state) => state.usersReducer.allUsers);
+
 
   const sortedTasks = tasks
     .filter((task) => task.rating > 0)
@@ -76,7 +75,7 @@ const TopRatedBoons = () => {
                       <Chip
                         label={task.skill.name}
                         variant="outlined"
-                        color="info"
+                        color="primary"
                         className={classes.tag}
                       >
                         {task.skill.name}
