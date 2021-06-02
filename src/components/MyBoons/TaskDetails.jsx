@@ -26,7 +26,7 @@ import {
   editTaskAction,
 } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
-import chatStore from "../../store/chatStore";
+
 import Chat from "../Chat/Chat";
 import ReportIcon from "@material-ui/icons/Report";
 const allImages = require.context("../../images", true, /.jpg$/);
