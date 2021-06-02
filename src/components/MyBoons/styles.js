@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "1rem",
-    height: "75vh",
+    height: "78vh",
     overflow: "scroll",
   },
   paperTaskDetails: {
@@ -57,12 +57,11 @@ export default makeStyles((theme) => ({
   },
   // taskDetails
   taskimg: {
-    height: "200px",
-  },
-  avatarWrap: {
-    backgroundColor: "rgb(50,144,143, 0.2)",
-    borderRadius: "10px",
-    padding: "10px",
+    height: "150px",
+    width: "250px",
+    borderRadius: "20%",
+    border: "5px solid #329282",
+    opacity: "0.9",
   },
   //offeredboons
   gridinfo: {
@@ -77,4 +76,33 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     alignSelf: "center",
   },
+  messageFormBox: {
+    position: "relative",
+    height: "2rem",
+  },
+  form: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: 230,
+    right: -10,
+    width: "70%",
+  },
+
+  input: {
+    marginBottom: "20px",
+    height: "100%",
+  },
+  submit: {
+    height: "100%",
+    maxWidth: "6rem",
+  },
+  buttonBox1: {
+    display: "flex",
+    position: "relative",
+    width: "100%",
+    marginBottom: "5px",
+  },
+  button: {},
 }));

@@ -1,32 +1,26 @@
-import React from "react";
+import React from 'react';
 import {
-    Box,
-    InputLabel,
-    Button,
-    Select,
-    Typography,
-    TextField,
-} from "@material-ui/core";
-import useStyles from "./styles";
-import { useForm, Controller } from "react-hook-form";
-import { addTask } from "../../helpers/apiCalls";
-import { useSelector, useDispatch } from "react-redux";
-import { setErrorAction } from "../../store/actions/errorActions";
-import { Link, useHistory } from "react-router-dom";
+  Box,
+  InputLabel,
+  Button,
+  Select,
+  Typography,
+  TextField,
+} from '@material-ui/core';
+import useStyles from './styles';
+import { useForm, Controller } from 'react-hook-form';
+import { addTask } from '../../helpers/apiCalls';
+import { useSelector, useDispatch } from 'react-redux';
+import { setErrorAction } from '../../store/actions/errorActions';
+import { Link, useHistory } from 'react-router-dom';
 export default function RequestBoon(props) {
     // to go back
     const history = useHistory();
-
     const { handleSubmit, control } = useForm();
-
     const classes = useStyles();
-
     const dispatch = useDispatch();
-
     const booner = props.location.state.user;
-
     const boonee = useSelector((state) => state.userReducer.user);
-
     //Map through skills for dropdown select
     const skillsListSelect = booner.skills.map((skill) => {
         return (
@@ -35,7 +29,6 @@ export default function RequestBoon(props) {
             </>
         );
     });
-
     const onSubmit = async (data) => {
         let finalData = { ...data, booner: booner._id, boonee: boonee._id };
         let result = await addTask(finalData);
@@ -45,7 +38,6 @@ export default function RequestBoon(props) {
         }
         alert(`Request sent to ${booner.userName}, let's hope they say yes`);
     };
-
     return (
         <Box className={classes.main}>
             <Typography variant='h3' color='secondary' className={classes.hero}>
@@ -207,7 +199,6 @@ export default function RequestBoon(props) {
                     className={classes.submit}>
                     Request Boon
                 </Button>
-
                 {/* second button */}
                 <Button
                     component={Link}

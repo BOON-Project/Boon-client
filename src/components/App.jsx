@@ -20,6 +20,8 @@ import Contact from "./Contact/Contact";
 import MyBoons from "./MyBoons/MyBoons";
 import Test from "./Test/Test";
 import TaskDetails from "./MyBoons/TaskDetails";
+
+
 const App = () => {
     return (
         <>
@@ -34,7 +36,7 @@ const App = () => {
                 <Route exact path='/skill/:id' component={SkillByUser} />
                 <Route exact path='/AboutUs' component={AboutUs} />
                 <Route exact path='/Contact' component={Contact} />
-                <Route exact path='/test' component={Test} />
+                {/* <Route exact path='/test' component={Test} /> */}
                 <Route exact path='/TopCarousel' component={TopCarousel} />
                 <Route exact path='/TopCarousel' component={TopCarousel} />
 

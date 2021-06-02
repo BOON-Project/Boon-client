@@ -347,14 +347,14 @@ export default function AboutUs() {
                                 align='center'
                                 variant='h2'
                                 component='h2'
-                                style={{ color: "inherit", fontWeight: 600 }}>
+                                style={{ color: "white", fontWeight: 600 }}>
                                 Are you ready to catch 'em all ?
                             </Typography>{" "}
                             {/* second sentence */}
                             <Typography
                                 align='center'
                                 variant='h5'
-                                style={{ color: "inherit", fontWeight: 500 }}>
+                                style={{ color: "white", fontWeight: 500 }}>
                                 Stay tuned to get our latest job offers
                             </Typography>
                             {/* stupid and sensual icons  */}
