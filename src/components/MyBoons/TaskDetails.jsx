@@ -23,12 +23,15 @@ import { getTasks } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import { getTaskAction } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
-import chatStore from '../../store/chatStore'
+
 import Chat from '../Chat/Chat'
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const TaskDetails = (props) => {
     const { handleSubmit, control } = useForm();
+
+    //ctx store
+
 
     const dispatch = useDispatch();
 
@@ -75,7 +78,7 @@ const TaskDetails = (props) => {
             {/* end of button at top  */}
 
                 {/* start of main container  */}
-                        <Grid container spacing={3}>
+                        <Grid container spacing={3} >
                             <Grid item xs={6}>
                                 <Grid item xs={4}>
                                     {/* avatar and small avatar (badge)*/}
@@ -153,11 +156,11 @@ const TaskDetails = (props) => {
                                 <Container className={classes.messageFormBox}>
 
 
-                                <chatStore>
+
 
                                     <Chat />
 
-                                </chatStore>
+
                                     {/* <form
                                         className={classes.form}
                                         noValidate
@@ -207,31 +210,25 @@ const TaskDetails = (props) => {
                             </Grid>
                             {/* SKILL */}
                             {/* RATING TEXT */}
-                            <Typography variant='body1' p={4}>
+                            <Typography variant='body1' p={6}>
                                 {task.status}
                             </Typography>
-                            <Grid container align='center'>
-                                <Grid item xs={4}>
+                            <Grid container align='center' width='100%' className={classes.buttonsContainer} >
+                                <Grid item xs={6}>
                                 <Tooltip title="Accept" aria-label="add">
                                     <Fab color="secondary" className={classes.fab}>
                                         <DoneIcon color='primary'/>
                                     </Fab>
                                 </Tooltip>
                             </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={6}>
                                 <Tooltip title="Decline" aria-label="add">
                                     <Fab color="secondary" className={classes.fab}>
                                         <CancelPresentationIcon color='primary' />
                                     </Fab>
                                 </Tooltip>
                             </Grid>
-                                <Grid item xs={4}>
-                                <Tooltip title="Ask" aria-label="add">
-                                    <Fab color="secondary" className={classes.fab}>
-                                        <HelpOutlineIcon color='primary' />
-                                    </Fab>
-                                </Tooltip>
-                                </Grid>
+
                             </Grid>
                         </Grid>
                     </Paper>

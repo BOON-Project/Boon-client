@@ -11,8 +11,9 @@ export default makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center",
         padding: "1rem",
-        height: "78vh",
-        overflow: "scroll",
+        height: "100%",
+        marginBottom: theme.spacing(4),
+
     },
     paperTaskDetails: {
         width: "100%",
@@ -105,7 +106,7 @@ export default makeStyles((theme) => ({
     width: '100%',
     marginBottom: '5px'
     },
-    button:{
-
+    buttonsContainer:{
+        marginBottom: '15px'
     }
 }));

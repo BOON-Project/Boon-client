@@ -12,6 +12,8 @@ import {
 import Carousel from "react-material-ui-carousel";
 import Typed from "react-typed";
 import TopCarousel from "./TopCarousel";
+import useKonami from "react-konami-hook";
+
 
 //components
 import CurentlyOffering from "./CurrentlyOffering";
@@ -26,6 +28,7 @@ import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
 
 const Home = () => {
+  useKonami(() => alert("Nice Job!"));
   const classes = useStyles();
 
   const dispatch = useDispatch();

@@ -20,3 +20,9 @@ export const GET_TASK = "GET_TASK";
 export const GET_TASKS = "GET_TASKS";
 export const GET_USER_OFFERED_TASKS = "GET_USER_OFFERED_TASKS";
 export const GET_USER_RECEIVED_TASKS = "GET_USER_RECEIVED_TASKS";
+
+//chat
+export const ADD_MESSAGE = 'ADD_MESSAGE'
+export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
+export const ADD_USER = 'ADD_USER'
+export const USERS_LIST = 'USERS_LIST'
