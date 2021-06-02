@@ -13,6 +13,8 @@ import Carousel from "react-material-ui-carousel";
 import Typed from "react-typed";
 import TopCarousel from "./TopCarousel";
 
+
+
 //components
 import CurentlyOffering from "./CurrentlyOffering";
 import TopRatedUsers from "./TopRatedUsers";
@@ -26,6 +28,10 @@ import { getUsersAction } from "../../store/actions/usersAction";
 import { getTasksAction } from "../../store/actions/tasksActions";
 
 const Home = () => {
+
+
+
+
   const classes = useStyles();
 
   const dispatch = useDispatch();
