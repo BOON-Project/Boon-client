@@ -3,6 +3,7 @@ import {
     GET_TASKS,
     GET_USER_RECEIVED_TASKS,
     GET_USER_OFFERED_TASKS,
+    UPDATE_TASK_STATUS,
 } from "../actions/types";
 
 const initialState = {
@@ -14,16 +15,16 @@ const initialState = {
 
 const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_TASK:
-            return {
-                ...state,
-                task: action.payload,
-            };
-
         case GET_TASKS:
             return {
                 ...state,
                 allTasks: action.payload,
+            };
+
+        case GET_TASK:
+            return {
+                ...state,
+                task: action.payload,
             };
 
         case GET_USER_OFFERED_TASKS:
@@ -37,6 +38,22 @@ const tasksReducer = (state = initialState, action) => {
                 ...state,
                 authUserReceivedTasks: action.payload,
             };
+
+        //modify status
+        case UPDATE_TASK_STATUS:
+            console.log("hey aghy", action.payload);
+            return {
+                ...state,
+                task: {
+                    ...state.task,
+                    status: action.payload,
+                },
+            };
+
+        // case ADD_TASK_MESSAGE:
+        //   return {
+        //     ...state,
+        //   };
 
         default:
             return state;
