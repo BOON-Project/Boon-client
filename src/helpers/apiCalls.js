@@ -147,3 +147,19 @@ export const getTask = async (taskId) => {
         return extractApiError(err);
     }
 };
+
+// EDIT TASK
+
+export const editTask = async (id, status, rating) => {
+    try {
+        const data = { status, rating };
+        const response = await axios.patch(`/tasks/${id}`, data);
+        console.log("====================================");
+        console.log(response.data);
+        console.log("====================================");
+
+        return response.data;
+    } catch (err) {
+        return extractApiError(err);
+    }
+};

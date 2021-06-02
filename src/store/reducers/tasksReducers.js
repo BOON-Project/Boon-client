@@ -3,7 +3,9 @@ import {
     GET_TASKS,
     GET_USER_RECEIVED_TASKS,
     GET_USER_OFFERED_TASKS,
+    UPDATE_TASK,
     UPDATE_TASK_STATUS,
+    UPDATE_TASK_RATING,
 } from "../actions/types";
 
 const initialState = {
@@ -42,11 +44,21 @@ const tasksReducer = (state = initialState, action) => {
         //modify status
         case UPDATE_TASK_STATUS:
             console.log("hey aghy", action.payload);
+
             return {
                 ...state,
                 task: {
                     ...state.task,
                     status: action.payload,
+                },
+            };
+        case UPDATE_TASK_RATING:
+            console.log("hey aghy", action.payload);
+            return {
+                ...state,
+                task: {
+                    ...state.task,
+                    rating: action.payload,
                 },
             };
 
