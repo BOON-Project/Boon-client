@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/index.css";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 //Components
 import Nav from "./Nav/Nav";
 import PrivateRoute from "./PrivateRoute";
@@ -16,17 +16,24 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
-
+import {useKonamiCode } from './SecretCode/useKonamiCode'
+import konamiLogo from './logo.svg';
+import logoComponent from './logoComponent'
 import MyBoons from "./MyBoons/MyBoons";
 import Test from "./Test/Test";
 import TaskDetails from "./MyBoons/TaskDetails";
 
 
+
 const App = () => {
+    const konami = useKonamiCode();
+    const logo = konami ? konamiLogo : null;
     return (
         <>
             <Nav />
+            {logo ? <Redirect to='logo'/>: null}
             <Switch>
+            <Route  path='/logo' component={logoComponent} />
                 {/* new files structure */}
                 <Route exact path='/' component={Home} />
                 <Route exact path='/Signup' component={Signup} />
