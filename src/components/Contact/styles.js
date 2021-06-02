@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: "380px",
+    height: "400px",
   },
   video: {
     height: "400px",
