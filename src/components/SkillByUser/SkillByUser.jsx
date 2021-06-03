@@ -152,7 +152,7 @@ const SkillByUser = () => {
                                                                                         .name
                                                                                 }
                                                                                 variant='outlined'
-                                                                                color='info'
+                                                                                color='primary'
 
                                                                                 //className={classes.tag}
                                                                             ></Chip>
