@@ -132,13 +132,15 @@ const TaskDetails = (props) => {
                                     align='center'>
                                     {task.skill.name}
                                 </Typography>{" "}
-                                <img
-                                    alt='img'
-                                    src={
-                                        allImages(`./${task.skill.avatar}`)
-                                            .default
-                                    }
-                                    className={classes.taskimg}></img>
+                                <div className={classes.imgWrapper}>
+                                    <img
+                                        alt='img'
+                                        src={
+                                            allImages(`./${task.skill.avatar}`)
+                                                .default
+                                        }
+                                        className={classes.taskimg}></img>
+                                </div>
                             </Grid>
                             <Grid item xs={12}>
                                 {/* <Typography>
