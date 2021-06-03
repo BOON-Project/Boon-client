@@ -15,11 +15,11 @@ import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { getTasks } from "../../helpers/apiCalls";
+import { getMessages, getTasks } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import {
     getTaskAction,
@@ -34,6 +34,8 @@ const allImages = require.context("../../images", true, /.jpg$/);
 
 const TaskDetails = (props) => {
     const { handleSubmit, control } = useForm();
+    const [messages, setMessages] = useState([]);
+
 
     const dispatch = useDispatch();
 
@@ -42,12 +44,17 @@ const TaskDetails = (props) => {
     const task = useSelector((state) => state.tasksReducer.task);
     const user = useSelector((state) => state.userReducer.user);
 
+
     const history = useHistory();
 
     const classes = useStyles();
 
     useEffect(() => {
         dispatch(getTaskAction(params.id));
+
+        //chat messages
+        getMessages(params.id).then(msgs => setMessages(msgs));
+        console.log(messages)
     }, []);
 
     const onSubmit = async (data) => {
@@ -168,7 +175,7 @@ const TaskDetails = (props) => {
                                 xs={12}>
                                 <Container className={classes.messageFormBox}>
 
-                                        <Chat />
+                                        <Chat messages={messages}/>
 
                                     {/* <form
                                         className={classes.form}
