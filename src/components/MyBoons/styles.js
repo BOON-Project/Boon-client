@@ -13,7 +13,6 @@ export default makeStyles((theme) => ({
         padding: "1rem",
         height: "100%",
         marginBottom: theme.spacing(4),
-
     },
     paperTaskDetails: {
         width: "100%",
@@ -30,6 +29,7 @@ export default makeStyles((theme) => ({
         alignItems: "center",
         height: "45px",
         backgroundColor: "#E4B363",
+        marginBottom: "3rem",
     },
     buttonBox: {
         display: "flex",
@@ -43,7 +43,7 @@ export default makeStyles((theme) => ({
         width: "80%",
         height: "80%",
         border: "4px solid #329282",
-        borderRadius: "10px",
+        borderRadius: "1rem",
     },
     avatar: {
         width: "100px",
@@ -57,14 +57,19 @@ export default makeStyles((theme) => ({
         flexDirection: "column",
     },
     // taskDetails
-    taskimg: {
-        height: "150px",
-        width: "250px",
-        borderRadius: '20%',
-        border: '5px solid #329282',
-        opacity: '0.9',
-
+    imgWrapper: {
+        display: "flex",
+        justifyContent: "center",
+        height: "200px",
+        // width: "220px",
     },
+    taskimg: {
+        border: "5px solid #329282",
+        height: "100%",
+        alignSelf: "center",
+        borderRadius: "1rem",
+    },
+
     //offeredboons
     gridinfo: {
         paddingLeft: "1rem",
@@ -100,13 +105,13 @@ export default makeStyles((theme) => ({
         height: "100%",
         maxWidth: "6rem",
     },
-    buttonBox1:{
+    buttonBox1: {
         display: "flex",
         position: "relative",
-    width: '100%',
-    marginBottom: '5px'
+        width: "100%",
+        marginBottom: "5px",
     },
-    buttonsContainer:{
-        marginBottom: '15px'
-    }
+    buttonsContainer: {
+        marginBottom: "15px",
+    },
 }));

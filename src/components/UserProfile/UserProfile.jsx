@@ -22,15 +22,9 @@ import useStyles from "./styles";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 
-
-
-
 // start of our User Profile
 export default function UserProfile(props) {
-//user location
-
-
-
+    //user location
 
     //in order to use Material UI u need this =>
     const classes = useStyles();
@@ -64,11 +58,10 @@ export default function UserProfile(props) {
             console.log("this");
             return (
                 <Link
-                style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: "none" }}
                     to={{
                         pathname: `/RequestBoon/${user._id}`,
                         state: { user },
-
                     }}>
                     <Button
                         size='large'
@@ -104,7 +97,7 @@ export default function UserProfile(props) {
             {/* avatar */}
             <Grid container spacing={2} className={classes.container}>
                 <Box component='div'>
-                    <Grid item xs={6}>
+                    <Grid className={classes.imgWrapper} item xs={6}>
                         <img
                             src={avatar}
                             alt='avatar'
@@ -165,7 +158,6 @@ export default function UserProfile(props) {
                     </Grid>
                 </Grid>
                 {/* LOCATION */}
-
 
                 <Grid container spacing={2}>
                     <Grid item xs={2}>

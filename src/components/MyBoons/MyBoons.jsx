@@ -15,6 +15,7 @@ import useStyles from "./styles";
 import { useHistory } from "react-router";
 import OfferedBoons from "./OfferedBoons";
 import ReceivedBoons from "./ReceivedBoons";
+import Footer from "../Footer/Footer";
 
 const MyBoons = () => {
     const tasks = useSelector((state) => state.tasksReducer);
@@ -121,6 +122,7 @@ const MyBoons = () => {
         </Button> */}
                 {linkConditional()}
             </Box>
+            <Footer />
         </>
     );
 };
