@@ -163,3 +163,14 @@ export const editTask = async (id, status, rating) => {
         return extractApiError(err);
     }
 };
+
+//get messages
+export const getMessages = async (taskId) => {
+    console.log(taskId);
+    try {
+        const response = await axios.get(`/tasks/${taskId}/messages`);
+        return response.data;
+    } catch (err) {
+        return extractApiError(err);
+    }
+};

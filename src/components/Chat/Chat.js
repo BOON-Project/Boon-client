@@ -46,9 +46,21 @@ export default function Chat(props) {
                   <Chip
                   label={chat.from} className={classes.chip}/>
                   <Typography variant='subtitle1'>{chat.msg}</Typography>
-
                 </div>
           ))}
+
+
+            {/* TESTINGGGGG */}
+              {props.messages.map((msg,i)=>(
+              <div className={tasks.boonee._id !== msg.senderId._id ? classes.flexReverse : classes.flex} key={i}>
+                    <Chip
+                    label={msg.senderId.userName} className={classes.chip}/>
+                    <Typography variant='subtitle1'>{msg.msg}</Typography>
+                </div>
+          ))
+          }
+
+
 
       </div>
 
@@ -56,13 +68,16 @@ export default function Chat(props) {
 
 
 {/* second flex bot at bottom - BUTTONSSSSS  */}
-    <div className={classes.flex}>
+
+<form>
+
+    <div className={classes.flexInput}>
             <TextField
+            outlined
             fullWidth
             label='Send a chat'
             className={classes.textField}
-            //value={tasks.message}
-            //onChange={e=>changeTextValue(e.target.value)}
+            onChange={e=>changeTextValue(e.target.value)}
             />
 
       <Button variant='contained' color='primary'>
@@ -72,6 +87,8 @@ export default function Chat(props) {
 
 
     </div>
+
+</form>
 
 
 
