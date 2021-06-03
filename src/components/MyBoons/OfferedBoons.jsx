@@ -56,7 +56,7 @@ const RequestedBoons = () => {
                         <Chip
                           label={task.skill.name}
                           variant="outlined"
-                          color="info"
+                          color="primary"
                           className={classes.tag}
                         >
                           {task.skill.name}

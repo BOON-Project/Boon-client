@@ -106,7 +106,7 @@ const TaskDetails = (props) => {
                                     <Chip
                                         label={task.skill.name}
                                         variant='outlined'
-                                        color='inherit'
+                                        color='primary'
                                         className={classes.tag}>
                                         {task.skill.name}
                                     </Chip>
@@ -165,9 +165,9 @@ const TaskDetails = (props) => {
                                 item
                                 xs={12}>
                                 <Container className={classes.messageFormBox}>
-                                    <chatStore>
+
                                         <Chat />
-                                    </chatStore>
+
                                     {/* <form
                                         className={classes.form}
                                         noValidate

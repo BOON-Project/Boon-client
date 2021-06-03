@@ -69,7 +69,7 @@ export default function PrimarySearchAppBar() {
     const mobileMenuId = "primary-account-menu-mobile";
 
     return (
-        <>
+        <div>
             <div className={classes.grow}>
                 <AppBar className={classes.appBar} position='static'>
                     <Toolbar>
@@ -325,6 +325,6 @@ export default function PrimarySearchAppBar() {
                     </Toolbar>
                 </AppBar>
             </div>
-        </>
+        </div>
     );
 }
