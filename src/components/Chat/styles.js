@@ -8,7 +8,14 @@ export default makeStyles((theme) => ({
   },
   flex:{
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+
+  },
+  flexReverse:{
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row-reverse',
+
   },
   topicsWindow: {
     // width: '15%',
@@ -20,6 +27,7 @@ export default makeStyles((theme) => ({
     width: '100%',
     height: '250px',
     padding:'20px',
+    overflowY:'scroll'
   },
   chatBox: {
     width: '85%',
@@ -29,5 +37,10 @@ export default makeStyles((theme) => ({
   },
   textField:{
 
-  }
+  },
+  flexInput:{
+    display: 'flex',
+    alignItems: 'center',
+
+  },
 }));
