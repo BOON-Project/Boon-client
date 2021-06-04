@@ -23,6 +23,7 @@ import { getMessages, getTasks } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import {
     getTaskAction,
     editTaskAction,
@@ -170,7 +171,7 @@ const TaskDetails = (props) => {
                             <Grid
                                 style={{
                                     border: "3px solid #329282",
-                                    height: "20rem",
+                                    height: "21rem",
                                     borderRadius: "1rem",
                                 }}
                                 item
@@ -230,15 +231,18 @@ const TaskDetails = (props) => {
                             {/* SKILL */}
 
 
+                                <Grid item xs={12} align="center">
+                                    <Typography>Status:</Typography>
 
-                            <Typography variant='body1' p={4}>
+                            <Typography variant='body1'>
                                 {task.status === 'accepted' ?
-                                <Chip variant="outlined" color="secondary" label="accepted" icon={<CheckIcon />} /> : task.status === 'rejected' ?
-                                <Chip variant="outlined" color="primary" label="rejected" icon={<CloseIcon />} /> : null
+                                <Chip variant="outlined" color="primary" label="accepted" icon={<CheckIcon />} /> : task.status === 'rejected' ?
+                                <Chip variant="outlined" color="primary" label="rejected" icon={<CloseIcon />} /> : task.status === 'finished' ?  <Chip variant="outlined" color="primary" label="finished" icon={<EmojiEmotionsIcon />} />: null
 
                             }
                             </Typography>
-                            <Grid container align='center'>
+                                </Grid>
+                            <Grid container align='center' m={2}>
                                 <Grid item xs={4}>
                                     {/* status confirm */}
                                     <Tooltip title='Accept' aria-label='add'>

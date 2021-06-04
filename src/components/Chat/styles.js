@@ -18,9 +18,7 @@ export default makeStyles((theme) => ({
 
   },
   topicsWindow: {
-    // width: '15%',
-    // height: '300px',
-    // border: '1px solid black'
+
   },
   chatWindow: {
 
