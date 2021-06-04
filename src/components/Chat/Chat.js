@@ -64,6 +64,7 @@ export default function Chat(props) {
                 }
                 key={i}
               >
+                <p>{moment.utc(msg.createdAt).startOf("minute").fromNow()}</p>
                 <Chip label={msg.senderId.userName} className={classes.chip} />
                 <Typography variant="subtitle1"> {msg.msg}</Typography>
               </div>
