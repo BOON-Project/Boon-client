@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+import { addMessages } from "../../helpers/apiCalls";
 import useStyles from "./styles";
+import { addMessage } from "../../store/actions/chatActions";
+import {
+  hideErrorAction,
+  setErrorAction,
+} from "../../store/actions/errorActions";
 //styling=>
 import {
   Avatar,
@@ -12,15 +18,38 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import { useForm } from "react-hook-form";
+import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
+  const classes = useStyles();
   const tasks = useSelector((state) => state.tasksReducer.task);
   const [message, changeTextValue] = useState("");
 
   console.log("tasks from chattsss");
-  const classes = useStyles();
+  const { handleSubmit, control } = useForm();
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data) => {
+    showLoader();
+
+    let result = await addMessages(data);
+
+    // handle error case
+    if (result.error) {
+      dispatch(setErrorAction(result.error));
+      hideLoader();
+      return;
+    }
+
+    // handle success case
+    dispatch(hideErrorAction());
+    dispatch(addMessage(data));
+  };
+
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
 
   return (
     <div>
@@ -74,17 +103,16 @@ export default function Chat(props) {
 
         {/* second flex bot at bottom - BUTTONSSSSS  */}
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
             <TextField
               outlined
               fullWidth
               label="Send a chat"
               className={classes.textField}
-              onChange={(e) => changeTextValue(e.target.value)}
             />
 
-            <Button variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary">
               Send
             </Button>
           </div>
