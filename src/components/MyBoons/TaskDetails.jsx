@@ -21,6 +21,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { getMessages, getTasks } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
 import {
     getTaskAction,
     editTaskAction,
@@ -224,10 +226,17 @@ const TaskDetails = (props) => {
                                     </form>{" "} */}
                                 </Container>
                             </Grid>
+
                             {/* SKILL */}
-                            {/* RATING TEXT */}
+
+
+
                             <Typography variant='body1' p={4}>
-                                {task.status}
+                                {task.status === 'accepted' ?
+                                <Chip variant="outlined" color="secondary" label="accepted" icon={<CheckIcon />} /> : task.status === 'rejected' ?
+                                <Chip variant="outlined" color="primary" label="rejected" icon={<CloseIcon />} /> : null
+
+                            }
                             </Typography>
                             <Grid container align='center'>
                                 <Grid item xs={4}>
