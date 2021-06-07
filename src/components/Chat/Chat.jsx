@@ -29,20 +29,22 @@ export default function Chat(props) {
   const sender = useSelector((state) => state.userReducer.user);
 
   const [message, changeTextValue] = useState("");
+  const [messages, setMessages] = useState(props.messages);
 
   console.log("tasks from chattsss");
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
+  console.log("data for aghy", tasks);
 
   const onSubmit = async (formData) => {
     showLoader();
     const msg = formData.msg;
 
+    //sends the message to backend
     let result = await addMessages(
       { msg, senderId: sender._id, task: tasks._id },
       tasks._id
     );
-    console.log("data for aghy", msg.msg);
     //handle error case
     if (result.error) {
       dispatch(setErrorAction(result.error));
@@ -52,7 +54,9 @@ export default function Chat(props) {
 
     // handle success case
     dispatch(hideErrorAction());
-    dispatch(addMessage(result));
+    console.log("hiVasilis", [...messages, ...result.data]);
+    setMessages([...messages, ...result.data]);
+    //dispatch(addMessage(result.data));
   };
 
   const [loader, showLoader, hideLoader] = useFullPageLoader();
@@ -90,7 +94,7 @@ export default function Chat(props) {
             ))}
 
             {/* TESTINGGGGG */}
-            {props.messages.map((msg, i) => (
+            {messages.map((msg, i) => (
               <div
                 className={
                   tasks.boonee._id !== msg.senderId._id
