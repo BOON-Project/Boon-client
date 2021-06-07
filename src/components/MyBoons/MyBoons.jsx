@@ -36,7 +36,7 @@ const MyBoons = () => {
     const user = useSelector((state) => state.userReducer.user);
     const linkConditional = () => {
         if (user) {
-            console.log("this");
+
             return (
                 <Link
                     style={{ textDecoration: "none" }}

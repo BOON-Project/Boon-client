@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import React, { useEffect } from "react";
 import useStyles from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getUserOfferedTasksAction } from "../../store/actions/tasksActions";
@@ -16,13 +16,13 @@ const allImages = require.context("../../images", true, /.jpg$/);
 
 const RequestedBoons = () => {
   const classes = useStyles();
-  const history = useHistory();
+
   const tasks = useSelector((state) => state.tasksReducer.authUserOfferedTasks);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserOfferedTasksAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

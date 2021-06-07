@@ -6,11 +6,11 @@ import {
   CardContent,
   Chip,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReceivedTasksAction } from "../../store/actions/tasksActions";
-import Alert from "@material-ui/lab/Alert";
+
 import { Link } from "react-router-dom";
 const allImages = require.context("../../images", true, /.jpg$/);
 

@@ -7,16 +7,15 @@ import {
   Avatar,
   Container,
   Chip,
-  TextField,
   Tooltip,
   Fab,
 } from "@material-ui/core";
 import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React, { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { getMessages, getTasks } from "../../helpers/apiCalls";
@@ -26,7 +25,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import {
   getTaskAction,
-  editTaskAction,
   editTaskStatusAction,
 } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
@@ -53,10 +51,13 @@ const TaskDetails = (props) => {
   useEffect(() => {
     dispatch(getTaskAction(params.id));
 
-    //chat messages
+    //chat messages - getting messages
     getMessages(params.id).then((msgs) => setMessages(msgs));
-    console.log(messages);
-  }, []);
+
+  }, [dispatch, params.id, ]);
+
+
+
 
   const onSubmit = async (data) => {
     let result = await getTasks();
