@@ -24,9 +24,10 @@ export default makeStyles((theme) => ({
     backgroundColor: "#E4B363",
     flexDirection: "column",
     alignItems: "center",
-    paddingLeft: "100px",
+
     height: "90vh",
   },
+  videoWrap: {},
   video: {
     height: "380px",
   },
