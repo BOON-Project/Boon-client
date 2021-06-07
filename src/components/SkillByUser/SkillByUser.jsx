@@ -9,13 +9,7 @@ import {
     Button,
     Avatar,
     Grid,
-    Container,
-    CssBaseline,
-    TextField,
     ButtonGroup,
-    AppBar,
-    Toolbar,
-    Grow,
     Chip,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
@@ -36,6 +30,8 @@ const SkillByUser = () => {
     //getting all users with skills !!
     const users = useSelector((state) => state.usersReducer.usersWithSkill);
     console.log("state", users.length);
+    //loading state
+    const [loader, showLoader, hideLoader] = useFullPageLoader();
 
     //setting skeletong initial state
     const [loading, setLoading] = useState(false);
@@ -49,8 +45,6 @@ const SkillByUser = () => {
         }, 3000);
     }, [users]);
 
-    //loading state
-    const [loader, showLoader, hideLoader] = useFullPageLoader();
 
     return (
         <>
