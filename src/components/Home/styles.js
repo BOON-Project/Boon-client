@@ -91,9 +91,13 @@ export default makeStyles((theme) => ({
   avatar: {
     width: "80px",
     height: "80px",
+
   },
-  topratedCardLeft: {
-    backgroundColor: "#c5c6c8",
+  borderBox: {
+border: '2px solid white',
+backgroundColor:'#E4B363',
+padding: '5px',
+boxShadow: '2px 3px 5px rgba(0,0,0,100)'
   },
   avatarBooners: {
     width: "150px",
