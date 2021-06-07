@@ -176,20 +176,11 @@ export const getMessages = async (taskId) => {
 };
 
 export const addMessages = async (formData, taskId) => {
-  console.log("hi Cindy", formData);
+  console.log("hi Cindy", taskId, formData);
   try {
-    const response = await axios.post(`/tasks/${taskId}/messages`);
+    const response = await axios.post(`/tasks/${taskId}/messages`, formData);
     return response;
   } catch (err) {
     return extractApiError(err);
   }
 };
-// export const addTask = async (formData) => {
-//     try {
-//         const response = await axios.post("/tasks", formData);
-//         console.log(response);
-//         return response.data;
-//     } catch (err) {
-//         return extractApiError(err);
-//     }
-// };

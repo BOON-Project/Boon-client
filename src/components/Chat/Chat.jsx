@@ -20,24 +20,29 @@ import {
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
   const classes = useStyles();
   const tasks = useSelector((state) => state.tasksReducer.task);
+  const sender = useSelector((state) => state.userReducer.user);
+
   const [message, changeTextValue] = useState("");
 
   console.log("tasks from chattsss");
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     showLoader();
 
-    let result = await addMessages(data);
-
-    // handle error case
+    let result = await addMessages(
+      { msg: formData, senderId: sender._id, task: tasks._id },
+      tasks._id
+    );
+    console.log("data for aghy", result);
+    //handle error case
     if (result.error) {
       dispatch(setErrorAction(result.error));
       hideLoader();
@@ -46,7 +51,7 @@ export default function Chat(props) {
 
     // handle success case
     dispatch(hideErrorAction());
-    dispatch(addMessage(data));
+    dispatch(addMessage(result));
   };
 
   const [loader, showLoader, hideLoader] = useFullPageLoader();
@@ -105,11 +110,25 @@ export default function Chat(props) {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
-            <TextField
-              outlined
-              fullWidth
-              label="Send a chat"
-              className={classes.textField}
+            <Controller
+              name="message"
+              control={control}
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  outlined
+                  fullWidth
+                  label="Send a chat"
+                  className={classes.textField}
+                  onChange={onChange}
+                  name="message"
+                  value={value}
+                />
+              )}
+              rules={{ required: "Write a message first" }}
             />
 
             <Button type="submit" variant="contained" color="primary">

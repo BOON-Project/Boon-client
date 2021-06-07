@@ -3,11 +3,10 @@ import * as types from "../actions/types";
 let nextMessageId = 0;
 const nextUserId = 0;
 
-export const addMessage = (message, author) => ({
+export const addMessage = (message, taskId) => ({
   type: types.ADD_MESSAGE,
-  id: nextMessageId++,
   message,
-  author,
+  taskId: taskId,
 });
 
 export const addUser = (name) => ({
