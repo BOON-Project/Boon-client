@@ -30,6 +30,8 @@ const SkillByUser = () => {
     //getting all users with skills !!
     const users = useSelector((state) => state.usersReducer.usersWithSkill);
     console.log("state", users.length);
+
+
     //loading state
     const [loader, showLoader, hideLoader] = useFullPageLoader();
 
@@ -57,7 +59,12 @@ const SkillByUser = () => {
             {/* CARDS */}
             <Grid container spacing={1}>
                 {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
-                {users &&
+                {users.length == '0' ? <Typography variant='h4' color='primary'>
+                    No users available 😞 <br /> You can also try with a different skill 😉
+                </Typography>
+
+
+                :
                     users
                         .sort((a, b) => b.rating - a.rating)
                         .map((user) => {
