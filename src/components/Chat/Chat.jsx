@@ -36,12 +36,13 @@ export default function Chat(props) {
 
   const onSubmit = async (formData) => {
     showLoader();
+    const msg = formData.msg;
 
     let result = await addMessages(
-      { msg: formData, senderId: sender._id, task: tasks._id },
+      { msg, senderId: sender._id, task: tasks._id },
       tasks._id
     );
-    console.log("data for aghy", result);
+    console.log("data for aghy", msg.msg);
     //handle error case
     if (result.error) {
       dispatch(setErrorAction(result.error));
@@ -111,7 +112,7 @@ export default function Chat(props) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
             <Controller
-              name="message"
+              name="msg"
               control={control}
               defaultValue=""
               render={({
@@ -124,7 +125,7 @@ export default function Chat(props) {
                   label="Send a chat"
                   className={classes.textField}
                   onChange={onChange}
-                  name="message"
+                  name="msg"
                   value={value}
                 />
               )}
