@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { addMessages } from "../../helpers/apiCalls";
 import useStyles from "./styles";
-import { addMessage } from "../../store/actions/chatActions";
+
 import {
   hideErrorAction,
   setErrorAction,
 } from "../../store/actions/errorActions";
 //styling=>
 import {
-  Avatar,
   Typography,
   Box,
-  ListItem,
-  ListItemText,
-  List,
+
   Chip,
   Button,
   TextField,
