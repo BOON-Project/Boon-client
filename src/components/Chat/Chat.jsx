@@ -33,6 +33,8 @@ export default function Chat(props) {
   const dispatch = useDispatch();
   console.log("data for aghy", tasks);
 
+
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
   const onSubmit = async (formData) => {
     showLoader();
     const msg = formData.msg;
@@ -53,28 +55,17 @@ export default function Chat(props) {
     dispatch(hideErrorAction());
     console.log("hiVasilis", [...messages, ...result.data]);
     setMessages([...messages, ...result.data]);
+
     //dispatch(addMessage(result.data));
   };
 
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
+
 
   return (
     <div>
       <p></p>
       <Box className={classes.root}>
-        {/* <Typography variant='h6' component='h3'>This is your chatbox</Typography> */}
-        {/* <Typography component='p'>Subject: </Typography> */}
-        {/* 2 components at bottom */}
         <div className={classes.flex}>
-          {/* <div className={classes.topicsWindow}>
-        <List>
-          {['topic'].map(topic=>(
-            <ListItem key={topic}>
-              <ListItemText primary={topic}></ListItemText>
-            </ListItem>
-          ))}
-        </List>
-      </div> */}
           <div className={classes.chatWindow}>
             {[
               {
