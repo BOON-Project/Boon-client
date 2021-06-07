@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+import { addMessages } from "../../helpers/apiCalls";
 import useStyles from "./styles";
+import { addMessage } from "../../store/actions/chatActions";
+import {
+  hideErrorAction,
+  setErrorAction,
+} from "../../store/actions/errorActions";
 //styling=>
 import {
   Avatar,
@@ -12,15 +18,43 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
+import { useForm, Controller } from "react-hook-form";
+import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
+  const classes = useStyles();
   const tasks = useSelector((state) => state.tasksReducer.task);
+  const sender = useSelector((state) => state.userReducer.user);
+
   const [message, changeTextValue] = useState("");
 
   console.log("tasks from chattsss");
-  const classes = useStyles();
+  const { handleSubmit, control } = useForm();
+  const dispatch = useDispatch();
+
+  const onSubmit = async (formData) => {
+    showLoader();
+
+    let result = await addMessages(
+      { msg: formData, senderId: sender._id, task: tasks._id },
+      tasks._id
+    );
+    console.log("data for aghy", result);
+    //handle error case
+    if (result.error) {
+      dispatch(setErrorAction(result.error));
+      hideLoader();
+      return;
+    }
+
+    // handle success case
+    dispatch(hideErrorAction());
+    dispatch(addMessage(result));
+  };
+
+  const [loader, showLoader, hideLoader] = useFullPageLoader();
 
   return (
     <div>
@@ -64,6 +98,7 @@ export default function Chat(props) {
                 }
                 key={i}
               >
+                <p>{moment.utc(msg.createdAt).startOf("minute").fromNow()}</p>
                 <Chip label={msg.senderId.userName} className={classes.chip} />
                 <Typography variant="subtitle1"> {msg.msg}</Typography>
               </div>
@@ -73,17 +108,30 @@ export default function Chat(props) {
 
         {/* second flex bot at bottom - BUTTONSSSSS  */}
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
-            <TextField
-              outlined
-              fullWidth
-              label="Send a chat"
-              className={classes.textField}
-              onChange={(e) => changeTextValue(e.target.value)}
+            <Controller
+              name="message"
+              control={control}
+              defaultValue=""
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  outlined
+                  fullWidth
+                  label="Send a chat"
+                  className={classes.textField}
+                  onChange={onChange}
+                  name="message"
+                  value={value}
+                />
+              )}
+              rules={{ required: "Write a message first" }}
             />
 
-            <Button variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary">
               Send
             </Button>
           </div>
