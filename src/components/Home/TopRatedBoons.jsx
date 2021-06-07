@@ -58,11 +58,14 @@ const TopRatedBoons = () => {
                         }}
                         badgeContent={<Avatar src={task.boonee.avatar} />}
                       >
+                        <Box className={classes.borderBox}>
                         <Avatar
                           className={classes.miniavatar}
                           alt="boonee avatar"
                           src={task.booner.avatar}
                         ></Avatar>
+
+                        </Box>
                       </Badge>
 
                       {/* RATING */}

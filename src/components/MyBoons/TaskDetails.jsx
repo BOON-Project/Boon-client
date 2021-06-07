@@ -26,6 +26,7 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import {
   getTaskAction,
   editTaskStatusAction,
+  addBoonsAction,
 } from "../../store/actions/tasksActions";
 import useStyles from "./styles";
 
@@ -67,8 +68,9 @@ const TaskDetails = (props) => {
     }
   };
 
-  const handleChangeStatus = (status) => {
+  const handleChangeStatus = (status, boons, senderId) => {
     dispatch(editTaskStatusAction(task._id, status));
+    dispatch(addBoonsAction(boons, status, senderId, task._id))
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
@@ -133,6 +135,7 @@ const TaskDetails = (props) => {
                 {/* date  */}
                 <Typography>Date: {task.date}</Typography>
                 <Typography>Task code: {task._id}</Typography>
+                <Typography>Boons: {task.boons}</Typography>
               </Grid>
 
               <Grid item xs={3}>
@@ -153,21 +156,10 @@ const TaskDetails = (props) => {
                 </div>
               </Grid>
               <Grid item xs={12}>
-                {/* <Typography>
-                                    Message:<span>{task.message}</span>
-                                </Typography> */}
+
               </Grid>
 
-              {/* <Grid item xs={12}>
-                                {" "}
-                                <img
-                                    alt='img'
-                                    src={
-                                        allImages(`./${task.skill.avatar}`)
-                                            .default
-                                    }
-                                    className={classes.taskimg}></img>
-                            </Grid> */}
+
               <Grid
                 style={{
                   border: "3px solid #329282",
@@ -180,51 +172,7 @@ const TaskDetails = (props) => {
                 <Container className={classes.messageFormBox}>
                   <Chat messages={messages} />
 
-                  {/* <form
-                                        className={classes.form}
-                                        noValidate
-                                        onSubmit={handleSubmit(onSubmit)}>
-                                        <Controller
-                                            name='message'
-                                            control={control}
-                                            render={({
-                                                field: { onChange, value },
-                                                fieldState: { error },
-                                            }) => (
-                                                <TextField
-                                                    multiline
-                                                    rows={2}
-                                                    name='message'
-                                                    variant='outlined'
-                                                    fullWidth
-                                                    id='message'
-                                                    placeholder='Hello! I would love to get this boon from you'
-                                                    onChange={onChange}
-                                                    value={value}
-                                                    helperText={
-                                                        error
-                                                            ? error.message
-                                                            : null
-                                                    }
-                                                    maxLenght='100'
-                                                    InputLabelProps={{
-                                                        shrink: true,
-                                                    }}
-                                                    className={classes.input}
-                                                />
-                                            )}
-                                            rules={{ maxLenght: 100 }}
-                                        />
-                                        {/* SUBMIT BUTTON */}
-                  {/* <Button
-                                            type='submit'
-                                            fullWidth
-                                            variant='contained'
-                                            color='primary'
-                                            className={classes.submit}>
-                                            Send Message
-                                        </Button>
-                                    </form>{" "} */}
+
                 </Container>
               </Grid>
 

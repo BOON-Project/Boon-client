@@ -1,13 +1,14 @@
 import {
     Box,
     Button,
+    Chip,
     Container,
     Grid,
     Paper,
     Tab,
     Tabs,
 } from "@material-ui/core";
-
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -84,17 +85,27 @@ const MyBoons = () => {
 
                     {/* first one for offered boons */}
                     <Tab
-                        label='Offered Boons'
+                        label='Requested by me '
                         onClick={() => setPage("OfferedBoons")}
                         selectionFollowsFocus
                     />
 
                     {/* second one for incoming boons */}
                     <Tab
-                        label='Incoming Boons'
+                        label=' Pending Boons'
                         onClick={() => setPage("ReceivedBoons")}
                     />
                 </Tabs>
+
+
+                <Chip
+                      variant="outlined"
+                      color="primary"
+                      label={user.boonsHave}
+                      icon={<AccountBalanceWalletIcon />}
+                    />
+
+
             </Box>
 
             {/* main main container, white space in which we're gonna render  */}
@@ -109,17 +120,7 @@ const MyBoons = () => {
 
             {/* Last last button at bottom */}
             <Box className={classes.buttonBox}>
-                {/* <Button
-          to="/home"
-          size="large"
-          //you can change this color as you like im only testing
-          color="primary"
-          variant="contained"
-          onClick={() => history.goBack()}
-          className={classes.button}
-        >
-          Take me back
-        </Button> */}
+
                 {linkConditional()}
             </Box>
             <Footer />
