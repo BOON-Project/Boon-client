@@ -60,6 +60,12 @@ export default makeStyles((theme) => ({
   mainImgWrap: {
     display: "flex",
     justifyContent: "center",
+    overflow: "hidden",
+  },
+  textWrap: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
   },
   imgWrapper: {
     display: "flex",
