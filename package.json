@@ -14,6 +14,7 @@
         "chokidar": "^2.1.8",
         "date-fns": "^2.21.3",
         "final-form": "^4.20.2",
+        "moment": "^2.29.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-easy-crop": "^3.3.3",
