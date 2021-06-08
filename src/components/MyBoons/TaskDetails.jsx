@@ -17,7 +17,7 @@ import {
   Fab,
 } from "@material-ui/core";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+
 import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
 import Rating from "@material-ui/lab/Rating";
@@ -93,30 +93,37 @@ const TaskDetails = (props) => {
 
   const handleChangeStatus = (status) => {
     dispatch(editTaskStatusAction(task._id, status));
-    dispatch(addBoonsAction( status, task._id));
+    //dispatch(addBoonsAction( status, task._id));
     // setOpen(false);
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
   // };
 
-//managing boons exchangings?
+//managing boons exchange?
+const dispatchBoons = async () =>{
+  const boonerId= task.booner.id;
+  const boonerCurrency = task.booner.boonHave;
 
-const dispatchBoons = (dispatch) =>({
-setBoonee(boonsHave){
+  //substraction boons
+  const substractedBoonsWallet = boonerCurrency -40;
+  let result = await substractBoons(substractedBoonsWallet, boonerId);
+  dispatch(substractBoonsAction(result))
 
-  return ()=>{
-    dispatch(addBoonsAction(boonsHave));
-    dispatch(substractBoonsAction(boonsHave));
-  }
+  const booneeId= task.booner.id;
+  const booneeCurrency = task.booner.boonHave;
+
+  //substraction boons
+  const addedBoonsWallet = booneeCurrency +40;
+  let result1 = await addBoons(addedBoonsWallet, booneeId);
+  dispatch(substractBoonsAction(result1))
 }
-})
 
   return (
     <>
       {task?._id && (
         <Container maxWidth="md" className={classes.root}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paperDetails}>
             {/* button at top  */}
             <Box className={classes.buttonBox1} justifyContent="flex-end">
               <Button
@@ -225,6 +232,8 @@ setBoonee(boonsHave){
                         color="primary"
                         label="finished"
                         icon={<EmojiEmotionsIcon />}
+
+
                       />
                     ) : task.status === "pending" ? (
                       <Chip
@@ -395,7 +404,7 @@ setBoonee(boonsHave){
                           <Fab
                             color="secondary"
                             className={classes.fab}
-                            onClick={handleClickOpenFinished}
+                            onClick={()=>{handleClickOpenFinished();dispatchBoons()}}
                           >
                             <ReportIcon color="primary" />
                           </Fab>
