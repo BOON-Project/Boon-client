@@ -1,4 +1,5 @@
 import {
+  Badge,
   Paper,
   Typography,
   Box,
@@ -10,12 +11,14 @@ import {
   Tooltip,
   Fab,
 } from "@material-ui/core";
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React, { useEffect, useState } from "react";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { getMessages, getTasks } from "../../helpers/apiCalls";
@@ -33,6 +36,16 @@ import useStyles from "./styles";
 import Chat from "../Chat/Chat";
 import ReportIcon from "@material-ui/icons/Report";
 const allImages = require.context("../../images", true, /.jpg$/);
+
+//Small avatar styling
+
+const SmallAvatar = withStyles((theme) => ({
+  root: {
+    width: 22,
+    height: 22,
+    border: `2px solid ${theme.palette.background.paper}`,
+  },
+}))(Avatar);
 
 const TaskDetails = (props) => {
   const { handleSubmit, control } = useForm();
@@ -54,11 +67,7 @@ const TaskDetails = (props) => {
 
     //chat messages - getting messages
     getMessages(params.id).then((msgs) => setMessages(msgs));
-
-  }, [dispatch, params.id, ]);
-
-
-
+  }, [dispatch, params.id]);
 
   const onSubmit = async (data) => {
     let result = await getTasks();
@@ -70,7 +79,7 @@ const TaskDetails = (props) => {
 
   const handleChangeStatus = (status, boons, senderId) => {
     dispatch(editTaskStatusAction(task._id, status));
-    dispatch(addBoonsAction(boons, status, senderId, task._id))
+    dispatch(addBoonsAction(boons, status, senderId, task._id));
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
@@ -99,86 +108,72 @@ const TaskDetails = (props) => {
 
             {/* start of main container  */}
             <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <Grid item xs={4}>
-                  {/* avatar and small avatar (badge)*/}
-                  {user._id !== task.boonee._id ? (
-                    <Avatar
-                      className={classes.avatar}
-                      alt="boonee avatar"
-                      src={task.boonee.avatar}
-                    ></Avatar>
-                  ) : (
-                    <Avatar
-                      className={classes.avatar}
-                      alt="booner avatar"
-                      src={task.booner.avatar}
-                    ></Avatar>
-                  )}
-                  <Chip
-                    label={task.skill.name}
-                    variant="outlined"
-                    color="primary"
-                    className={classes.tag}
+              {/* avatar and small avatar (badge)*/}
+              <Grid item xs={12} md={6} className={classes.mainImgWrap}>
+                {user._id !== task.boonee._id ? (
+                  <Badge
+                    overlap="circle"
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    badgeContent={
+                      <Avatar
+                        className={classes.avatar}
+                        alt="boonee avatar"
+                        src={task.boonee.avatar}
+                      />
+                    }
                   >
-                    {task.skill.name}
-                  </Chip>
-                </Grid>
-                {/* NAMES RATING AND SKILL CONTAINER */}
-                <Typography>
-                  {user._id !== task.boonee._id ? (
-                    <b>Boonee: {task.boonee.userName}</b>
-                  ) : (
-                    <b>Booner: {task.booner.userName}</b>
-                  )}
-                </Typography>
-                {/* date  */}
-                <Typography>Date: {task.date}</Typography>
-                <Typography>Task code: {task._id}</Typography>
-                <Typography>Boons: {task.boons}</Typography>
+                    <div className={classes.imgWrapper}>
+                      <img
+                        alt="img"
+                        src={allImages(`./${task.skill.avatar}`).default}
+                        className={classes.taskimg}
+                      ></img>
+                    </div>
+                  </Badge>
+                ) : (
+                  <Badge
+                    overlap="circle"
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    badgeContent={
+                      <Avatar
+                        className={classes.avatar}
+                        alt="booner avatar"
+                        src={task.booner.avatar}
+                      />
+                    }
+                  >
+                    <div className={classes.imgWrapper}>
+                      <img
+                        alt="img"
+                        src={allImages(`./${task.skill.avatar}`).default}
+                        className={classes.taskimg}
+                      ></img>
+                    </div>
+                  </Badge>
+                )}{" "}
               </Grid>
+              {/*END of avatar and small avatar (badge)*/}
 
-              <Grid item xs={3}>
-                <Typography
-                  variant="h6"
-                  component="h2"
-                  color="secondary"
-                  align="center"
+              {/* NAMES RATING AND SKILL CONTAINER GRID*/}
+              <Grid item xs={12} md={6}>
+                {/* START OF SKILL AND TASK CHIP */}
+
+                {/* TASK CHIP */}
+                <Chip
+                  label={task.skill.name}
+                  variant="outlined"
+                  color="primary"
+                  className={classes.tag}
                 >
                   {task.skill.name}
-                </Typography>{" "}
-                <div className={classes.imgWrapper}>
-                  <img
-                    alt="img"
-                    src={allImages(`./${task.skill.avatar}`).default}
-                    className={classes.taskimg}
-                  ></img>
-                </div>
-              </Grid>
-              <Grid item xs={12}>
-
-              </Grid>
-
-
-              <Grid
-                style={{
-                  border: "3px solid #329282",
-                  height: "21rem",
-                  borderRadius: "1rem",
-                }}
-                item
-                xs={12}
-              >
-                <Container className={classes.messageFormBox}>
-                  <Chat messages={messages} />
-
-
-                </Container>
-              </Grid>
-
-              {/* SKILL */}
-
-              <Grid item xs={12} align="center">
+                </Chip>
+                {/* SKILL */}
                 <Typography>Status:</Typography>
 
                 <Typography variant="body1">
@@ -203,50 +198,201 @@ const TaskDetails = (props) => {
                       label="finished"
                       icon={<EmojiEmotionsIcon />}
                     />
+                  ) : task.status === "pending" ? (
+                    <Chip
+                      variant="outlined"
+                      color="primary"
+                      label="rejected"
+                      icon={<HourglassEmptyIcon />}
+                    />
                   ) : null}
                 </Typography>
+
+                {/* END OF SKILL */}
+
+                {/* START OF GENERAL USER DATA */}
+                {/* THE OPPOSITE USERS DATA */}
+                <Typography>
+                  {user._id !== task.boonee._id ? (
+                    <b>Boonee: {task.boonee.userName}</b>
+                  ) : (
+                    <b>Booner: {task.booner.userName}</b>
+                  )}
+                </Typography>
+                {/* date, task code and boons  */}
+                <Typography>Date: {task.date.slice(0, 10)} </Typography>
+                <Typography>Ref: {task._id}</Typography>
+                <Typography>Boons: {task.boons}</Typography>
+
+                {/* BOONER STATUSES */}
+                {/* 1. BOONER - PENDING */}
+                {task.status === "pending" && user._id !== task.boonee._id && (
+                  <div>
+                    <p>
+                      {task.boonee.userName} would like to know if you are
+                      available for this task
+                    </p>
+                    <Grid item xs={6}>
+                      <Tooltip title="Accept" aria-label="add">
+                        <Fab
+                          color="secondary"
+                          className={classes.fab}
+                          onClick={() => handleChangeStatus("accepted")}
+                        >
+                          <DoneIcon />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Tooltip title="Decline" aria-label="add">
+                        <Fab
+                          color="secondary"
+                          className={classes.fab}
+                          onClick={() =>
+                            dispatch(() => handleChangeStatus("rejected"))
+                          }
+                        >
+                          <CancelPresentationIcon color="primary" />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                  </div>
+                )}
+                {/* END OF 1. BOONER PENDING */}
+                {/* 2. BOONER ACCEPTED */}
+
+                {task.status === "accepted" && user._id !== task.boonee._id && (
+                  <div>
+                    <p>
+                      You accepted this task and it will be on the{" "}
+                      {task.date.slice(0, 10)}, you can still cancel it 6 hours
+                      before the task{" "}
+                    </p>
+                    <Grid item xs={4}>
+                      <Tooltip title="Decline" aria-label="add">
+                        <Fab
+                          color="secondary"
+                          className={classes.fab}
+                          onClick={() =>
+                            dispatch(() => handleChangeStatus("rejected"))
+                          }
+                        >
+                          <CancelPresentationIcon color="primary" />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                  </div>
+
+                  //  IMPLIMENT LATER: 6 hours before the task:
+                  // YOU CANNOT CANCEL THIS ANYMORE, task details after the date
+                  // FINISHED? confirm
+                )}
+                {/* EDN OF 2. BOONER ACCEPTED */}
+                {/* 3. BOONER REJECTED */}
+
+                {task.status === "rejected" && user._id !== task.boonee._id && (
+                  <p>This task was cancelled</p>
+                )}
+                {/* END OF 3. BOONER REJECTED */}
+                {/* 4. BOONER FINISHED */}
+
+                {task.status === "finished" && user._id !== task.boonee._id && (
+                  <p>
+                    You have successfully finished this task on{" "}
+                    {task.date.slice(0, 10)}
+                  </p>
+
+                  //  IMPLIMENT LATER Here is your rating  AND lets wait for the rating
+                )}
+                {/* END OF 4. BOONER FINISHED */}
+
+                {/* BOONEE STATUSES */}
+
+                {task.status === "pending" && user._id === task.boonee._id && (
+                  <div>
+                    <p>
+                      You have successfully requested this task. Let's wait for
+                      {task.booner.userName}'s answer! You can still cancel this
+                      task.
+                    </p>
+                    <Grid item xs={4}>
+                      <Tooltip title="Decline" aria-label="add">
+                        <Fab
+                          color="secondary"
+                          className={classes.fab}
+                          onClick={() =>
+                            dispatch(() => handleChangeStatus("rejected"))
+                          }
+                        >
+                          <CancelPresentationIcon color="primary" />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                  </div>
+                )}
+
+                {task.status === "accepted" && user._id === task.boonee._id && (
+                  <div>
+                    <p>
+                      Good news! {task.booner.userName} accepted this task! Put
+                      this date into your calendar: {task.date.slice(0, 10)}.
+                      You can still cancel it 6 hours before the task!
+                      {/* IMPLIMENT THIS LATER 6 hours before the task: YOU CANNOT CANCEL
+                    THIS ANYMORE, task details  AND after the date FINISHED or
+                    report a problem */}
+                    </p>
+                    <Grid item xs={4}>
+                      <Tooltip title="Decline" aria-label="add">
+                        <Fab
+                          color="secondary"
+                          className={classes.fab}
+                          onClick={() =>
+                            dispatch(() => handleChangeStatus("rejected"))
+                          }
+                        >
+                          <CancelPresentationIcon color="primary" />
+                        </Fab>
+                      </Tooltip>
+                    </Grid>
+                  </div>
+                )}
+
+                {task.status === "rejected" && user._id === task.boonee._id && (
+                  <p>
+                    This task was cancelled. But don't worry, there are plenty
+                    of Booners in the sea.
+                  </p>
+                )}
+
+                {task.status === "finished" && user._id === task.boonee._id && (
+                  <p>
+                    We hope you were happy with this user. Please let us know
+                    with a rating.
+                    {/* IMPLIMENT LATER Your rating for this task is: ***** */}
+                  </p>
+                )}
               </Grid>
-              <Grid container align="center" m={2}>
-                <Grid item xs={4}>
-                  {/* status confirm */}
-                  <Tooltip title="Accept" aria-label="add">
-                    <Fab
-                      color="secondary"
-                      className={classes.fab}
-                      onClick={() => handleChangeStatus("accepted")}
-                    >
-                      <DoneIcon />
-                    </Fab>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs={4}>
-                  <Tooltip title="Decline" aria-label="add">
-                    <Fab
-                      color="secondary"
-                      className={classes.fab}
-                      onClick={() =>
-                        dispatch(() => handleChangeStatus("rejected"))
-                      }
-                    >
-                      <CancelPresentationIcon color="primary" />
-                    </Fab>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs={4}>
-                  <Tooltip title="Finish" aria-label="add">
-                    <Fab
-                      color="secondary"
-                      className={classes.fab}
-                      onClick={() => handleChangeStatus("finished")}
-                    >
-                      <ReportIcon color="primary" />
-                    </Fab>
-                  </Tooltip>
-                </Grid>
+              {/* END OF GENERAL USER DATA */}
+              {/* START OF CHAT */}
+
+              <Grid
+                style={{
+                  border: "1px solid grey",
+                  height: "21rem",
+                  borderRadius: "1rem",
+                }}
+                item
+                xs={12}
+                md={6}
+              >
+                <Container className={classes.messageFormBox}>
+                  <Chat messages={messages} />
+                </Container>
               </Grid>
+              {/* END OF CHAT */}
             </Grid>
           </Paper>
-          {/* Last last button at bottom */}
+          {/* END OF STATUS BUTTONS */}
         </Container>
       )}
     </>
