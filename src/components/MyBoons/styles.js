@@ -62,6 +62,11 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     overflow: "hidden",
   },
+  textWrap: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+  },
   imgWrapper: {
     display: "flex",
     justifyContent: "center",
