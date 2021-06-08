@@ -66,7 +66,7 @@ const TaskDetails = (props) => {
     setOpenCancel(false);
     setOpenFinished(false);
   };
-
+  //the popups are at the end of the return statement
   //END OF POPUP WINDOW FOR MATERIAL UI
 
   const task = useSelector((state) => state.tasksReducer.task);
@@ -176,110 +176,89 @@ const TaskDetails = (props) => {
               {/*END of avatar and small avatar (badge)*/}
 
               {/* NAMES RATING AND SKILL CONTAINER GRID*/}
-              <Grid item xs={12} md={6}>
-                {/* START OF SKILL AND TASK CHIP */}
+              <Grid item xs={12} md={6} className={classes.textWrap}>
+                <div>
+                  {/* START OF SKILL AND TASK CHIP */}
 
-                {/* TASK CHIP */}
-                <Chip
-                  label={task.skill.name}
-                  variant="outlined"
-                  color="primary"
-                  className={classes.tag}
-                >
-                  {task.skill.name}
-                </Chip>
-                {/* SKILL */}
-                <Typography>Status:</Typography>
+                  {/* TASK CHIP */}
+                  <Chip
+                    label={task.skill.name}
+                    variant="outlined"
+                    color="primary"
+                    className={classes.tag}
+                  >
+                    {task.skill.name}
+                  </Chip>
+                  {/* SKILL */}
+                  <Typography>Status:</Typography>
 
-                <Typography variant="body1">
-                  {task.status === "accepted" ? (
-                    <Chip
-                      variant="outlined"
-                      color="primary"
-                      label="accepted"
-                      icon={<CheckIcon />}
-                    />
-                  ) : task.status === "rejected" ? (
-                    <Chip
-                      variant="outlined"
-                      color="primary"
-                      label="rejected"
-                      icon={<CloseIcon />}
-                    />
-                  ) : task.status === "finished" ? (
-                    <Chip
-                      variant="outlined"
-                      color="primary"
-                      label="finished"
-                      icon={<EmojiEmotionsIcon />}
-                    />
-                  ) : task.status === "pending" ? (
-                    <Chip
-                      variant="outlined"
-                      color="primary"
-                      label="pending"
-                      icon={<HourglassEmptyIcon />}
-                    />
-                  ) : null}
-                </Typography>
+                  <Typography variant="body1">
+                    {task.status === "accepted" ? (
+                      <Chip
+                        variant="outlined"
+                        color="primary"
+                        label="accepted"
+                        icon={<CheckIcon />}
+                      />
+                    ) : task.status === "rejected" ? (
+                      <Chip
+                        variant="outlined"
+                        color="primary"
+                        label="rejected"
+                        icon={<CloseIcon />}
+                      />
+                    ) : task.status === "finished" ? (
+                      <Chip
+                        variant="outlined"
+                        color="primary"
+                        label="finished"
+                        icon={<EmojiEmotionsIcon />}
+                      />
+                    ) : task.status === "pending" ? (
+                      <Chip
+                        variant="outlined"
+                        color="primary"
+                        label="pending"
+                        icon={<HourglassEmptyIcon />}
+                      />
+                    ) : null}
+                  </Typography>
 
-                {/* END OF SKILL */}
+                  {/* END OF SKILL */}
 
-                {/* START OF GENERAL USER DATA */}
-                {/* THE OPPOSITE USERS DATA */}
-                <Typography>
-                  {user._id !== task.boonee._id ? (
-                    <b>Boonee: {task.boonee.userName}</b>
-                  ) : (
-                    <b>Booner: {task.booner.userName}</b>
-                  )}
-                </Typography>
-                {/* date, task code and boons  */}
-                <Typography>Date: {task.date.slice(0, 10)} </Typography>
-                <Typography>Ref: {task._id}</Typography>
-                <Typography>Boons: {task.boons}</Typography>
+                  {/* START OF GENERAL USER DATA */}
+                  {/* THE OPPOSITE USERS DATA */}
+                  <Typography>
+                    {user._id !== task.boonee._id ? (
+                      <b>Boonee: {task.boonee.userName}</b>
+                    ) : (
+                      <b>Booner: {task.booner.userName}</b>
+                    )}
+                  </Typography>
+                  {/* date, task code and boons  */}
+                  <Typography>Date: {task.date.slice(0, 10)} </Typography>
+                  <Typography>Ref: {task._id}</Typography>
+                  <Typography>Boons: {task.boons}</Typography>
 
-                {/* BOONER STATUSES */}
-                {/* 1. BOONER - PENDING */}
-                {task.status === "pending" && user._id !== task.boonee._id && (
-                  <div>
-                    <p>
-                      {task.boonee.userName} would like to know if you are
-                      available for this task
-                    </p>
-                    {/* ACCEPT BTN */}
-                    <Tooltip title="Accept" aria-label="add">
-                      <Fab
-                        onClick={handleClickOpenAccept}
-                        color="secondary"
-                        className={classes.fab}
-                      >
-                        <DoneIcon />
-                      </Fab>
-                    </Tooltip>
+                  {/* BOONER STATUSES */}
+                  {/* 1. BOONER - PENDING */}
+                  {task.status === "pending" && user._id !== task.boonee._id && (
+                    <div>
+                      <p>
+                        {task.boonee.userName} would like to know if you are
+                        available for this task
+                      </p>
+                      {/* ACCEPT BTN */}
+                      <Tooltip title="Accept" aria-label="add">
+                        <Fab
+                          onClick={handleClickOpenAccept}
+                          color="secondary"
+                          className={classes.fab}
+                        >
+                          <DoneIcon />
+                        </Fab>
+                      </Tooltip>
 
-                    <Tooltip title="Decline" aria-label="add">
-                      <Fab
-                        color="secondary"
-                        className={classes.fab}
-                        onClick={handleClickOpenCancel}
-                      >
-                        <CancelPresentationIcon color="primary" />
-                      </Fab>
-                    </Tooltip>
-                  </div>
-                )}
-                {/* END OF 1. BOONER PENDING */}
-                {/* 2. BOONER ACCEPTED */}
-
-                {task.status === "accepted" && user._id !== task.boonee._id && (
-                  <div>
-                    <p>
-                      You accepted this task and it will be on the{" "}
-                      {task.date.slice(0, 10)}, you can still cancel it 6 hours
-                      before the task{" "}
-                    </p>
-                    <Grid item xs={4}>
                       <Tooltip title="Decline" aria-label="add">
                         <Fab
                           color="secondary"
@@ -289,126 +268,176 @@ const TaskDetails = (props) => {
                           <CancelPresentationIcon color="primary" />
                         </Fab>
                       </Tooltip>
-                    </Grid>
-                  </div>
-
-                  //  IMPLIMENT LATER: 6 hours before the task:
-                  // YOU CANNOT CANCEL THIS ANYMORE, task details after the date
-                  // FINISHED? confirm
-                )}
-                {/* EDN OF 2. BOONER ACCEPTED */}
-                {/* 3. BOONER REJECTED */}
-
-                {task.status === "rejected" && user._id !== task.boonee._id && (
-                  <p>This task was cancelled</p>
-                )}
-                {/* END OF 3. BOONER REJECTED */}
-                {/* 4. BOONER FINISHED */}
-
-                {task.status === "finished" && user._id !== task.boonee._id && (
-                  <p>
-                    You have successfully finished this task on{" "}
-                    {task.date.slice(0, 10)}
-                  </p>
-
-                  //  IMPLIMENT LATER Here is your rating  AND lets wait for the rating
-                )}
-                {/* IF THERE IS A RATING */}
-                {task.rating > 0 &&
-                  task.status === "finished" &&
-                  user._id === task.booner._id && (
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                      <Typography component="legend">
-                        Here is your rating for this task:
-                      </Typography>
-                      <Rating name="read-only" value={task.rating} readOnly />
-                    </Box>
+                    </div>
                   )}
-                {/* END OF 4. BOONER FINISHED */}
+                  {/* END OF 1. BOONER PENDING */}
+                  {/* 2. BOONER ACCEPTED */}
 
-                {/* BOONEE STATUSES */}
+                  {task.status === "accepted" && user._id !== task.boonee._id && (
+                    <div>
+                      <p>
+                        You accepted this task and it will be on the{" "}
+                        {task.date.slice(0, 10)}, you can still cancel it 6
+                        hours before the task{" "}
+                      </p>
+                      <Grid item xs={4}>
+                        <Tooltip title="Decline" aria-label="add">
+                          <Fab
+                            color="secondary"
+                            className={classes.fab}
+                            onClick={handleClickOpenCancel}
+                          >
+                            <CancelPresentationIcon color="primary" />
+                          </Fab>
+                        </Tooltip>
+                      </Grid>
+                    </div>
 
-                {task.status === "pending" && user._id === task.boonee._id && (
-                  <div>
+                    //  IMPLIMENT LATER: 6 hours before the task:
+                    // YOU CANNOT CANCEL THIS ANYMORE, task details after the date
+                    // FINISHED? confirm
+                  )}
+                  {/* EDN OF 2. BOONER ACCEPTED */}
+                  {/* 3. BOONER REJECTED */}
+
+                  {task.status === "rejected" &&
+                    user._id !== task.boonee._id && (
+                      <p>This task was cancelled</p>
+                    )}
+                  {/* END OF 3. BOONER REJECTED */}
+                  {/* 4. BOONER FINISHED */}
+
+                  {task.status === "finished" && user._id !== task.boonee._id && (
                     <p>
-                      You have successfully requested this task. Let's wait for
-                      {task.booner.userName}'s answer! You can still cancel this
-                      task.
+                      You have successfully finished this task on{" "}
+                      {task.date.slice(0, 10)}
                     </p>
-                    <Grid item xs={4}>
-                      <Tooltip title="Decline" aria-label="add">
-                        <Fab
-                          color="secondary"
-                          className={classes.fab}
-                          onClick={handleClickOpenCancel}
-                        >
-                          <CancelPresentationIcon color="primary" />
-                        </Fab>
-                      </Tooltip>
-                    </Grid>
-                  </div>
-                )}
 
-                {task.status === "accepted" && user._id === task.boonee._id && (
-                  <div>
-                    <p>
-                      Good news! {task.booner.userName} accepted this task! Put
-                      this date into your calendar: {task.date.slice(0, 10)}.
-                      You can still cancel it 6 hours before the task!
-                      {/* IMPLIMENT THIS LATER 6 hours before the task: YOU CANNOT CANCEL
+                    //  IMPLIMENT LATER Here is your rating  AND lets wait for the rating
+                  )}
+                  {/* IF THERE IS A RATING */}
+                  {task.rating > 0 &&
+                    task.status === "finished" &&
+                    user._id === task.booner._id && (
+                      <Box
+                        component="fieldset"
+                        mb={3}
+                        borderColor="transparent"
+                      >
+                        <Typography component="legend">
+                          Here is your rating for this task:
+                        </Typography>
+                        <Rating name="read-only" value={task.rating} readOnly />
+                      </Box>
+                    )}
+                  {/* END OF 4. BOONER FINISHED */}
+
+                  {/* BOONEE STATUSES */}
+
+                  {task.status === "pending" && user._id === task.boonee._id && (
+                    <div>
+                      <p>
+                        You have successfully requested this task. Let's wait
+                        for
+                        {task.booner.userName}'s answer! You can still cancel
+                        this task.
+                      </p>
+                      <Grid item xs={4}>
+                        <Tooltip title="Decline" aria-label="add">
+                          <Fab
+                            color="secondary"
+                            className={classes.fab}
+                            onClick={handleClickOpenCancel}
+                          >
+                            <CancelPresentationIcon color="primary" />
+                          </Fab>
+                        </Tooltip>
+                      </Grid>
+                    </div>
+                  )}
+
+                  {task.status === "accepted" && user._id === task.boonee._id && (
+                    <div>
+                      <p>
+                        Good news! {task.booner.userName} accepted this task!
+                        Put this date into your calendar:{" "}
+                        {task.date.slice(0, 10)}. You can still cancel it 6
+                        hours before the task!
+                        {/* IMPLIMENT THIS LATER 6 hours before the task: YOU CANNOT CANCEL
                     THIS ANYMORE, task details  AND after the date FINISHED or
                     report a problem */}
+                      </p>
+                      <Grid item xs={4}>
+                        <Tooltip title="Decline" aria-label="add">
+                          <Fab
+                            color="secondary"
+                            className={classes.fab}
+                            onClick={handleClickOpenCancel}
+                          >
+                            <CancelPresentationIcon color="primary" />
+                          </Fab>
+                        </Tooltip>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Tooltip title="Finish" aria-label="add">
+                          <Fab
+                            color="secondary"
+                            className={classes.fab}
+                            onClick={handleClickOpenFinished}
+                          >
+                            <ReportIcon color="primary" />
+                          </Fab>
+                        </Tooltip>
+                      </Grid>
+                    </div>
+                  )}
+
+                  {task.status === "rejected" &&
+                    user._id === task.boonee._id && (
+                      <p>
+                        This task was cancelled. But don't worry, there are
+                        plenty of Booners in the sea.
+                      </p>
+                    )}
+
+                  {task.status === "finished" && user._id === task.boonee._id && (
+                    <p>
+                      We hope you were happy with this user. Please let us know
+                      with a rating.
+                      {/* IMPLIMENT LATER Your rating for this task is: ***** */}
                     </p>
-                    <Grid item xs={4}>
-                      <Tooltip title="Decline" aria-label="add">
-                        <Fab
-                          color="secondary"
-                          className={classes.fab}
-                          onClick={handleClickOpenCancel}
-                        >
-                          <CancelPresentationIcon color="primary" />
-                        </Fab>
-                      </Tooltip>
-                    </Grid>
-                  </div>
-                )}
-
-                {task.status === "rejected" && user._id === task.boonee._id && (
-                  <p>
-                    This task was cancelled. But don't worry, there are plenty
-                    of Booners in the sea.
-                  </p>
-                )}
-
-                {task.status === "finished" && user._id === task.boonee._id && (
-                  <p>
-                    We hope you were happy with this user. Please let us know
-                    with a rating.
-                    {/* IMPLIMENT LATER Your rating for this task is: ***** */}
-                  </p>
-                )}
-
-                {/* NO RATIN YET */}
-                {task.rating === 0 &&
-                  task.status === "finished" &&
-                  user._id === task.boonee._id && (
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                      <Typography component="legend">
-                        Please rate this task!
-                      </Typography>
-                      <Rating name="pristine" value={null} />
-                    </Box>
                   )}
-                {task.rating > 0 &&
-                  task.status === "finished" &&
-                  user._id === task.boonee._id && (
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                      <Typography component="legend">
-                        Your rating for this task:
-                      </Typography>
-                      <Rating name="read-only" value={task.rating} readOnly />
-                    </Box>
-                  )}
+
+                  {/* NO RATIN YET */}
+                  {task.rating === 0 &&
+                    task.status === "finished" &&
+                    user._id === task.boonee._id && (
+                      <Box
+                        component="fieldset"
+                        mb={3}
+                        borderColor="transparent"
+                      >
+                        <Typography component="legend">
+                          Please rate this task!
+                        </Typography>
+                        <Rating name="pristine" value={null} />
+                      </Box>
+                    )}
+                  {task.rating > 0 &&
+                    task.status === "finished" &&
+                    user._id === task.boonee._id && (
+                      <Box
+                        component="fieldset"
+                        mb={3}
+                        borderColor="transparent"
+                      >
+                        <Typography component="legend">
+                          Your rating for this task:
+                        </Typography>
+                        <Rating name="read-only" value={task.rating} readOnly />
+                      </Box>
+                    )}
+                </div>
               </Grid>
               {/* END OF GENERAL USER DATA */}
               {/* START OF CHAT */}
