@@ -93,7 +93,7 @@ const TaskDetails = (props) => {
 
   const handleChangeStatus = (status) => {
     dispatch(editTaskStatusAction(task._id, status));
-    //dispatch(addBoonsAction( status, task._id));
+
     // setOpen(false);
   };
   // const handleChangeRating = (rating) => {
@@ -116,7 +116,7 @@ const dispatchBoons = async () =>{
   //substraction boons
   const addedBoonsWallet = booneeCurrency +40;
   let result1 = await addBoons(addedBoonsWallet, booneeId);
-  dispatch(substractBoonsAction(result1))
+  dispatch(addBoonsAction(result1))
 }
 
   return (
