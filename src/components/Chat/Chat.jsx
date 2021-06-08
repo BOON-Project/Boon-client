@@ -7,14 +7,7 @@ import {
   setErrorAction,
 } from "../../store/actions/errorActions";
 //styling=>
-import {
-  Typography,
-  Box,
-
-  Chip,
-  Button,
-  TextField,
-} from "@material-ui/core";
+import { Typography, Box, Chip, Button, TextField } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useForm, Controller } from "react-hook-form";
@@ -32,7 +25,6 @@ export default function Chat(props) {
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
   console.log("data for aghy", tasks);
-
 
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const onSubmit = async (formData) => {
@@ -59,8 +51,6 @@ export default function Chat(props) {
     //dispatch(addMessage(result.data));
   };
 
-
-
   return (
     <div>
       <p></p>
@@ -75,9 +65,9 @@ export default function Chat(props) {
               },
             ].map((chat, i) => (
               <div className={classes.flex} key={i}>
+                <p>{moment.utc(chat.date).startOf("minute").fromNow()}</p>
                 <Chip label={chat.from} className={classes.chip} />
                 <Typography variant="subtitle1">{chat.msg} </Typography>
-                <p>{moment.utc(chat.date).startOf("minute").fromNow()}</p>
               </div>
             ))}
 
