@@ -86,6 +86,7 @@ const TaskDetails = (props) => {
   // };
 
 //managing boons exchangings?
+
 const dispatchBoons = (dispatch) =>({
 setBoonee(boonsHave){
 
