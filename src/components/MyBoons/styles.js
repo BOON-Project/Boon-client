@@ -60,6 +60,7 @@ export default makeStyles((theme) => ({
   mainImgWrap: {
     display: "flex",
     justifyContent: "center",
+    overflow: "hidden",
   },
   imgWrapper: {
     display: "flex",
