@@ -18,7 +18,7 @@ import React, { useEffect, useState } from "react";
 import {  useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { getMessages, getTasks } from "../../helpers/apiCalls";
+import { getMessages, getTasks, addBoons, substractBoons } from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
@@ -26,8 +26,8 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import {
   getTaskAction,
   editTaskStatusAction,
-  addBoonsAction,
 } from "../../store/actions/tasksActions";
+import {addBoonsAction, substractBoonsAction} from '../../store/actions/boonsActions';
 import useStyles from "./styles";
 
 import Chat from "../Chat/Chat";
@@ -68,13 +68,24 @@ const TaskDetails = (props) => {
     }
   };
 
-  const handleChangeStatus = (status, boons, senderId) => {
+  const handleChangeStatus = (status) => {
     dispatch(editTaskStatusAction(task._id, status));
-    dispatch(addBoonsAction(boons, status, senderId, task._id))
+
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
   // };
+
+//managing boons exchangings?
+const dispatchBoons = (dispatch) =>({
+setBoonee(boonsHave){
+
+  return ()=>{
+    dispatch(addBoonsAction(boonsHave));
+    dispatch(substractBoonsAction(boonsHave));
+  }
+}
+})
 
   return (
     <>

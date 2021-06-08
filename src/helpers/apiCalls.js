@@ -195,3 +195,14 @@ export const addBoons = async (boons, status, senderId, taskId) => {
     return extractApiError(err);
   }
 }
+
+//substract boons to wallet apicall
+export const substractBoons = async (boons, status, senderId, taskId) => {
+  console.log("im trying to substract boonss", boons, status, senderId);
+  try {
+    const response = await axios.get(`/tasks/${taskId}`);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+}
