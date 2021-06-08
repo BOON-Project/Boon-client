@@ -4,6 +4,11 @@ import {
   Typography,
   Box,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Grid,
   Avatar,
   Container,
@@ -15,6 +20,7 @@ import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
+import Rating from "@material-ui/lab/Rating";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React, { useEffect, useState } from "react";
@@ -37,23 +43,31 @@ import Chat from "../Chat/Chat";
 import ReportIcon from "@material-ui/icons/Report";
 const allImages = require.context("../../images", true, /.jpg$/);
 
-//Small avatar styling
-
-const SmallAvatar = withStyles((theme) => ({
-  root: {
-    width: 22,
-    height: 22,
-    border: `2px solid ${theme.palette.background.paper}`,
-  },
-}))(Avatar);
-
 const TaskDetails = (props) => {
   const { handleSubmit, control } = useForm();
   const [messages, setMessages] = useState([]);
-
   const dispatch = useDispatch();
-
   const params = useParams();
+  //FUNCTION FOR POPUP WINDOW Material UI
+  const [openAccept, setOpenAccept] = React.useState(false);
+  const [openCancel, setOpenCancel] = React.useState(false);
+  const [openFinished, setOpenFinished] = React.useState(false);
+  const handleClickOpenAccept = () => {
+    setOpenAccept(true);
+  };
+  const handleClickOpenCancel = () => {
+    setOpenCancel(true);
+  };
+  const handleClickOpenFinished = () => {
+    setOpenFinished(true);
+  };
+  const handleClose = () => {
+    setOpenAccept(false);
+    setOpenCancel(false);
+    setOpenFinished(false);
+  };
+
+  //END OF POPUP WINDOW FOR MATERIAL UI
 
   const task = useSelector((state) => state.tasksReducer.task);
   const user = useSelector((state) => state.userReducer.user);
@@ -80,6 +94,7 @@ const TaskDetails = (props) => {
   const handleChangeStatus = (status, boons, senderId) => {
     dispatch(editTaskStatusAction(task._id, status));
     dispatch(addBoonsAction(boons, status, senderId, task._id));
+    // setOpen(false);
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
@@ -202,7 +217,7 @@ const TaskDetails = (props) => {
                     <Chip
                       variant="outlined"
                       color="primary"
-                      label="rejected"
+                      label="pending"
                       icon={<HourglassEmptyIcon />}
                     />
                   ) : null}
@@ -232,30 +247,26 @@ const TaskDetails = (props) => {
                       {task.boonee.userName} would like to know if you are
                       available for this task
                     </p>
-                    <Grid item xs={6}>
-                      <Tooltip title="Accept" aria-label="add">
-                        <Fab
-                          color="secondary"
-                          className={classes.fab}
-                          onClick={() => handleChangeStatus("accepted")}
-                        >
-                          <DoneIcon />
-                        </Fab>
-                      </Tooltip>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Tooltip title="Decline" aria-label="add">
-                        <Fab
-                          color="secondary"
-                          className={classes.fab}
-                          onClick={() =>
-                            dispatch(() => handleChangeStatus("rejected"))
-                          }
-                        >
-                          <CancelPresentationIcon color="primary" />
-                        </Fab>
-                      </Tooltip>
-                    </Grid>
+                    {/* ACCEPT BTN */}
+                    <Tooltip title="Accept" aria-label="add">
+                      <Fab
+                        onClick={handleClickOpenAccept}
+                        color="secondary"
+                        className={classes.fab}
+                      >
+                        <DoneIcon />
+                      </Fab>
+                    </Tooltip>
+
+                    <Tooltip title="Decline" aria-label="add">
+                      <Fab
+                        color="secondary"
+                        className={classes.fab}
+                        onClick={handleClickOpenCancel}
+                      >
+                        <CancelPresentationIcon color="primary" />
+                      </Fab>
+                    </Tooltip>
                   </div>
                 )}
                 {/* END OF 1. BOONER PENDING */}
@@ -273,9 +284,7 @@ const TaskDetails = (props) => {
                         <Fab
                           color="secondary"
                           className={classes.fab}
-                          onClick={() =>
-                            dispatch(() => handleChangeStatus("rejected"))
-                          }
+                          onClick={handleClickOpenCancel}
                         >
                           <CancelPresentationIcon color="primary" />
                         </Fab>
@@ -304,6 +313,17 @@ const TaskDetails = (props) => {
 
                   //  IMPLIMENT LATER Here is your rating  AND lets wait for the rating
                 )}
+                {/* IF THERE IS A RATING */}
+                {task.rating > 0 &&
+                  task.status === "finished" &&
+                  user._id === task.booner._id && (
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Typography component="legend">
+                        Here is your rating for this task:
+                      </Typography>
+                      <Rating name="read-only" value={task.rating} readOnly />
+                    </Box>
+                  )}
                 {/* END OF 4. BOONER FINISHED */}
 
                 {/* BOONEE STATUSES */}
@@ -320,9 +340,7 @@ const TaskDetails = (props) => {
                         <Fab
                           color="secondary"
                           className={classes.fab}
-                          onClick={() =>
-                            dispatch(() => handleChangeStatus("rejected"))
-                          }
+                          onClick={handleClickOpenCancel}
                         >
                           <CancelPresentationIcon color="primary" />
                         </Fab>
@@ -346,9 +364,7 @@ const TaskDetails = (props) => {
                         <Fab
                           color="secondary"
                           className={classes.fab}
-                          onClick={() =>
-                            dispatch(() => handleChangeStatus("rejected"))
-                          }
+                          onClick={handleClickOpenCancel}
                         >
                           <CancelPresentationIcon color="primary" />
                         </Fab>
@@ -371,6 +387,28 @@ const TaskDetails = (props) => {
                     {/* IMPLIMENT LATER Your rating for this task is: ***** */}
                   </p>
                 )}
+
+                {/* NO RATIN YET */}
+                {task.rating === 0 &&
+                  task.status === "finished" &&
+                  user._id === task.boonee._id && (
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Typography component="legend">
+                        Please rate this task!
+                      </Typography>
+                      <Rating name="pristine" value={null} />
+                    </Box>
+                  )}
+                {task.rating > 0 &&
+                  task.status === "finished" &&
+                  user._id === task.boonee._id && (
+                    <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Typography component="legend">
+                        Your rating for this task:
+                      </Typography>
+                      <Rating name="read-only" value={task.rating} readOnly />
+                    </Box>
+                  )}
               </Grid>
               {/* END OF GENERAL USER DATA */}
               {/* START OF CHAT */}
@@ -391,8 +429,88 @@ const TaskDetails = (props) => {
               </Grid>
               {/* END OF CHAT */}
             </Grid>
+
+            {/* ALL DIALOGS */}
+            {/* POPUP FOR ACCEPT */}
+            <Dialog
+              open={openAccept}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{"Accept task"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  We are glad you found a task you like! Please confirm if you
+                  want to accept it!
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button color="primary">Changed my mind</Button>
+                <Button
+                  onClick={() => handleChangeStatus("accepted")}
+                  color="primary"
+                  autoFocus
+                >
+                  Accept task
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+            {/* POP UP FOR REJECTED */}
+
+            <Dialog
+              open={openCancel}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {"Cancel this task"}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Are you sure that you want to cancel this task?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button color="primary">Changed my mind</Button>
+                <Button
+                  onClick={() => handleChangeStatus("rejected")}
+                  color="primary"
+                  autoFocus
+                >
+                  Yes, cancel
+                </Button>
+              </DialogActions>
+            </Dialog>
           </Paper>
-          {/* END OF STATUS BUTTONS */}
+          {/* POPUP FOR CONFIRM */}
+          <Dialog
+            open={openFinished}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Confirm task"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Please confirm that this task took place. If you had any issues,
+                contact our customer support! Don't forget to rate{" "}
+                {task.booner.userName}!
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button color="primary">Changed my mind</Button>
+              <Button
+                onClick={() => handleChangeStatus("finished")}
+                color="primary"
+                autoFocus
+              >
+                Confirm
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Container>
       )}
     </>
