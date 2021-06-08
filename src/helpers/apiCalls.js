@@ -186,10 +186,21 @@ export const addMessages = async (formData, taskId) => {
 };
 
 //add boons to wallet apicall
-export const addBoons = async (boons, status, senderId, taskId) => {
-  console.log("im trying to add boonss", boons, status, senderId);
+export const addBoons = async (taskId, data) => {
+  console.log("im trying to add boonss", taskId,data );
   try {
-    const response = await axios.get(`/tasks/${taskId}`);
+    const response = await axios.patch(`/tasks/${taskId}`);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+}
+
+//substract boons to wallet apicall
+export const substractBoons = async (taskId, data) => {
+  console.log("im trying to substract boonss", taskId,data );
+  try {
+    const response = await axios.patch(`/tasks/${taskId}`);
     return response;
   } catch (err) {
     return extractApiError(err);

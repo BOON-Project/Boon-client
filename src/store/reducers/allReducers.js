@@ -6,6 +6,7 @@ import errorReducer from "./errorReducer";
 import tasksReducer from "./tasksReducers";
 import messagesReducer from "./messagesReducer"
 import usersChatReducer from "./usersChatReducer"
+import boonsReducer from './boonsReducer'
 
 const allReducers = combineReducers({
 	usersReducer,
@@ -14,7 +15,9 @@ const allReducers = combineReducers({
 	errorReducer,
 	tasksReducer,
 	messagesReducer,
-	usersChatReducer
+	usersChatReducer,
+	boonsReducer,
+
 });
 
 export default allReducers;
