@@ -378,6 +378,17 @@ const TaskDetails = (props) => {
                           </Fab>
                         </Tooltip>
                       </Grid>
+                      <Grid item xs={4}>
+                        <Tooltip title="Finish" aria-label="add">
+                          <Fab
+                            color="secondary"
+                            className={classes.fab}
+                            onClick={handleClickOpenFinished}
+                          >
+                            <ReportIcon color="primary" />
+                          </Fab>
+                        </Tooltip>
+                      </Grid>
                     </div>
                   )}
 
