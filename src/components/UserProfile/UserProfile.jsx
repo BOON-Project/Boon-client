@@ -112,9 +112,10 @@ export default function UserProfile(props) {
                     </Grid>
                 </Box>
                 {/* rating */}
+                <Box>
                 <List className={classes.skills}>
                     <ListItem alignItems='flex-start'>
-                        <Typography variant='h4' color='secondary'>
+                        <Typography variant='h5' color='secondary'>
                             Current rating:{" "}
                         </Typography>
 
@@ -138,6 +139,7 @@ export default function UserProfile(props) {
                     </ListItem>
                     {skillsList}
                 </List>
+                </Box>
             </Grid>
 
             <div className={classes.root}>
