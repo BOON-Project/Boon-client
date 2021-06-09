@@ -27,7 +27,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
-import { getMessages, getTasks, addBoons, substractBoons } from "../../helpers/apiCalls";
+import {
+  getMessages,
+  getTasks,
+  addBoons,
+  substractBoons,
+} from "../../helpers/apiCalls";
 import { setErrorAction } from "../../store/actions/errorActions";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
@@ -36,7 +41,10 @@ import {
   getTaskAction,
   editTaskStatusAction,
 } from "../../store/actions/tasksActions";
-import {addBoonsAction, substractBoonsAction} from '../../store/actions/boonsActions';
+import {
+  addBoonsAction,
+  substractBoonsAction,
+} from "../../store/actions/boonsActions";
 import useStyles from "./styles";
 
 import Chat from "../Chat/Chat";
@@ -100,24 +108,24 @@ const TaskDetails = (props) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
   // };
 
-//managing boons exchange?
-const dispatchBoons = async () =>{
-  const boonerId= task.booner.id;
-  const boonerCurrency = task.booner.boonHave;
+  //managing boons exchange?
+  const dispatchBoons = async () => {
+    const boonerId = task.booner.id;
+    const boonerCurrency = task.booner.boonHave;
 
-  //substraction boons
-  const substractedBoonsWallet = boonerCurrency -40;
-  let result = await substractBoons(substractedBoonsWallet, boonerId);
-  dispatch(substractBoonsAction(result))
+    //substraction boons
+    const substractedBoonsWallet = boonerCurrency - 40;
+    let result = await substractBoons(substractedBoonsWallet, boonerId);
+    dispatch(substractBoonsAction(result));
 
-  const booneeId= task.booner.id;
-  const booneeCurrency = task.booner.boonHave;
+    const booneeId = task.booner.id;
+    const booneeCurrency = task.booner.boonHave;
 
-  //substraction boons
-  const addedBoonsWallet = booneeCurrency +40;
-  let result1 = await addBoons(addedBoonsWallet, booneeId);
-  dispatch(addBoonsAction(result1))
-}
+    //substraction boons
+    const addedBoonsWallet = booneeCurrency + 40;
+    let result1 = await addBoons(addedBoonsWallet, booneeId);
+    dispatch(addBoonsAction(result1));
+  };
 
   return (
     <>
@@ -232,8 +240,6 @@ const dispatchBoons = async () =>{
                         color="primary"
                         label="finished"
                         icon={<EmojiEmotionsIcon />}
-
-
                       />
                     ) : task.status === "pending" ? (
                       <Chip
@@ -294,7 +300,7 @@ const dispatchBoons = async () =>{
                   {/* END OF 1. BOONER PENDING */}
                   {/* 2. BOONER ACCEPTED */}
 
-                  {task.status === "accepted" && user._id === task.boonee._id && (
+                  {task.status === "accepted" && user._id !== task.boonee._id && (
                     <div>
                       <p>
                         You accepted this task and it will be on the{" "}
@@ -328,7 +334,7 @@ const dispatchBoons = async () =>{
                   {/* END OF 3. BOONER REJECTED */}
                   {/* 4. BOONER FINISHED */}
 
-                  {task.status === "finished" && user._id === task.boonee._id && (
+                  {task.status === "finished" && user._id !== task.boonee._id && (
                     <p>
                       You have successfully finished this task on{" "}
                       {task.date.slice(0, 10)}
@@ -354,7 +360,7 @@ const dispatchBoons = async () =>{
                   {/* END OF 4. BOONER FINISHED */}
 
                   {/* BOONEE STATUSES */}
-
+                  {/* 1. BOONEE PENDING */}
                   {task.status === "pending" && user._id === task.boonee._id && (
                     <div>
                       <p>
@@ -376,8 +382,9 @@ const dispatchBoons = async () =>{
                       </Grid>
                     </div>
                   )}
-
-                  {task.status === "accepted" && user._id !== task.boonee._id && (
+                  {/* BOONEE PENDING OVER */}
+                  {/* 2. BOONEE ACCEPTED */}
+                  {task.status === "accepted" && user._id === task.boonee._id && (
                     <div>
                       <p>
                         Good news! {task.booner.userName} accepted this task!
@@ -404,7 +411,10 @@ const dispatchBoons = async () =>{
                           <Fab
                             color="secondary"
                             className={classes.fab}
-                            onClick={()=>{handleClickOpenFinished();dispatchBoons()}}
+                            onClick={() => {
+                              handleClickOpenFinished();
+                              dispatchBoons();
+                            }}
                           >
                             <ReportIcon color="primary" />
                           </Fab>
@@ -412,6 +422,8 @@ const dispatchBoons = async () =>{
                       </Grid>
                     </div>
                   )}
+                  {/* END OF BOONEE ACCEPTED  */}
+                  {/* 3. BOONEE REJECTED */}
 
                   {task.status === "rejected" &&
                     user._id === task.boonee._id && (
@@ -420,7 +432,8 @@ const dispatchBoons = async () =>{
                         plenty of Booners in the sea.
                       </p>
                     )}
-
+                  {/* END OF BOONEE REJECTED */}
+                  {/* 4. BOONEE FINISHED */}
                   {task.status === "finished" && user._id === task.boonee._id && (
                     <p>
                       We hope you were happy with this user. Please let us know
@@ -446,7 +459,7 @@ const dispatchBoons = async () =>{
                     )}
                   {task.rating > 0 &&
                     task.status === "finished" &&
-                    user._id !== task.boonee._id && (
+                    user._id === task.boonee._id && (
                       <Box
                         component="fieldset"
                         mb={3}
@@ -458,6 +471,7 @@ const dispatchBoons = async () =>{
                         <Rating name="read-only" value={task.rating} readOnly />
                       </Box>
                     )}
+                  {/* END OF BOONEE FINISHED */}
                 </div>
               </Grid>
               {/* END OF GENERAL USER DATA */}
