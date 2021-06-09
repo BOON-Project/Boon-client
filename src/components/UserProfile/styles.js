@@ -11,9 +11,7 @@ export default makeStyles((theme) => ({
         maxWidth: 450,
     },
     container: {
-        marginLeft: 50,
-        marginRight: 50,
-        marginTop: 20,
+        margin: theme.spacing(3)
     },
     imgWrapper: {
         display: "flex",

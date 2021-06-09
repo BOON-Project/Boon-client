@@ -85,14 +85,14 @@ const MyBoons = () => {
 
                     {/* first one for offered boons */}
                     <Tab
-                        label='Requested by me '
+                        label='Offered by me '
                         onClick={() => setPage("OfferedBoons")}
                         selectionFollowsFocus
                     />
 
                     {/* second one for incoming boons */}
                     <Tab
-                        label=' Pending Boons'
+                        label='I am the receiver'
                         onClick={() => setPage("ReceivedBoons")}
                     />
                 </Tabs>
