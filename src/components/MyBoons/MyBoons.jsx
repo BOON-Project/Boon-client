@@ -1,14 +1,14 @@
 import {
-    Box,
-    Button,
-    Chip,
-    Container,
-    Grid,
-    Paper,
-    Tab,
-    Tabs,
+  Box,
+  Button,
+  Chip,
+  Container,
+  Grid,
+  Paper,
+  Tab,
+  Tabs,
 } from "@material-ui/core";
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,6 +19,7 @@ import ReceivedBoons from "./ReceivedBoons";
 import Footer from "../Footer/Footer";
 
 const MyBoons = () => {
+
     const tasks = useSelector((state) => state.tasksReducer);
     const history = useHistory();
     const [value, setValue] = useState(0);
@@ -85,14 +86,14 @@ const MyBoons = () => {
 
                     {/* first one for offered boons */}
                     <Tab
-                        label='Requested by me '
+                        label='Offered by me '
                         onClick={() => setPage("OfferedBoons")}
                         selectionFollowsFocus
                     />
 
                     {/* second one for incoming boons */}
                     <Tab
-                        label=' Pending Boons'
+                        label='I am the receiver'
                         onClick={() => setPage("ReceivedBoons")}
                     />
                 </Tabs>
@@ -127,6 +128,7 @@ const MyBoons = () => {
 
         </>
     );
+
 };
 
 export default MyBoons;
