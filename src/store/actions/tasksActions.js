@@ -4,6 +4,7 @@ import {
     getUserOfferedTasks,
     getUserReceivedTasks,
     editTask,
+    addBoons,
 } from "../../helpers/apiCalls";
 import {
     GET_TASKS,
@@ -12,6 +13,7 @@ import {
     GET_USER_RECEIVED_TASKS,
     UPDATE_TASK_STATUS,
     UPDATE_TASK_RATING,
+    ADD_BOONS,
 } from "./types";
 
 export const getTasksAction = () => async (dispatch) => {

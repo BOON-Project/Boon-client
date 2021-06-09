@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "26ch",
     },
     // "& .MuiGrid-item": {
     //   padding: 0,
@@ -13,6 +13,7 @@ export default makeStyles((theme) => ({
   },
 
   contact: {
+    marginTop: "1px",
     backgroundColor: "#E4B363",
 
     //height: "400px",
@@ -23,10 +24,14 @@ export default makeStyles((theme) => ({
     backgroundColor: "#E4B363",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    height: "400px",
+
+    height: "90vh",
   },
+  videoWrap: {},
   video: {
-    height: "400px",
+    height: "380px",
+  },
+  button: {
+    marginTop: "15px",
   },
 }));

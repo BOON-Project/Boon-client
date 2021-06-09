@@ -18,7 +18,6 @@ const TopRatedBoons = () => {
 
   const tasks = useSelector((state) => state.tasksReducer.allTasks);
 
-
   const sortedTasks = tasks
     .filter((task) => task.rating > 0)
     .sort((a, b) => b.rating - a.rating)
@@ -41,7 +40,7 @@ const TopRatedBoons = () => {
               <Card className={classes.ratingCard} elevation={8} p={2}>
                 <CardContent>
                   <Grid container alignItems={"stretch"}>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} className={classes.topratedCardLeft}>
                       {/* NAMES RATING AND SKILL CONTAINER */}
                       <Typography>
                         <b>Boonee:</b> {task.boonee.userName}
@@ -59,11 +58,14 @@ const TopRatedBoons = () => {
                         }}
                         badgeContent={<Avatar src={task.boonee.avatar} />}
                       >
+                        <Box className={classes.borderBox}>
                         <Avatar
                           className={classes.miniavatar}
                           alt="boonee avatar"
                           src={task.booner.avatar}
                         ></Avatar>
+
+                        </Box>
                       </Badge>
 
                       {/* RATING */}

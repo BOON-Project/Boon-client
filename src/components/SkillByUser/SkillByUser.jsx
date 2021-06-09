@@ -9,13 +9,7 @@ import {
     Button,
     Avatar,
     Grid,
-    Container,
-    CssBaseline,
-    TextField,
     ButtonGroup,
-    AppBar,
-    Toolbar,
-    Grow,
     Chip,
 } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
@@ -37,6 +31,10 @@ const SkillByUser = () => {
     const users = useSelector((state) => state.usersReducer.usersWithSkill);
     console.log("state", users.length);
 
+
+    //loading state
+    const [loader, showLoader, hideLoader] = useFullPageLoader();
+
     //setting skeletong initial state
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -49,8 +47,6 @@ const SkillByUser = () => {
         }, 3000);
     }, [users]);
 
-    //loading state
-    const [loader, showLoader, hideLoader] = useFullPageLoader();
 
     return (
         <>
@@ -63,7 +59,12 @@ const SkillByUser = () => {
             {/* CARDS */}
             <Grid container spacing={1}>
                 {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
-                {users &&
+                {users.length == '0' ? <Typography variant='h4' color='primary'>
+                    No users available 😞 <br /> You can also try with a different skill 😉
+                </Typography>
+
+
+                :
                     users
                         .sort((a, b) => b.rating - a.rating)
                         .map((user) => {

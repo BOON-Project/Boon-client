@@ -8,8 +8,8 @@ export const useSecretCode = (secretCode)=>{
 
     useEffect(()=>{
         if(key == null) return;
-        console.log(`useSecretCode.key = ${key}`)
-        console.log(`useSecretCode.count = ${count}`)
+        // console.log(`useSecretCode.key = ${key}`)
+        // console.log(`useSecretCode.count = ${count}`)
         if(key !== secretCode[count]){
             setCount(0)
             return

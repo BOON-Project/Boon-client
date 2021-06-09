@@ -13,6 +13,7 @@ import {
     Grid,
     Button,
     ButtonGroup,
+    Container,
 } from "@material-ui/core";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import Rating from "@material-ui/lab/Rating";
@@ -21,6 +22,7 @@ import Rating from "@material-ui/lab/Rating";
 import useStyles from "./styles";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
 
 // start of our User Profile
 export default function UserProfile(props) {
@@ -88,6 +90,10 @@ export default function UserProfile(props) {
 
     return (
         <CssBaseline>
+            <Container maxWidth="md">
+             <Box className={classes.container} component='div' >
+                <Grid container spacing={3}>
+                    <Paper className={classes.paper}>
             {/* first name */}
             <Typography variant='h3' color='secondary' className={classes.hero}>
                 {firstName}
@@ -106,9 +112,10 @@ export default function UserProfile(props) {
                     </Grid>
                 </Box>
                 {/* rating */}
+                <Box>
                 <List className={classes.skills}>
                     <ListItem alignItems='flex-start'>
-                        <Typography variant='h4' color='secondary'>
+                        <Typography variant='h5' color='secondary'>
                             Current rating:{" "}
                         </Typography>
 
@@ -132,6 +139,7 @@ export default function UserProfile(props) {
                     </ListItem>
                     {skillsList}
                 </List>
+                </Box>
             </Grid>
 
             <div className={classes.root}>
@@ -191,6 +199,11 @@ export default function UserProfile(props) {
                     {linkConditional()}
                 </ButtonGroup>
             </Box>
+            </Paper>
+            </Grid>
+            </Box>
+            </Container>
+            <Footer/>
         </CssBaseline>
     );
 }

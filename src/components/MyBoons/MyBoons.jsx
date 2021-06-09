@@ -1,13 +1,14 @@
 import {
-    Box,
-    Button,
-    Container,
-    Grid,
-    Paper,
-    Tab,
-    Tabs,
+  Box,
+  Button,
+  Chip,
+  Container,
+  Grid,
+  Paper,
+  Tab,
+  Tabs,
 } from "@material-ui/core";
-
+import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ import ReceivedBoons from "./ReceivedBoons";
 import Footer from "../Footer/Footer";
 
 const MyBoons = () => {
+
     const tasks = useSelector((state) => state.tasksReducer);
     const history = useHistory();
     const [value, setValue] = useState(0);
@@ -36,7 +38,7 @@ const MyBoons = () => {
     const user = useSelector((state) => state.userReducer.user);
     const linkConditional = () => {
         if (user) {
-            console.log("this");
+
             return (
                 <Link
                     style={{ textDecoration: "none" }}
@@ -84,17 +86,27 @@ const MyBoons = () => {
 
                     {/* first one for offered boons */}
                     <Tab
-                        label='Offered Boons'
+                        label='Offered by me '
                         onClick={() => setPage("OfferedBoons")}
                         selectionFollowsFocus
                     />
 
                     {/* second one for incoming boons */}
                     <Tab
-                        label='Incoming Boons'
+                        label='I am the receiver'
                         onClick={() => setPage("ReceivedBoons")}
                     />
                 </Tabs>
+
+
+                <Chip
+                      variant="outlined"
+                      color="primary"
+                      label={user.boonsHave}
+                      icon={<AccountBalanceWalletIcon />}
+                    />
+
+
             </Box>
 
             {/* main main container, white space in which we're gonna render  */}
@@ -106,25 +118,17 @@ const MyBoons = () => {
                     </Paper>
                 </Grid>
             </Container>
-
             {/* Last last button at bottom */}
             <Box className={classes.buttonBox}>
-                {/* <Button
-          to="/home"
-          size="large"
-          //you can change this color as you like im only testing
-          color="primary"
-          variant="contained"
-          onClick={() => history.goBack()}
-          className={classes.button}
-        >
-          Take me back
-        </Button> */}
+
                 {linkConditional()}
             </Box>
-            <Footer />
+                <Footer />
+
+
         </>
     );
+
 };
 
 export default MyBoons;

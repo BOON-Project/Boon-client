@@ -22,13 +22,19 @@ export default function Contact() {
   return (
     <>
       <Grid container spacing={3} className={classes.contact}>
-        <Grid item xs={12} md={6} id="no-hecking-padding">
+        <Grid
+          item
+          xs={12}
+          md={6}
+          id="no-hecking-padding"
+          className={classes.videoWrap}
+        >
           <video autoPlay muted autoplay="1" className={classes.video}>
             <source src={video} type="video/mp4" />
             Your device does not support playing 'video/mp4' videos
           </video>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} className={classes.formWrapper}>
           <form
             onSubmit={handleSubmit}
             className={classes.root}

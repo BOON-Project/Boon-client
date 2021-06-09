@@ -3,6 +3,8 @@ import {
     Typography,
     Box,
     Container,
+    Card,
+    CardContent,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import { getUsersAction } from "../../store/actions/usersAction";
@@ -35,11 +37,13 @@ const Dashboard = () => {
                 }}
                 className={classes.root}>
                 {/* title */}
-                <Box className={classes.box} mt={3}>
+                <Box className={classes.box} >
                     <Typography variant='h2' color='primary'>
                         What can we do for you ?
                     </Typography>
                 </Box>
+
+
 
                 {/* SEARCH */}
                 <Search />
