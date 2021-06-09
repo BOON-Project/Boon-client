@@ -65,9 +65,9 @@ export default function Chat(props) {
               },
             ].map((chat, i) => (
               <div className={classes.flex} key={i}>
-                <p>{moment.utc(chat.date).startOf("minute").fromNow()}</p>
-                <Chip label={chat.from} className={classes.chip} />
-                <Typography variant="subtitle1">{chat.msg} </Typography>
+                <span style={{fontSize:"0.5rem"}}>{moment.utc(chat.date).startOf("minute").fromNow()}</span>
+                <Chip style={{margin:"0 0.5rem"}} label={chat.from} className={classes.chip} />
+                <Typography style={{margin:"0.5rem 1rem"}} variant="subtitle2">{chat.msg} </Typography>
               </div>
             ))}
 
@@ -81,9 +81,9 @@ export default function Chat(props) {
                 }
                 key={i}
               >
-                <p>{moment.utc(msg.createdAt).startOf("minute").fromNow()}</p>
+                <span style={{fontSize:"0.5rem"}}>{moment.utc(msg.createdAt).startOf("minute").fromNow()}</span>
                 <Chip label={msg.senderId.userName} className={classes.chip} />
-                <Typography variant="subtitle1"> {msg.msg}</Typography>
+                <Typography variant="subtitle2"> {msg.msg}</Typography>
               </div>
             ))}
           </div>
