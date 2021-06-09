@@ -3,8 +3,19 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles((theme) => ({
   root: {
     display: "flex",
+    height: "100%",
   },
   paper: {
+    width: "100%",
+    marginTop: theme.spacing(4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "1rem",
+    height: "100%",
+    marginBottom: theme.spacing(4),
+  },
+  paperDetails:{
     width: "100%",
     marginTop: theme.spacing(4),
     display: "flex",
@@ -34,7 +45,7 @@ export default makeStyles((theme) => ({
   buttonBox: {
     display: "flex",
     justifyContent: "center",
-    marginTop: "2rem",
+    margin: "2rem",
   },
   ratingCard: {
     // background: "hsla(37, 70%, 64%, 1)",

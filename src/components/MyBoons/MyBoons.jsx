@@ -117,13 +117,14 @@ const MyBoons = () => {
                     </Paper>
                 </Grid>
             </Container>
-
             {/* Last last button at bottom */}
             <Box className={classes.buttonBox}>
 
                 {linkConditional()}
             </Box>
-            <Footer />
+                <Footer />
+
+
         </>
     );
 };
