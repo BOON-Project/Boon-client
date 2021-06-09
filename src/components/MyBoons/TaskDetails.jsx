@@ -294,7 +294,7 @@ const dispatchBoons = async () =>{
                   {/* END OF 1. BOONER PENDING */}
                   {/* 2. BOONER ACCEPTED */}
 
-                  {task.status === "accepted" && user._id !== task.boonee._id && (
+                  {task.status === "accepted" && user._id === task.boonee._id && (
                     <div>
                       <p>
                         You accepted this task and it will be on the{" "}
@@ -328,7 +328,7 @@ const dispatchBoons = async () =>{
                   {/* END OF 3. BOONER REJECTED */}
                   {/* 4. BOONER FINISHED */}
 
-                  {task.status === "finished" && user._id !== task.boonee._id && (
+                  {task.status === "finished" && user._id === task.boonee._id && (
                     <p>
                       You have successfully finished this task on{" "}
                       {task.date.slice(0, 10)}
@@ -339,7 +339,7 @@ const dispatchBoons = async () =>{
                   {/* IF THERE IS A RATING */}
                   {task.rating > 0 &&
                     task.status === "finished" &&
-                    user._id === task.booner._id && (
+                    user._id !== task.booner._id && (
                       <Box
                         component="fieldset"
                         mb={3}
@@ -377,7 +377,7 @@ const dispatchBoons = async () =>{
                     </div>
                   )}
 
-                  {task.status === "accepted" && user._id === task.boonee._id && (
+                  {task.status === "accepted" && user._id !== task.boonee._id && (
                     <div>
                       <p>
                         Good news! {task.booner.userName} accepted this task!
@@ -446,7 +446,7 @@ const dispatchBoons = async () =>{
                     )}
                   {task.rating > 0 &&
                     task.status === "finished" &&
-                    user._id === task.boonee._id && (
+                    user._id !== task.boonee._id && (
                       <Box
                         component="fieldset"
                         mb={3}
