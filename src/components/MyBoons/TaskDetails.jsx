@@ -485,7 +485,7 @@ const TaskDetails = (props) => {
                 }}
                 item
                 xs={12}
-                md={6}
+
               >
                 <Container className={classes.messageFormBox}>
                   <Chat messages={messages} />
