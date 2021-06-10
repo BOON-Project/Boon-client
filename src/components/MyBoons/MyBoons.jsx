@@ -21,7 +21,9 @@ import Footer from "../Footer/Footer";
 const MyBoons = () => {
 
     const tasks = useSelector((state) => state.tasksReducer);
+
     const history = useHistory();
+    
     const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {

@@ -10,20 +10,23 @@ import React, { useEffect } from "react";
 import useStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserReceivedTasksAction } from "../../store/actions/tasksActions";
-
 import { Link } from "react-router-dom";
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const RequestedBoons = () => {
+
   const classes = useStyles();
+
   const tasks = useSelector(
     (state) => state.tasksReducer.authUserReceivedTasks
   );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserReceivedTasksAction());
   }, [dispatch]);
+  
   // const [alertSeverity, setAlertSeverity] = useState({
   //     severity: ["warning", "success", "error"],
   // });
