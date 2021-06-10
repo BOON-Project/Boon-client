@@ -16,7 +16,14 @@ export default function Contact() {
   const classes = useStyles();
   const [state, handleSubmit] = useForm("xjvanekw");
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return <Typography variant='h1' align='center' color='primary'>Thanks for your message!
+<br/>
+    <b/> While you wait try typing
+        <br/>
+      <span className={classes.boonz}>BOON</span>
+
+    </Typography>;
+
   }
 
   return (
