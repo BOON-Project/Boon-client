@@ -34,4 +34,7 @@ export default makeStyles((theme) => ({
   button: {
     marginTop: "15px",
   },
+  boonz:{
+    color: '#E4B363'
+  }
 }));

@@ -2,16 +2,10 @@
 import {useSecretCode} from './useSecretCode'
 
 const konamiCode =[
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
     "KeyB",
-    "KeyA",
+    "KeyO",
+    "KeyO",
+    "KeyN",
 ]
 
 export const useKonamiCode = ()=>{
