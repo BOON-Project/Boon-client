@@ -31,7 +31,6 @@ const SkillByUser = () => {
     const users = useSelector((state) => state.usersReducer.usersWithSkill);
     console.log("state", users.length);
 
-
     //loading state
     const [loader, showLoader, hideLoader] = useFullPageLoader();
 
@@ -47,7 +46,6 @@ const SkillByUser = () => {
         }, 3000);
     }, [users]);
 
-
     return (
         <>
             <Box className={classes.main} display='flex' alignItems='center'>
@@ -59,19 +57,17 @@ const SkillByUser = () => {
             {/* CARDS */}
             <Grid container spacing={1}>
                 {/* SORTING THE 4 BEST USERS AND MAPING THEM */}
-                {users.length == '0' ? <Typography variant='h4' color='primary'>
-                    No users available 😞 <br /> You can also try with a different skill 😉
-                </Typography>
-
-
-                :
+                {users.length === 0 ? (
+                    <Typography variant='h5' color='primary'>
+                        No users available 😞 <br /> You can also try with a
+                        different skill 😉
+                    </Typography>
+                ) : (
                     users
                         .sort((a, b) => b.rating - a.rating)
                         .map((user) => {
                             return (
                                 <>
-                                    {loader}
-
                                     <Grid item xs={12} md={3}>
                                         <Card
                                             className={classes.userCard}
@@ -80,6 +76,7 @@ const SkillByUser = () => {
                                             <Box
                                                 display='flex'
                                                 flexDirection='column'>
+                                                <div>{loader}</div>
                                                 <Box m={2}>
                                                     {/* NAME */}
                                                     {loading ? (
@@ -174,7 +171,8 @@ const SkillByUser = () => {
                                                         }}
                                                         style={{
                                                             width: "100%",
-                                                            textDecoration: "none",
+                                                            textDecoration:
+                                                                "none",
                                                         }}>
                                                         <Button
                                                             size='large'
@@ -192,7 +190,8 @@ const SkillByUser = () => {
                                     </Grid>
                                 </>
                             );
-                        })}
+                        })
+                )}
 
                 <Grid
                     container
