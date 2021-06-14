@@ -15,16 +15,17 @@ import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
     const classes = useStyles();
-    const tasks = useSelector((state) => state.tasksReducer.task);
+
+    const task = useSelector((state) => state.tasksReducer.task);
+
     const sender = useSelector((state) => state.userReducer.user);
 
-    const [message, changeTextValue] = useState("");
     const [messages, setMessages] = useState(props.messages);
 
     console.log("tasks from chattsss");
     const { handleSubmit, control } = useForm();
     const dispatch = useDispatch();
-    console.log("data for aghy", tasks);
+    console.log("data for aghy", task);
 
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const onSubmit = async (formData) => {
@@ -33,8 +34,8 @@ export default function Chat(props) {
 
         //sends the message to backend
         let result = await addMessages(
-            { msg, senderId: sender._id, task: tasks._id },
-            tasks._id
+            { msg, senderId: sender._id, task: task._id },
+            task._id
         );
         //handle error case
         if (result.error) {
@@ -59,9 +60,9 @@ export default function Chat(props) {
                     <div className={classes.chatWindow}>
                         {[
                             {
-                                from: `${tasks.boonee.userName}`,
-                                msg: `${tasks.message}`,
-                                date: `${tasks.createdAt}`,
+                                from: `${task.boonee.userName}`,
+                                msg: `${task.message}`,
+                                date: `${task.createdAt}`,
                             },
                         ].map((chat, i) => (
                             <div className={classes.flex} key={i}>
@@ -88,8 +89,8 @@ export default function Chat(props) {
                         {messages.map((msg, i) => (
                             <div
                                 className={
-                                    tasks.boonee._id !== msg.senderId._id ||
-                                    tasks.booner._id === msg.senderId._id
+                                    task.boonee._id !== msg.senderId._id ||
+                                    task.booner._id === msg.senderId._id
                                         ? classes.flexReverse
                                         : classes.flex
                                 }

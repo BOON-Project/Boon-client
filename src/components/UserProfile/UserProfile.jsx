@@ -62,7 +62,7 @@ export default function UserProfile(props) {
                 <Link
                     style={{ textDecoration: "none" }}
                     to={{
-                        pathname: `/RequestBoon/${user._id}`,
+                        pathname: `/requestBoon/${user._id}`,
                         state: { user },
                     }}>
                     <Button
@@ -90,120 +90,142 @@ export default function UserProfile(props) {
 
     return (
         <CssBaseline>
-            <Container maxWidth="md">
-             <Box className={classes.container} component='div' >
-                <Grid container spacing={3}>
-                    <Paper className={classes.paper}>
-            {/* first name */}
-            <Typography variant='h3' color='secondary' className={classes.hero}>
-                {firstName}
-            </Typography>
-            <Divider variant='middle' />
-
-            {/* avatar */}
-            <Grid container spacing={2} className={classes.container}>
-                <Box component='div'>
-                    <Grid className={classes.imgWrapper} item xs={6}>
-                        <img
-                            src={avatar}
-                            alt='avatar'
-                            className={classes.image}
-                        />
-                    </Grid>
-                </Box>
-                {/* rating */}
-                <Box>
-                <List className={classes.skills}>
-                    <ListItem alignItems='flex-start'>
-                        <Typography variant='h5' color='secondary'>
-                            Current rating:{" "}
-                        </Typography>
-
-                        {/* User Rating =>  */}
-                        <ListItemSecondaryAction>
-                            <Rating
-                                name='size-large'
-                                defaultValue={rating}
-                                size='large'
-                                precision={0.5}
-                                readOnly
-                            />
-                        </ListItemSecondaryAction>
-                    </ListItem>
-
-                    {/* skills  */}
-                    <ListItem alignItems='flex-start'>
-                        <Typography variant='h6' color='primary'>
-                            Offered skills:
-                        </Typography>
-                    </ListItem>
-                    {skillsList}
-                </List>
-                </Box>
-            </Grid>
-
-            <div className={classes.root}>
-                {/* BIO */}
-                <Grid container spacing={2}>
-                    <Grid item xs={2}>
-                        <Typography variant='p' color='primary'>
-                            Bio
-                        </Typography>
-                    </Grid>
-                    <Grid item xs>
-                        <Paper className={classes.paper}>{bio}</Paper>
-                    </Grid>
-                </Grid>
-                {/* NAME */}
-                <Grid container spacing={2}>
-                    <Grid item xs={2}>
-                        <Typography variant='p' color='primary'>
-                            Name
-                        </Typography>
-                    </Grid>
-                    <Grid item xs>
-                        <Paper className={classes.paper}>{userName}</Paper>
-                    </Grid>
-                </Grid>
-                {/* LOCATION */}
-
-                <Grid container spacing={2}>
-                    <Grid item xs={2}>
-                        <Typography variant='p' color='primary'>
-                            Location
-                        </Typography>
-                    </Grid>
-                    <Grid item xs>
+            <Container maxWidth='md'>
+                <Box className={classes.container} component='div'>
+                    <Grid container spacing={3}>
                         <Paper className={classes.paper}>
-                            <PersonPinIcon className={classes.icon} /> Berlin |
-                            10629
+                            {/* first name */}
+                            <Typography
+                                variant='h3'
+                                color='secondary'
+                                className={classes.hero}>
+                                {firstName}
+                            </Typography>
+                            <Divider variant='middle' />
+
+                            {/* avatar */}
+                            <Grid
+                                container
+                                spacing={2}
+                                className={classes.container}>
+                                <Box component='div'>
+                                    <Grid
+                                        className={classes.imgWrapper}
+                                        item
+                                        xs={6}>
+                                        <img
+                                            src={avatar}
+                                            alt='avatar'
+                                            className={classes.image}
+                                        />
+                                    </Grid>
+                                </Box>
+                                {/* rating */}
+                                <Box>
+                                    <List className={classes.skills}>
+                                        <ListItem alignItems='flex-start'>
+                                            <Typography
+                                                variant='h5'
+                                                color='secondary'>
+                                                Current rating:{" "}
+                                            </Typography>
+
+                                            {/* User Rating =>  */}
+                                            <ListItemSecondaryAction>
+                                                <Rating
+                                                    name='size-large'
+                                                    defaultValue={rating}
+                                                    size='large'
+                                                    precision={0.5}
+                                                    readOnly
+                                                />
+                                            </ListItemSecondaryAction>
+                                        </ListItem>
+
+                                        {/* skills  */}
+                                        <ListItem alignItems='flex-start'>
+                                            <Typography
+                                                variant='h6'
+                                                color='primary'>
+                                                Offered skills:
+                                            </Typography>
+                                        </ListItem>
+                                        {skillsList}
+                                    </List>
+                                </Box>
+                            </Grid>
+
+                            <div className={classes.root}>
+                                {/* BIO */}
+                                <Grid container spacing={2}>
+                                    <Grid item xs={2}>
+                                        <Typography variant='p' color='primary'>
+                                            Bio
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Paper className={classes.paper}>
+                                            {bio}
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
+                                {/* NAME */}
+                                <Grid container spacing={2}>
+                                    <Grid item xs={2}>
+                                        <Typography variant='p' color='primary'>
+                                            Name
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Paper className={classes.paper}>
+                                            {userName}
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
+                                {/* LOCATION */}
+
+                                <Grid container spacing={2}>
+                                    <Grid item xs={2}>
+                                        <Typography variant='p' color='primary'>
+                                            Location
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Paper className={classes.paper}>
+                                            <PersonPinIcon
+                                                className={classes.icon}
+                                            />{" "}
+                                            Berlin | 10629
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
+                            </div>
+
+                            {/* Last 2 Buttons!  */}
+
+                            <Box
+                                className={classes.root}
+                                textAlign='center'
+                                mt={3}>
+                                <ButtonGroup variant='contained'>
+                                    <Button
+                                        component={Link}
+                                        to='/home'
+                                        size='large'
+                                        color='secondary'
+                                        variant='contained'
+                                        onClick={() => history.goBack()}
+                                        className={classes.button}>
+                                        Go back
+                                    </Button>
+                                    {linkConditional()}
+                                </ButtonGroup>
+                            </Box>
                         </Paper>
                     </Grid>
-                </Grid>
-            </div>
-
-            {/* Last 2 Buttons!  */}
-
-            <Box className={classes.root} textAlign='center' mt={3}>
-                <ButtonGroup variant='contained'>
-                    <Button
-                        component={Link}
-                        to='/home'
-                        size='large'
-                        color='secondary'
-                        variant='contained'
-                        onClick={() => history.goBack()}
-                        className={classes.button}>
-                        Go back
-                    </Button>
-                    {linkConditional()}
-                </ButtonGroup>
-            </Box>
-            </Paper>
-            </Grid>
-            </Box>
+                </Box>
             </Container>
-            <Footer/>
+            <Footer />
         </CssBaseline>
     );
 }

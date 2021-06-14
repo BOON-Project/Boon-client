@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import {
     AppBar,
     Toolbar,
@@ -86,40 +86,48 @@ export default function PrimarySearchAppBar() {
                                 <>
                                     <Link
                                         underline='none'
-                                        href='/MyBoons'
+                                        href='/myBoons'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='primary'>
+                                        <Typography
+                                            variant='h6'
+                                            color='primary'>
                                             {" "}
                                             My Boons
                                         </Typography>
                                     </Link>
                                     <Link
                                         underline='none'
-                                        href='/Dashboard'
+                                        href='/dashboard'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='primary'>
+                                        <Typography
+                                            variant='h6'
+                                            color='primary'>
                                             {" "}
                                             Explore
                                         </Typography>
                                     </Link>
                                     <Link
                                         underline='none'
-                                        href='/AboutUs'
+                                        href='/aboutUs'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='primary'>
+                                        <Typography
+                                            variant='h6'
+                                            color='primary'>
                                             {" "}
                                             About Us
                                         </Typography>
                                     </Link>
                                     <Link
                                         underline='none'
-                                        href='/Contact'
+                                        href='/contact'
                                         className={classes.link}
                                         color='inherit'>
-                                        <Typography variant='h6' color='primary'>
+                                        <Typography
+                                            variant='h6'
+                                            color='primary'>
                                             {" "}
                                             Contact
                                         </Typography>
@@ -174,7 +182,7 @@ export default function PrimarySearchAppBar() {
                                     <MenuItem>
                                         <Link
                                             underline='none'
-                                            href='/AboutUs'
+                                            href='/aboutUs'
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
@@ -187,7 +195,7 @@ export default function PrimarySearchAppBar() {
                                     <MenuItem>
                                         <Link
                                             underline='none'
-                                            href='/MyBoons'
+                                            href='/myBoons'
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
@@ -200,7 +208,7 @@ export default function PrimarySearchAppBar() {
                                     <MenuItem>
                                         <Link
                                             underline='none'
-                                            href='/Dashboard'
+                                            href='/dashboard'
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
@@ -213,7 +221,7 @@ export default function PrimarySearchAppBar() {
                                     <MenuItem>
                                         <Link
                                             underline='none'
-                                            href='/Contact'
+                                            href='/contact'
                                             color='primary'>
                                             <Typography
                                                 variant='h6'
@@ -225,7 +233,7 @@ export default function PrimarySearchAppBar() {
                                     </MenuItem>
 
                                     <MenuItem>
-                                        <Link underline='none' href='/EditUser'>
+                                        <Link underline='none' href='/editUser'>
                                             <Typography
                                                 variant='h6'
                                                 color='primary'>
@@ -244,8 +252,10 @@ export default function PrimarySearchAppBar() {
                                         color='inherit'>
                                         <AccountCircle />
                                     </IconButton>
-                                    <Link underline='none' href='/EditUser'>
-                                        <Typography variant='h6' color='primary'>
+                                    <Link underline='none' href='/editUser'>
+                                        <Typography
+                                            variant='h6'
+                                            color='primary'>
                                             {" "}
                                             Profile
                                         </Typography>
@@ -317,8 +327,8 @@ export default function PrimarySearchAppBar() {
                                     variant='text'
                                     color='primary'
                                     aria-label='text primary button group'>
-                                    <Button href='/Login'>Login</Button>
-                                    <Button href='/Signup'>Signup</Button>
+                                    <Button href='/login'>Login</Button>
+                                    <Button href='/signup'>Signup</Button>
                                 </ButtonGroup>
                             )}
                         </Menu>

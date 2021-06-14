@@ -16,14 +16,12 @@ import Dashboard from "./Dashboard/Dashboard";
 import AboutUs from "./AboutUs/AboutUs";
 import TopCarousel from "./Home/TopCarousel";
 import Contact from "./Contact/Contact";
-import {useKonamiCode } from './SecretCode/useKonamiCode'
-import konamiLogo from './logo.svg';
-import logoComponent from './logoComponent'
+import { useKonamiCode } from "./SecretCode/useKonamiCode";
+import konamiLogo from "./logo.svg";
+import logoComponent from "./logoComponent";
 import MyBoons from "./MyBoons/MyBoons";
 import Test from "./Test/Test";
 import TaskDetails from "./MyBoons/TaskDetails";
-
-
 
 const App = () => {
     const konami = useKonamiCode();
@@ -31,37 +29,41 @@ const App = () => {
     return (
         <>
             <Nav />
-            {logo ? <Redirect to='logo'/>: null}
+            {logo ? <Redirect to='logo' /> : null}
             <Switch>
-            <Route  path='/logo' component={logoComponent} />
+                <Route path='/logo' component={logoComponent} />
                 {/* new files structure */}
                 <Route exact path='/' component={Home} />
-                <Route exact path='/Signup' component={Signup} />
-                <Route exact path='/Login' component={Login} />
-                <Route exact path='/UserProfile/:id' component={UserProfile} />
-                <PrivateRoute exact path='/RequestBoon/:id' component={RequestBoon} />
+                <Route exact path='/signup' component={Signup} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/userProfile/:id' component={UserProfile} />
                 <Route exact path='/skill/:id' component={SkillByUser} />
-                <Route exact path='/AboutUs' component={AboutUs} />
-                <Route exact path='/Contact' component={Contact} />
+                <Route exact path='/aboutUs' component={AboutUs} />
+                <Route exact path='/contact' component={Contact} />
                 {/* <Route exact path='/test' component={Test} /> */}
-                <Route exact path='/TopCarousel' component={TopCarousel} />
-                <Route exact path='/TopCarousel' component={TopCarousel} />
+                <Route exact path='/topCarousel' component={TopCarousel} />
+                <Route exact path='/topCarousel' component={TopCarousel} />
 
                 {/* PRIVATE ROUTES */}
 
                 {/* where ppl can see Boonees by skill (what ppl need) */}
-                <PrivateRoute exact path='/Dashboard' component={Dashboard} />
+                <PrivateRoute
+                    exact
+                    path='/requestBoon/:id'
+                    component={RequestBoon}
+                />
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />
 
                 {/* where user can change personal info */}
-                <PrivateRoute path='/EditUser' component={EditUser} />
+                <PrivateRoute path='/editUser' component={EditUser} />
 
                 {/* MAIN CORE OF THE PROJECT  - USER CAN CHECK TASKS*/}
                 <PrivateRoute
                     exact
-                    path='/MyBoons/:id'
+                    path='/myBoons/:id'
                     component={TaskDetails}
                 />
-                <PrivateRoute exact path='/MyBoons' component={MyBoons} />
+                <PrivateRoute exact path='/myBoons' component={MyBoons} />
 
                 {/* Error 404 Route =>  */}
                 <Route path='/*' component={Error404} />
