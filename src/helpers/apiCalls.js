@@ -206,3 +206,16 @@ export const substractBoons = async (taskId, data) => {
     return extractApiError(err);
   }
 }
+
+//rating api
+export const editRating = async(taskId, rating)=>{
+  try {
+    const data = { taskId, rating };
+    const response = await axios.patch(`/tasks/${taskId}`,data);
+    console.log(response.data);
+    return response;
+  } catch (err) {
+    return extractApiError(err);
+  }
+}
+

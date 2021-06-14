@@ -32,3 +32,4 @@ export const USERS_LIST = 'USERS_LIST'
 //Boons
 export const ADD_BOONS = 'ADD_BOONS'
 export const SUBSTRACT_BOONS = 'SUBSTRACT_BOONS'
+

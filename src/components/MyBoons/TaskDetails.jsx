@@ -40,6 +40,7 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import {
   getTaskAction,
   editTaskStatusAction,
+  editTaskRatingAction,
 } from "../../store/actions/tasksActions";
 import {
   addBoonsAction,
@@ -49,6 +50,7 @@ import useStyles from "./styles";
 
 import Chat from "../Chat/Chat";
 import ReportIcon from "@material-ui/icons/Report";
+import StarIcon from '@material-ui/icons/Star';
 const allImages = require.context("../../images", true, /.jpg$/);
 
 const TaskDetails = (props) => {
@@ -60,6 +62,7 @@ const TaskDetails = (props) => {
   const [openAccept, setOpenAccept] = React.useState(false);
   const [openCancel, setOpenCancel] = React.useState(false);
   const [openFinished, setOpenFinished] = React.useState(false);
+  const [rating, setRating] = useState([]);
   const handleClickOpenAccept = () => {
     setOpenAccept(true);
   };
@@ -101,12 +104,25 @@ const TaskDetails = (props) => {
 
   const handleChangeStatus = (status) => {
     dispatch(editTaskStatusAction(task._id, status));
-
-    // setOpen(false);
   };
-  // const handleChangeRating = (rating) => {
-  //     dispatch(editTaskStatusAction(task.id, rating));
-  // };
+ //rating
+ const handleChangeRating = (rating) => {
+  dispatch(editTaskRatingAction(task._id,rating));
+};
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
+const [value, setValue] = React.useState(5);
+const [hover, setHover] = React.useState(-1);
 
   //managing boons exchange?
   const dispatchBoons = async () => {
@@ -126,6 +142,10 @@ const TaskDetails = (props) => {
     let result1 = await addBoons(addedBoonsWallet, booneeId);
     dispatch(addBoonsAction(result1));
   };
+
+
+
+
 
   return (
     <>
@@ -454,7 +474,21 @@ const TaskDetails = (props) => {
                         <Typography component="legend">
                           Please rate this task!
                         </Typography>
-                        <Rating name="pristine" value={null} />
+                        <Rating
+                        name="hover-feedback"
+                        value={value}
+                        precision={0.5}
+                        onChange={(event, newValue) => {
+                        setValue(newValue);
+                        }}
+                        onChangeActive={(event, newHover) => {
+                        setHover(newHover);
+                        }}
+                      icon={<StarIcon fontSize="inherit" />}
+                      />
+                      {value !== null && (
+                      <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+                      )}
                       </Box>
                     )}
                   {task.rating > 0 &&
@@ -468,7 +502,11 @@ const TaskDetails = (props) => {
                         <Typography component="legend">
                           Your rating for this task:
                         </Typography>
-                        <Rating name="read-only" value={task.rating} readOnly />
+                        <Rating name="read-only"
+                        value={task.rating}
+
+                        />
+                        {task.rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : task.rating]}</Box>}
                       </Box>
                     )}
                   {/* END OF BOONEE FINISHED */}
