@@ -10,7 +10,7 @@ import {
 import { Typography, Box, Chip, Button, TextField } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useController } from "react-hook-form";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
@@ -22,9 +22,12 @@ export default function Chat(props) {
   const [messages, setMessages] = useState(props.messages);
 
   console.log("tasks from chattsss");
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: { steve: "" },
+    mode: "onChange",
+  });
   const dispatch = useDispatch();
-  console.log("data for aghy", tasks);
+  //console.log("data for aghy", tasks);
 
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const onSubmit = async (formData) => {
@@ -47,8 +50,13 @@ export default function Chat(props) {
     dispatch(hideErrorAction());
     console.log("hiVasilis", [...messages, ...result.data]);
     setMessages([...messages, ...result.data]);
-
     //dispatch(addMessage(result.data));
+    reset();
+  };
+
+  const Input = (props) => {
+    const { field } = useController(props);
+    return <input {...props} />;
   };
 
   return (
@@ -65,9 +73,20 @@ export default function Chat(props) {
               },
             ].map((chat, i) => (
               <div className={classes.flex} key={i}>
-                <span style={{fontSize:"0.5rem"}}>{moment.utc(chat.date).startOf("minute").fromNow()}</span>
-                <Chip style={{margin:"0 0.5rem"}} label={chat.from} className={classes.chip} />
-                <Typography style={{margin:"0.5rem 1rem"}} variant="subtitle2">{chat.msg} </Typography>
+                <span style={{ fontSize: "0.5rem" }}>
+                  {moment.utc(chat.date).startOf("minute").fromNow()}
+                </span>
+                <Chip
+                  style={{ margin: "0 0.5rem" }}
+                  label={chat.from}
+                  className={classes.chip}
+                />
+                <Typography
+                  style={{ margin: "0.5rem 1rem" }}
+                  variant="subtitle2"
+                >
+                  {chat.msg}{" "}
+                </Typography>
               </div>
             ))}
 
@@ -81,7 +100,9 @@ export default function Chat(props) {
                 }
                 key={i}
               >
-                <span style={{fontSize:"0.5rem"}}>{moment.utc(msg.createdAt).startOf("minute").fromNow()}</span>
+                <span style={{ fontSize: "0.5rem" }}>
+                  {moment.utc(msg.createdAt).startOf("minute").fromNow()}
+                </span>
                 <Chip label={msg.senderId.userName} className={classes.chip} />
                 <Typography variant="subtitle2"> {msg.msg}</Typography>
               </div>
@@ -93,10 +114,9 @@ export default function Chat(props) {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
-            <Controller
+            {/* <Controller
               name="msg"
               control={control}
-              defaultValue=""
               render={({
                 field: { onChange, value },
                 fieldState: { error },
@@ -104,15 +124,17 @@ export default function Chat(props) {
                 <TextField
                   outlined
                   fullWidth
-                  label="Send a chat"
+                  label="Type something"
                   className={classes.textField}
                   onChange={onChange}
                   name="msg"
-                  value={value}
+                  value={inputValue}
                 />
               )}
               rules={{ required: "Write a message first" }}
-            />
+            /> */}
+
+            <Input name="steve" control={control}></Input>
 
             <Button type="submit" variant="contained" color="primary">
               Send

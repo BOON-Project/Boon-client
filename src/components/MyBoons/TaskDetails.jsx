@@ -21,6 +21,7 @@ import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import DoneIcon from "@material-ui/icons/Done";
 import CancelPresentationIcon from "@material-ui/icons/CancelPresentation";
 import Rating from "@material-ui/lab/Rating";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
 
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React, { useEffect, useState } from "react";
@@ -407,8 +408,7 @@ const TaskDetails = (props) => {
                             <CancelPresentationIcon color="primary" />
                           </Fab>
                         </Tooltip>
-                      </Grid>
-                      <Grid item xs={4}>
+
                         <Tooltip title="Finish" aria-label="add">
                           <Fab
                             color="secondary"
@@ -418,7 +418,7 @@ const TaskDetails = (props) => {
                               dispatchBoons();
                             }}
                           >
-                            <ReportIcon color="primary" />
+                            <DoneAllIcon color="primary" />
                           </Fab>
                         </Tooltip>
                       </Grid>
