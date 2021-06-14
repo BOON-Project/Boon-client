@@ -10,7 +10,7 @@ import {
 import { Typography, Box, Chip, Button, TextField } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { useForm, Controller, useController } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import useFullPageLoader from "../hooks/useFullPageLoader";
 
 export default function Chat(props) {
@@ -22,12 +22,9 @@ export default function Chat(props) {
   const [messages, setMessages] = useState(props.messages);
 
   console.log("tasks from chattsss");
-  const { handleSubmit, control, reset } = useForm({
-    defaultValues: { steve: "" },
-    mode: "onChange",
-  });
+  const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
-  //console.log("data for aghy", tasks);
+  console.log("data for aghy", tasks);
 
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const onSubmit = async (formData) => {
@@ -50,13 +47,8 @@ export default function Chat(props) {
     dispatch(hideErrorAction());
     console.log("hiVasilis", [...messages, ...result.data]);
     setMessages([...messages, ...result.data]);
-    //dispatch(addMessage(result.data));
-    reset();
-  };
 
-  const Input = (props) => {
-    const { field } = useController(props);
-    return <input {...props} />;
+    //dispatch(addMessage(result.data));
   };
 
   return (
@@ -114,9 +106,10 @@ export default function Chat(props) {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
-            {/* <Controller
+            <Controller
               name="msg"
               control={control}
+              defaultValue=""
               render={({
                 field: { onChange, value },
                 fieldState: { error },
@@ -124,17 +117,15 @@ export default function Chat(props) {
                 <TextField
                   outlined
                   fullWidth
-                  label="Type something"
+                  label="Send a chat"
                   className={classes.textField}
                   onChange={onChange}
                   name="msg"
-                  value={inputValue}
+                  value={value}
                 />
               )}
               rules={{ required: "Write a message first" }}
-            /> */}
-
-            <Input name="steve" control={control}></Input>
+            />
 
             <Button type="submit" variant="contained" color="primary">
               Send
