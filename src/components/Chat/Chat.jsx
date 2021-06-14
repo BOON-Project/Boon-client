@@ -1,31 +1,26 @@
-import React, { useState } from "react";
-import { addMessages } from "../../helpers/apiCalls";
-import useStyles from "./styles";
+import React, { useState } from 'react';
+import { addMessages } from '../../helpers/apiCalls';
+import useStyles from './styles';
 
-import {
-  hideErrorAction,
-  setErrorAction,
-} from "../../store/actions/errorActions";
+import { hideErrorAction, setErrorAction } from '../../store/actions/errorActions';
 //styling=>
-import { Typography, Box, Chip, Button, TextField } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
-import { useForm, Controller, useController } from "react-hook-form";
-import useFullPageLoader from "../hooks/useFullPageLoader";
+import { Typography, Box, Chip, Button, TextField } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import { useForm, Controller, useController } from 'react-hook-form';
+import useFullPageLoader from '../hooks/useFullPageLoader';
 
 export default function Chat(props) {
   const classes = useStyles();
   const tasks = useSelector((state) => state.tasksReducer.task);
   const sender = useSelector((state) => state.userReducer.user);
 
-  const [message, changeTextValue] = useState("");
   const [messages, setMessages] = useState(props.messages);
 
-  console.log("tasks from chattsss");
-  const { handleSubmit, control, reset } = useForm({
-    defaultValues: { steve: "" },
-    mode: "onChange",
-  });
+  console.log('tasks from chattsss');
+
+  const { handleSubmit, control, reset } = useForm();
+
   const dispatch = useDispatch();
   //console.log("data for aghy", tasks);
 
@@ -48,15 +43,10 @@ export default function Chat(props) {
 
     // handle success case
     dispatch(hideErrorAction());
-    console.log("hiVasilis", [...messages, ...result.data]);
+    console.log('hiVasilis', [...messages, ...result.data]);
     setMessages([...messages, ...result.data]);
     //dispatch(addMessage(result.data));
     reset();
-  };
-
-  const Input = (props) => {
-    const { field } = useController(props);
-    return <input {...props} />;
   };
 
   return (
@@ -73,19 +63,16 @@ export default function Chat(props) {
               },
             ].map((chat, i) => (
               <div className={classes.flex} key={i}>
-                <span style={{ fontSize: "0.5rem" }}>
-                  {moment.utc(chat.date).startOf("minute").fromNow()}
+                <span style={{ fontSize: '0.5rem' }}>
+                  {moment.utc(chat.date).startOf('minute').fromNow()}
                 </span>
                 <Chip
-                  style={{ margin: "0 0.5rem" }}
+                  style={{ margin: '0 0.5rem' }}
                   label={chat.from}
                   className={classes.chip}
                 />
-                <Typography
-                  style={{ margin: "0.5rem 1rem" }}
-                  variant="subtitle2"
-                >
-                  {chat.msg}{" "}
+                <Typography style={{ margin: '0.5rem 1rem' }} variant='subtitle2'>
+                  {chat.msg}{' '}
                 </Typography>
               </div>
             ))}
@@ -100,11 +87,11 @@ export default function Chat(props) {
                 }
                 key={i}
               >
-                <span style={{ fontSize: "0.5rem" }}>
-                  {moment.utc(msg.createdAt).startOf("minute").fromNow()}
+                <span style={{ fontSize: '0.5rem' }}>
+                  {moment.utc(msg.createdAt).startOf('minute').fromNow()}
                 </span>
                 <Chip label={msg.senderId.userName} className={classes.chip} />
-                <Typography variant="subtitle2"> {msg.msg}</Typography>
+                <Typography variant='subtitle2'> {msg.msg}</Typography>
               </div>
             ))}
           </div>
@@ -114,29 +101,23 @@ export default function Chat(props) {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={classes.flexInput}>
-            {/* <Controller
-              name="msg"
-              control={control}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
+            <Controller
+              render={({ field }) => (
                 <TextField
+                  {...field}
+                  className={classes.textField}
                   outlined
                   fullWidth
-                  label="Type something"
-                  className={classes.textField}
-                  onChange={onChange}
-                  name="msg"
-                  value={inputValue}
+                  label='Send a chat'
+                  name='msg'
                 />
               )}
-              rules={{ required: "Write a message first" }}
-            /> */}
-
-            <Input name="steve" control={control}></Input>
-
-            <Button type="submit" variant="contained" color="primary">
+              name='msg'
+              control={control}
+              defaultValue=''
+              className={classes.textField}
+            />
+            <Button type='submit' variant='contained' color='primary'>
               Send
             </Button>
           </div>
