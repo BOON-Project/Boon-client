@@ -102,7 +102,9 @@ const TaskDetails = (props) => {
   const handleChangeStatus = (status) => {
     dispatch(editTaskStatusAction(task._id, status));
 
-    // setOpen(false);
+    setOpenAccept(false);
+    setOpenCancel(false);
+    setOpenFinished(false);
   };
   // const handleChangeRating = (rating) => {
   //     dispatch(editTaskStatusAction(task.id, rating));
@@ -485,7 +487,6 @@ const TaskDetails = (props) => {
                 }}
                 item
                 xs={12}
-
               >
                 <Container className={classes.messageFormBox}>
                   <Chat messages={messages} />
