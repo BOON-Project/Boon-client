@@ -4,7 +4,6 @@ import {
     getUserOfferedTasks,
     getUserReceivedTasks,
     editTask,
-    addBoons,
 } from "../../helpers/apiCalls";
 import {
     GET_TASKS,
@@ -13,7 +12,6 @@ import {
     GET_USER_RECEIVED_TASKS,
     UPDATE_TASK_STATUS,
     UPDATE_TASK_RATING,
-    ADD_BOONS,
 } from "./types";
 
 export const getTasksAction = () => async (dispatch) => {
@@ -54,7 +52,7 @@ export const getUserReceivedTasksAction = () => async (dispatch) => {
 
 // EDIT TASK (STATUS OR RATING)
 export const editTaskStatusAction = (id, status) => async (dispatch) => {
-    const response = await editTask(id, status);
+    const response = await editTask(id, { status });
     console.log("task actions", response);
     dispatch({
         type: UPDATE_TASK_STATUS,
@@ -62,12 +60,13 @@ export const editTaskStatusAction = (id, status) => async (dispatch) => {
     });
 };
 
+//rating actions =>
+
 export const editTaskRatingAction = (id, rating) => async (dispatch) => {
-    const response = await editTask(id, rating);
-    console.log("task actions", response);
+    const response = await editTask(id, { rating });
+    console.log("edit rating", response);
     dispatch({
         type: UPDATE_TASK_RATING,
         payload: rating,
     });
 };
-
