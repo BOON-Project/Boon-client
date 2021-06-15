@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { addMessages } from '../../helpers/apiCalls';
 import useStyles from './styles';
+import { getMessages } from '../../helpers/apiCalls';
 
 import { hideErrorAction, setErrorAction } from '../../store/actions/errorActions';
 //styling=>
@@ -14,9 +15,11 @@ export default function Chat(props) {
   const classes = useStyles();
   const tasks = useSelector((state) => state.tasksReducer.task);
   const sender = useSelector((state) => state.userReducer.user);
+  const [messages, setMessages] = useState([]);
 
-  const [messages, setMessages] = useState(props.messages);
-
+  useEffect(() => {
+    getMessages(tasks?._id).then((msgs) => setMessages(msgs));
+  }, [tasks]);
   console.log('tasks from chattsss');
 
   const { handleSubmit, control, reset } = useForm();
