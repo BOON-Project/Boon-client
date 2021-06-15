@@ -29,6 +29,7 @@ export default function Chat(props) {
   const [loader, showLoader, hideLoader] = useFullPageLoader();
   const onSubmit = async (formData) => {
     showLoader();
+
     const msg = formData.msg;
 
     //sends the message to backend
