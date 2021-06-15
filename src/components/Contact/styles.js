@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "26ch",
+      width: "22ch",
     },
     // "& .MuiGrid-item": {
     //   padding: 0,
@@ -25,16 +25,18 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
 
-    height: "90vh",
+    height: "60vh",
   },
-  videoWrap: {},
+  videoWrap: {
+    overflow: "hidden",
+  },
   video: {
     height: "380px",
   },
   button: {
     marginTop: "15px",
   },
-  boonz:{
-    color: '#E4B363'
-  }
+  boonz: {
+    color: "#E4B363",
+  },
 }));
